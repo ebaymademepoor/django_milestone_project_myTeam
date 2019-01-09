@@ -1,39 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>myTeam Account</title>
-</head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="{% url 'get started' %}">Get Started</a></li>
-            <li><a href="#">Groups</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-        </ul>
-    </nav>
-    <hr>
-    {% if messages %}
-    <div>
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-    </div>
-    {% endif %}
-    
+{% extends 'base.html' %}
+
+{% block page_title %}Get Started{% endblock %}
+{% block page_heading %}Get Started{% endblock %}
+
+{% block content %}
+
+
     <!--Form to log users in which will appear on click of login button-->
     
     <h2>Log in Section</h2>
     
-    <form method="POST">
+    <form method="POST" action="{% url 'login' %}">
         {% csrf_token %}
-        {{ login_form }}   
+        {{ login_form.as_p }}   
         <button type="submit">Login</button>
     </form>
-
     
-</body>
-</html>
+    <h2>Register Now</h2>
+    
+    <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        {{ registration_form.as_p }}   
+        <button type="submit">Register</button>
+    </form>
+    
+{% endblock %}

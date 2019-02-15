@@ -7,7 +7,7 @@ class UserLoginForm(forms.Form):
     """
     Form to be used to log exisitng users in
     """
-    username = forms.CharField()
+    logInUsername = forms.CharField(label="Username")
     password = forms.CharField(widget=forms.PasswordInput)
     
 class UserRegistrationForm(UserCreationForm):
@@ -39,8 +39,8 @@ class UserRegistrationForm(UserCreationForm):
         password2 = self.cleaned_data.get('password2')
         
         if not password1 or not password2:
-            raise ValidationError("Please enter your password in both fields")
+            raise forms.ValidationError("Please enter your password in both fields")
+            return password2
         if password1 != password2:
-            raise ValidationError("Both passwords do not match")
-            
-        return password2
+            raise forms.ValidationError("Both passwords do not match")
+            return password2

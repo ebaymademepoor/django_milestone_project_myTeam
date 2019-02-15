@@ -11,7 +11,7 @@
         <ul>
             {% if user.is_authenticated %}
                 <li><a href="#">Groups</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
                 <li><a href="{% url 'get-started' %}">Get Started</a></li>
@@ -19,10 +19,11 @@
         </ul>
     </nav>
     <hr>
+    
     {% if messages %}
     <div>
         {% for message in messages %}
-            {{ message }}
+            <p>{{ message }}</p>
         {% endfor %}
     </div>
     {% endif %}

@@ -5,7 +5,6 @@
 
 {% block content %}
 
-
     <!--Form to log users in which will appear on click of login button-->
     
     <h2>Log in Section</h2>
@@ -20,7 +19,8 @@
     
     <form method="POST" action="{% url 'register' %}">
         {% csrf_token %}
-        {{ registration_form.as_p }}   
+        {{ registration_form.as_p }}
+        {{ form.non_field_errors }}
         <button type="submit">Register</button>
     </form>
     

@@ -14,7 +14,7 @@ import os
 try:
     import env
     development = True
-else:
+except:
     development = False
     
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)

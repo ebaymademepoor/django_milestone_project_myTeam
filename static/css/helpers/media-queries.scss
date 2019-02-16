@@ -1,0 +1,37 @@
+/* --- Widths */
+
+$mobileMaxWidth: 320px;
+$lgMobileMaxWidth: 500px;
+$tabletMaxWidth: 768px;
+$lgTabletMaxWidth: 1024px;
+$laptopMaxWidth: 1440px;
+
+@mixin mobile {
+     @media (max-width: $mobileMaxWidth){
+        @content
+    }
+}
+
+@mixin large-mobile {
+     @media (max-width: $lgMobileMaxWidth){
+        @content
+    }
+}
+
+@mixin tablet {
+     @media (max-width: $tabletMaxWidth){
+        @content
+    }
+}
+
+@mixin large-tablet {
+     @media (max-width: $lgTabletMaxWidth){
+        @content
+    }
+}
+
+@mixin laptop {
+     @media (max-width: $laptopMaxWidth){
+        @content
+    }
+}

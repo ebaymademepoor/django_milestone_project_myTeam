@@ -57,8 +57,13 @@ def login(request):
                                      password=request.POST['password'])
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "Hi {}, welcome back!"
-                    .format(request.POST['logInUsername'].title()))
+                
+                if "@" in request.POST['logInUsername']:
+                    str_username = request.POST['logInUsername']
+                else: 
+                    str_username = request.POST['logInUsername'].title()
+                    
+                messages.success(request, "Hi {}, welcome back!".format(str_username))
                 return redirect(reverse('profile'))
             else:
                 login_form.add_error(None, "Your username or password is incorrect")

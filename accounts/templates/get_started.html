@@ -5,7 +5,7 @@
 
 {% block content %}
 
-    <!--Form to log users in which will appear on click of login button-->
+    <!--Form to log users in -->
     
     <h2>Log in Section</h2>
     
@@ -15,6 +15,11 @@
         <button type="submit">Login</button>
     </form>
     
+    <!--Reset password link-->
+    <p><a href="{% url 'password_reset' %}">Reset Password</a></p> 
+    
+    
+    <!--Form to register new users -->
     <h2>Register Now</h2>
     
     <form method="POST" action="{% url 'register' %}">

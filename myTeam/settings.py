@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
-try:
+
+if os.path.exists('env.py'):
     import env
     development = True
-except:
+else:
     development = False
     
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'myTeam.urls'
@@ -83,15 +85,18 @@ WSGI_APPLICATION = 'myTeam.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-if development:
+
+
+if "DATABASE_URL" in os.environ:
+    DATABASES = {"default" : dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+else:
+    print("POSTGRES URL was not found, using sqlite instead")
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-else:
-    DATABASES = {"default" : dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
 # Password validation
@@ -138,6 +143,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

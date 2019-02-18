@@ -31,7 +31,8 @@ SECRET_KEY = 'u$*&2)7f0qe6c$lns=_n13nm1#h5usqalzawbjbnr#n0fd90e3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = development
 
-ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME')]
+ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'),
+                'my-team-utility.herokuapp.com']
 
 
 # Application definition

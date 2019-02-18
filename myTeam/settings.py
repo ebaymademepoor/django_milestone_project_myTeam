@@ -32,8 +32,7 @@ SECRET_KEY = 'u$*&2)7f0qe6c$lns=_n13nm1#h5usqalzawbjbnr#n0fd90e3'
 DEBUG = development
 
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'),
-                'my-team-utility.herokuapp.com']
-
+                os.environ.get('HOSTNAME')]
 
 # Application definition
 
@@ -90,7 +89,7 @@ WSGI_APPLICATION = 'myTeam.wsgi.application'
 #     }
 # }
 
-DATABASES = {"default" : dj_database_url.parse('postgres://drjdzrclvhsfvh:cacb8fd45e352940accb8016a500ed871f4ecc8e4e66cc6a0210a8312807bbcf@ec2-176-34-113-195.eu-west-1.compute.amazonaws.com:5432/dakmvht49m6plj')}
+DATABASES = {"default" : dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
 # Password validation

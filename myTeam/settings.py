@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'groups',
+    'profile_and_stats',
 ]
 
 MIDDLEWARE = [
@@ -146,6 +147,8 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 """ Use to print sent emails to console..."""
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+
+""" Use to send emails to users """
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")

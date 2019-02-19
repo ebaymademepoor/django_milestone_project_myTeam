@@ -10,7 +10,7 @@ def index(request):
     """
     return render(request, 'index.html')
 
-@login_required    
+@login_required
 def logout(request):
     """
     Logs the user out
@@ -95,10 +95,3 @@ def registration(request):
             return render(request, 'get_started.html', {"login_form": login_form, "registration_form": registration_form, "reg_error":"yes" })
             
     return redirect(reverse('get-started' ))
-    
-def user_profile(request):
-    """ Users profile page """
-    
-    user = User.objects.get(email=request.user.email)
-    
-    return render(request, 'profile.html', {"profile": user})

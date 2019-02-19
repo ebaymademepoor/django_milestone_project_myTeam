@@ -86,6 +86,7 @@ button {
   margin: 20px 0 0; }
 
 .close-parent-btn {
+  border: none;
   width: 20px;
   height: 20px;
   color: #000;
@@ -146,7 +147,7 @@ footer {
   .get-organised p,
   .be-the-best p {
     padding: 22px 10px 0;
-    line-height: 14px; }
+    line-height: 19px; }
 
 .opening-section {
   background-color: #007849;

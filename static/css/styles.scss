@@ -49,3 +49,12 @@ a:visited {
 .container {
     text-align: center;
 }
+
+.page-container {
+    position: relative;
+}
+
+.start-hidden {
+    display: none;
+    position: absolute;
+}

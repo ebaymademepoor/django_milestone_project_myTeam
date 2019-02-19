@@ -1,0 +1,26 @@
+button {
+    width: 80px;
+    height: 35px;
+    border: $white 1px solid;
+    text-transform: uppercase;
+    color: $white;
+    font-family: 'Staatliches', cursive;
+    outline:none;
+    cursor: pointer;
+}
+
+// get_started.html buttons ----------------------------------------------------
+
+.open-sign-in-btn {
+    background-color: $brand-starry-night-blue;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    bottom: 20px;
+}
+
+.open-sign-up-btn {
+    background-color: $brand-irises-green;
+}

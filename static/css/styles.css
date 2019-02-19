@@ -51,6 +51,28 @@ table {
   align-items: center; }
 
 /* --- Widths */
+button {
+  width: 80px;
+  height: 35px;
+  border: #fff 1px solid;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: 'Staatliches', cursive;
+  outline: none;
+  cursor: pointer; }
+
+.open-sign-in-btn {
+  background-color: #0375B4;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 20px; }
+
+.open-sign-up-btn {
+  background-color: #007849; }
+
 nav {
   background-color: #FFCE00; }
   nav .logo {
@@ -101,6 +123,33 @@ footer {
 .be-the-best {
   color: #007849; }
 
+.sign-in-section,
+.sign-up-section {
+  position: relative;
+  height: 45vh;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff; }
+  .sign-in-section p,
+  .sign-up-section p {
+    padding: 22px 10px 0;
+    line-height: 14px; }
+
+.sign-in-section {
+  background-color: #007849;
+  padding: 30px 20px 20px; }
+
+.sign-up-section {
+  background-color: #0375B4;
+  padding: 20px 20px 30px; }
+  .sign-up-section .container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 20px; }
+
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 12px; }
@@ -129,5 +178,12 @@ a:visited {
 
 .container {
   text-align: center; }
+
+.page-container {
+  position: relative; }
+
+.start-hidden {
+  display: none;
+  position: absolute; }
 
 /*# sourceMappingURL=styles.css.map */

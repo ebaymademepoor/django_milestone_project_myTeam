@@ -1,32 +1,45 @@
 {% extends 'base.html' %}
 
 {% block page_title %}Get Started{% endblock %}
-{% block page_heading %}Get Started{% endblock %}
 
 {% block content %}
 
-    <!--Form to log users in -->
     
-    <h2>Log in Section</h2>
+<div class="page-container">
+    <section class="sign-in-section">
+        <h2>Already a member?</h2>
+        <p>Simply sign in my friend!</p>
+        <button class="open-sign-in-btn">Sign in</button> 
+    </section>
+    <section class="sign-up-section">
+        <button class="open-sign-up-btn">Sign Up</button>
+        <div class="container">
+            <h2>Is this your first time?</h2> 
+            <p>Don't be shy, sign up and become a legend...</p> 
+        </div>
+    </section> 
     
-    <form method="POST" action="{% url 'login' %}">
-        {% csrf_token %}
-        {{ login_form.as_p }}   
-        <button type="submit">Login</button>
-    </form>
+    <!--Form to log users in that appears on click of sign-in-btn-->
+    <div class="container start-hidden">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ login_form.as_p }}   
+            <button type="submit">Login</button>
+        </form>
+        <!--Reset password link-->
+        <p><a href="{% url 'password_reset' %}">Reset Password</a></p> 
+    </div>
     
-    <!--Reset password link-->
-    <p><a href="{% url 'password_reset' %}">Reset Password</a></p> 
-    
-    
-    <!--Form to register new users -->
-    <h2>Register Now</h2>
-    
-    <form method="POST" action="{% url 'register' %}">
-        {% csrf_token %}
-        {{ registration_form.as_p }}
-        {{ form.non_field_errors }}
-        <button type="submit">Register</button>
-    </form>
+    <!--Form to register new users on click of sign-up-btn -->
+    <div class="container start-hidden">
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            {{ registration_form.as_p }}
+            {{ form.non_field_errors }}
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+</div>
     
 {% endblock %}

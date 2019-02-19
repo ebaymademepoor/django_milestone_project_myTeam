@@ -9,10 +9,10 @@
     <section class="sign-in-section">
         <h2>Already a member?</h2>
         <p>Simply sign in my friend!</p>
-        <button class="open-sign-in-btn">Sign in</button> 
+        <button id="open-sign-in-btn" class="open-sign-in-btn">Sign in</button> 
     </section>
     <section class="sign-up-section">
-        <button class="open-sign-up-btn">Sign Up</button>
+        <button id="open-sign-up-btn" class="open-sign-up-btn">Sign Up</button>
         <div class="container">
             <h2>Is this your first time?</h2> 
             <p>Don't be shy, sign up and become a legend...</p> 
@@ -20,23 +20,39 @@
     </section> 
     
     <!--Form to log users in that appears on click of sign-in-btn-->
-    <div class="container start-hidden">
+    <!--If errors the form will show on page after submission-->
+    {% if login_error == "yes" %}
+    <div class="container login-form">
+    {% else %}
+    <div class="container start-hidden login-form">
+    {% endif %}    
+        <button class="close-parent-btn">x</button>
+        <h3 class="uppercase">Welcome back</h3>
+        <p>Please enter your details below</p> 
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             {{ login_form.as_p }}   
-            <button type="submit">Login</button>
+            <button class="sign-in-btn" type="submit">Login</button>
         </form>
         <!--Reset password link-->
         <p><a href="{% url 'password_reset' %}">Reset Password</a></p> 
     </div>
     
     <!--Form to register new users on click of sign-up-btn -->
-    <div class="container start-hidden">
+    <!--If errors the form will show on page after submission-->
+    {% if reg_error == "yes" %}
+    <div class="container sign-up-form">
+    {% else %}
+    <div class="container start-hidden sign-up-form">
+    {% endif %}
+        <button class="close-parent-btn">x</button>
+        <h3 class="uppercase">Sign up</h3>
+        <p>Let's get started, sign up below!</p></p> 
         <form method="POST" action="{% url 'register' %}">
             {% csrf_token %}
             {{ registration_form.as_p }}
             {{ form.non_field_errors }}
-            <button type="submit">Register</button>
+            <button class="sign-up-btn" type="submit">Register</button>
         </form>
     </div>
 

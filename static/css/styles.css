@@ -50,6 +50,11 @@ table {
   justify-content: center;
   align-items: center; }
 
+.opening-section, .get-organised, .be-the-best {
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
 /* --- Widths */
 button {
   width: 80px;
@@ -59,9 +64,12 @@ button {
   color: #fff;
   font-family: 'Staatliches', cursive;
   outline: none;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px; }
 
-.open-sign-in-btn {
+.open-sign-in-btn,
+.sign-in-btn {
   background-color: #0375B4;
   position: absolute;
   left: 0;
@@ -70,8 +78,22 @@ button {
   margin-right: auto;
   bottom: 20px; }
 
-.open-sign-up-btn {
+.open-sign-up-btn,
+.sign-up-btn {
   background-color: #007849; }
+
+.sign-up-btn {
+  margin: 20px 0 0; }
+
+.close-parent-btn {
+  width: 20px;
+  height: 20px;
+  color: #000;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: unset;
+  margin: 2px; }
 
 nav {
   background-color: #FFCE00; }
@@ -101,10 +123,24 @@ footer {
     width: 49.5%;
     box-sizing: border-box; }
 
+.messages-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  max-width: 200px;
+  text-align: center;
+  top: 86px;
+  color: #fff;
+  background-color: #262228;
+  padding: 5px; }
+
 .opening-section,
 .get-organised,
 .be-the-best {
-  min-height: 300px;
+  min-height: 386px;
   padding: 20px; }
   .opening-section p,
   .get-organised p,
@@ -150,6 +186,40 @@ footer {
     margin-right: auto;
     bottom: 20px; }
 
+.login-form,
+.sign-up-form {
+  background-color: #fff;
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px 20px;
+  box-sizing: border-box;
+  min-height: 66%; }
+  .login-form h3,
+  .sign-up-form h3 {
+    margin-bottom: 10px; }
+  .login-form h3 ~ p,
+  .sign-up-form h3 ~ p {
+    margin-bottom: 24px; }
+  .login-form label,
+  .sign-up-form label {
+    margin: 6px;
+    display: inline-block; }
+
+.login-form h3 ~ p {
+  margin-bottom: 60px; }
+
+.opening-section {
+  background-image: url("../img/christmascup-green.jpg"); }
+
+.get-organised {
+  background-image: url("../img/vslegends.jpg"); }
+
+.be-the-best {
+  background-image: url("../img/vslegends2.jpg"); }
+
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 12px; }
@@ -169,7 +239,7 @@ h2 {
   font-size: 1.6em; }
 
 h3 {
-  font-size: 1.2em; }
+  font-size: 1.4em; }
 
 a,
 a:visited {
@@ -185,5 +255,15 @@ a:visited {
 .start-hidden {
   display: none;
   position: absolute; }
+
+.uppercase {
+  text-transform: uppercase; }
+
+.errorlist {
+  color: #fd3636;
+  margin: 10px 0; }
+
+.helptext {
+  display: none; }
 
 /*# sourceMappingURL=styles.css.map */

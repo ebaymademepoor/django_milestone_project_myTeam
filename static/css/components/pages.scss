@@ -3,7 +3,7 @@
 .opening-section,
 .get-organised,
 .be-the-best {
-    min-height: 300px;
+    min-height: 386px;
     padding: 20px;
     
     p {
@@ -58,5 +58,37 @@
         margin-left: auto; 
         margin-right: auto; 
         bottom: 20px;
+    }
+}
+
+.login-form,
+.sign-up-form {
+    background-color: $white;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px 20px;
+    box-sizing: border-box;
+    min-height: 66%;
+    
+    h3 {
+        margin-bottom: 10px;
+    }
+    
+    h3 ~ p {
+        margin-bottom: 24px;
+    }
+    
+    label {
+        margin: 6px;
+        display: inline-block;
+    }
+}
+
+.login-form {
+    h3 ~ p {
+        margin-bottom: 60px;
     }
 }

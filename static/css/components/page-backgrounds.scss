@@ -1,0 +1,14 @@
+.opening-section {
+    background-image: url('../img/christmascup-green.jpg');
+    @extend %cover-image-align-bottom;
+}
+
+.get-organised {
+    background-image: url('../img/vslegends.jpg');
+    @extend %cover-image-align-bottom;
+}
+
+.be-the-best {
+    background-image: url('../img/vslegends2.jpg');
+    @extend %cover-image-align-bottom;
+}

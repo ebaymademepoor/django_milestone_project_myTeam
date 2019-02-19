@@ -33,7 +33,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1.2em;
+    font-size: 1.4em;
 }
 
 a,
@@ -57,4 +57,17 @@ a:visited {
 .start-hidden {
     display: none;
     position: absolute;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.errorlist {
+    color: $error-red;
+    margin: 10px 0;
+}
+
+.helptext {
+    display: none;
 }

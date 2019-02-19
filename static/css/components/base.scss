@@ -44,3 +44,18 @@ footer {
         box-sizing: border-box;
     }
 }
+
+.messages-box {
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    width: 50%;
+    max-width: 200px;
+    text-align: center;
+    top: 86px;
+    color: $white;
+    background-color: $brand-evening-black;
+    padding: 5px;
+}

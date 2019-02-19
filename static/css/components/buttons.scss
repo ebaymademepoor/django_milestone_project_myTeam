@@ -7,11 +7,14 @@ button {
     font-family: 'Staatliches', cursive;
     outline:none;
     cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 // get_started.html buttons ----------------------------------------------------
 
-.open-sign-in-btn {
+.open-sign-in-btn,
+.sign-in-btn {
     background-color: $brand-starry-night-blue;
     position: absolute;
     left: 0; 
@@ -21,6 +24,22 @@ button {
     bottom: 20px;
 }
 
-.open-sign-up-btn {
+.open-sign-up-btn,
+.sign-up-btn {
     background-color: $brand-irises-green;
+}
+
+.sign-up-btn {
+    margin: 20px 0 0;
+}
+
+.close-parent-btn {
+    width: 20px;
+    height: 20px;
+    color: $black;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: unset;
+    margin: 2px;
 }

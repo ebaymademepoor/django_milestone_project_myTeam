@@ -9,6 +9,9 @@
     
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Staatliches" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css" />
+    
+    <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/scripts/main.js' %}"></script>
 </head>
 <body>
     <nav>
@@ -27,7 +30,8 @@
     </nav>
     
     {% if messages %}
-    <div>
+    <div class="messages-box">
+        <button class="close-parent-btn">x</button> 
         {% for message in messages %}
             <p>{{ message }}</p>
         {% endfor %}

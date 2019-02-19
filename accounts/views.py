@@ -68,7 +68,7 @@ def login(request):
             else:
                 login_form.add_error(None, "Your username or password is incorrect")
                 registration_form = UserRegistrationForm()
-                return render(request, 'get_started.html', {"login_form": login_form, "registration_form": registration_form })
+                return render(request, 'get_started.html', {"login_form": login_form, "registration_form": registration_form, "login_error":"yes" })
     
     return redirect(reverse('get-started'))
     
@@ -92,7 +92,7 @@ def registration(request):
                 messages.error(request, "We're sorry, but we cannot register you at this time")
         else:
             login_form = UserLoginForm()
-            return render(request, 'get_started.html', {"login_form": login_form, "registration_form": registration_form })
+            return render(request, 'get_started.html', {"login_form": login_form, "registration_form": registration_form, "reg_error":"yes" })
             
     return redirect(reverse('get-started' ))
     

@@ -1,0 +1,27 @@
+// Index page styles -----------------------------------------------------------
+
+.opening-section,
+.get-organised,
+.be-the-best {
+    min-height: 300px;
+    padding: 20px;
+    
+    p {
+        padding: 22px 10px 0;
+        line-height: 14px;
+    }
+}
+
+.opening-section {
+    background-color: $brand-irises-green;
+    color: $white;
+}
+
+.get-organised {
+    background-color: $brand-starry-night-blue;
+    color: $white;
+}
+
+.be-the-best {
+    color: $brand-irises-green;
+}

@@ -10,3 +10,42 @@
 
 // General styling -------------------------------------------------------------
 
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Staatliches', cursive;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+a,
+a:visited {
+    color: $white;
+    text-decoration: none;
+}
+
+.flex-center-content {
+    @extend %centralise-inner-container;
+}
+
+.container {
+    text-align: center;
+}

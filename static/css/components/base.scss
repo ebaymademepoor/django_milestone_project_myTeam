@@ -1,0 +1,46 @@
+// nav-bar settings ------------------------------------------------------------
+
+nav {
+    
+    background-color: $brand-sunflower-yellow;
+    
+    .logo {
+        max-width: 30%;
+    }
+    
+    ul {
+        max-width: 70%;
+    }
+    
+    .logo,
+    ul,
+    li {
+        display: inline-block;
+        box-sizing: border-box;
+    }
+    
+    .logo,
+    ul {
+        padding: 20px;
+    }
+    
+    ul {
+        float: right;
+        
+        li {
+            padding: 0 4px;
+        }
+    }
+}
+
+footer {
+    background-color: $brand-evening-black;
+    color: $white;
+    height: 56px;
+    
+    .container {
+        display: inline-block;
+        width: 49.5%;
+        box-sizing: border-box;
+    }
+}

@@ -7,10 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>myTeam - {% block page_title %}{% endblock %}</title>
     
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Staatliches" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css" />
 </head>
 <body>
     <nav>
+        <div class="logo">
+            <a href="/">myTeam</a>
+        </div>
         <ul>
             {% if user.is_authenticated %}
                 <li><a href="#">Groups</a></li>
@@ -21,7 +25,6 @@
             {% endif %}
         </ul>
     </nav>
-    <hr>
     
     {% if messages %}
     <div>
@@ -36,5 +39,14 @@
     {% block content %}
     {% endblock %}
     
+    <footer class="flex-center-content">
+        <div class="container">
+            <a href="#">About Us</a> 
+        </div> 
+        <div class="container">
+            <a href="#">Get in Touch</a> 
+        </div> 
+    </footer>
+        
 </body>
 </html>

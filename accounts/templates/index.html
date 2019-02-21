@@ -3,9 +3,11 @@
 
 {% block content %}
 
-<section class="opening-section flex-center-content">
-    <div class="container">
+<section class="opening-section">
+    <div class="opening-section-bg index-page-bg-settings">
         <h1>Welcome to myTeam</h1>
+    </div>
+    <div class="container">
         <p>
             Designed for the players, myTeam is everything you need in your personal 
             playing career.
@@ -17,9 +19,12 @@
     </div>
 </section>
 
-<section class="get-organised flex-center-content">
-    <div class="container">
+<section class="get-organised">
+    <div class="get-organised-bg index-page-bg-settings">
         <h2>Get Organised</h2>
+    </div>
+    <div class="container">
+        
         <p>
             Getting organised is easy with myTeam.
         </p>
@@ -32,9 +37,12 @@
     </div>
 </section>
 
-<section class="be-the-best flex-center-content">
-    <div class="container">
+<section class="be-the-best">
+    <div class="be-the-best-bg index-page-bg-settings">
         <h2>Be the best you can be</h2>
+    </div>
+    <div class="container">
+        
         <p>
             View your team mates and rate their playing attributes such as passing 
             and shooting out of 10, they will do the same for you.  Use this data to
@@ -46,7 +54,9 @@
             Team generation will take into account both form and attributes helping 
             keep the teams well balanced.
         </p> 
+        <a class="link-btn get-started-btn" href="{% url 'get-started' %}">Get Started</a>
     </div>
+    
 </section>
 
 																	

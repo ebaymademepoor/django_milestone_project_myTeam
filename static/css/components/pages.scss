@@ -4,11 +4,14 @@
 .get-organised,
 .be-the-best {
     min-height: 386px;
-    padding: 20px;
     
     p {
-        padding: 22px 10px 0;
+        padding: 28px 28px 0;
         line-height: 19px;
+    }
+    
+    p:nth-of-type(2) {
+        padding-bottom: 28px;
     }
 }
 
@@ -81,14 +84,21 @@
         margin-bottom: 24px;
     }
     
-    label {
-        margin: 6px;
+    label,
+    input {
         display: inline-block;
+        width: 90%;
+        margin: 0 auto 8px;
+        text-align: left;
     }
 }
 
 .login-form {
     h3 ~ p {
         margin-bottom: 60px;
+    }
+    
+    p a {
+        color: $error-red;
     }
 }

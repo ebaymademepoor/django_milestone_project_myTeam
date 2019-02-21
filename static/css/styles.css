@@ -45,18 +45,19 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.flex-center-content {
+.index-page-bg-settings, .flex-center-content {
   display: flex;
   justify-content: center;
   align-items: center; }
 
-.opening-section, .get-organised, .be-the-best {
+.opening-section-bg, .get-organised-bg, .be-the-best-bg {
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover; }
 
 /* --- Widths */
-button {
+button,
+.link-btn {
   width: 80px;
   height: 35px;
   border: #fff 1px solid;
@@ -66,7 +67,15 @@ button {
   outline: none;
   cursor: pointer;
   margin-top: 10px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  letter-spacing: 1px; }
+
+.get-started-btn {
+  background-color: #FFCE00;
+  display: block;
+  line-height: 36px;
+  margin: 0 auto 22px;
+  cursor: pointer; }
 
 .open-sign-in-btn,
 .sign-in-btn {
@@ -144,13 +153,16 @@ footer {
 .opening-section,
 .get-organised,
 .be-the-best {
-  min-height: 386px;
-  padding: 20px; }
+  min-height: 386px; }
   .opening-section p,
   .get-organised p,
   .be-the-best p {
-    padding: 22px 10px 0;
+    padding: 28px 28px 0;
     line-height: 19px; }
+  .opening-section p:nth-of-type(2),
+  .get-organised p:nth-of-type(2),
+  .be-the-best p:nth-of-type(2) {
+    padding-bottom: 28px; }
 
 .opening-section {
   background-color: #007849;
@@ -208,20 +220,32 @@ footer {
   .sign-up-form h3 ~ p {
     margin-bottom: 24px; }
   .login-form label,
-  .sign-up-form label {
-    margin: 6px;
-    display: inline-block; }
+  .login-form input,
+  .sign-up-form label,
+  .sign-up-form input {
+    display: inline-block;
+    width: 90%;
+    margin: 0 auto 8px;
+    text-align: left; }
 
 .login-form h3 ~ p {
   margin-bottom: 60px; }
+.login-form p a {
+  color: #fd3636; }
 
-.opening-section {
+.index-page-bg-settings {
+  width: 100%;
+  height: 400px; }
+  .index-page-bg-settings h1 {
+    margin: 0 auto; }
+
+.opening-section-bg {
   background-image: url("../img/christmascup-green.jpg"); }
 
-.get-organised {
+.get-organised-bg {
   background-image: url("../img/vslegends.jpg"); }
 
-.be-the-best {
+.be-the-best-bg {
   background-image: url("../img/vslegends2.jpg"); }
 
 body {
@@ -237,10 +261,10 @@ h6 {
   font-family: 'Staatliches', cursive; }
 
 h1 {
-  font-size: 2em; }
+  font-size: 2.5em; }
 
 h2 {
-  font-size: 1.6em; }
+  font-size: 2em; }
 
 h3 {
   font-size: 1.4em; }

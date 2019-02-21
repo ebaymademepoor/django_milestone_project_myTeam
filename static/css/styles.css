@@ -96,6 +96,9 @@ button {
   background-color: unset;
   margin: 2px; }
 
+.messages-box .close-parent-btn {
+  color: #fff; }
+
 nav {
   background-color: #FFCE00; }
   nav .logo {

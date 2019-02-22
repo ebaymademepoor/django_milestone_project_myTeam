@@ -26,7 +26,7 @@
     {% else %}
     <div class="container start-hidden login-form">
     {% endif %}    
-        <button class="close-parent-btn">x</button>
+        <button class="close-parent-btn"><i class="far fa-window-close"></i></button>
         <h3 class="uppercase">Welcome back</h3>
         <p>Please enter your details below</p> 
         <form method="POST" action="{% url 'login' %}">
@@ -45,7 +45,7 @@
     {% else %}
     <div class="container start-hidden sign-up-form">
     {% endif %}
-        <button class="close-parent-btn">x</button>
+        <button class="close-parent-btn"><i class="far fa-window-close"></i></button>
         <h3 class="uppercase">Sign up</h3>
         <p>Let's get started, sign up below!</p></p> 
         <form method="POST" action="{% url 'register' %}">

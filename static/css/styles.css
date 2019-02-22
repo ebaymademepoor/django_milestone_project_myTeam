@@ -101,7 +101,7 @@ button,
   height: 20px;
   color: #000;
   position: absolute;
-  right: 0;
+  right: 3px;
   top: 0;
   background-color: unset;
   margin: 2px; }
@@ -140,16 +140,30 @@ footer {
 .messages-box {
   position: absolute;
   left: 0;
-  right: 0;
+  right: -100%;
   margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  max-width: 200px;
+  width: 70%;
+  min-width: 200px;
+  max-width: 400px;
+  min-height: 32px;
   text-align: center;
   top: 86px;
   color: #fff;
   background-color: #262228;
-  padding: 5px; }
+  padding: 5px;
+  transition-property: right;
+  transition-duration: 2s; }
+  .messages-box .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center; }
+    .messages-box .container p {
+      text-align: left;
+      margin-right: 16px; }
+
+.slide-in-from-right {
+  right: 0; }
 
 .opening-section,
 .get-organised,

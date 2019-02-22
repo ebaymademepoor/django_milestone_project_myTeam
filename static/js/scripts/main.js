@@ -23,6 +23,13 @@ function closeParent(){
     });
 }
 
+// Slides in any messages 
+function slideInMessagesBox(){
+    if($(".messages-box")){
+        $(".messages-box").addClass("slide-in-from-right");
+    }
+}
+
 // Script 
 
 $(document).ready(function() {
@@ -30,6 +37,7 @@ $(document).ready(function() {
     // activateButton will allow buttons to perform their set funtion 
     // based on their id...
     activateButton();
-    
     closeParent();
+    slideInMessagesBox();
+    
 });

@@ -75,7 +75,8 @@ button,
   display: block;
   line-height: 36px;
   margin: 0 auto 22px;
-  cursor: pointer; }
+  cursor: pointer;
+  border: 5px solid #262228; }
 
 .open-sign-in-btn,
 .sign-in-btn {

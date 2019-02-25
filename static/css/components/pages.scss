@@ -102,3 +102,55 @@
         color: $error-red;
     }
 }
+
+// profile.html ------------------------------------------------------------
+
+.user-info-section {
+    padding: 32px;
+    color:  $brand-irises-green;
+    
+    .header {
+        margin-bottom: 20px;
+    }
+    
+    h1 {
+        margin-bottom: 4px;
+    }
+    
+    h1 ~ p {
+        font-size: 11px;
+    }
+        
+    .container {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        
+        p {
+            display: inline-block;
+            margin: 2px 0;
+            padding: 4px 0;
+            font-size: 9px;
+        }
+        
+        p:nth-child(odd){
+            width:40%;
+            background-color: $brand-irises-green;
+            color: $white;
+        }
+        
+        p:nth-child(even){
+            width: 60%;
+            background-color: $form-input-grey;
+            color: $brand-starry-night-blue;
+        }
+
+    }
+    
+    .license-expiry > p {
+            background-color: $brand-starry-night-blue !important;
+            color: $white !important;
+        }
+}

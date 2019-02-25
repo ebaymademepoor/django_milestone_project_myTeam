@@ -44,6 +44,12 @@ footer {
         box-sizing: border-box;
     }
 }
+.messages-container {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 140px;
+}
 
 .messages-box {
     position: absolute;
@@ -55,10 +61,11 @@ footer {
     max-width: 400px;
     min-height: 32px;
     text-align: center;
-    top: 86px;
+    top: 40px;
     color: $white;
     background-color: $brand-evening-black;
     padding: 5px;
+    z-index: 100;
     
     transition-property: right;
     transition-duration: 2s;

@@ -3,6 +3,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
+from profile_and_stats.forms import CreateProfileForm
 
 def index(request):
     """
@@ -73,16 +74,23 @@ def login(request):
     return redirect(reverse('get-started'))
     
 def registration(request):
-    """ Register a new user """
+    """ 
+    Register a new user and create the basis of their user profile
+    """
     
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
+        new_profile_form = CreateProfileForm(request.POST)
         
         if registration_form.is_valid():
             registration_form.save()
+            print("saved user")
             
             user = auth.authenticate(username=request.POST['username'],
                                     password=request.POST['password1'])
+                                    
+            if new_profile_form.is_valid():
+                new_profile_form.save()
                                     
             if user:
                 auth.login(user=user, request=request)
@@ -90,6 +98,7 @@ def registration(request):
                 return redirect(reverse('profile'))
             else:
                 messages.error(request, "We're sorry, but we cannot register you at this time")
+                
         else:
             login_form = UserLoginForm()
             return render(request, 'get_started.html', {"login_form": login_form, "registration_form": registration_form, "reg_error":"yes" })

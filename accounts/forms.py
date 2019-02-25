@@ -22,17 +22,16 @@ class UserRegistrationForm(UserCreationForm):
     password2 = forms.CharField(
                     label="Password Confirmation", 
                     widget=forms.PasswordInput)
-                    
+    
     class Meta:
         model = User
         fields = ['email', 'username', 'password1', 'password2']
-        
+    
     def clean_email(self):
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
         if not email:
             raise forms.ValidationError("Please provide your email address")
-            return email
         
         if User.objects.filter(email=email).exclude(username=username):
             raise forms.ValidationError(u'This email address is already registered')
@@ -44,7 +43,7 @@ class UserRegistrationForm(UserCreationForm):
         
         if not password1 or not password2:
             raise forms.ValidationError("Please enter your password in both fields")
-            return password2
+            
         if password1 != password2:
             raise forms.ValidationError("Both passwords do not match")
-            return password2
+            

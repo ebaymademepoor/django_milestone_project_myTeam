@@ -1,14 +1,35 @@
 {% extends 'base.html' %}
 
 {% block page_title %}{{ user }}{% endblock %}
-{% block page_heading %}{{ user.username.title }}'s Profile{% endblock %}
 
 {% block content %}
+<div class="page-container">
+    <section class="user-info-section">
+        <div class="header">
+            <h1>Profile</h1> 
+            <p>User Details - {{ user.email }}</p> 
+        </div>
+        
+        <div class="container">
+            <p>Email</p><p>{{ user.email }}</p>
+            <p>Username</p><p>{{ user.username }}</p>
+            <p>Nickname</p><p>{{ profile.nickname }}</p>
+            <p>First Name</p><p>{{ profile.first_name }}</p>
+            <p>Surname</p><p>{{ profile.surname }}</p>
+            <p>Registration Date</p><p>{{ profile.registration_date }}</p>
+            <p>D.O.B</p><p>{{ profile.date_of_birth }}</p>
+        </div>
+        
+        <div class="pic-container">
+            <div class="user-photo" style="background-image: url('{{ MEDIA_URL }}{{ profile.user_photo }})"></div>            
+        </div>
+        
+        <div class="container license-expiry">
+            <p>Full License Expiry</p><p>{{ profile.license_expiry_date }}</p>   
+        </div>
+        
+    </section>
+</div>
 
-<p>{{ user.email }}</p> 
-
-<p>{{ profile.nickname }}</p>
-<p>{{ profile.first_name }}</p>
-<div class="user-photo" style="background-image: url('{{ MEDIA_URL }}{{ profile.user_photo }})"></div>
 
 {% endblock %}

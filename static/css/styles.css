@@ -45,7 +45,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.index-page-bg-settings, .flex-center-content {
+.user-playing-positions-section .half-pitch .row, .index-page-bg-settings, .flex-center-content {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -255,37 +255,121 @@ footer {
 .login-form p a {
   color: #fd3636; }
 
+.profile-page section {
+  padding: 32px; }
+.profile-page h4 {
+  margin-bottom: 35px; }
+.profile-page dt,
+.profile-page dd {
+  display: inline-block;
+  margin: 2px 0;
+  padding: 4px 0;
+  font-size: 9px; }
+
 .user-info-section {
-  padding: 32px;
   color: #007849; }
   .user-info-section .header {
     margin-bottom: 20px; }
   .user-info-section h1 {
     margin-bottom: 4px; }
-  .user-info-section h1 ~ p {
-    font-size: 11px; }
   .user-info-section .container {
     box-sizing: border-box;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     text-align: center; }
-    .user-info-section .container p {
-      display: inline-block;
-      margin: 2px 0;
-      padding: 4px 0;
-      font-size: 9px; }
-    .user-info-section .container p:nth-child(odd) {
+    .user-info-section .container dt {
       width: 40%;
       background-color: #007849;
       color: #fff; }
-    .user-info-section .container p:nth-child(even) {
+    .user-info-section .container dd {
       width: 60%;
       background-color: #ececec;
       color: #0375B4; }
-  .user-info-section .license-expiry > p {
+  .user-info-section .license-expiry > dt,
+  .user-info-section .license-expiry > dd {
     background-color: #0375B4 !important;
     color: #fff !important; }
+
+.user-playing-positions-section {
+  position: relative;
+  padding: 32px;
+  background-color: #007849;
+  color: #fff; }
+  .user-playing-positions-section .key-box {
+    position: absolute;
+    right: 32px;
+    width: 18%;
+    top: 32px; }
+    .user-playing-positions-section .key-box .preferred-box,
+    .user-playing-positions-section .key-box .can-play-box,
+    .user-playing-positions-section .key-box .cant-play-box {
+      display: inline-block;
+      height: 10px;
+      width: 10px; }
+    .user-playing-positions-section .key-box .preferred-box {
+      background-color: #23e623; }
+    .user-playing-positions-section .key-box .can-play-box {
+      background-color: orange; }
+    .user-playing-positions-section .key-box .cant-play-box {
+      background-color: red; }
+    .user-playing-positions-section .key-box label {
+      font-size: 8px; }
+  .user-playing-positions-section .half-pitch {
+    border: 1px solid #fff; }
+    .user-playing-positions-section .half-pitch .row {
+      height: 55px; }
+      .user-playing-positions-section .half-pitch .row div {
+        display: block;
+        position: relative;
+        text-align: center;
+        white-space: nowrap;
+        height: 20px;
+        width: 28px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        background-color: #fd3636;
+        padding-top: 7px; }
+        .user-playing-positions-section .half-pitch .row div span {
+          text-align: center;
+          margin-left: -100%;
+          margin-right: -100%;
+          font-weight: 600;
+          color: #FFCE00; }
+
+.user-attributes-section h4 {
+  color: #0375B4; }
+.user-attributes-section .container {
+  margin-bottom: 22px; }
+.user-attributes-section .row {
+  width: 100%; }
+.user-attributes-section dt {
+  width: 36%;
+  background-color: #0375B4;
+  color: #fff; }
+.user-attributes-section dd {
+  width: 13%;
+  background-color: #ececec;
+  color: #000; }
+
+.user-form-section {
+  background-color: #0375B4; }
+  .user-form-section h4 {
+    color: #fff; }
+  .user-form-section dt {
+    width: 50%;
+    background-color: #0375B4;
+    color: #fff;
+    text-align: left; }
+  .user-form-section dd {
+    width: 50%;
+    background-color: #ececec;
+    color: #007849;
+    text-align: center; }
+  .user-form-section dd:last-of-type,
+  .user-form-section dt:last-of-type {
+    font-weight: 600;
+    margin-top: 22px; }
 
 .index-page-bg-settings {
   width: 100%;

@@ -8,5 +8,5 @@ class userProfileTests(TestCase):
     """
     
     def test_str(self):
-        test_user_email = UserProfileData(user_email="test_user@test.com")
+        test_user_email = UserProfileData(email="test_user@test.com")
         self.assertEqual(str(test_user_email), "test_user@test.com")

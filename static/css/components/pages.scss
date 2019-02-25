@@ -105,8 +105,26 @@
 
 // profile.html ------------------------------------------------------------
 
+.profile-page {
+    
+    section {
+        padding: 32px;
+    }
+    
+    h4 {
+        margin-bottom: 35px;
+    }
+    
+    dt,
+    dd {
+        display: inline-block;
+        margin: 2px 0;
+        padding: 4px 0;
+        font-size: 9px;
+    }
+}
+
 .user-info-section {
-    padding: 32px;
     color:  $brand-irises-green;
     
     .header {
@@ -116,10 +134,6 @@
     h1 {
         margin-bottom: 4px;
     }
-    
-    h1 ~ p {
-        font-size: 11px;
-    }
         
     .container {
         box-sizing: border-box;
@@ -128,20 +142,13 @@
         flex-wrap: wrap;
         text-align: center;
         
-        p {
-            display: inline-block;
-            margin: 2px 0;
-            padding: 4px 0;
-            font-size: 9px;
-        }
-        
-        p:nth-child(odd){
+        dt {
             width:40%;
             background-color: $brand-irises-green;
             color: $white;
         }
         
-        p:nth-child(even){
+        dd {
             width: 60%;
             background-color: $form-input-grey;
             color: $brand-starry-night-blue;
@@ -149,8 +156,134 @@
 
     }
     
-    .license-expiry > p {
+    .license-expiry > dt,
+    .license-expiry > dd {
             background-color: $brand-starry-night-blue !important;
             color: $white !important;
         }
+}
+
+.user-playing-positions-section {
+    position: relative;
+    padding: 32px;
+    background-color:  $brand-irises-green;
+    color: $white;
+    
+
+    .key-box {
+        position: absolute;
+        right: 32px;
+        width: 18%;
+        top: 32px;
+        
+        .preferred-box,
+        .can-play-box,
+        .cant-play-box {
+            display: inline-block;
+            height: 10px;
+            width:10px;
+        }
+        
+        .preferred-box {
+            background-color: $preference-green;
+        }
+        
+        .can-play-box {
+            background-color: orange;
+        }
+        
+        .cant-play-box {
+            background-color: red;
+        }
+        
+        label {
+            font-size: 8px;
+        }
+    }
+    
+    .half-pitch {
+        border: 1px solid $white;
+        
+        .row {
+            height: 55px;
+            @extend %centralise-inner-container;
+            
+            div {
+                display: block;
+                position: relative;
+                text-align: center;
+                white-space: nowrap;
+                height: 20px;
+                width: 28px;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                background-color: #fd3636;
+                padding-top: 7px;
+            
+                span {
+                    text-align: center;
+                    margin-left: -100%;
+                    margin-right: -100%;
+                    font-weight: 600;
+                    color: $brand-sunflower-yellow;
+                }
+            }
+        }
+    }
+}
+
+.user-attributes-section {
+    
+    h4 {
+        color: $brand-starry-night-blue;
+    }
+    
+    .container {
+        margin-bottom: 22px;
+    }
+    
+    .row {
+        width: 100%;
+    }
+    
+
+    dt {
+        width: 36%;
+        background-color: $brand-starry-night-blue;
+        color: $white;
+    }
+    
+    dd {
+        width: 13%;
+        background-color: $form-input-grey;
+        color: $black;
+    }
+}
+
+.user-form-section {
+    background-color: $brand-starry-night-blue;
+    
+    h4 {
+        color: $white;
+    }
+    
+    dt {
+        width: 50%;
+        background-color: $brand-starry-night-blue;
+        color: $white;
+        text-align: left;
+    }
+    
+    dd {
+        width: 50%;
+        background-color: $form-input-grey;
+        color: $brand-irises-green;
+        text-align: center;
+    }
+    
+    dd:last-of-type,
+    dt:last-of-type {
+        font-weight: 600;
+        margin-top: 22px;
+    }
 }

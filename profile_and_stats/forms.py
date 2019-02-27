@@ -15,3 +15,8 @@ class EditProfileDOB(forms.ModelForm):
     class Meta:
         model = UserProfileData
         fields = ('date_of_birth',)
+        
+class EditPositionPref(forms.ModelForm):
+    class Meta:
+        model = UserProfileData
+        fields = ('gk_pref', 'def_pref', 'mid_pref', 'att_pref')

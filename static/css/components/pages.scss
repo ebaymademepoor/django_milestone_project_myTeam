@@ -185,6 +185,17 @@
     background-color:  $brand-irises-green;
     color: $white;
     
+    .preferred-box {
+        background-color: $preference-green !important;
+    }
+    
+    .can-play-box {
+        background-color: orange !important;
+    }
+    
+    .cant-play-box {
+        background-color: red !important;
+    }
 
     .key-box {
         position: absolute;
@@ -198,18 +209,6 @@
             display: inline-block;
             height: 10px;
             width:10px;
-        }
-        
-        .preferred-box {
-            background-color: $preference-green;
-        }
-        
-        .can-play-box {
-            background-color: orange;
-        }
-        
-        .cant-play-box {
-            background-color: red;
         }
         
         label {

@@ -38,24 +38,48 @@
         </div>
         <div class="half-pitch">
             <div class="row">
-                <div class="attack">
+                {% if profile.att_pref == 0 %}
+                    <div id="att_pref" class="attack">
+                {% elif profile.att_pref == 1 %}
+                    <div id="att_pref" class="attack can-play-box">
+                {% else %}
+                    <div id="att_pref" class="attack preferred-box">
+                {% endif %}
                     <span>Attack</span>
                 </div>
             </div>
             <div class="row">
-                <div class="midfield">
+                {% if profile.mid_pref == 0 %}
+                    <div id="mid_pref" class="midfield">
+                {% elif profile.mid_pref == 1 %}
+                    <div id="mid_pref" class="midfield can-play-box">
+                {% else %}
+                    <div id="mid_pref" class="midfield preferred-box">
+                {% endif %}
                     <span>Midfield</span>
                 </div>
             </div>
         </div>
         <div class="half-pitch">
             <div class="row">
-                <div class="defense">
+                {% if profile.def_pref == 0 %}
+                    <div id="def_pref" class="defense">
+                {% elif profile.def_pref == 1 %}
+                    <div id="def_pref" class="defense can-play-box">
+                {% else %}
+                    <div id="def_pref" class="defense preferred-box">
+                {% endif %}
                     <span>Defense</span> 
                 </div>
             </div>
             <div class="row">
-                <div class="goalkeeper">
+                {% if profile.gk_pref == 0 %}
+                    <div id="gk_pref" class="goalkeeper">
+                {% elif profile.gk_pref == 1 %}
+                    <div id="gk_pref" class="goalkeeper can-play-box">
+                {% else %}
+                    <div id="gk_pref" class="goalkeeper preferred-box">
+                {% endif %}
                     <span>Goalkeeper</span> 
                 </div>
             </div>

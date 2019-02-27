@@ -11,9 +11,9 @@ function displayMessage(message) {
     },500);    
 }
 
-// Edit data fucntions ---------------------------------------------------------
+// Edit data functions (personal details) --------------------------------------
 
-function editProfileData(buttonClass){
+function createEditProfileDataForm(){
     
     // This function creates a form for the profile info that the user would like to update
     
@@ -49,20 +49,18 @@ function returnExistingProfileData(){
     var nickname = $('.nickname').next().text();
     var dob = $('.date_of_birth').next().text();
     
-    profileData = {"first_name" : firstName, "surname" : surname, "nickname" : nickname, "date_of_birth" : dob};
+    let profileData = {"first_name" : firstName, "surname" : surname, "nickname" : nickname, "date_of_birth" : dob};
     return profileData;
 }
 
-function updateProfile(oldData) {
+function prepareNewProfileData(oldData){
     
-    // First creates some new data that the user has imput within the form
+    // Combinds the newly entered user data with the existing data ready to be POSTED
     
-    var profileID = $('#profile-id').text(); // the ID of the profile that needs to be updated
     var formData = $("#update-form").serializeArray(); // The serialized new data entered into the form
-    
-    
+
     // This holds the information to be posted
-    newFormData = {};
+    let newFormData = {};
     
     // If DOB is being changed, only DOB will be posted
     if(formData[0].name === "date_of_birth"){
@@ -84,12 +82,68 @@ function updateProfile(oldData) {
         });    
     }
     
+    return newFormData;
+}
+
+function replaceOldValuesInRealtime(data){
+    
+    // Used on the profile page, will update data in real time
+    
+    Object.entries(data).forEach(([key, value]) => {
+        $('.' + key).next().text(value);
+    });    
+}
+
+// Edit data functions (position preferences) ----------------------------------
+
+function preparePositionPrefData(element){
+    
+    // When a button is clicked, the value for that position should change to reflect new preference set
+    
+    let newFormData = {}
+        
+        if($('#' + element).hasClass("preferred-box")){
+            newFormData[element] = 0;
+            $('#' + element).removeClass("preferred-box");
+        } else if ($('#' + element).hasClass("can-play-box")){
+            newFormData[element] = 2;
+            $('#' + element).removeClass("can-play-box").addClass("preferred-box")
+        } else {
+            newFormData[element] = 1;
+            $('#' + element).addClass("can-play-box")
+        }
+        
+        return newFormData;
+}
+
+// Enables post of data to database --------------------------------------------
+
+function postData(type, data) {
+    
+    // Sends new data to the database via ajax request
+    
+    if(type === "user-personal-details"){
+        let newFormData = prepareNewProfileData(data);
+        let profileURL= "../update_profile_data/";
+        postToDatabase(profileURL, newFormData);
+    } else if (type === "user-position-prefs"){
+        let newPref = data;
+        let profileURL= "../update_position_pref/";
+        postToDatabase(profileURL, newPref);
+    }
+};
+
+
+function postToDatabase(url, data){
+    
+    let profileID = $('#profile-id').text(); // the ID of the profile that needs to be updated
+    
     //  ajax function will now take this data and post it accordingly via our python view
     
     $.ajax({
-        url : "../update_profile_data/" + profileID, // the endpoint
+        url : url + profileID, // the endpoint
         type : "POST", // http method
-        data : newFormData,
+        data : data,
 
         // handle a successful response
         success : function(json) {
@@ -97,7 +151,12 @@ function updateProfile(oldData) {
             console.log("success"); // another sanity check
             
             $('#update-form').remove();
-            $('.' + formData[0].name).next().text(formData[0].value);
+            
+            
+            // This code will replace data on profile section with new data
+            if(url.indexOf("update_profile_data") != -1){
+                replaceOldValuesInRealtime(data);
+            }
             
         },
 
@@ -111,8 +170,7 @@ function updateProfile(oldData) {
             
         }
     });
-    
-};
+}
 
 // Helper functions ------------------------------------------------------------
 
@@ -166,25 +224,40 @@ function slideInMessagesBox(){
 
 $(document).ready(function() {
 
-    // activateButton will allow buttons to perform their set funtion 
-    // based on their id...
+    // activateButton will allow buttons to perform their set funtion based on their id...
+    
     activateButton();
     
+    
+    // Helper functions
     closeParent();
     removeParent();
-    
     slideInMessagesBox();
     
-    editProfileData();
+    
+    createEditProfileDataForm();
+    preparePositionPrefData();
     
     // Updates profile database with new user info when submitted ------------------
 
     $('body').on("click", ".update-form-btn", function(e) {
         e.preventDefault();
         console.log("form submitted!");
-        data = returnExistingProfileData();
-        updateProfile(data);
+        let data = returnExistingProfileData();
+        postData("user-personal-details", data);
     });
+    
+    // Updates profile database with new position prefs info when submitted ------------------
+    
+    $(".attack, .midfield, .defense, .goalkeeper").click(function() {
+        
+        let elementClicked = this.id;
+        let data = preparePositionPrefData(elementClicked);
+        postData("user-position-prefs", data);
+        
+    });
+    
+    
     
     // This code retrieves our form csrf token to enable safe ajax requests --------
 

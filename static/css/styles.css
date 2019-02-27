@@ -95,7 +95,8 @@ button,
 .sign-up-btn {
   margin: 20px 0 0; }
 
-.close-parent-btn {
+.close-parent-btn,
+.remove-parent-btn {
   border: none;
   width: 20px;
   height: 20px;
@@ -108,6 +109,9 @@ button,
 
 .messages-box .close-parent-btn {
   color: #fff; }
+
+.update-form-btn {
+  background-color: #0375B4; }
 
 nav {
   background-color: #FFCE00; }
@@ -255,6 +259,19 @@ footer {
 .login-form p a {
   color: #fd3636; }
 
+#update-form {
+  position: absolute;
+  height: 120px;
+  z-index: 5;
+  top: 155px;
+  padding: 30px;
+  background-color: white; }
+  #update-form label,
+  #update-form input {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5px; }
+
 .profile-page section {
   padding: 32px; }
 .profile-page h4 {
@@ -335,7 +352,8 @@ footer {
           margin-left: -100%;
           margin-right: -100%;
           font-weight: 600;
-          color: #FFCE00; }
+          color: #fff;
+          letter-spacing: 1px; }
 
 .user-attributes-section h4 {
   color: #0375B4; }

@@ -51,6 +51,7 @@ def login(request):
         
     # Attempt to log user in...
     if request.method == "POST":
+        print(request.POST)
         login_form = UserLoginForm(request.POST)
         
         if login_form.is_valid():

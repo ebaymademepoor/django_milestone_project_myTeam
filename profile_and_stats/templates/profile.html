@@ -7,17 +7,17 @@
     <section class="user-info-section">
         <div class="header">
             <h1>Profile</h1> 
-            <h4>User Details - {{ user.email }}</h4> 
+            <h4>User Details - {{ user.email }} ( <span id="profile-id">{{ profile.id }}</span> )</h4> 
         </div>
         
         <dl class="container">
+            <dt class="first_name">First Name</dt><dd>{{ profile.first_name }}</dd>
+            <dt class="surname">Surname</dt><dd>{{ profile.surname }}</dd>
             <dt>Email</dt><dd>{{ user.email }}</dd>
             <dt>Username</dt><dd>{{ user.username }}</dd>
-            <dt>Nickname</dt><dd>{{ profile.nickname }}</dd>
-            <dt>First Name</dt><dd>{{ profile.first_name }}</dd>
-            <dt>Surname</dt><dd>{{ profile.surname }}</dd>
+            <dt class="nickname">Nickname</dt><dd>{{ profile.nickname }}</dd>
+            <dt class="date_of_birth">D.O.B</dt><dd type="date">{{ profile.date_of_birth  }}</dd>
             <dt>Registration Date</dt><dd>{{ profile.registration_date }}</dd>
-            <dt>D.O.B</dt><dd>{{ profile.date_of_birth }}</dd>
         </dl>
         
         <div class="pic-container">

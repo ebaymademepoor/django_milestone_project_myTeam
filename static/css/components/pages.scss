@@ -105,6 +105,22 @@
 
 // profile.html ------------------------------------------------------------
 
+#update-form {
+    position: absolute;
+    height: 120px;
+    z-index: 5;
+    top: 155px;
+    padding: 30px;
+    background-color: white;
+    
+    label,
+    input {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
 .profile-page {
     
     section {
@@ -225,7 +241,8 @@
                     margin-left: -100%;
                     margin-right: -100%;
                     font-weight: 600;
-                    color: $brand-sunflower-yellow;
+                    color: $white;
+                    letter-spacing: 1px;
                 }
             }
         }

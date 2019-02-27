@@ -46,7 +46,8 @@ button,
     margin: 20px 0 0;
 }
 
-.close-parent-btn {
+.close-parent-btn,
+.remove-parent-btn {
     border: none;
     width: 20px;
     height: 20px;
@@ -60,4 +61,8 @@ button,
 
 .messages-box .close-parent-btn {
     color: $white;
+}
+
+.update-form-btn {
+    background-color: $brand-starry-night-blue;
 }

@@ -4,13 +4,25 @@
 
 {% block content %}
 <div class="page-container group-page">
+    
+    {% if reg_error == "yes" %}
+    <form class="create-group-form" method="POST" action="{% url 'create-group' %}" autocomplete="off">
+    {% else %}
+    <form class="create-group-form start-hidden" method="POST" action="{% url 'create-group' %}" autocomplete="off">
+    {% endif %}
+        <div class="close-parent-btn">x</div>
+        {% csrf_token %}
+        {{ create_group_form.as_p }}
+        {{ form.non_field_errors }}
+        <button class="new-group-btn" type="submit">Create</button>
+    </form>
     <section class="create-join-group-area">
         <h1 class="uppercase">Your Groups</h1> 
         <div class="container">
             <div class="create-group-box">
                 <p>Create a new group</p>
             </div>
-            <i class="fas fa-plus-square"></i>
+            <i class="fas fa-plus-square show-create-new-group-form"></i>
             <div class="join-group-box">
                 <p>Join an existing group</p>
             </div>

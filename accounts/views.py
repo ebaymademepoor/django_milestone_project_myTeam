@@ -51,7 +51,7 @@ def login(request):
         
     # Attempt to log user in...
     if request.method == "POST":
-        print(request.POST)
+        
         login_form = UserLoginForm(request.POST)
         
         if login_form.is_valid():
@@ -85,7 +85,6 @@ def registration(request):
         
         if registration_form.is_valid():
             registration_form.save()
-            print("saved user")
             
             user = auth.authenticate(username=request.POST['username'],
                                     password=request.POST['password1'])

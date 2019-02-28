@@ -11,7 +11,7 @@ class UserProfileData(models.Model):
     nickname = models.CharField(max_length=16, blank=True)
     first_name = models.CharField(max_length=14, blank=True)
     surname = models.CharField(max_length=14, blank=True)
-    user_photo = models.ImageField(upload_to='images', null=True)
+    user_photo = models.ImageField(upload_to='images', null=True, blank=True)
     gk_pref = models.DecimalField(max_digits=1, decimal_places=0, default=0, null=False)
     def_pref = models.DecimalField(max_digits=1, decimal_places=0, default=0, null=False)
     mid_pref = models.DecimalField(max_digits=1, decimal_places=0, default=0, null=False)

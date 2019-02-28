@@ -186,6 +186,9 @@ function activateButton() {
             case "open-sign-up-btn":
                 $('.sign-up-form').show();
                 break;
+            case "open-create-group-form-icon":    
+                $('.create-group-form').show();
+                break;
             default:
                 console.log('No action Available');
                 console.log(this.id);
@@ -220,6 +223,14 @@ function slideInMessagesBox(){
     }
 }
 
+function unhideABox(buttonClickedClass, classToUnhide){
+    
+    $("." + buttonClickedClass).click(function() {
+    
+        $('.' + classToUnhide).show();
+    });
+}
+
 // Script ----------------------------------------------------------------------
 
 $(document).ready(function() {
@@ -233,7 +244,7 @@ $(document).ready(function() {
     closeParent();
     removeParent();
     slideInMessagesBox();
-    
+    unhideABox("show-create-new-group-form", "create-group-form");
     
     createEditProfileDataForm();
     preparePositionPrefData();

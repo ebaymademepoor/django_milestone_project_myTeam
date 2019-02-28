@@ -291,8 +291,8 @@ footer {
 .profile-page dt,
 .profile-page dd {
   display: inline-block;
-  margin: 2px 0;
-  padding: 4px 0;
+  margin: 3px 0;
+  padding: 6px 0;
   font-size: 9px; }
 
 .user-info-section {
@@ -402,7 +402,6 @@ footer {
     margin-top: 22px; }
 
 .group-page {
-  min-height: 88vh;
   background-color: #007849; }
   .group-page h1 {
     color: #fff;
@@ -430,6 +429,22 @@ footer {
     margin-left: -6px; }
   .group-page .group-select-area {
     color: #fff; }
+  .group-page .create-group-form {
+    position: absolute;
+    min-height: 232px;
+    z-index: 5;
+    top: 78px;
+    padding: 30px;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box; }
+    .group-page .create-group-form .close-parent-btn {
+      top: 10px; }
+    .group-page .create-group-form label,
+    .group-page .create-group-form input {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 5px; }
 
 .index-page-bg-settings {
   width: 100%;
@@ -477,7 +492,7 @@ a:visited {
 
 .page-container {
   position: relative;
-  min-height: 80vh; }
+  min-height: 88vh; }
 
 .start-hidden {
   display: none;

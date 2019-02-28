@@ -148,8 +148,8 @@
     dt,
     dd {
         display: inline-block;
-        margin: 2px 0;
-        padding: 4px 0;
+        margin: 3px 0;
+        padding: 6px 0;
         font-size: 9px;
     }
 }
@@ -321,7 +321,6 @@
 // group_select.html -----------------------------------------------------------
 
 .group-page {
-    min-height: 88vh;
     background-color: $brand-irises-green;
     
     h1 {
@@ -364,5 +363,27 @@
     
     .group-select-area {
         color: $white;
+    }
+        
+    .create-group-form {
+        position: absolute;
+        min-height: 232px;
+        z-index: 5;
+        top: 78px;
+        padding: 30px;
+        background-color: white;
+        width: 100%;
+        box-sizing: border-box;
+        
+        .close-parent-btn {
+            top: 10px;
         }
+        
+        label,
+        input {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+    }
 }

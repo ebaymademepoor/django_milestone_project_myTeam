@@ -401,6 +401,36 @@ footer {
     font-weight: 600;
     margin-top: 22px; }
 
+.group-page {
+  min-height: 88vh;
+  background-color: #007849; }
+  .group-page h1 {
+    color: #fff;
+    margin-bottom: 10px; }
+  .group-page section {
+    padding: 32px; }
+  .group-page .create-join-group-area .container {
+    text-align: unset;
+    color: #fff; }
+  .group-page .create-join-group-area .create-group-box,
+  .group-page .create-join-group-area .join-group-box {
+    border: 1px #fff solid;
+    text-align: left;
+    display: inline-block;
+    width: 90%;
+    margin: 5px 0;
+    padding: 6px 0 6px 6px;
+    box-sizing: border-box; }
+  .group-page .create-join-group-area i {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    position: relative;
+    top: 7px;
+    margin-left: -6px; }
+  .group-page .group-select-area {
+    color: #fff; }
+
 .index-page-bg-settings {
   width: 100%;
   height: 400px; }

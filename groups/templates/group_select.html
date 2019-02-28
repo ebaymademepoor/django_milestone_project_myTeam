@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block page_title %}{{ user }}'s groups{% endblock %}
+
+{% block content %}
+<div class="page-container group-page">
+    <section class="create-join-group-area">
+        <h1 class="uppercase">Your Groups</h1> 
+        <div class="container">
+            <div class="create-group-box">
+                <p>Create a new group</p>
+            </div>
+            <i class="fas fa-plus-square"></i>
+            <div class="join-group-box">
+                <p>Join an existing group</p>
+            </div>
+            <i class="far fa-plus-square"></i>
+        </div>
+    </section>
+    <section class="group-select-area">
+        {% if not groups %}
+            <p>You are currently without a group</p> 
+        {% endif %}
+    </section>
+</div>
+
+
+{% endblock %}

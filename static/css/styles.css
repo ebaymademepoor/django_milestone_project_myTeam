@@ -45,7 +45,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.user-playing-positions-section .half-pitch .row, .index-page-bg-settings, .flex-center-content {
+.user-playing-positions-section .half-pitch .row, .group-page .group-select-area .group-box .members-details-container .flex, .index-page-bg-settings, .flex-center-content {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -408,27 +408,58 @@ footer {
     margin-bottom: 10px; }
   .group-page section {
     padding: 32px; }
-  .group-page .create-join-group-area .container {
-    text-align: unset;
-    color: #fff; }
-  .group-page .create-join-group-area .create-group-box,
-  .group-page .create-join-group-area .join-group-box {
-    border: 1px #fff solid;
-    text-align: left;
-    display: inline-block;
-    width: 90%;
-    margin: 5px 0;
-    padding: 6px 0 6px 6px;
-    box-sizing: border-box; }
-  .group-page .create-join-group-area i {
-    margin: 0;
-    padding: 0;
-    font-size: 30px;
-    position: relative;
-    top: 7px;
-    margin-left: -6px; }
+  .group-page .create-join-group-area {
+    padding-bottom: 16px; }
+    .group-page .create-join-group-area .container {
+      text-align: unset;
+      color: #fff; }
+    .group-page .create-join-group-area .create-group-box,
+    .group-page .create-join-group-area .join-group-box {
+      border: 1px #fff solid;
+      text-align: left;
+      display: inline-block;
+      width: 90%;
+      margin: 5px 0;
+      padding: 6px 0 6px 6px;
+      box-sizing: border-box; }
+    .group-page .create-join-group-area i {
+      margin: 0;
+      padding: 0;
+      font-size: 30px;
+      position: relative;
+      top: 7px;
+      margin-left: -6px; }
   .group-page .group-select-area {
-    color: #fff; }
+    color: #fff;
+    padding-top: 16px; }
+    .group-page .group-select-area .group-box {
+      background-color: #FFCE00;
+      margin-bottom: 16px;
+      padding: 16px;
+      font-family: 'Staatliches', cursive;
+      min-height: 65px; }
+      .group-page .group-select-area .group-box .group-details-container {
+        display: inline-block;
+        text-align: left;
+        margin-right: 10px;
+        min-width: 60%;
+        max-width: 146px; }
+        .group-page .group-select-area .group-box .group-details-container h2 {
+          margin-bottom: 5px; }
+        .group-page .group-select-area .group-box .group-details-container p {
+          font-size: 14px; }
+      .group-page .group-select-area .group-box .members-details-container {
+        width: 64px;
+        height: 64px;
+        display: inline-block;
+        text-align: center;
+        border: 1px solid #fff;
+        float: right; }
+        .group-page .group-select-area .group-box .members-details-container p:last-of-type {
+          font-size: 2em; }
+        .group-page .group-select-area .group-box .members-details-container .flex {
+          height: 100%;
+          width: 100%; }
   .group-page .create-group-form {
     position: absolute;
     min-height: 232px;

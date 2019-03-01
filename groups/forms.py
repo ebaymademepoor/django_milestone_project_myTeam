@@ -20,7 +20,7 @@ class CreateGroupForm(forms.ModelForm):
     
     class Meta:
         model = Group
-        fields = ['group_name', 'password', 'creator']
+        fields = ['group_name', 'password', 'creator',]
     
     def clean_password2(self):
         password = self.cleaned_data.get('password')

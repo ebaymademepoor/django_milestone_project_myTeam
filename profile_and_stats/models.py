@@ -20,5 +20,6 @@ class UserProfileData(models.Model):
     license_expiry_date = models.DateTimeField(default=one_month_hence)
     date_of_birth = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     
+    
     def __str__(self):
         return self.email

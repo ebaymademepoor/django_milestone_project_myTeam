@@ -335,6 +335,8 @@
     
     .create-join-group-area {
         
+        padding-bottom: 16px;
+        
         .container {
             text-align: unset;
             color: #fff;
@@ -363,6 +365,50 @@
     
     .group-select-area {
         color: $white;
+        padding-top: 16px;
+        
+        .group-box {
+            background-color: $brand-sunflower-yellow;
+            margin-bottom: 16px;
+            padding: 16px;
+            font-family: 'Staatliches', cursive;
+            min-height: 65px;
+            
+            .group-details-container {
+                display: inline-block;
+                text-align: left;
+                margin-right: 10px;
+                min-width: 60%;
+                max-width: 146px;
+                
+                h2 {
+                    margin-bottom: 5px;
+                }
+                
+                p {
+                    font-size: 14px;
+                }
+            }
+            
+            .members-details-container{
+                width: 64px;
+                height: 64px;
+                display: inline-block;
+                text-align: center;
+                border: 1px solid $white;
+                float: right;
+                
+                p:last-of-type {
+                    font-size: 2em;
+                }
+                
+                .flex {
+                    @extend %centralise-inner-container;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
     }
         
     .create-group-form {

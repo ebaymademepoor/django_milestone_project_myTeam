@@ -30,8 +30,26 @@
         </div>
     </section>
     <section class="group-select-area">
-        {% if not groups %}
+        {% if not my_groups %}
             <p>You are currently without a group</p> 
+        {% else %}
+            {% for group in my_groups %}
+            <div class="container group-box">
+                <div class="container group-details-container">
+                    <h2>{{ group.group_name }}</h2>
+                    <p>Creator - {{ group.creator }}</p>
+                    <p>Next match - TBC</p>
+                </div>
+                <div class="container members-details-container">
+                    <div class="flex">
+                        <div class="container">
+                            <p>Members</p>
+                            <p>{{ group.users.all|length }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         {% endif %}
     </section>
 </div>

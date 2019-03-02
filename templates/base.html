@@ -20,7 +20,7 @@
         <ul>
             {% if user.is_authenticated %}
                 <li><a href="{% url 'group-select' %}"><i class="fas fa-layer-group nav-i"></i>Groups</a></li>
-                <li><a href="{% url 'profile' %}"><i class="fas fa-user nav-i"></i>Profile</a></li>
+                <li><a href="{% url 'profile' user.pk %}"><i class="fas fa-user nav-i"></i>Profile</a></li>
                 <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt nav-i"></i>Logout</a></li>
             {% else %}
                 <li><a href="{% url 'get-started' %}"><i class="fas fa-play nav-i"></i>Get Started</a></li>

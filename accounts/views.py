@@ -67,7 +67,7 @@ def login(request):
                     str_username = request.POST['logInUsername'].title()
                     
                 messages.success(request, "Hi {}, welcome back!".format(str_username))
-                return redirect(reverse('profile'))
+                return redirect(reverse('profile', kwargs={'id': user.pk}))
             else:
                 login_form.add_error(None, "Your username or password is incorrect")
                 registration_form = UserRegistrationForm()
@@ -85,7 +85,7 @@ def registration(request):
         new_profile_form = CreateProfileForm(request.POST)
         
         if registration_form.is_valid():
-            registration_form.save()
+            new_user = registration_form.save()
             
             user = auth.authenticate(username=request.POST['username'],
                                     password=request.POST['password1'])
@@ -99,7 +99,7 @@ def registration(request):
                 send_mail('Thanks for registering with myTeam!', 
                     'Hi {0},\n\nThanks for registering with us, your personal playing career just got a whole lot better!\nWe just thought we would let you know that your username is {1}, please keep this email safe!\n\nWe wish you all the best in your playing career!'.format(request.POST['email'],request.POST['username']),
                     'The myTeam Peeps', [request.POST["email"]],fail_silently=False,)
-                return redirect(reverse('profile'))
+                return redirect(reverse('profile', kwargs={'id': new_user.pk}))
             else:
                 messages.error(request, "We're sorry, but we cannot register you at this time")
                 

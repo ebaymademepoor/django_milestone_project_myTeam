@@ -8,13 +8,13 @@ from .forms import EditProfileForm, EditProfileDOB, EditPositionPref
 
 # Create your views here.
 @login_required
-def user_profile(request):
+def user_profile(request, id):
     """ Users profile page """
     
-    user = User.objects.get(email=request.user.email)
-    users_profile_data = UserProfileData.objects.get(email=user.email)
+    users_profile_data = get_object_or_404(UserProfileData, pk=id)
+    print(users_profile_data)
 
-    return render(request, 'profile.html', {"profile": users_profile_data })
+    return render(request, 'profile.html', { "profile": users_profile_data })
     
 @login_required
 def update_profile_data(request, id):

@@ -53,6 +53,8 @@ a:visited {
 .page-container {
     position: relative;
     min-height: 88vh;
+    max-width: 1024px;
+    margin: 0 auto;
 }
 
 .start-hidden {

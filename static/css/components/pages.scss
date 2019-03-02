@@ -351,6 +351,7 @@
                 margin: 5px 0;
                 padding: 6px 0 6px 6px;
                 box-sizing: border-box;
+                max-width: 52%;
         }
         
         i {
@@ -373,6 +374,7 @@
             padding: 16px;
             font-family: 'Staatliches', cursive;
             min-height: 65px;
+            max-width: 320px;
             
             .group-details-container {
                 display: inline-block;

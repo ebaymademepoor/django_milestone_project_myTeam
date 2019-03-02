@@ -110,16 +110,17 @@ button,
 .messages-box .close-parent-btn {
   color: #fff; }
 
-.update-form-btn {
+.update-form-btn,
+.new-group-btn {
   background-color: #0375B4;
   display: block; }
 
 nav {
   background-color: #FFCE00; }
   nav .logo {
-    max-width: 30%; }
+    max-width: 20%; }
   nav ul {
-    max-width: 70%; }
+    max-width: 80%; }
   nav .logo,
   nav ul,
   nav li {
@@ -132,6 +133,8 @@ nav {
     float: right; }
     nav ul li {
       padding: 0 4px; }
+  nav .nav-i {
+    margin-right: 8px; }
 
 footer {
   background-color: #262228;
@@ -421,7 +424,8 @@ footer {
       width: 90%;
       margin: 5px 0;
       padding: 6px 0 6px 6px;
-      box-sizing: border-box; }
+      box-sizing: border-box;
+      max-width: 52%; }
     .group-page .create-join-group-area i {
       margin: 0;
       padding: 0;
@@ -437,7 +441,8 @@ footer {
       margin-bottom: 16px;
       padding: 16px;
       font-family: 'Staatliches', cursive;
-      min-height: 65px; }
+      min-height: 65px;
+      max-width: 320px; }
       .group-page .group-select-area .group-box .group-details-container {
         display: inline-block;
         text-align: left;

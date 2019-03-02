@@ -5,11 +5,11 @@ nav {
     background-color: $brand-sunflower-yellow;
     
     .logo {
-        max-width: 30%;
+        max-width: 20%;
     }
     
     ul {
-        max-width: 70%;
+        max-width: 80%;
     }
     
     .logo,
@@ -30,6 +30,10 @@ nav {
         li {
             padding: 0 4px;
         }
+    }
+    
+    .nav-i {
+        margin-right: 8px;
     }
 }
 

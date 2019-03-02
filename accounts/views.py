@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
 from profile_and_stats.forms import CreateProfileForm
+from django.core.mail import send_mail
 
 def index(request):
     """
@@ -95,6 +96,9 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "Welcome {}! You have been registered successfully".format(user.username.title()))
+                send_mail('Thanks for registering with myTeam!', 
+                    'Hi {0},\n\nThanks for registering with us, your personal playing career just got a whole lot better!\nWe just thought we would let you know that your username is {1}, please keep this email safe!\n\nWe wish you all the best in your playing career!'.format(request.POST['email'],request.POST['username']),
+                    'The myTeam Peeps', [request.POST["email"]],fail_silently=False,)
                 return redirect(reverse('profile'))
             else:
                 messages.error(request, "We're sorry, but we cannot register you at this time")

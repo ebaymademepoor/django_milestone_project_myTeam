@@ -424,8 +424,7 @@ footer {
       width: 90%;
       margin: 5px 0;
       padding: 6px 0 6px 6px;
-      box-sizing: border-box;
-      max-width: 52%; }
+      box-sizing: border-box; }
     .group-page .create-join-group-area i {
       margin: 0;
       padding: 0;

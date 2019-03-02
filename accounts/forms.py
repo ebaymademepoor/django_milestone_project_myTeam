@@ -7,7 +7,7 @@ class UserLoginForm(forms.Form):
     """
     Form to be used to log exisitng users in
     """
-    logInUsername = forms.CharField(label="Username")
+    logInUsername = forms.CharField(label="Username or Email")
     password = forms.CharField(widget=forms.PasswordInput)
     
 class UserRegistrationForm(UserCreationForm):

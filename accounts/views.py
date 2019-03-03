@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
 from profile_and_stats.forms import CreateProfileForm
 from django.core.mail import send_mail
+import os
 
 def index(request):
     """
@@ -96,6 +97,11 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "Welcome {}! You have been registered successfully".format(user.username.title()))
+                
+                
+                print("GMAIL ADD = {}".format(os.environ.get("EMAIL_ADDRESS")))
+                print("USER EMAIL = {}".format(user.email))
+                
                 send_mail('Thanks for registering with myTeam!', 
                     'Hi {0},\n\nThanks for registering with us, your personal playing career just got a whole lot better!\nWe just thought we would let you know that your username is {1}, please keep this email safe!\n\nWe wish you all the best in your playing career!'.format(request.POST['email'],request.POST['username']),
                     'myteamemailutility@gmail.com', [user.email], fail_silently=False,)

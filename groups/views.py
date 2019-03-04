@@ -22,14 +22,14 @@ def group_select(request):
     my_profile = UserProfileData.objects.get(email=request.user.email)
     my_groups = my_profile.group_set.all()
     
-    # Query to retrieve all users from a particular group
+    # Query to retrieve all data from a particular group
     # Carlo = Group.objects.get(group_name="Carlo")
     
     # print(Carlo.users.all())
     
     create_group_form = CreateGroupForm()
     
-    return render(request, 'group_select.html', {"create_group_form" : create_group_form, "my_groups" : my_groups })
+    return render(request, 'group-select.html', {"create_group_form" : create_group_form, "my_groups" : my_groups })
     
 @login_required
 def create_group(request):
@@ -66,10 +66,17 @@ def create_group(request):
                 
             else:
                 if create_group_form.errors:
-                    return render(request, 'group_select.html', {"create_group_form": create_group_form, "reg_error":"yes" })
+                    return render(request, 'group-select.html', {"create_group_form": create_group_form, "reg_error":"yes" })
                 else:
                     messages.error(request, "Oh dear, something went wrong.  Please try later")
-                    return render(request, 'group_select.html', {"create_group_form": create_group_form, "reg_error":"yes" })
+                    return render(request, 'group-select.html', {"create_group_form": create_group_form, "reg_error":"yes" })
         
     else:
         return redirect(reverse('group-select'))    
+        
+def group_home(request, id):
+    
+    # Query to retrieve all data from a particular group
+    group_data = Group.objects.get(pk=id)
+    
+    return render(request, 'group-home.html', {"group_data": group_data })

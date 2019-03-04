@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block page_title %}{{ group_data.group_name }}{% endblock %}
+
+{% block content %}
+
+<div class="page-container group-home">
+    <section class="header">
+        <div class="container group-box">
+            <div class="container group-details-container">
+                <h2>{{ group_data.group_name }}</h2>
+                <p>Creator - {{ group_data.creator }}</p>
+                <p>Next match - TBC</p>
+            </div>
+            <div class="container members-details-container">
+                <div class="flex">
+                    <div class="container">
+                        <p>Members</p>
+                        <p>{{ group_data.users.all|length }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container group-id uppercase">
+            <p>Group ID = {{ group_data.pk }}</p> 
+        </div>
+    </section>
+    <section class="content">
+        <div class="member-box">
+            <h2>Group members</h2>
+            
+                <dl>
+                    <dd class="uppercase dl-head">Member</dd>
+                    <dt class="uppercase dl-head">Nickname</dt>
+                    {% for user in group_data.users.all %}
+                        <dd class="dl-content username">{{ user.username }}</dd>
+                        <dt class="dl-content">{{ user.nickname }}</dt>
+                    {% endfor %}
+                </dl>
+            
+        </div>
+        <div class="matches-box">
+            <h3>Matches</h3>
+        </div>
+    </section>
+</div>
+
+
+{% endblock %}

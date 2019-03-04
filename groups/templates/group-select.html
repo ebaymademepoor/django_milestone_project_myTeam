@@ -34,21 +34,23 @@
             <p>You are currently without a group</p> 
         {% else %}
             {% for group in my_groups %}
-            <div class="container group-box">
-                <div class="container group-details-container">
-                    <h2>{{ group.group_name }}</h2>
-                    <p>Creator - {{ group.creator }}</p>
-                    <p>Next match - TBC</p>
-                </div>
-                <div class="container members-details-container">
-                    <div class="flex">
-                        <div class="container">
-                            <p>Members</p>
-                            <p>{{ group.users.all|length }}</p>
+            <a href="{% url 'group-home' group.pk %}">
+                <div class="container group-box">
+                    <div class="container group-details-container">
+                        <h2>{{ group.group_name }}</h2>
+                        <p>Creator - {{ group.creator }}</p>
+                        <p>Next match - TBC</p>
+                    </div>
+                    <div class="container members-details-container">
+                        <div class="flex">
+                            <div class="container">
+                                <p>Members</p>
+                                <p>{{ group.users.all|length }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a> 
             {% endfor %}
         {% endif %}
     </section>

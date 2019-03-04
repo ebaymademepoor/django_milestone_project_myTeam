@@ -45,7 +45,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.user-playing-positions-section .half-pitch .row, .group-page .group-select-area .group-box .members-details-container .flex, .index-page-bg-settings, .flex-center-content {
+.user-playing-positions-section .half-pitch .row, .group-box .members-details-container .flex, .index-page-bg-settings, .flex-center-content {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -440,35 +440,6 @@ footer {
   .group-page .group-select-area {
     color: #fff;
     padding-top: 16px; }
-    .group-page .group-select-area .group-box {
-      background-color: #FFCE00;
-      margin-bottom: 16px;
-      padding: 16px;
-      font-family: 'Staatliches', cursive;
-      min-height: 65px;
-      max-width: 320px; }
-      .group-page .group-select-area .group-box .group-details-container {
-        display: inline-block;
-        text-align: left;
-        margin-right: 10px;
-        min-width: 60%;
-        max-width: 146px; }
-        .group-page .group-select-area .group-box .group-details-container h2 {
-          margin-bottom: 5px; }
-        .group-page .group-select-area .group-box .group-details-container p {
-          font-size: 14px; }
-      .group-page .group-select-area .group-box .members-details-container {
-        width: 64px;
-        height: 64px;
-        display: inline-block;
-        text-align: center;
-        border: 1px solid #fff;
-        float: right; }
-        .group-page .group-select-area .group-box .members-details-container p:last-of-type {
-          font-size: 2em; }
-        .group-page .group-select-area .group-box .members-details-container .flex {
-          height: 100%;
-          width: 100%; }
   .group-page .create-group-form {
     position: absolute;
     min-height: 232px;
@@ -485,6 +456,86 @@ footer {
       display: inline-block;
       width: 100%;
       margin-bottom: 5px; }
+
+.group-box {
+  background-color: #FFCE00;
+  margin-bottom: 16px;
+  padding: 16px;
+  font-family: 'Staatliches', cursive;
+  min-height: 65px;
+  max-width: 320px; }
+  .group-box .group-details-container {
+    display: inline-block;
+    text-align: left;
+    margin-right: 10px;
+    min-width: 60%;
+    max-width: 146px; }
+    .group-box .group-details-container h2 {
+      margin-bottom: 5px; }
+    .group-box .group-details-container p {
+      font-size: 14px; }
+  .group-box .members-details-container {
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid #fff;
+    float: right; }
+    .group-box .members-details-container p:last-of-type {
+      font-size: 2em; }
+    .group-box .members-details-container .flex {
+      height: 100%;
+      width: 100%; }
+
+.group-home {
+  background-color: #007849; }
+  .group-home header,
+  .group-home .group-box {
+    width: 100%;
+    max-width: unset;
+    background-color: #262228;
+    color: #fff;
+    padding: 28px;
+    box-sizing: border-box;
+    margin-bottom: 0; }
+  .group-home .group-id {
+    background-color: #0375B4;
+    padding: 4px;
+    font-size: 8px;
+    color: #fff; }
+  .group-home .content {
+    padding: 32px;
+    box-sizing: border-box; }
+    .group-home .content .member-box,
+    .group-home .content .matches-box {
+      box-sizing: border-box;
+      display: inline-block;
+      min-height: 300px;
+      vertical-align: top; }
+    .group-home .content .member-box {
+      color: #fff;
+      width: 60%; }
+      .group-home .content .member-box dd, .group-home .content .member-box dt {
+        width: 45%;
+        display: inline-block;
+        margin: 10px 0; }
+      .group-home .content .member-box dd {
+        margin-right: 6px; }
+      .group-home .content .member-box .dl-head {
+        font-family: 'Staatliches', cursive; }
+      .group-home .content .member-box .dl-content {
+        font-size: 0.8em;
+        padding: 6px 0;
+        text-align: center; }
+      .group-home .content .member-box .username {
+        background-color: #0375B4; }
+    .group-home .content .matches-box {
+      width: 38%;
+      border: #fff 1px solid;
+      color: #fff;
+      text-align: center; }
+      .group-home .content .matches-box h3 {
+        padding: 6px 0; }
 
 .index-page-bg-settings {
   width: 100%;

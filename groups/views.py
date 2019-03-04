@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
-from .forms import CreateGroupForm, AddNewGroupMemberForm
+from .forms import CreateGroupForm, AddNewGroupMemberForm, JoinGroupForm
 from .models import Group, GroupMember
 from profile_and_stats.models import UserProfileData
 
@@ -28,8 +28,9 @@ def group_select(request):
     # print(Carlo.users.all())
     
     create_group_form = CreateGroupForm()
+    join_group_form = JoinGroupForm()
     
-    return render(request, 'group-select.html', {"create_group_form" : create_group_form, "my_groups" : my_groups })
+    return render(request, 'group-select.html', {"create_group_form" : create_group_form, "join_group_form": join_group_form, "my_groups" : my_groups })
     
 @login_required
 def create_group(request):
@@ -80,3 +81,46 @@ def group_home(request, id):
     group_data = Group.objects.get(pk=id)
     
     return render(request, 'group-home.html', {"group_data": group_data })
+    
+def join_group(request):
+    """
+    Allows a user to join a new group
+    """
+    
+    if request.method == "POST":
+        
+        # Check to see if the group ID exists...
+        try:
+            
+            this_group = Group.objects.get(pk=request.POST["group_id"])
+            
+            if this_group.password == request.POST["password"]:
+                
+                # If so, check to see if the group password is correct...
+                
+                this_user = UserProfileData.objects.get(username=request.user.username)
+                
+                if str(this_user.email) in str(this_group.users.all()):
+                    # Is the user already a member?
+                    
+                    messages.error(request, "{0}, you are already a member of {1} you crazy cat!".format(this_user.username, this_group.group_name))
+                else:
+                    # If not, add the user...
+                    
+                    this_group.users.add(this_user)
+                    this_group.save()
+                    
+                    # Welcome the user and display their new group page...
+                    
+                    messages.success(request, "Welcome to {0} {1}!!!  Feel free to have a browse!".format(this_group.group_name, this_user.username))
+                    return render(request, 'group-home.html', {"group_data": this_group })
+                
+            else:
+                messages.error(request, "The password you entered for the group is incorrect. Please try again or contact the groups administrator.")
+            return redirect(reverse('group-select'))
+            
+        except Group.DoesNotExist:
+            messages.error(request, "Hmm, we can't find that group.  Is that the correct ID?!")
+            return redirect(reverse('group-select'))
+        
+    return redirect(reverse('group-select'))

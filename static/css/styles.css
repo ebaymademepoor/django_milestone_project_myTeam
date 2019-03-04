@@ -112,7 +112,8 @@ button,
   color: #fff; }
 
 .update-form-btn,
-.new-group-btn {
+.new-group-btn,
+.join-group-btn {
   background-color: #0375B4;
   display: block; }
 
@@ -440,7 +441,8 @@ footer {
   .group-page .group-select-area {
     color: #fff;
     padding-top: 16px; }
-  .group-page .create-group-form {
+  .group-page .create-group-form,
+  .group-page .join-group-form {
     position: absolute;
     min-height: 232px;
     z-index: 5;
@@ -449,10 +451,13 @@ footer {
     background-color: white;
     width: 100%;
     box-sizing: border-box; }
-    .group-page .create-group-form .close-parent-btn {
+    .group-page .create-group-form .close-parent-btn,
+    .group-page .join-group-form .close-parent-btn {
       top: 10px; }
     .group-page .create-group-form label,
-    .group-page .create-group-form input {
+    .group-page .create-group-form input,
+    .group-page .join-group-form label,
+    .group-page .join-group-form input {
       display: inline-block;
       width: 100%;
       margin-bottom: 5px; }

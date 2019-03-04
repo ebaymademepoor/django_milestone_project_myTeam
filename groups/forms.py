@@ -37,4 +37,15 @@ class AddNewGroupMemberForm(forms.ModelForm):
     class Meta:
         model = GroupMember
         fields = ['group_id', 'user_id', 'admin']
-            
+        
+class JoinGroupForm(forms.ModelForm):
+    
+    group_id = forms.DecimalField(label="Group ID", decimal_places=0, min_value=1)
+    
+    password = forms.CharField(
+                    label="Password",
+                    widget=forms.PasswordInput)
+    
+    class Meta:
+        model = Group
+        fields = ['group_id', 'password']

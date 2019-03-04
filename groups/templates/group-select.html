@@ -16,6 +16,19 @@
         {{ form.non_field_errors }}
         <button class="new-group-btn make-pointer" type="submit">Create</button>
     </form>
+    
+    {% if reg_error == "yes" %}
+    <form class="join-group-form" method="POST" action="{% url 'join-group' %}" autocomplete="off">
+    {% else %}
+    <form class="join-group-form start-hidden" method="POST" action="{% url 'join-group' %}" autocomplete="off">
+    {% endif %}
+        <div class="close-parent-btn">x</div>
+        {% csrf_token %}
+        {{ join_group_form.as_p }}
+        {{ form.non_field_errors }}
+        <button class="join-group-btn make-pointer" type="submit">Join</button>
+    </form>
+    
     <section class="create-join-group-area">
         <h1 class="uppercase">Your Groups</h1> 
         <div class="container">
@@ -26,7 +39,7 @@
             <div class="join-group-box">
                 <p>Join an existing group</p>
             </div>
-            <i class="far fa-plus-square make-pointer"></i>
+            <i class="far fa-plus-square make-pointer show-join-group-form"></i>
         </div>
     </section>
     <section class="group-select-area">

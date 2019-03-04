@@ -245,6 +245,7 @@ $(document).ready(function() {
     removeParent();
     slideInMessagesBox();
     unhideABox("show-create-new-group-form", "create-group-form");
+    unhideABox("show-join-group-form", "join-group-form");
     
     createEditProfileDataForm();
     preparePositionPrefData();

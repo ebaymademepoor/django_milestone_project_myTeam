@@ -105,7 +105,7 @@ def registration(request):
                                     
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "Welcome {}! You have been registered successfully".format(user.username.title()))
+                messages.success(request, "Welcome {}! You have been registered successfully. Feel free to update your details and playing preferences on this page...".format(user.username.title()))
                 
                 send_mail('Thanks for registering with myTeam!', 
                     'Hi {0},\n\nThanks for registering with us, your personal playing career just got a whole lot better!\nWe just thought we would let you know that your username is {1}, please keep this email safe!\n\nWe wish you all the best in your playing career!'.format(request.POST['email'],

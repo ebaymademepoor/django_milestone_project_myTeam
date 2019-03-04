@@ -29,14 +29,14 @@
         <div class="member-box">
             <h2>Group members</h2>
             
-                <dl>
-                    <dd class="uppercase dl-head">Member</dd>
-                    <dt class="uppercase dl-head">Nickname</dt>
+                <div class="container member-container">
+                    <h3 class="member-head">Member</h3>
+                    <h3 class="member-head">Nickname</h3>
                     {% for user in group_data.users.all %}
-                        <dd class="dl-content username">{{ user.username }}</dd>
-                        <dt class="dl-content">{{ user.nickname }}</dt>
+                        <a href="{% url 'player-profile' user.pk group_data.pk %}"><p class="member-content username">{{ user.username }}</p></a>
+                        <p class="member-content">{{ user.nickname }}</p>
                     {% endfor %}
-                </dl>
+                </div>
             
         </div>
         <div class="matches-box">

@@ -520,23 +520,27 @@ footer {
     .group-home .content .member-box {
       color: #fff;
       width: 60%; }
+      .group-home .content .member-box .member-container {
+        text-align: left; }
       .group-home .content .member-box h2 {
         margin-bottom: 20px; }
-      .group-home .content .member-box dd, .group-home .content .member-box dt {
+      .group-home .content .member-box h3 {
+        font-size: 1em; }
+      .group-home .content .member-box p,
+      .group-home .content .member-box h3 {
         width: 45%;
         display: inline-block;
         margin: 10px 0; }
-      .group-home .content .member-box dd {
-        margin-right: 6px;
-        text-align: center; }
-      .group-home .content .member-box .dl-head {
+      .group-home .content .member-box .member-head {
         font-family: 'Staatliches', cursive;
         text-align: left; }
-      .group-home .content .member-box .dl-content {
+      .group-home .content .member-box .member-content {
         font-size: 0.8em;
         padding: 6px 0; }
       .group-home .content .member-box .username {
-        background-color: #0375B4; }
+        background-color: #0375B4;
+        margin-right: 6px;
+        text-align: center; }
     .group-home .content .matches-box {
       width: 38%;
       border: #fff 1px solid;

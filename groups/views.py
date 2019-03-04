@@ -76,11 +76,23 @@ def create_group(request):
         return redirect(reverse('group-select'))    
         
 def group_home(request, id):
+    this_user = UserProfileData.objects.get(username=request.user.username)
     
-    # Query to retrieve all data from a particular group
-    group_data = Group.objects.get(pk=id)
+    try:
+        this_group = Group.objects.get(pk=id)
+    except Group.DoesNotExist:
+        messages.error(request, "Hmm, we can't find that group.  Is that the correct ID?!")
+        return redirect(reverse('group-select'))
+        
     
-    return render(request, 'group-home.html', {"group_data": group_data })
+    
+    # Ensure user is a member of the group top allow access
+    
+    if str(this_user.email) in str(this_group.users.all()):
+        return render(request, 'group-home.html', {"group_data": this_group })
+    else:
+        messages.error(request, "Sneeky, but you don't appear to be a member of the group you were trying to access! Join on this page if you have the access details...")
+        return redirect(reverse('group-select'))
     
 def join_group(request):
     """
@@ -118,6 +130,7 @@ def join_group(request):
             else:
                 
                 # If the group password is wrong return an error message...
+                
                 messages.error(request, "The password you entered for the group is incorrect. Please try again or contact the groups administrator.")
             return redirect(reverse('group-select'))
             

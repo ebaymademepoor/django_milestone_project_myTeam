@@ -472,27 +472,31 @@
             color: $white;
             width: 60%;
             
+            .member-container {
+                text-align: left;
+            }
+            
             h2 {
                 margin-bottom: 20px;
             }
             
-            dd, dt {
+            h3 {
+                font-size: 1em;
+            }
+            
+            p, 
+            h3 {
                 width: 45%;
                 display: inline-block;
                 margin: 10px 0;
             }
             
-            dd {
-                margin-right: 6px;
-                text-align: center;
-            }
-            
-            .dl-head {
+            .member-head {
                 font-family: 'Staatliches', cursive;
                 text-align: left;
             }
             
-            .dl-content {
+            .member-content {
                 font-size: 0.8em;
                 padding: 6px 0;
                 
@@ -500,6 +504,8 @@
             
             .username {
                 background-color: $brand-starry-night-blue;
+                margin-right: 6px;
+                text-align: center;
             }
         }
         

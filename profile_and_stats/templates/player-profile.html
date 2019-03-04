@@ -10,16 +10,16 @@
         </div>
         
         <dl class="container">
-            <dt class="first_name">First Name</dt><dd>{{ player.first_name }}</dd>
-            <dt class="surname">Surname</dt><dd>{{ player.surname }}</dd>
+            <dt>First Name</dt><dd>{{ player.first_name }}</dd>
+            <dt>Surname</dt><dd>{{ player.surname }}</dd>
             <dt>Username</dt><dd>{{ player.username }}</dd>
-            <dt class="nickname">Nickname</dt><dd>{{ player.nickname }}</dd>
-            <dt class="date_of_birth">Age</dt><dd>{{ age }}</dd>
+            <dt>Nickname</dt><dd>{{ player.nickname }}</dd>
+            <dt>Age</dt><dd>{{ age }}</dd>
             <dt>Registration Date</dt><dd>{{ player.registration_date }}</dd>
         </dl>
         
         <div class="pic-container">
-            <div class="user-photo" style="background-image: url('{{ MEDIA_URL }}{{ player.user_photo }})"></div>            
+            <div style="background-image: url('{{ MEDIA_URL }}{{ player.user_photo }})"></div>            
         </div>
     </section>
     

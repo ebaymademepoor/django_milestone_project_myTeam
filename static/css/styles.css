@@ -520,18 +520,21 @@ footer {
     .group-home .content .member-box {
       color: #fff;
       width: 60%; }
+      .group-home .content .member-box h2 {
+        margin-bottom: 20px; }
       .group-home .content .member-box dd, .group-home .content .member-box dt {
         width: 45%;
         display: inline-block;
         margin: 10px 0; }
       .group-home .content .member-box dd {
-        margin-right: 6px; }
+        margin-right: 6px;
+        text-align: center; }
       .group-home .content .member-box .dl-head {
-        font-family: 'Staatliches', cursive; }
+        font-family: 'Staatliches', cursive;
+        text-align: left; }
       .group-home .content .member-box .dl-content {
         font-size: 0.8em;
-        padding: 6px 0;
-        text-align: center; }
+        padding: 6px 0; }
       .group-home .content .member-box .username {
         background-color: #0375B4; }
     .group-home .content .matches-box {

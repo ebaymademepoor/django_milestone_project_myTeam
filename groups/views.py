@@ -116,6 +116,8 @@ def join_group(request):
                     return render(request, 'group-home.html', {"group_data": this_group })
                 
             else:
+                
+                # If the group password is wrong return an error message...
                 messages.error(request, "The password you entered for the group is incorrect. Please try again or contact the groups administrator.")
             return redirect(reverse('group-select'))
             

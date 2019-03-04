@@ -472,6 +472,10 @@
             color: $white;
             width: 60%;
             
+            h2 {
+                margin-bottom: 20px;
+            }
+            
             dd, dt {
                 width: 45%;
                 display: inline-block;
@@ -480,16 +484,17 @@
             
             dd {
                 margin-right: 6px;
+                text-align: center;
             }
             
             .dl-head {
                 font-family: 'Staatliches', cursive;
+                text-align: left;
             }
             
             .dl-content {
                 font-size: 0.8em;
                 padding: 6px 0;
-                text-align: center;
                 
             }
             

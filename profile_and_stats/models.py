@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils import timezone
 
 def one_month_hence():
@@ -19,7 +20,7 @@ class UserProfileData(models.Model):
     registration_date = models.DateTimeField(auto_now_add=True, blank=True)
     license_expiry_date = models.DateTimeField(default=one_month_hence)
     date_of_birth = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
-    
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
     
     def __str__(self):
         return self.email

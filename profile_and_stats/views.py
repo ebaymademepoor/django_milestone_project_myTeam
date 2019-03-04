@@ -1,23 +1,32 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponse
+from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import json
 from .models import UserProfileData
 from .forms import EditProfileForm, EditProfileDOB, EditPositionPref
 
+def noAccessToOtherProfiles(request, yourID, requestedID):
+    if int(yourID) == int(requestedID):
+        return True
+        
+
 # Create your views here.
 @login_required
 def user_profile(request, id):
     """ Users profile page """
     
-    users_profile_data = get_object_or_404(UserProfileData, pk=id)
-    print(users_profile_data)
-
-    return render(request, 'profile.html', { "profile": users_profile_data })
+    if noAccessToOtherProfiles(request, request.user.pk, id):
+        users_profile_data = get_object_or_404(UserProfileData, pk=id)
+        return render(request, 'profile.html', { "profile": users_profile_data })
+    else:
+        messages.error(request, "We're sorry, you cannot access this page, it's not yours!")
+        return redirect(reverse('index'))
     
 @login_required
 def update_profile_data(request, id):
+    
     profile = get_object_or_404(UserProfileData, pk=id)
     
     if request.method == "POST":

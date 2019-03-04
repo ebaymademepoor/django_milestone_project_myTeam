@@ -14,7 +14,7 @@
         {% csrf_token %}
         {{ create_group_form.as_p }}
         {{ form.non_field_errors }}
-        <button class="new-group-btn" type="submit">Create</button>
+        <button class="new-group-btn make-pointer" type="submit">Create</button>
     </form>
     <section class="create-join-group-area">
         <h1 class="uppercase">Your Groups</h1> 
@@ -22,11 +22,11 @@
             <div class="create-group-box">
                 <p>Create a new group</p>
             </div>
-            <i class="fas fa-plus-square show-create-new-group-form"></i>
+            <i class="fas fa-plus-square show-create-new-group-form make-pointer"></i>
             <div class="join-group-box">
                 <p>Join an existing group</p>
             </div>
-            <i class="far fa-plus-square"></i>
+            <i class="far fa-plus-square make-pointer"></i>
         </div>
     </section>
     <section class="group-select-area">

@@ -4,7 +4,7 @@ from .models import UserProfileData
 class CreateProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfileData
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'user')
         
 class EditProfileForm(forms.ModelForm):
     class Meta:

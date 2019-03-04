@@ -23,9 +23,9 @@ def group_select(request):
     my_groups = my_profile.group_set.all()
     
     # Query to retrieve all users from a particular group
-    Carlo = Group.objects.get(group_name="Carlo")
+    # Carlo = Group.objects.get(group_name="Carlo")
     
-    print(Carlo.users.all())
+    # print(Carlo.users.all())
     
     create_group_form = CreateGroupForm()
     

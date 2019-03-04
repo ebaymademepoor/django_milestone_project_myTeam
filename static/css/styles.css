@@ -105,7 +105,8 @@ button,
   right: 3px;
   top: 0;
   background-color: unset;
-  margin: 2px; }
+  margin: 2px;
+  cursor: pointer; }
 
 .messages-box .close-parent-btn {
   color: #fff; }
@@ -135,6 +136,10 @@ nav {
       padding: 0 4px; }
   nav .nav-i {
     margin-right: 8px; }
+
+.nav-content-container {
+  max-width: 1024px;
+  margin: 0 auto; }
 
 footer {
   background-color: #262228;

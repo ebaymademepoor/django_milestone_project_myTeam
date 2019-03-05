@@ -73,7 +73,8 @@ button,
 
 .update-form-btn,
 .new-group-btn,
-.join-group-btn {
+.join-group-btn,
+.update-player-attributes-btn {
     background-color: $brand-starry-night-blue;
     display: block;
 }
@@ -84,4 +85,8 @@ button,
     right: 32px;
     width: 46px;
     margin: 0;
+}
+
+.update-player-attributes-btn {
+    margin: 0 auto;
 }

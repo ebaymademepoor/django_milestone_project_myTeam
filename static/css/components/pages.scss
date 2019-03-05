@@ -500,6 +500,10 @@
                 text-align: left;
             }
             
+            .member-head:first-of-type {
+                margin-right: 6px;
+            }
+            
             .member-content {
                 font-size: 0.8em;
                 padding: 6px 0;
@@ -540,5 +544,6 @@
     
     input {
         width: 9%;
+        text-align: center;
     }
 }

@@ -70,6 +70,12 @@ button,
   margin-bottom: 10px;
   letter-spacing: 1px; }
 
+.link-btn {
+  text-align: center;
+  line-height: 36px;
+  display: block;
+  background-color: #262228; }
+
 .get-started-btn {
   background-color: #FFCE00;
   display: block;
@@ -116,6 +122,13 @@ button,
 .join-group-btn {
   background-color: #0375B4;
   display: block; }
+
+.group-rtn-btn {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  width: 46px;
+  margin: 0; }
 
 nav {
   background-color: #FFCE00; }
@@ -309,7 +322,9 @@ footer {
   .user-info-section .header {
     margin-bottom: 20px; }
   .user-info-section h1 {
-    margin-bottom: 4px; }
+    margin-bottom: 4px;
+    max-width: 200px;
+    font-size: 2.2em; }
   .user-info-section .container {
     box-sizing: border-box;
     width: 100%;

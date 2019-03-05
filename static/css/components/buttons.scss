@@ -13,6 +13,13 @@ button,
     letter-spacing: 1px;
 }
 
+.link-btn {
+    text-align: center;
+    line-height: 36px;
+    display: block;
+    background-color: $brand-evening-black;
+}
+
 // Index.html buttons ----------------------------------------------------------
 
 .get-started-btn {
@@ -69,4 +76,12 @@ button,
 .join-group-btn {
     background-color: $brand-starry-night-blue;
     display: block;
+}
+
+.group-rtn-btn {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    width: 46px;
+    margin: 0;
 }

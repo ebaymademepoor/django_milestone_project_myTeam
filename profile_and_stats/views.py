@@ -122,7 +122,7 @@ def player_profile(request, playerid, groupid):
         else:
             my_profile_page = False
         
-        return render(request, 'player-profile.html', { "player" : player, "age" : my_age, "my_profile" : my_profile_page })
+        return render(request, 'player-profile.html', { "player" : player, "age" : my_age, "my_profile" : my_profile_page, "groupid" : groupid })
     else:
         messages.error(request, "Sorry but you are not linked to this player and cannot view their profile")
         return redirect(reverse('group-select'))

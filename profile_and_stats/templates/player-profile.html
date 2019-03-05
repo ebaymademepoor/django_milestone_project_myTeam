@@ -19,7 +19,7 @@
         </dl>
         
         <div class="pic-container">
-            <div style="background-image: url('{{ MEDIA_URL }}{{ player.user_photo }})"></div>            
+            <div class="user-photo" style="background-image: url('{{ MEDIA_URL }}{{ player.user_photo }})"></div>            
         </div>
     </section>
     
@@ -79,22 +79,45 @@
             </div>
         </div>
     </section>
+    
     <section class="user-attributes-section">
-        <h4>User attributes (max 10)</h4>
-        <dl class="container">
-            <div class="row">
-                <dt>Goalkeeping</dt><dd>TBC</dd>
-                <dt>Passing</dt><dd>TBC</dd>
-            </div>
-            <div class="row">
-                <dt>Defending</dt><dd>TBC</dd>
-                <dt>Finishing</dt><dd>TBC</dd>
-            </div>
-            <div class="row">
-                <dt>Movement</dt><dd>TBC</dd>
-                <dt>Outfield Score</dt><dd>TBC</dd>
-            </div>
-        </dl>
+        {% if not my_profile %}
+            <h4>Rate your team mate (max 10)</h4>
+            <form action="">
+                <div class="container">
+                    
+                    <div class="row">
+                        <label for="">Goalkeeping</label><input type="number" min="0" max="10" step="1"> 
+                        <label for="">Passing</label><input type="number" min="0" max="10" step="1"> 
+                    </div>
+                    <div class="row">
+                        <label for="">Defending</label><input type="number" min="0" max="10" step="1"> 
+                        <label for="">Finishing</label><input type="number" min="0" max="10" step="1"> 
+                    </div>
+                    <div class="row">
+                        <label for="">Movement</label><input type="number" min="0" max="10" step="1"> 
+                        <label for="">Outfield Score</label><input type="number" min="0" max="10" step="1"> 
+                    </div>
+                </div>
+            </form> 
+        {% else %}
+            <h4>Your attributes (max 10)</h4>
+            <h5>Based on TBC votes</h5>
+            <dl class="container">
+                <div class="row">
+                    <dt>Goalkeeping</dt><dd>TBC</dd>
+                    <dt>Passing</dt><dd>TBC</dd>
+                </div>
+                <div class="row">
+                    <dt>Defending</dt><dd>TBC</dd>
+                    <dt>Finishing</dt><dd>TBC</dd>
+                </div>
+                <div class="row">
+                    <dt>Movement</dt><dd>TBC</dd>
+                    <dt>Outfield Score</dt><dd>TBC</dd>
+                </div>
+            </dl>
+        {% endif %}
         <div class="container">
             <div>ATTRIBUTES GRAPH TO GO HERE</div> 
         </div>
@@ -112,6 +135,9 @@
             </dl>
         </div>
     </section>
+    
+    
+    
 </div>
 
 

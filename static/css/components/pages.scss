@@ -274,13 +274,15 @@
     }
 
 
-    dt {
+    dt,
+    label {
         width: 36%;
         background-color: $brand-starry-night-blue;
         color: $white;
     }
 
-    dd {
+    dd,
+    input {
         width: 13%;
         background-color: $form-input-grey;
         color: $black;
@@ -520,5 +522,21 @@
             }
             
         }
+    }
+}
+
+// player-profile.html ---------------------------------------------------------
+
+.user-attributes-section {
+    label,
+    input {
+        display: inline-block;
+        margin: 3px 0;
+        padding: 6px 0;
+        font-size: 9px;
+    }
+    
+    input {
+        width: 9%;
     }
 }

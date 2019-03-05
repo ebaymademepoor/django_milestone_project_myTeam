@@ -80,6 +80,7 @@ def group_home(request, id):
     
     try:
         this_group = Group.objects.get(pk=id)
+        
     except Group.DoesNotExist:
         messages.error(request, "Hmm, we can't find that group.  Is that the correct ID?!")
         return redirect(reverse('group-select'))

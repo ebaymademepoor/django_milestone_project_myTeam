@@ -91,7 +91,8 @@ def update_position_pref(request, id):
             return HttpResponse(json.dumps({"ERROR":"Error in updating profile"}), content_type="application/json")
     else:
         return redirect(reverse('index'))
-        
+
+@login_required        
 def player_profile(request, playerid, groupid):
     
     # Check that the group and player exist...
@@ -113,8 +114,15 @@ def player_profile(request, playerid, groupid):
             my_age = age(player.date_of_birth)
         except:
             my_age = "Not provided"
-    
-        return render(request, 'player-profile.html', { "player" : player, "age" : my_age })
+        
+        # This will help prevent a player rating themselves if the are on their own player_profile page
+        
+        if int(request.user.pk) == int(playerid):
+            my_profile_page = True
+        else:
+            my_profile_page = False
+        
+        return render(request, 'player-profile.html', { "player" : player, "age" : my_age, "my_profile" : my_profile_page })
     else:
         messages.error(request, "Sorry but you are not linked to this player and cannot view their profile")
         return redirect(reverse('group-select'))

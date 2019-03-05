@@ -53,9 +53,40 @@ function returnExistingProfileData(){
     return profileData;
 }
 
+function collectFormData(formIDName){
+    // Collects any form data ready to be POSTED via ajax
+    
+    var formData = $("#" + formIDName).serializeArray(); // The serialized new data entered into the form
+    
+    // Check is any values are blank or not filled in
+        
+    for(i = 0; i < formData.length; i++){
+        if(formData[i].value == "" || formData[i].value == null){
+            displayMessage("Please complete the " + formData[i].name + " box before updating...")
+            var error = true
+        }
+    }
+    
+    // If rating a player, ensure values are between 1 and 10
+    
+    if(formIDName == "rate-player-form"){
+        for(i = 0; i < formData.length; i++){
+           if(formData[i].value < 1 || formData[i].value > 10){
+                displayMessage("Your ratings must be between 1 & 10, please adjust accordingly...")
+                var error = true
+            }
+        }    
+    }
+    
+    if(error != true){
+        console.log(formData);
+        return formData;
+    }
+}
+
 function prepareNewProfileData(oldData){
     
-    // Combinds the newly entered user data with the existing data ready to be POSTED
+    // Combines the newly entered user data with the existing data ready to be POSTED
     
     var formData = $("#update-form").serializeArray(); // The serialized new data entered into the form
 
@@ -125,23 +156,28 @@ function postData(type, data) {
     if(type === "user-personal-details"){
         let newFormData = prepareNewProfileData(data);
         let profileURL= "../update_profile_data/";
-        postToDatabase(profileURL, newFormData);
+        let profileID = $('#profile-id').text(); // the ID of the profile that needs to be updated
+        postToDatabase(profileURL, newFormData, profileID);
     } else if (type === "user-position-prefs"){
         let newPref = data;
         let profileURL= "../update_position_pref/";
-        postToDatabase(profileURL, newPref);
+        let profileID = $('#profile-id').text(); // the ID of the profile that needs to be updated
+        postToDatabase(profileURL, newPref, profileID);
+    } else if (type === "attribute-rating"){
+        let ratingData = data;
+        let profileURL= "../../rate_player/";
+        let playerRated = $('#profile-id').text(); // the ID of the player being rated
+        postToDatabase(profileURL, ratingData, playerRated);
     }
 };
 
 
-function postToDatabase(url, data){
-    
-    let profileID = $('#profile-id').text(); // the ID of the profile that needs to be updated
-    
+function postToDatabase(url, data, route){
+
     //  ajax function will now take this data and post it accordingly via our python view
     
     $.ajax({
-        url : url + profileID, // the endpoint
+        url : url + route, // the endpoint
         type : "POST", // http method
         data : data,
 
@@ -152,6 +188,7 @@ function postToDatabase(url, data){
             
             $('#update-form').remove();
             
+            displayMessage("GOAL!  Details updated...");
             
             // This code will replace data on profile section with new data
             if(url.indexOf("update_profile_data") != -1){
@@ -218,7 +255,8 @@ function slideInMessagesBox(){
     
     // Slides in any messages 
     
-    if($(".messages-box")){
+    if($(".message-para").text() != ""){
+        $(".messages-box").show();
         $(".messages-box").addClass("slide-in-from-right");
     }
 }
@@ -269,6 +307,16 @@ $(document).ready(function() {
         
     });
     
+    // Updates AttributeRating database with new or edited rating when submitted ----
+
+    $('body').on("click", ".update-player-attributes-btn", function(e) {
+        e.preventDefault();
+        console.log("form submitted!");
+        let data = collectFormData("rate-player-form");
+        if(data != null){
+            postData("attribute-rating", data);    
+        }
+    });
     
     
     // This code retrieves our form csrf token to enable safe ajax requests --------

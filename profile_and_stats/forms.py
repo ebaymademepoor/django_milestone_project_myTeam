@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserProfileData
+from .models import UserProfileData, AttributeRating
 
 class CreateProfileForm(forms.ModelForm):
     class Meta:
@@ -20,3 +20,8 @@ class EditPositionPref(forms.ModelForm):
     class Meta:
         model = UserProfileData
         fields = ('gk_pref', 'def_pref', 'mid_pref', 'att_pref')
+        
+class RatePlayerForm(forms.ModelForm):
+    class Meta:
+        model = AttributeRating
+        fields = ('gk_score', 'def_score', 'passing_score', 'finishing_score', 'movement_score', 'rated_by', 'player_rated')

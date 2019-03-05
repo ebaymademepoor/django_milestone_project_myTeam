@@ -7,6 +7,7 @@
     <section class="user-info-section">
         <div class="header">
             <h1>{{ player.username }}'s Profile</h1>
+            <p>( <span id="profile-id">{{ player.pk }}</span> )</p> 
             <a class="group-rtn-btn link-btn" href="{% url 'group-home' groupid %}">Back</a>
         </div>
         
@@ -81,51 +82,43 @@
         </div>
     </section>
     
-    <section class="user-attributes-section">
-        {% if not my_profile %}
+    
+    {% if not my_profile %}
+        <section class="user-attributes-section">
             <h4>Rate your team mate (max 10)</h4>
-            <form action="">
+            <form id="rate-player-form" action="">
                 <div class="container">
                     
                     <div class="row">
-                        <label for="">Goalkeeping</label><input type="number" min="0" max="10" step="1"> 
-                        <label for="">Passing</label><input type="number" min="0" max="10" step="1"> 
+                        <label for="gk_score">Goalkeeping</label><input name="gk_score" type="number" min="0" max="10" step="1" required value="{{ ratings.gk_score }}"> 
+                        <label for="passing_score">Passing</label><input name="passing_score" type="number" min="0" max="10" step="1" required value="{{ ratings.passing_score }}"> 
                     </div>
                     <div class="row">
-                        <label for="">Defending</label><input type="number" min="0" max="10" step="1"> 
-                        <label for="">Finishing</label><input type="number" min="0" max="10" step="1"> 
+                        <label for="def_score">Defending</label><input name="def_score" type="number" min="0" max="10" step="1" required value="{{ ratings.def_score }}"> 
+                        <label for="finishing_score">Finishing</label><input name="finishing_score" type="number" min="0" max="10" step="1" required value="{{ ratings.finishing_score }}"> 
                     </div>
                     <div class="row">
-                        <label for="">Movement</label><input type="number" min="0" max="10" step="1"> 
-                        <label for="">Outfield Score</label>TBC 
+                        <label for="movement_score">Movement</label><input name="movement_score" type="number" min="0" max="10" step="1" required value="{{ ratings.movement_score }}"> 
+                        <label for="">Outfield Score</label>
+                        <p>
+                            {% if ratings.outfield_score %}
+                                {{ ratings.outfield_score }}
+                            {% else %}
+                                n / a
+                            {% endif %}
+                        </p>  
                     </div>
                 </div>
                 <div class="container">
                     <button class="update-player-attributes-btn">Update</button> 
                 </div>
-            </form> 
-        {% else %}
-            <h4>Your attributes (max 10)</h4>
-            <h5>Based on TBC votes</h5>
-            <dl class="container">
-                <div class="row">
-                    <dt>Goalkeeping</dt><dd>TBC</dd>
-                    <dt>Passing</dt><dd>TBC</dd>
-                </div>
-                <div class="row">
-                    <dt>Defending</dt><dd>TBC</dd>
-                    <dt>Finishing</dt><dd>TBC</dd>
-                </div>
-                <div class="row">
-                    <dt>Movement</dt><dd>TBC</dd>
-                    <dt>Outfield Score</dt><dd>TBC</dd>
-                </div>
-            </dl>
-        {% endif %}
-        <div class="container">
-            <div>ATTRIBUTES GRAPH TO GO HERE</div> 
-        </div>
-    </section>
+            </form>
+            <div class="container">
+                <div>ATTRIBUTES GRAPH TO GO HERE</div> 
+            </div>
+        </section>
+    {% endif %}
+    
     <section class="user-form-section">
         <h4>User form (last 5 games)</h4>
         <div class="container">

@@ -35,8 +35,11 @@ class AttributeRating(models.Model):
     movement_score = models.DecimalField(max_digits=2, decimal_places=0, default=0, null=False, blank=False)
     
     def outfield_score(self):
-        scores = [self.gk_score, self.def_score, self.passing_score, self.finishing_score, self.movement_score]
+        scores = [self.def_score, self.passing_score, self.finishing_score, self.movement_score]
         len_scores = len(scores)
         total_scores = sum(scores)
         
         return total_scores / len_scores
+        
+    def __str__(self):
+        return "Ratings for {0} - rated by {1}".format(self.player_rated, self.rated_by)

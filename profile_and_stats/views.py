@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import UserProfileData
+from django.db.models import Avg
+from .models import UserProfileData, AttributeRating
 from groups.models import Group
 import json
-from .forms import EditProfileForm, EditProfileDOB, EditPositionPref
+from .forms import EditProfileForm, EditProfileDOB, EditPositionPref, RatePlayerForm
 import datetime
 
 def noAccessToOtherProfiles(request, yourID, requestedID):
@@ -25,7 +26,28 @@ def user_profile(request, id):
     
     if noAccessToOtherProfiles(request, request.user.pk, id):
         users_profile_data = get_object_or_404(UserProfileData, pk=id)
-        return render(request, 'profile.html', { "profile": users_profile_data })
+        
+        
+        users_rated_attributes = AttributeRating.objects.filter(
+            player_rated=users_profile_data).aggregate(
+                avg_gk=Avg('gk_score'), avg_def=Avg('def_score'), avg_move=Avg('movement_score'),
+                avg_pass=Avg('passing_score'), avg_fin=Avg('finishing_score')
+            )
+        
+        len_votes = len(AttributeRating.objects.filter(player_rated=users_profile_data))
+        
+        total_outfield_scores = 0
+        
+        if users_rated_attributes["avg_gk"] == None:
+            avg_outfield_score = "n / a"
+        else:
+            for key,value in users_rated_attributes.items():
+                if key != "avg_gk":
+                    total_outfield_scores += value
+        
+            avg_outfield_score = total_outfield_scores / (len(users_rated_attributes) - 1 )
+
+        return render(request, 'profile.html', { "profile": users_profile_data, "attributes" : users_rated_attributes, "avg_outfield" : avg_outfield_score, "votes":len_votes })
     else:
         messages.error(request, "We're sorry, you cannot access this page, it's not yours!")
         return redirect(reverse('index'))
@@ -70,7 +92,6 @@ def update_position_pref(request, id):
         new_data["def_pref"] = profile.def_pref
         new_data["mid_pref"] = profile.mid_pref
         new_data["att_pref"] = profile.att_pref
-        
         
         for key, value in request.POST.items():
             new_data[key] = value
@@ -122,7 +143,58 @@ def player_profile(request, playerid, groupid):
         else:
             my_profile_page = False
         
-        return render(request, 'player-profile.html', { "player" : player, "age" : my_age, "my_profile" : my_profile_page, "groupid" : groupid })
+        # Retrieve any existing ratings data
+        
+        try:
+            this_rating_instance = AttributeRating.objects.get(rated_by=request.user.pk, player_rated=playerid)
+        except:
+            this_rating_instance = None
+        
+        return render(request, 'player-profile.html', { "player" : player, "age" : my_age, "my_profile" : my_profile_page, "groupid" : groupid, "ratings": this_rating_instance })
     else:
         messages.error(request, "Sorry but you are not linked to this player and cannot view their profile")
         return redirect(reverse('group-select'))
+
+@login_required        
+def rate_player_or_edit_existing(request, player_rated):
+    
+    if request.method == "POST":
+        this_user = UserProfileData.objects.get(username=request.user.username)
+    
+        # Determine whether there is an exisiting record to update or if a new one needs to be made...
+        
+        try:
+            this_rating_instance = AttributeRating.objects.get(rated_by=this_user, player_rated=player_rated)
+        except:
+            this_rating_instance = None
+        
+        
+        # Prepare data to be added to the database
+        
+        rating_data = {}
+        
+        for key, value in request.POST.items():
+            rating_data[key] = value
+            
+        
+        rating_data["player_rated"] = player_rated
+        rating_data["rated_by"] = this_user
+        
+        ratings_form = RatePlayerForm(rating_data, instance=this_rating_instance)
+        
+        if ratings_form.is_valid():
+            this_rating_instance = ratings_form.save()
+            
+            response_data = {}
+            response_data['result'] = 'Update successful!'
+            
+            
+            return HttpResponse(json.dumps(response_data),content_type="application/json")
+        else:
+            print(ratings_form.errors)
+            return HttpResponse(json.dumps({"ERROR":"Error in updating ratings"}), content_type="application/json")
+        
+    else:
+        messages.error(request, "You can't do that here")
+        return redirect(reverse('group-select'))    
+    

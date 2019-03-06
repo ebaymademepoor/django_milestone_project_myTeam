@@ -55,6 +55,11 @@ table {
   background-repeat: no-repeat;
   background-size: cover; }
 
+.group-box {
+  -webkit-box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43);
+  -moz-box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43);
+  box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43); }
+
 /* --- Widths */
 button,
 .link-btn {
@@ -499,8 +504,9 @@ footer {
   margin-bottom: 16px;
   padding: 16px;
   font-family: 'Staatliches', cursive;
-  min-height: 65px;
-  max-width: 320px; }
+  max-width: 320px;
+  min-height: 113px;
+  box-sizing: border-box; }
   .group-box .group-details-container {
     display: inline-block;
     text-align: left;
@@ -508,7 +514,8 @@ footer {
     min-width: 60%;
     max-width: 146px; }
     .group-box .group-details-container h2 {
-      margin-bottom: 5px; }
+      margin-bottom: 5px;
+      min-height: 33px; }
     .group-box .group-details-container p {
       font-size: 14px; }
   .group-box .members-details-container {

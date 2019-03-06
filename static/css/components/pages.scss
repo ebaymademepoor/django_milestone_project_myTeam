@@ -411,8 +411,11 @@
     margin-bottom: 16px;
     padding: 16px;
     font-family: 'Staatliches', cursive;
-    min-height: 65px;
     max-width: 320px;
+    min-height: 113px;
+    box-sizing: border-box;
+    
+    @extend %inset-shadow;
 
     .group-details-container {
         display: inline-block;
@@ -423,6 +426,7 @@
 
         h2 {
             margin-bottom: 5px;
+            min-height: 33px;
         }
 
         p {

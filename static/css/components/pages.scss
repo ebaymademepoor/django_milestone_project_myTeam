@@ -414,8 +414,6 @@
     max-width: 320px;
     min-height: 113px;
     box-sizing: border-box;
-    
-    @extend %inset-shadow;
 
     .group-details-container {
         display: inline-block;

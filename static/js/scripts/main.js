@@ -192,7 +192,9 @@ function postToDatabase(url, data, route){
             
             $('#update-form').remove();
             
-            displayMessage("GOAL!  Details updated...");
+            if(url != "../update_position_pref/"){
+                displayMessage("GOAL!  Details updated...");
+            }
             
             // This code will replace data on profile section with new data
             if(url.indexOf("update_profile_data") != -1){

@@ -78,3 +78,7 @@ a:visited {
 .make-pointer {
     cursor: pointer;
 }
+
+.inset-shadow {
+    @extend %inset-shadow;
+}

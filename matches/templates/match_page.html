@@ -6,6 +6,16 @@
 <div class="page-container matches-page">
     <section class="match-data">
          
+         <form method="POST" action="{% url 'add-edit-match' groupid matchid %}">
+            {% csrf_token %}
+            {{ match_form.as_p }}
+            <label for="date_of_match">Date</label><input required type="date" name="date_of_match"/>
+            <label for="time_of_match">Time</label><input required type="time" name="time_of_match"/>
+            {{ form.non_field_errors }}
+            <button class="create-edit-match btn" type="submit">Submit</button>
+        </form>
+         
+         
     </section>
 </div>
 

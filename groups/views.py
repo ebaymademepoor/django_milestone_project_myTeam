@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from .forms import CreateGroupForm, AddNewGroupMemberForm, JoinGroupForm
 from .models import Group, GroupMember
 from profile_and_stats.models import UserProfileData
+from matches.models import MatchData
 
 # Create your views here.
 
@@ -85,12 +86,12 @@ def group_home(request, id):
         messages.error(request, "Hmm, we can't find that group.  Is that the correct ID?!")
         return redirect(reverse('group-select'))
         
-    
+    groups_matches = MatchData.objects.filter(associated_group=this_group)
     
     # Ensure user is a member of the group top allow access
     
     if str(this_user.email) in str(this_group.users.all()):
-        return render(request, 'group-home.html', {"group_data": this_group })
+        return render(request, 'group-home.html', {"group_data": this_group, "matches" : groups_matches })
     else:
         messages.error(request, "Sneeky, but you don't appear to be a member of the group you were trying to access! Join on this page if you have the access details...")
         return redirect(reverse('group-select'))

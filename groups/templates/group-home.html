@@ -43,12 +43,10 @@
             <a href="{% url 'matches' group_data.pk 0 %}" class="link-btn add-a-match-btn">Add a match</a> 
             <h3>Matches</h3>
             {% for match in matches %}
-            <a href="">
                 <p>{{ match.venue }}</p> 
                 <p>{{ match.status }}</p> 
                 <p>{{ match.date_of_match }}</p> 
                 <p>{{ match.time_of_match }}</p> 
-            </a> 
             {% endfor %}
         </div>
     </section>

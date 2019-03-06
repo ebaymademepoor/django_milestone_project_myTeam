@@ -55,7 +55,7 @@ table {
   background-repeat: no-repeat;
   background-size: cover; }
 
-.add-a-match-btn, .inset-shadow {
+.add-a-match-btn, .user-info-section .first_name, .user-info-section .surname, .user-info-section .nickname, .user-info-section .date_of_birth, .inset-shadow {
   -webkit-box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43);
   -moz-box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43);
   box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43); }
@@ -569,7 +569,7 @@ footer {
       min-height: 300px;
       vertical-align: top;
       box-sizing: border-box;
-      min-height: 62vh; }
+      min-height: 64vh; }
     .group-home .content .member-box {
       padding: 32px 0 26px 26px;
       color: #fff;

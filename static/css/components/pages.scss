@@ -189,7 +189,11 @@
         }
 
     }
-
+    
+    .first_name, .surname, .nickname, .date_of_birth {
+        @extend %inset-shadow;
+    }
+    
     .license-expiry>dt,
     .license-expiry>dd {
         background-color: $brand-starry-night-blue !important;
@@ -486,7 +490,7 @@
             min-height: 300px;
             vertical-align: top;
             box-sizing: border-box;
-            min-height: 62vh;
+            min-height: 64vh;
         }
         
         .member-box {

@@ -60,6 +60,11 @@ table {
   -moz-box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43);
   box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43); }
 
+nav .logo-pic {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat; }
+
 /* --- Widths */
 button,
 .link-btn {
@@ -162,27 +167,36 @@ button,
 nav {
   background-color: #FFCE00; }
   nav .logo {
-    max-width: 20%; }
+    max-width: 29%; }
+  nav .logo-pic {
+    background-image: url("../img/my-team-logo.png");
+    width: 66px;
+    height: 27px;
+    display: inline-block; }
   nav ul {
-    max-width: 80%; }
+    max-width: 70%; }
   nav .logo,
   nav ul,
   nav li {
     display: inline-block;
     box-sizing: border-box; }
-  nav .logo,
+  nav .logo {
+    padding: 0 20px; }
   nav ul {
-    padding: 20px; }
-  nav ul {
-    float: right; }
+    float: right;
+    padding: 0 10px; }
     nav ul li {
       padding: 0 4px; }
   nav .nav-i {
     margin-right: 8px; }
 
 .nav-content-container {
+  min-height: 62px;
   max-width: 1024px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
 
 footer {
   background-color: #262228;

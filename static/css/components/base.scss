@@ -5,11 +5,19 @@ nav {
     background-color: $brand-sunflower-yellow;
     
     .logo {
-        max-width: 20%;
+        max-width: 29%;
+    }
+    
+    .logo-pic {
+        background-image: url('../img/my-team-logo.png');
+            width: 66px;
+            height: 27px;
+            display: inline-block;
+            @extend %contain-picture;
     }
     
     ul {
-        max-width: 80%;
+        max-width: 70%;
     }
     
     .logo,
@@ -19,13 +27,13 @@ nav {
         box-sizing: border-box;
     }
     
-    .logo,
-    ul {
-        padding: 20px;
+    .logo {
+        padding: 0 20px;
     }
     
     ul {
         float: right;
+        padding: 0 10px;
         
         li {
             padding: 0 4px;
@@ -38,8 +46,12 @@ nav {
 }
 
 .nav-content-container {
+    min-height: 62px;
     max-width: 1024px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 footer {

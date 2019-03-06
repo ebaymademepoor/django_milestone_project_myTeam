@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'accounts',
     'groups',
     'profile_and_stats',
+    'matches',
 ]
 
 MIDDLEWARE = [

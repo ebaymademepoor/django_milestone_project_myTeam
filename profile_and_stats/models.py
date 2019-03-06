@@ -22,6 +22,10 @@ class UserProfileData(models.Model):
     date_of_birth = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
     
+    def has_current_license(self):
+        if self.license_expiry_date > timezone.now():
+            return True
+    
     def __str__(self):
         return self.email
         

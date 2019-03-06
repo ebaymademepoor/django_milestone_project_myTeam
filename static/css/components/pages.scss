@@ -477,7 +477,6 @@
     }
     
     .content {
-        padding: 32px;
         box-sizing: border-box;
         
         .member-box,
@@ -486,9 +485,12 @@
             display: inline-block;
             min-height: 300px;
             vertical-align: top;
+            box-sizing: border-box;
+            min-height: 62vh;
         }
         
         .member-box {
+            padding: 32px 0 26px 26px;
             color: $white;
             width: 60%;
             
@@ -534,10 +536,12 @@
         }
         
         .matches-box {
-            width: 38%;
-            border: $white 1px solid;
-            color: $white;
+            width: 39%;
+            color: $brand-starry-night-blue;
+            background-color: $white;
             text-align: center;
+            padding: 32px 12px 26px;
+            position: relative;
             
             h3 {
                 padding: 6px 0;

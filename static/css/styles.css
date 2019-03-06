@@ -55,7 +55,7 @@ table {
   background-repeat: no-repeat;
   background-size: cover; }
 
-.inset-shadow {
+.add-a-match-btn, .inset-shadow {
   -webkit-box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43);
   -moz-box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43);
   box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43); }
@@ -139,6 +139,19 @@ button,
 .update-player-attributes-btn {
   margin: 0 auto;
   background-color: #007849; }
+
+.add-a-match-btn {
+  position: absolute;
+  font-size: 8px;
+  width: 60px;
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
+  background-color: #FFCE00;
+  top: 8px;
+  margin: 0 auto;
+  left: 0;
+  right: 0; }
 
 .start-off-screen {
   right: -100%; }
@@ -548,15 +561,17 @@ footer {
     font-size: 8px;
     color: #fff; }
   .group-home .content {
-    padding: 32px;
     box-sizing: border-box; }
     .group-home .content .member-box,
     .group-home .content .matches-box {
       box-sizing: border-box;
       display: inline-block;
       min-height: 300px;
-      vertical-align: top; }
+      vertical-align: top;
+      box-sizing: border-box;
+      min-height: 62vh; }
     .group-home .content .member-box {
+      padding: 32px 0 26px 26px;
       color: #fff;
       width: 60%; }
       .group-home .content .member-box .member-container {
@@ -583,10 +598,12 @@ footer {
         margin-right: 6px;
         text-align: center; }
     .group-home .content .matches-box {
-      width: 38%;
-      border: #fff 1px solid;
-      color: #fff;
-      text-align: center; }
+      width: 39%;
+      color: #0375B4;
+      background-color: #fff;
+      text-align: center;
+      padding: 32px 12px 26px;
+      position: relative; }
       .group-home .content .matches-box h3 {
         padding: 6px 0; }
 

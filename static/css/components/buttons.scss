@@ -91,3 +91,21 @@ button,
     margin: 0 auto;
     background-color: $brand-irises-green;
 }
+
+// Group-home.html buttons -----------------------------------------------------
+
+.add-a-match-btn {
+    position: absolute;
+    font-size: 8px;
+    width: 60px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    background-color: #FFCE00;
+    top: 8px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    
+    @extend %inset-shadow;
+}

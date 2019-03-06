@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 from django.db.models import Avg
 from .models import UserProfileData, AttributeRating
 from groups.models import Group
-import json
 from .forms import EditProfileForm, EditProfileDOB, EditPositionPref, RatePlayerForm
+import json
 import datetime
 
 def noAccessToOtherProfiles(request, yourID, requestedID):
@@ -19,20 +19,29 @@ def age(bday, d=None):
         d = datetime.date.today()
     return (d.year - bday.year) - int((d.month, d.day) < (bday.month, bday.day))     
 
+def arePlayersInSameGroup(player,group,user):
+    if str(player) in str(group) and str(user) in str(group):
+        return True
+
 # Create your views here.
 @login_required
 def user_profile(request, id):
     """ Users profile page """
     
+    # Security check - ensure user is accessing their own logged in profile...
+    
     if noAccessToOtherProfiles(request, request.user.pk, id):
         users_profile_data = get_object_or_404(UserProfileData, pk=id)
         
+        # If so, collect and aggregate their data to feed back averages...
         
         users_rated_attributes = AttributeRating.objects.filter(
             player_rated=users_profile_data).aggregate(
                 avg_gk=Avg('gk_score'), avg_def=Avg('def_score'), avg_move=Avg('movement_score'),
                 avg_pass=Avg('passing_score'), avg_fin=Avg('finishing_score')
             )
+        
+        # Calculate the number of ratings...
         
         len_votes = len(AttributeRating.objects.filter(player_rated=users_profile_data))
         
@@ -121,38 +130,39 @@ def player_profile(request, playerid, groupid):
     try:
         common_group = Group.objects.get(pk=groupid)
         player = UserProfileData.objects.get(pk=playerid)
+    
+        # IF YES... Security check - are the user and the selected player in the same group?
+        
+        if arePlayersInSameGroup(player.email, common_group.users.all(), request.user.email):
+            
+            #  If so, the page can be view and ratings can occur...
+            
+            try:
+                my_age = age(player.date_of_birth)
+            except:
+                my_age = "Not provided"
+            
+            # This will help prevent a player rating themselves if the are on their own player_profile page
+            
+            if int(request.user.pk) == int(playerid):
+                my_profile_page = True
+            else:
+                my_profile_page = False
+            
+            # Retrieve any existing ratings data
+            
+            try:
+                this_rating_instance = AttributeRating.objects.get(rated_by=request.user.pk, player_rated=playerid)
+            except:
+                this_rating_instance = None
+            
+            return render(request, 'player-profile.html', { "player" : player, "age" : my_age, "my_profile" : my_profile_page, "groupid" : groupid, "ratings": this_rating_instance })
+        else:
+            messages.error(request, "Sorry but you are not linked to this player and cannot view their profile")
+            return redirect(reverse('group-select'))
+            
     except:
         messages.error(request, "Sorry but we can't find what you are looking for!")
-        return redirect(reverse('group-select'))
-    
-    # IF YES... Security check - are the user and the selected player in the same group?
-    
-    if str(player.email) in str(common_group.users.all()) and str(request.user.email) in str(common_group.users.all()):
-        
-        #  If so, the page can be view and ratings can occur...
-        
-        try:
-            my_age = age(player.date_of_birth)
-        except:
-            my_age = "Not provided"
-        
-        # This will help prevent a player rating themselves if the are on their own player_profile page
-        
-        if int(request.user.pk) == int(playerid):
-            my_profile_page = True
-        else:
-            my_profile_page = False
-        
-        # Retrieve any existing ratings data
-        
-        try:
-            this_rating_instance = AttributeRating.objects.get(rated_by=request.user.pk, player_rated=playerid)
-        except:
-            this_rating_instance = None
-        
-        return render(request, 'player-profile.html', { "player" : player, "age" : my_age, "my_profile" : my_profile_page, "groupid" : groupid, "ratings": this_rating_instance })
-    else:
-        messages.error(request, "Sorry but you are not linked to this player and cannot view their profile")
         return redirect(reverse('group-select'))
 
 @login_required        

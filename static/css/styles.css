@@ -135,6 +135,12 @@ button,
   margin: 0 auto;
   background-color: #007849; }
 
+.start-off-screen {
+  right: -100%; }
+
+.slide-in-from-right {
+  right: 0; }
+
 nav {
   background-color: #FFCE00; }
   nav .logo {
@@ -178,7 +184,6 @@ footer {
 .messages-box {
   position: absolute;
   left: 0;
-  right: -100%;
   margin-left: auto;
   width: 70%;
   min-width: 200px;
@@ -200,9 +205,6 @@ footer {
     .messages-box .container p {
       text-align: left;
       margin-right: 16px; }
-
-.slide-in-from-right {
-  right: 0; }
 
 .opening-section,
 .get-organised,

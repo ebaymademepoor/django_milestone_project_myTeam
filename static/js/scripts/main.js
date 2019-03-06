@@ -75,6 +75,10 @@ function collectFormData(formIDName){
                 displayMessage("Your ratings must be between 1 & 10, please adjust accordingly...")
                 var error = true
             }
+            
+            
+            // Value must be an interger
+            formData[i].value = Math.round(formData[i].value);
         }    
     }
     
@@ -253,7 +257,9 @@ function removeParent(){
 
 function slideInMessagesBox(){
     
-    // Slides in any messages 
+    // Slides in any messages
+    $(".messages-box").removeClass("slide-in-from-right");
+    $(".messages-box").addClass('start-off-screen');
     
     if($(".message-para").text() != ""){
         $(".messages-box").show();

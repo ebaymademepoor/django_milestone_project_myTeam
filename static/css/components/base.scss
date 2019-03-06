@@ -63,7 +63,6 @@ footer {
 .messages-box {
     position: absolute;
     left: 0; 
-    right: -100%; 
     margin-left: auto; 
     width: 70%;
     min-width: 200px;
@@ -91,8 +90,4 @@ footer {
         }   
     }
     
-}
-
-.slide-in-from-right {
-    right: 0;
 }

@@ -60,7 +60,7 @@ table {
   -moz-box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43);
   box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43); }
 
-nav .logo-pic {
+nav .logo-pic, .group-home .content .member-box .member-container .shirt {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat; }
@@ -591,32 +591,41 @@ footer {
       box-sizing: border-box;
       min-height: 70vh; }
     .group-home .content .member-box {
-      padding: 32px 0 26px 26px;
+      padding: 32px 0 26px 20px;
       color: #fff;
       width: 60%; }
       .group-home .content .member-box .member-container {
-        text-align: left; }
+        text-align: center; }
+        .group-home .content .member-box .member-container .shirt {
+          display: inline-block;
+          height: 46px;
+          width: 50%;
+          margin: 8px 0;
+          background-image: url("../img/transparent-shirt.png"); }
+          .group-home .content .member-box .member-container .shirt .container {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center; }
+            .group-home .content .member-box .member-container .shirt .container .username {
+              font-family: 'Staatliches', cursive;
+              width: 100%;
+              padding: 0; }
       .group-home .content .member-box h2 {
         margin-bottom: 20px; }
       .group-home .content .member-box h3 {
         font-size: 1em; }
       .group-home .content .member-box p,
       .group-home .content .member-box h3 {
-        width: 45%;
+        width: 50%;
         display: inline-block;
-        margin: 10px 0; }
+        margin: 7px 0;
+        box-sizing: border-box; }
       .group-home .content .member-box .member-head {
-        font-family: 'Staatliches', cursive;
-        text-align: left; }
-      .group-home .content .member-box .member-head:first-of-type {
-        margin-right: 6px; }
+        font-family: 'Staatliches', cursive; }
       .group-home .content .member-box .member-content {
         font-size: 0.8em;
         padding: 6px 0; }
-      .group-home .content .member-box .username {
-        background-color: #0375B4;
-        margin-right: 6px;
-        text-align: center; }
     .group-home .content .matches-box {
       width: 39%;
       color: #0375B4;
@@ -719,5 +728,11 @@ a:visited {
 
 .make-pointer {
   cursor: pointer; }
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start; }
 
 /*# sourceMappingURL=styles.css.map */

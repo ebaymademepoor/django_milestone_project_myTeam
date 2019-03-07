@@ -1,0 +1,120 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "circletype",
+        "scope": null,
+        "escapedName": "circletype",
+        "name": "circletype",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/ubuntu/workspace"
+    ]
+  ],
+  "_from": "circletype@latest",
+  "_id": "circletype@2.3.0",
+  "_inCache": true,
+  "_location": "/circletype",
+  "_nodeVersion": "9.5.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/circletype_2.3.0_1527404169712_0.7852208932416509"
+  },
+  "_npmUser": {
+    "name": "peterhry",
+    "email": "peter@labwire.ca"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "circletype",
+    "scope": null,
+    "escapedName": "circletype",
+    "name": "circletype",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/circletype/-/circletype-2.3.0.tgz",
+  "_shasum": "4c57b01e344147c9b9dd4716036ac443a8ad073b",
+  "_shrinkwrap": null,
+  "_spec": "circletype",
+  "_where": "/home/ubuntu/workspace",
+  "author": {
+    "name": "Peter Hrynkow"
+  },
+  "bugs": {
+    "url": "https://github.com/peterhry/CircleType/issues"
+  },
+  "dependencies": {
+    "core-js": "^2.5.6"
+  },
+  "description": "A JavaScript library that lets you curve type on the web.",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "backstopjs": "^3.0.25",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "jest": "^21.0.2",
+    "jsdoc-to-markdown": "^3.0.0",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-bg+aWmtljs6K2LNIoPg6NqHY5vUdTHtD2GH7snwdouRUmJVDtqfrXnZf7ZUH+PUs0Yz6tmZfG7TDMUMPk86bXg==",
+    "shasum": "4c57b01e344147c9b9dd4716036ac443a8ad073b",
+    "tarball": "https://registry.npmjs.org/circletype/-/circletype-2.3.0.tgz",
+    "fileCount": 5,
+    "unpackedSize": 27835,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbClaLCRA9TVsSAnZWagAAINMP/j6Of/GbmkX+utXGACv6\nGsQ3WRWT1XQ9s60SZGH7mPwbK/INd+FXbcEgLvXsLCtQo/yf7fS790OlS2wp\nK07F8RxxRcjT3wdryx0fmzEe0onmM6bphdsd+lSg8qF0Vi1Dht1E8qTqeE3l\nFzyoFUuO//ORrScK1cnuKB3uLBdYAMLmj6sP7NB0PCClWrELVm+OSrkpg23R\nSDcIBbxd0gXJkDaakKJbfDb6cY1B82Ktsl2/isGSKjpC2An/YsydHuTkRgaP\nE91eg1XV03U0OJ4SLkiOG3YqasJDqk+AnIRYmmTBa22Lql2G2HizELx+jBTn\n6HvuEU6Lc74maMHFyeHEkVaezs8cMQv0lP10L7TUqN4sZCjlylkRvEHCwAC8\nu7yfjLy07aMsP9PgcT/JLqIBmkooPya8mE9V+pUCSHdCQlDBkqtSCdPDa7bG\n7BJbCwVM52X+QdLm9qb2lTfLKykKoWvF4jVGxVMfiNLNnpRnjh3T/HtDCyE6\nGctPTTK6Xe/5PYOAiViEP2A3wZN0RJyUBtXRWrAISZMsb15TvO+lmVpGESwp\nbX5RdY1vABc2KVYHAW5Rw9Yx2eXZ28P4CrOxv4VH5Pz+m9s3IRqOUuli59pg\nH/rQOPeUXMyzW+u0KVPsfMQEf4EC+dhaGgPUNwqemZ1YWBcHc06FesH+8F4b\nMmbB\r\n=d77h\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "files": [
+    "dist"
+  ],
+  "gitHead": "2b8f2ee4014753427c10a04caaa6e654e3586209",
+  "homepage": "https://github.com/peterhry/CircleType#readme",
+  "keywords": [
+    "circletype",
+    "circular text",
+    "curved text",
+    "curved type",
+    "typography"
+  ],
+  "license": "MIT",
+  "main": "dist/circletype.min.js",
+  "maintainers": [
+    {
+      "name": "peterhry",
+      "email": "peter@labwire.ca"
+    }
+  ],
+  "name": "circletype",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterhry/CircleType.git"
+  },
+  "scripts": {
+    "backstop-reference": "backstop reference",
+    "backstop-test": "backstop test",
+    "dev": "webpack-dev-server --open",
+    "docs": "jsdoc2md --heading-depth 2 --template README.hbs --files src/class.js > README.md",
+    "reference": "docker run -w /usr/data -v \"$PWD\":/usr/data tenjaa/java-chrome-nodejs npm run backstop-reference",
+    "start": "eslint src && npm t && npm run docs && webpack -p",
+    "test": "jest src --notify && webpack -p && docker run -w /usr/data -v \"$PWD\":/usr/data tenjaa/java-chrome-nodejs npm run backstop-test"
+  },
+  "version": "2.3.0"
+}

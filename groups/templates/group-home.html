@@ -30,11 +30,19 @@
             <h2>Group members</h2>
             
                 <div class="container member-container">
-                    <h3 class="member-head">Member</h3>
-                    <h3 class="member-head">Nickname</h3>
+                    <div class="row">
+                        <h3 class="member-head">Member</h3>
+                        <h3 class="member-head">Nickname</h3>
+                    </div> 
                     {% for user in group_data.users.all %}
-                        <a href="{% url 'player-profile' user.pk group_data.pk %}"><p class="member-content username click-shrink">{{ user.username }}</p></a>
-                        <p class="member-content">{{ user.nickname }}</p>
+                        <div class="row">
+                            <a class="shirt click-shrink" href="{% url 'player-profile' user.pk group_data.pk %}">
+                                <span class="container">
+                                    <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username }}</p>
+                                </span> 
+                            </a>
+                            <p class="member-content">{{ user.nickname }}</p>
+                        </div>
                     {% endfor %}
                 </div>
             

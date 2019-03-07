@@ -9,4 +9,6 @@ An app to help organise weekly football matches
 
 https://realpython.com/django-and-ajax-form-submissions/ = django ajax
 
+Circletype for player names
+
 NOTE - Newly created super user must create a profile in django admin after being added via terminal or profile page will not display, a profile per user is required

@@ -283,6 +283,18 @@ function unhideABox(buttonClickedClass, classToUnhide){
     });
 }
 
+function curvePlayerNames(){
+    
+    let playersOnPage = $('.username');
+    
+    console.log(playersOnPage);
+    
+    for(i = 0; i < playersOnPage.length; i++){
+        const circleType = new CircleType(document.getElementById(playersOnPage[i].id));
+        circleType.radius(50);
+    }
+}
+
 // Script ----------------------------------------------------------------------
 
 $(document).ready(function() {
@@ -332,6 +344,7 @@ $(document).ready(function() {
         }
     });
     
+    curvePlayerNames();
     
     // This code retrieves our form csrf token to enable safe ajax requests --------
 

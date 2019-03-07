@@ -31,17 +31,17 @@
             
                 <div class="container member-container">
                     <div class="row">
-                        <h3 class="member-head">Member</h3>
                         <h3 class="member-head">Nickname</h3>
+                        <h3 class="member-head">Member</h3>
                     </div> 
                     {% for user in group_data.users.all %}
                         <div class="row">
                             <a class="shirt click-shrink" href="{% url 'player-profile' user.pk group_data.pk %}">
                                 <span class="container">
-                                    <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username }}</p>
+                                    <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname }}</p>
                                 </span> 
                             </a>
-                            <p class="member-content">{{ user.nickname }}</p>
+                            <p class="member-content">{{ user.username }}</p>
                         </div>
                     {% endfor %}
                 </div>

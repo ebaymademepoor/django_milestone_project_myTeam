@@ -33,14 +33,14 @@
                     <h3 class="member-head">Member</h3>
                     <h3 class="member-head">Nickname</h3>
                     {% for user in group_data.users.all %}
-                        <a href="{% url 'player-profile' user.pk group_data.pk %}"><p class="member-content username">{{ user.username }}</p></a>
+                        <a href="{% url 'player-profile' user.pk group_data.pk %}"><p class="member-content username click-shrink">{{ user.username }}</p></a>
                         <p class="member-content">{{ user.nickname }}</p>
                     {% endfor %}
                 </div>
             
         </div>
         <div class="matches-box">
-            <a href="{% url 'matches' group_data.pk 0 %}" class="link-btn add-a-match-btn">Add a match</a> 
+            <a href="{% url 'matches' group_data.pk 0 %}" class="link-btn add-a-match-btn click-shrink"><i class="fas fa-plus-square"></i></a> 
             <h3>Matches</h3>
             {% for match in matches %}
                 <p>{{ match.venue }}</p> 

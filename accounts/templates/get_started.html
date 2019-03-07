@@ -32,7 +32,7 @@
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             {{ login_form.as_p }}   
-            <button class="sign-in-btn" type="submit">Login</button>
+            <button class="sign-in-btn click-shrink" type="submit">Login</button>
         </form>
         <!--Reset password link-->
         <p><a href="{% url 'password_reset' %}">Forgot Password</a></p> 
@@ -52,7 +52,7 @@
             {% csrf_token %}
             {{ registration_form.as_p }}
             {{ form.non_field_errors }}
-            <button class="sign-up-btn" type="submit">Register</button>
+            <button class="sign-up-btn click-shrink" type="submit">Register</button>
         </form>
     </div>
 

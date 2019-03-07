@@ -148,7 +148,7 @@ button,
 .add-a-match-btn {
   position: absolute;
   font-size: 8px;
-  width: 60px;
+  width: 20px;
   text-align: center;
   height: 20px;
   line-height: 20px;
@@ -157,12 +157,17 @@ button,
   margin: 0 auto;
   left: 0;
   right: 0; }
+  .add-a-match-btn i {
+    font-size: 18px; }
 
 .start-off-screen {
   right: -100%; }
 
 .slide-in-from-right {
   right: 0; }
+
+.click-shrink:active {
+  transform: scale(0.9); }
 
 nav {
   background-color: #FFCE00; }

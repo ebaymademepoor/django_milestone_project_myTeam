@@ -46,11 +46,16 @@
                 {% for match in matches %}
                     <a class="match-link" href="">
                         <div class="match-box">
-                            <p>{{ match.id }}</p> 
-                            <p>{{ match.venue|truncatechars:16 }}</p> 
-                            <p>{{ match.status }}</p> 
-                            <p>{{ match.date_of_match }}</p> 
-                            <p>{{ match.time_of_match }}</p> 
+                            <p>Match ID: {{ match.id }}</p> 
+                            <p>Venue:<br>{{ match.venue|truncatechars:16 }}</p> 
+                            <p>Status: 
+                                {% if match.match_status == "S" %} 
+                                ON 
+                                {% else %}
+                                CANCELLED
+                                {% endif %}</p> 
+                            <p>Date: {{ match.date_of_match }}</p> 
+                            <p>Kick off: {{ match.time_of_match }}</p> 
                         </div>
                     </a>
                 {% endfor %}

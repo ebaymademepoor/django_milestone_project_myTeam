@@ -546,7 +546,7 @@
             text-align: center;
             padding: 32px 12px 26px;
             position: relative;
-            float: right;
+            right: -1%;
             
             h3 {
                 padding: 6px 0;
@@ -558,7 +558,8 @@
                 display: inline-block;
                 padding: 4px;
                 font-size: 8px;
-                width: 78%;
+                width: 90%;
+                text-align: left;
             }
             
         }

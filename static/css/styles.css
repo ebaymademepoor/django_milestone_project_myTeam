@@ -191,7 +191,8 @@ nav {
     float: right;
     padding: 0 10px; }
     nav ul li {
-      padding: 0 4px; }
+      padding: 0 4px;
+      font-size: 11px; }
   nav .nav-i {
     margin-right: 8px; }
 
@@ -626,6 +627,13 @@ footer {
       float: right; }
       .group-home .content .matches-box h3 {
         padding: 6px 0; }
+      .group-home .content .matches-box .match-link {
+        background-color: #0375B4;
+        margin: 5px auto;
+        display: inline-block;
+        padding: 4px;
+        font-size: 8px;
+        width: 78%; }
 
 .user-attributes-section label,
 .user-attributes-section input {

@@ -159,8 +159,10 @@ function postData(type, data) {
     
     if(type === "user-personal-details"){
         let newFormData = prepareNewProfileData(data);
+        console.log(newFormData)
         let profileURL= "../update_profile_data/";
         let profileID = $('#profile-id').text(); // the ID of the profile that needs to be updated
+        console.log(profileID)
         postToDatabase(profileURL, newFormData, profileID);
     } else if (type === "user-position-prefs"){
         let newPref = data;
@@ -193,7 +195,11 @@ function postToDatabase(url, data, route){
             $('#update-form').remove();
             
             if(url != "../update_position_pref/"){
-                displayMessage("GOAL!  Details updated...");
+                if(json["result"] == 'Update successful!'){
+                    displayMessage("GOAL!  Details updated...");    
+                } else {
+                    displayMessage("Hmmm, we're not sure that worked, please try later...");
+                }
             }
             
             // This code will replace data on profile section with new data

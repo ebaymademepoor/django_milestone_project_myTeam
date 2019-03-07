@@ -23,5 +23,8 @@ class MatchData(models.Model):
         default=SCHEDULED,
     )
     
+    class Meta:
+        ordering = ('date_of_match', 'time_of_match')   
+    
     def __str__(self):
         return "Match arranged by {0} for {1} on {2} with {3} - current status {4}".format(self.creator, self.time_of_match, self.date_of_match, self.associated_group, self.match_status)

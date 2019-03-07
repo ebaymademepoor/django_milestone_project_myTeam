@@ -552,6 +552,15 @@
                 padding: 6px 0;
             }
             
+            .match-link {
+                background-color: $brand-starry-night-blue;
+                margin: 5px auto;
+                display: inline-block;
+                padding: 4px;
+                font-size: 8px;
+                width: 78%;
+            }
+            
         }
     }
 }

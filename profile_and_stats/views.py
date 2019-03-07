@@ -67,7 +67,13 @@ def update_profile_data(request, id):
     profile = get_object_or_404(UserProfileData, pk=id)
     
     if request.method == "POST":
-        if request.user.pk == id:
+    
+    # Security check - is logged in session user the same as profile that has asked to be updated?
+        
+        if int(request.user.pk) == int(id):
+            
+            # If so...
+            
             if len(request.POST) > 1:
                 form = EditProfileForm(request.POST, instance=profile)
             else:

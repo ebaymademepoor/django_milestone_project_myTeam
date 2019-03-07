@@ -42,12 +42,21 @@
         <div class="matches-box">
             <a href="{% url 'matches' group_data.pk 0 %}" class="link-btn add-a-match-btn click-shrink"><i class="fas fa-plus-square"></i></a> 
             <h3>Matches</h3>
-            {% for match in matches %}
-                <p>{{ match.venue }}</p> 
-                <p>{{ match.status }}</p> 
-                <p>{{ match.date_of_match }}</p> 
-                <p>{{ match.time_of_match }}</p> 
-            {% endfor %}
+            {% if matches %}
+                {% for match in matches %}
+                    <a class="match-link" href="">
+                        <div class="match-box">
+                            <p>{{ match.id }}</p> 
+                            <p>{{ match.venue|truncatechars:16 }}</p> 
+                            <p>{{ match.status }}</p> 
+                            <p>{{ match.date_of_match }}</p> 
+                            <p>{{ match.time_of_match }}</p> 
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p>There are currently no matches scheduled</p> 
+            {% endif %}
         </div>
     </section>
 </div>

@@ -34,7 +34,7 @@
         </form>
          
     </section>
-    
+    {% if group_data %}
     <section class="player-availibility">
         <h3>Player availability</h3> 
         
@@ -42,6 +42,7 @@
         <p>{{ user.nickname }}</p> 
         {% endfor %}
     </section>
+    {% endif %}
 </div>
 
 

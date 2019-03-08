@@ -11,19 +11,27 @@
     
     
     <section class="match-data">
+        
          <form method="POST" action="{% url 'add-edit-match' groupid matchid %}">
             {% csrf_token %}
             <div class="row">
-            <label for="date_of_match">Date: </label><input required type="date" name="date_of_match"/>
+            <label for="date_of_match">Date: </label>
+            <input required type="date" name="date_of_match" 
+            {% if match.pk != 0 %}
+            value={{ match_data.date_of_match|date:'Y-m-d' }}
+            {% endif %}/>
             </div>
             <div class="row">
-            <label for="time_of_match">Time: </label><input required type="time" name="time_of_match"/>
+            <label for="time_of_match">Time: </label>
+            <input required type="time" name="time_of_match"
+            {% if match.pk != 0 %}
+            value={{ match_data.time_of_match|time:"H:i" }}
+            {% endif %}/>
             </div>
             {{ match_form.as_p }}
             {{ form.non_field_errors }}
             <button class="create-edit-match-btn" type="submit">Submit</button>
         </form>
-         
          
     </section>
 </div>

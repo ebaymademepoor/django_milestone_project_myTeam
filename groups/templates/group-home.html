@@ -38,7 +38,11 @@
                         <div class="row">
                             <a class="shirt click-shrink" href="{% url 'player-profile' user.pk group_data.pk %}">
                                 <span class="container">
-                                    <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname }}</p>
+                                    <p id="curve-{{ user.pk }}" class="member-content username">
+                                        {% if user.nickname %}
+                                            {{ user.nickname }}
+                                        {% else %}?????{% endif %}
+                                    </p>
                                 </span> 
                             </a>
                             <p class="member-content">{{ user.username }}</p>
@@ -52,7 +56,7 @@
             <h3>Matches</h3>
             {% if matches %}
                 {% for match in matches %}
-                    <a class="match-link" href="">
+                    <a class="match-link" href="{% url 'matches' group_data.pk match.pk %}">
                         <div class="match-box">
                             <p>Match ID: {{ match.id }}</p> 
                             <p>Venue:<br>{{ match.venue|truncatechars:16 }}</p> 
@@ -62,8 +66,8 @@
                                 {% else %}
                                 CANCELLED
                                 {% endif %}</p> 
-                            <p>Date: {{ match.date_of_match }}</p> 
-                            <p>Kick off: {{ match.time_of_match }}</p> 
+                            <p>Date: {{ match.date_of_match|date:'d-m-Y' }}</p> 
+                            <p>Kick off: {{ match.time_of_match|time:"H:i" }}</p> 
                         </div>
                     </a>
                 {% endfor %}

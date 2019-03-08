@@ -10,31 +10,41 @@ from profile_and_stats.models import UserProfileData
 @login_required
 def match_instance(request, groupid, matchid):
     
-    match_form = CreateOrEditMatchHelperForm()
+    if int(matchid) == 0:
+
+        match_form = CreateOrEditMatchHelperForm()
+        this_match = None
+    else:
+        this_match = get_object_or_404(MatchData, pk=matchid)
+        match_form = CreateOrEditMatchHelperForm(instance=this_match)
     
-    return render(request, 'match_page.html', { "match_form": match_form, "groupid" : groupid, "matchid": matchid })
+    return render(request, 'match_page.html', { "match_form": match_form, "groupid" : groupid, "matchid": matchid, "match_data": this_match })
 
 @login_required    
 def add_or_edit_a_match(request, groupid, matchid):
     
-    print(groupid)
     if request.method == "POST":
         
         try:
             this_group = Group.objects.get(pk=groupid)
-            print("Group found")
-            # Security check - is the user posting for a group they are a member of?
         except:
             messages.error(request, "We can't find the group you're looking for...")
             return redirect(reverse('group-select'))    
         
         if this_group:
             
+            # Security check - is the user posting for a group they are a member of?
+            
             if str(request.user.email) in str(this_group.users.all()):
                 
                 # If so process their request...
                 
-                match_data = {}
+                if int(matchid) != 0:
+                    this_match = get_object_or_404(MatchData, pk=matchid)
+                else:
+                    this_match = None
+                
+                match_data ={}
                 
                 for key, value in request.POST.items():
                     match_data[key] = value
@@ -42,11 +52,15 @@ def add_or_edit_a_match(request, groupid, matchid):
                 match_data["creator"] = UserProfileData.objects.get(pk=request.user.pk)
                 match_data["associated_group"] = this_group.pk
                 
-                match_data_form = processMatchRequestForm(match_data)
+                match_data_form = processMatchRequestForm(match_data, instance=this_match)
                 
                 if match_data_form.is_valid():
-                    match_data_form.save()
-                    messages.success(request, "Match arranged for {0} on {1}".format(match_data["time_of_match"], match_data["date_of_match"]))
+                    match = match_data_form.save()
+                    print(match.match_status)
+                    if match.match_status == "S":
+                        messages.success(request, "Match arranged for {0} on {1}".format(match_data["time_of_match"], match_data["date_of_match"]))
+                    else:
+                        messages.success(request, "Match at {0} on {1} is marked as cancelled".format(match_data["time_of_match"], match_data["date_of_match"]))
                 else:
                     print(match_data_form.errors)
                     messages.error(request, "Something went wrong")

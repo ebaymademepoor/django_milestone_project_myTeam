@@ -664,16 +664,25 @@ footer {
   .matches-page .match-data {
     padding: 32px;
     color: #fff; }
-    .matches-page .match-data textarea {
-      width: 100%;
-      height: 60px;
-      box-sizing: border-box; }
-    .matches-page .match-data select {
-      float: right; }
-    .matches-page .match-data .row,
-    .matches-page .match-data p {
-      justify-content: space-between;
-      margin: 10px 0; }
+    .matches-page .match-data form {
+      max-width: 300px; }
+      .matches-page .match-data form textarea {
+        width: 100%;
+        height: 60px;
+        box-sizing: border-box;
+        margin-top: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px; }
+      .matches-page .match-data form select {
+        float: right;
+        font-family: 'Montserrat', sans-serif;
+        color: #262228;
+        background-color: #FFCE00;
+        font-weight: 600; }
+      .matches-page .match-data form .row,
+      .matches-page .match-data form p {
+        justify-content: space-between;
+        margin: 10px 0; }
 
 .index-page-bg-settings {
   width: 100%;

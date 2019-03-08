@@ -609,20 +609,31 @@
         padding: 32px;
         color: $white;
         
-        textarea {
-            width: 100%;
-            height: 60px;
-            box-sizing: border-box;
-        }
-        
-        select {
-            float: right;
-        }
-        
-        .row,
-        p {
-            justify-content: space-between;
-            margin: 10px 0;
+        form {
+            max-width: 300px;
+            
+            textarea {
+                width: 100%;
+                height: 60px;
+                box-sizing: border-box;
+                margin-top: 10px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 11px;
+            }
+            
+            select {
+                float: right;
+                font-family: 'Montserrat', sans-serif;
+                color: $brand-evening-black;
+                background-color: $brand-sunflower-yellow;
+                font-weight: 600;
+            }
+            
+            .row,
+            p {
+                justify-content: space-between;
+                margin: 10px 0;
+            }
         }
     }
     

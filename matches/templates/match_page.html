@@ -5,13 +5,13 @@
 {% block content %}
 <div class="page-container matches-page">
     <section class="header">
-         <h2>The Match</h2> 
+         <h2>Match Details</h2> 
          <a class="group-rtn-btn link-btn click-shrink" href="{% url 'group-home' groupid %}">Back</a>
     </section>
     
     
     <section class="match-data">
-        
+        <h3>Match Details</h3>
          <form method="POST" action="{% url 'add-edit-match' groupid matchid %}">
             {% csrf_token %}
             <div class="row">
@@ -33,6 +33,14 @@
             <button class="create-edit-match-btn" type="submit">Submit</button>
         </form>
          
+    </section>
+    
+    <section class="player-availibility">
+        <h3>Player availability</h3> 
+        
+        {% for user in group_data.users.all %}
+        <p>{{ user.nickname }}</p> 
+        {% endfor %}
     </section>
 </div>
 

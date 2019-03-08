@@ -683,6 +683,9 @@ footer {
       .matches-page .match-data form p {
         justify-content: space-between;
         margin: 10px 0; }
+  .matches-page .player-availability {
+    color: #fff;
+    padding: 32px; }
 
 .index-page-bg-settings {
   width: 100%;

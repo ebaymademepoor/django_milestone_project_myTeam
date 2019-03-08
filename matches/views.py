@@ -14,11 +14,13 @@ def match_instance(request, groupid, matchid):
 
         match_form = CreateOrEditMatchHelperForm()
         this_match = None
+        group_data = None
     else:
         this_match = get_object_or_404(MatchData, pk=matchid)
         match_form = CreateOrEditMatchHelperForm(instance=this_match)
+        group_data = Group.objects.get(pk=groupid)
     
-    return render(request, 'match_page.html', { "match_form": match_form, "groupid" : groupid, "matchid": matchid, "match_data": this_match })
+    return render(request, 'match_page.html', { "match_form": match_form, "groupid" : groupid, "matchid": matchid, "match_data": this_match, "group_data" : group_data })
 
 @login_required    
 def add_or_edit_a_match(request, groupid, matchid):

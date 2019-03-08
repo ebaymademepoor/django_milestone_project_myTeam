@@ -5,12 +5,13 @@ from django.utils import timezone
 
 # Create your models here.
 class MatchData(models.Model):
-    creator = models.ForeignKey(UserProfileData, on_delete=models.SET_NULL, null=True, blank=False)
+    creator = models.ForeignKey(UserProfileData, on_delete=models.SET_NULL, null=True, blank=False, related_name="creator")
     associated_group = models.ForeignKey(Group, on_delete=models.CASCADE, null=False, blank=False)
     date_of_match = models.DateField(auto_now=False, auto_now_add=False, null=False, blank=False)
     time_of_match = models.TimeField(auto_now=False, auto_now_add=False, null=False, blank=False)
     venue = models.TextField(max_length="100", null=False, blank=False)
-
+    players = models.ManyToManyField(UserProfileData, null=True)
+    
     SCHEDULED = "S"
     CANCELLED = "C"    
     MATCH_STATUS_CHOICES = (

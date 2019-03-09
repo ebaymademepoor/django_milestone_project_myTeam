@@ -5,6 +5,11 @@ from .forms import CreateOrEditMatchHelperForm, processMatchRequestForm
 from groups.models import Group
 from .models import MatchData
 from profile_and_stats.models import UserProfileData
+import datetime
+import re
+from django.utils import timezone, six
+from django.utils.dateparse import parse_date
+from django.utils.timezone import get_fixed_timezone, utc
 
 # Create your views here.
 @login_required
@@ -58,7 +63,23 @@ def add_or_edit_a_match(request, groupid, matchid):
                 
                 if match_data_form.is_valid():
                     match = match_data_form.save()
-                    print(match.match_status)
+                    
+                    try:
+                        repeats = int(match_data["repeat"])
+                    except:
+                        repeats = 0
+                    
+                    if int(repeats) > 0:
+                        match_booking = 1
+                        while repeats > match_booking:
+                            d = parse_date(str(match_data["date_of_match"]))
+                            d += timezone.timedelta(days=7)
+                            match_data["date_of_match"] = d
+                            match_booking += 1
+                            match_data_form = processMatchRequestForm(match_data, instance=this_match)
+                            if match_data_form.is_valid():
+                                match = match_data_form.save()
+                    
                     if match.match_status == "S":
                         messages.success(request, "Match arranged for {0} on {1}".format(match_data["time_of_match"], match_data["date_of_match"]))
                     else:

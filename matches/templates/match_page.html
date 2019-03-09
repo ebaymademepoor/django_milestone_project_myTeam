@@ -30,6 +30,10 @@
             </div>
             {{ match_form.as_p }}
             {{ form.non_field_errors }}
+            {% if not match_data %}
+                <label for="repeat">Please repeat for:</label>
+                <input type="number" name="repeat" min="1" max="10" step="1"/> weeks
+            {% endif %}
             <button class="create-edit-match-btn" type="submit">Submit</button>
         </form>
          

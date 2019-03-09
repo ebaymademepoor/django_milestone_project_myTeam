@@ -11,6 +11,7 @@ class MatchData(models.Model):
     time_of_match = models.TimeField(auto_now=False, auto_now_add=False, null=False, blank=False)
     venue = models.TextField(max_length="100", null=False, blank=False)
     players = models.ManyToManyField(UserProfileData, null=True)
+    match_notes = models.TextField(max_length="200", null=True, blank=True)
     
     SCHEDULED = "S"
     CANCELLED = "C"    

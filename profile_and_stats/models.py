@@ -26,6 +26,9 @@ class UserProfileData(models.Model):
         if self.license_expiry_date > timezone.now():
             return True
     
+    class Meta:
+        ordering = ('username',)
+    
     def __str__(self):
         return self.email
         

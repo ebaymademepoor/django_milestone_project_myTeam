@@ -498,7 +498,6 @@
             .row {
                 box-sizing: border-box;
                 padding: 20px;
-                margin-bottom: 20px;
             }
             
             .member-container {
@@ -558,9 +557,8 @@
             color: $brand-starry-night-blue;
             background-color: $white;
             text-align: left;
-            padding: 0 20px 20px;
+            padding: 0 20px 17px;
             position: relative;
-            margin-bottom: 4px;
             
             .container p {
                 margin: 2px 0;
@@ -581,7 +579,7 @@
             .match-link {
                 text-align: center;
                 background-color: $brand-starry-night-blue;
-                margin: 0 7px;
+                margin: 3px 7px;
                 display: inline-block;
                 padding: 4px;
                 font-size: 8px;

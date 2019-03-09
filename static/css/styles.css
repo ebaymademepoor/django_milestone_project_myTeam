@@ -648,11 +648,12 @@ footer {
       display: inline-block;
       width: 91%; }
     .group-home .content .matches-box .row {
-      justify-content: center; }
+      justify-content: center;
+      flex-wrap: wrap; }
     .group-home .content .matches-box .match-link {
       text-align: center;
       background-color: #0375B4;
-      margin: 0 8px;
+      margin: 0 7px;
       display: inline-block;
       padding: 4px;
       font-size: 8px;

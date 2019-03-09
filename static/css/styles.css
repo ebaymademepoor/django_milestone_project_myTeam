@@ -160,7 +160,8 @@ button,
   line-height: 20px;
   background-color: #FFCE00; }
   .add-a-match-btn i {
-    font-size: 18px; }
+    font-size: 18px;
+    margin-top: 0.2px; }
 
 .start-off-screen {
   right: -100%; }
@@ -592,8 +593,9 @@ footer {
     width: 100%;
     background-color: #007849;
     padding-bottom: 20px;
-    min-height: 250px; }
+    min-height: 55vh; }
     .group-home .content .member-box .row {
+      box-sizing: border-box;
       padding: 20px;
       margin-bottom: 20px; }
     .group-home .content .member-box .member-container {
@@ -638,6 +640,8 @@ footer {
     padding: 0 20px 20px;
     position: relative;
     margin-bottom: 4px; }
+    .group-home .content .matches-box .container p {
+      margin: 2px 0; }
     .group-home .content .matches-box h3 {
       padding: 6px 0;
       text-align: left;

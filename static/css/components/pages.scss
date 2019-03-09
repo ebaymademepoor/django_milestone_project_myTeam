@@ -163,8 +163,8 @@
         max-width: 200px;
         font-size: 2.2em;
     }
-    
-    h1 ~ p {
+
+    h1~p {
         display: inline-block;
         font-size: 6px;
     }
@@ -189,11 +189,14 @@
         }
 
     }
-    
-    .first_name, .surname, .nickname, .date_of_birth {
+
+    .first_name,
+    .surname,
+    .nickname,
+    .date_of_birth {
         @extend %inset-shadow;
     }
-    
+
     .license-expiry>dt,
     .license-expiry>dd {
         background-color: $brand-starry-night-blue !important;
@@ -298,7 +301,7 @@
         background-color: $form-input-grey;
         color: $black;
     }
-    
+
     #rate-player-form {
         p {
             display: inline-block;
@@ -477,40 +480,40 @@
         font-size: 8px;
         color: $white;
     }
-    
+
     .content {
         box-sizing: border-box;
-        
+
         .member-box,
         .matches-box {
             box-sizing: border-box;
             min-height: 80px;
             box-sizing: border-box;
         }
-        
+
         .member-box {
             color: $white;
             width: 100%;
             background-color: $brand-irises-green;
             padding-bottom: 20px;
             min-height: 55vh;
-            
+
             .row {
                 box-sizing: border-box;
                 padding: 20px;
             }
-            
+
             .member-container {
                 text-align: center;
                 display: flex;
                 justify-content: space-evenly;
                 flex-wrap: wrap;
-                
+
                 .user-container {
                     display: inline-block;
                     width: 24%;
                 }
-                
+
                 .shirt {
                     display: inline-block;
                     height: 46px;
@@ -518,40 +521,40 @@
                     margin: 8px 0;
                     background-image: url('../img/transparent-shirt-red.png');
                     @extend %contain-picture;
-                    
+
                     .container {
                         height: 100%;
                         width: 100%;
                         display: flex;
                         justify-content: center;
-                        
+
                         .username {
                             font-family: 'Staatliches', cursive;
                             width: 100%;
                             padding: 0;
-                        }    
+                        }
                     }
                 }
             }
-            
+
             h3 {
                 font-size: 1em;
             }
-            
-            p, 
+
+            p,
             h3 {
                 width: 45%;
                 display: inline-block;
                 margin: 7px 0;
                 box-sizing: border-box;
             }
-            
+
             .member-content {
                 font-size: 0.8em;
                 padding: 0 0 6px 0;
             }
         }
-        
+
         .matches-box {
             width: 100%;
             color: $brand-starry-night-blue;
@@ -559,23 +562,23 @@
             text-align: left;
             padding: 0 20px 17px;
             position: relative;
-            
+
             .container p {
                 margin: 2px 0;
             }
-            
+
             h3 {
                 padding: 6px 0;
                 text-align: left;
                 display: inline-block;
                 width: 91%;
             }
-            
+
             .row {
                 justify-content: center;
                 flex-wrap: wrap;
             }
-            
+
             .match-link {
                 text-align: center;
                 background-color: $brand-starry-night-blue;
@@ -587,22 +590,21 @@
                 height: 70px;
                 border-radius: 50%;
                 @extend %inset-shadow-white;
-                
+
                 .match-box {
-                    
+
                     width: 100%;
                     height: 100%;
                     @extend %centralise-inner-container;
-                        
+
                 }
             }
-            
+
         }
     }
 }
 
 // player-profile.html ---------------------------------------------------------
-
 .user-attributes-section {
     label,
     input {
@@ -611,7 +613,7 @@
         padding: 6px 0;
         font-size: 9px;
     }
-    
+
     input {
         width: 9%;
         text-align: center;
@@ -619,23 +621,22 @@
 }
 
 // match_page.html -------------------------------------------------------------
-
 .matches-page {
-    
+
     background-color: $brand-irises-green;
-    
+
     .header {
-        padding: 32px 32px 0;
+        padding: 28px 28px 0;
         color: $white;
     }
-    
+
     .match-data {
-        padding: 32px;
+        padding: 28px;
         color: $white;
-        
+
         form {
             max-width: 300px;
-            
+
             textarea {
                 width: 100%;
                 height: 60px;
@@ -644,7 +645,7 @@
                 font-family: 'Montserrat', sans-serif;
                 font-size: 11px;
             }
-            
+
             select {
                 float: right;
                 font-family: 'Montserrat', sans-serif;
@@ -652,7 +653,7 @@
                 background-color: $brand-sunflower-yellow;
                 font-weight: 600;
             }
-            
+
             .row,
             p {
                 justify-content: space-between;
@@ -660,10 +661,51 @@
             }
         }
     }
-    
+
     .player-availability {
-        color: $white;
-        padding: 32px;
+        background-color: $white;
+        color: $brand-starry-night-blue;
+        padding: 28px;
+        min-height: 55vh;
     }
-    
+
+    .member-container {
+        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        margin-top: 20px;
+
+        .user-container {
+            display: inline-block;
+            width: 24%;
+        }
+
+        .shirt {
+            display: inline-block;
+            height: 46px;
+            width: 100%;
+            margin: 8px 0;
+            background-image: url('../img/transparent-shirt-red.png');
+            @extend %contain-picture;
+
+            .container {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+
+                .username {
+                    font-family: 'Staatliches', cursive;
+                    width: 100%;
+                    padding: 0;
+                    
+                    div {
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+
 }

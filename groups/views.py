@@ -8,6 +8,7 @@ from .forms import CreateGroupForm, AddNewGroupMemberForm, JoinGroupForm
 from .models import Group, GroupMember
 from profile_and_stats.models import UserProfileData
 from matches.models import MatchData
+from django.utils import timezone
 
 # Create your views here.
 
@@ -85,8 +86,10 @@ def group_home(request, id):
     except Group.DoesNotExist:
         messages.error(request, "Hmm, we can't find that group.  Is that the correct ID?!")
         return redirect(reverse('group-select'))
+    
+    last_weeks_date = timezone.now() - timezone.timedelta(days=7)
         
-    groups_matches = MatchData.objects.filter(associated_group=this_group)
+    groups_matches = MatchData.objects.filter(associated_group=this_group).filter(date_of_match__gte=last_weeks_date)[0:3]
     
     # Ensure user is a member of the group top allow access
     

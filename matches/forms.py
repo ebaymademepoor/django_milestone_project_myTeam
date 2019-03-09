@@ -7,7 +7,7 @@ class CreateOrEditMatchHelperForm(forms.ModelForm):
     """
     class Meta:
         model = MatchData
-        fields = ['venue', 'match_status', 'match_notes']
+        fields = ['match_status', 'venue', 'match_notes']
     
 class processMatchRequestForm(forms.ModelForm):
     

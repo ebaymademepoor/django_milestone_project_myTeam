@@ -51,6 +51,9 @@ def add_or_edit_a_match(request, groupid, matchid):
                 else:
                     this_match = None
                 
+                
+                # Create the data using info provided from the form...
+                
                 match_data ={}
                 
                 for key, value in request.POST.items():
@@ -61,8 +64,12 @@ def add_or_edit_a_match(request, groupid, matchid):
                 
                 match_data_form = processMatchRequestForm(match_data, instance=this_match)
                 
+                # Save the first booking...
+                
                 if match_data_form.is_valid():
                     match = match_data_form.save()
+                    
+                    # Check to see if the user requested a repeat booking...
                     
                     try:
                         repeats = int(match_data["repeat"])
@@ -70,6 +77,9 @@ def add_or_edit_a_match(request, groupid, matchid):
                         repeats = 0
                     
                     if int(repeats) > 0:
+                        
+                        # If repeats then book in a match for each requested repeat instance...
+                        
                         match_booking = 1
                         while repeats > match_booking:
                             d = parse_date(str(match_data["date_of_match"]))
@@ -87,7 +97,7 @@ def add_or_edit_a_match(request, groupid, matchid):
                 else:
                     print(match_data_form.errors)
                     messages.error(request, "Something went wrong")
-                    return redirect(reverse('group-select'))    
+                    return redirect(reverse('group-select'))  
                 
         else:
             messages.error(request, "You can't do that here")

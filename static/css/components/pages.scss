@@ -459,8 +459,6 @@
 // group-home.html -------------------------------------------------------------
 .group-home {
 
-    background-color: $brand-irises-green;
-
     header,
     .group-box {
         width: 100%;
@@ -486,27 +484,40 @@
         .member-box,
         .matches-box {
             box-sizing: border-box;
-            display: inline-block;
-            min-height: 300px;
-            vertical-align: top;
+            min-height: 80px;
             box-sizing: border-box;
-            min-height: 70vh;
         }
         
         .member-box {
-            padding: 32px 0 26px 20px;
             color: $white;
-            width: 60%;
+            width: 100%;
+            background-color: $brand-irises-green;
+            padding-bottom: 20px;
+            min-height: 250px;
+            
+            .row {
+                
+                padding: 20px;
+                margin-bottom: 20px;
+            }
             
             .member-container {
                 text-align: center;
+                display: flex;
+                justify-content: space-evenly;
+                flex-wrap: wrap;
+                
+                .user-container {
+                    display: inline-block;
+                    width: 24%;
+                }
                 
                 .shirt {
                     display: inline-block;
                     height: 46px;
-                    width: 45%;
+                    width: 100%;
                     margin: 8px 0;
-                    background-image: url('../img/transparent-shirt.png');
+                    background-image: url('../img/transparent-shirt-red.png');
                     @extend %contain-picture;
                     
                     .container {
@@ -524,10 +535,6 @@
                 }
             }
             
-            h2 {
-                margin-bottom: 20px;
-            }
-            
             h3 {
                 font-size: 1em;
             }
@@ -540,37 +547,51 @@
                 box-sizing: border-box;
             }
             
-            .member-head {
-                font-family: 'Staatliches', cursive;
-            }
-            
             .member-content {
                 font-size: 0.8em;
-                padding: 6px 0;
+                padding: 0 0 6px 0;
             }
         }
         
         .matches-box {
-            width: 39%;
+            width: 100%;
             color: $brand-starry-night-blue;
             background-color: $white;
-            text-align: center;
-            padding: 32px 12px 26px;
+            text-align: left;
+            padding: 0 20px 20px;
             position: relative;
-            right: -1%;
+            margin-bottom: 4px;
             
             h3 {
                 padding: 6px 0;
+                text-align: left;
+                display: inline-block;
+                width: 91%;
+            }
+            
+            .row {
+                justify-content: center;
             }
             
             .match-link {
+                text-align: center;
                 background-color: $brand-starry-night-blue;
-                margin: 5px auto;
+                margin: 0 8px;
                 display: inline-block;
                 padding: 4px;
                 font-size: 8px;
-                width: 90%;
-                text-align: left;
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                @extend %inset-shadow-white;
+                
+                .match-box {
+                    
+                    width: 100%;
+                    height: 100%;
+                    @extend %centralise-inner-container;
+                        
+                }
             }
             
         }

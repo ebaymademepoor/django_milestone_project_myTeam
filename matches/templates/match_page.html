@@ -14,22 +14,22 @@
         {% if match_data %}
         <div class="container overview-container">
             <div class="row">
-                <p>Match Id:    {{ match_data.pk }}</p> 
-                <p>Date:    {{ match_data.date_of_match|date:'d-m-Y' }}</p> 
-                <p>Time:    {{ match_data.time_of_match|time:"H:i" }}</p> 
+                <p>Match ID:<span>{{ match_data.pk }}</span></p> 
+                <p>Date:<span>{{ match_data.date_of_match|date:'d-m-Y' }}</span></p> 
+                <p>Time:<span>{{ match_data.time_of_match|time:"H:i" }}</span></p> 
             </div>
             <div class="row">
             {% if 'S' in match_data.match_status %}
-                <p>Status:    <span class="scheduled">ON</span></p>
+                <p>Status:<span class="scheduled">ON</span></p>
             {% else %}
-                <p>Status:    <span class="cancelled">CANCELLED</span></p>
+                <p>Status:<span class="cancelled">CANCELLED</span></p>
             {% endif %}
             </div>
             <div class="row">
-                <p>Venue:    {{ match_data.venue }}</p> 
+                <p>Venue:<span>{{ match_data.venue }}</span></p> 
             </div>
             <div class="row">
-                <p>Notes:    {{ match_data.match_notes }}</p>
+                <p>Notes:<span>{{ match_data.match_notes }}</span></p>
             </div>
             <div class="link-btn edit-match-btn click-shrink">Edit Match</div> 
         </div>

@@ -77,7 +77,7 @@ nav .logo-pic, .group-home .content .member-box .member-container .shirt, .match
 button,
 .link-btn {
   width: 80px;
-  height: 35px;
+  height: 30px;
   border: #fff 1px solid;
   text-transform: uppercase;
   color: #fff;
@@ -90,14 +90,14 @@ button,
 
 .link-btn {
   text-align: center;
-  line-height: 36px;
+  line-height: 32px;
   display: block;
   background-color: #262228; }
 
 .get-started-btn {
   background-color: #FFCE00;
   display: block;
-  line-height: 36px;
+  line-height: 32px;
   margin: 0 auto 22px;
   cursor: pointer;
   border: 5px solid #262228; }
@@ -545,6 +545,7 @@ footer {
 
 .group-box {
   background-color: #FFCE00;
+  border-radius: 6px;
   margin-bottom: 16px;
   padding: 16px;
   font-family: 'Staatliches', cursive;
@@ -691,6 +692,9 @@ footer {
     .matches-page .match-data .overview-container {
       text-align: left;
       font-size: 8px; }
+      .matches-page .match-data .overview-container span {
+        margin-left: 6px;
+        font-weight: 500; }
       .matches-page .match-data .overview-container .cancelled {
         color: #fd3636;
         font-weight: 600; }
@@ -699,7 +703,8 @@ footer {
         font-weight: 600; }
       .matches-page .match-data .overview-container p {
         display: inline-block;
-        margin: 2px 8px 2px 0; }
+        margin: 2px 8px 2px 0;
+        font-weight: 600; }
     .matches-page .match-data form {
       max-width: 300px;
       position: relative; }

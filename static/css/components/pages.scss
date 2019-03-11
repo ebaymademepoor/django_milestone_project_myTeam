@@ -415,6 +415,7 @@
 
 .group-box {
     background-color: $brand-sunflower-yellow;
+    border-radius: 6px;
     margin-bottom: 16px;
     padding: 16px;
     font-family: 'Staatliches', cursive;
@@ -638,6 +639,11 @@
             text-align: left;
             font-size: 8px;
             
+            span {
+                margin-left: 6px;
+                font-weight: 500;
+            }
+            
             .cancelled {
                 color: $error-red;
                 font-weight: 600;
@@ -651,6 +657,7 @@
             p {
                 display: inline-block;
                 margin: 2px 8px 2px 0;
+                font-weight: 600;
             }
         }
         

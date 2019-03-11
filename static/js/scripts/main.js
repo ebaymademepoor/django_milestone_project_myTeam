@@ -310,6 +310,7 @@ $(document).ready(function() {
     slideInMessagesBox();
     unhideABox("show-create-new-group-form", "create-group-form");
     unhideABox("show-join-group-form", "join-group-form");
+    unhideABox("edit-match-btn", "match-form");
     
     createEditProfileDataForm();
     preparePositionPrefData();

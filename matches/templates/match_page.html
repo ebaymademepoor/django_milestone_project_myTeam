@@ -11,8 +11,36 @@
     
     
     <section class="match-data">
-        <h3>Match Details</h3>
-         <form method="POST" action="{% url 'add-edit-match' groupid matchid %}">
+        {% if match_data %}
+        <div class="container overview-container">
+            <div class="row">
+                <p>Match Id:    {{ match_data.pk }}</p> 
+                <p>Date:    {{ match_data.date_of_match|date:'d-m-Y' }}</p> 
+                <p>Time:    {{ match_data.time_of_match|time:"H:i" }}</p> 
+            </div>
+            <div class="row">
+            {% if 'S' in match_data.match_status %}
+                <p>Status:    <span class="scheduled">ON</span></p>
+            {% else %}
+                <p>Status:    <span class="cancelled">CANCELLED</span></p>
+            {% endif %}
+            </div>
+            <div class="row">
+                <p>Venue:    {{ match_data.venue }}</p> 
+            </div>
+            <div class="row">
+                <p>Notes:    {{ match_data.match_notes }}</p>
+            </div>
+            <div class="link-btn edit-match-btn click-shrink">Edit Match</div> 
+        </div>
+        {% endif %}
+        
+        {% if match_data %}
+             <form class="start-hidden match-form" method="POST" action="{% url 'add-edit-match' groupid matchid %}">
+                 <div class="close-parent-btn">x</div>
+        {% else %}
+            <form class="match-form" method="POST" action="{% url 'add-edit-match' groupid matchid %}">
+        {% endif %}
             {% csrf_token %}
             <div class="row">
             <label for="date_of_match">Date: </label>
@@ -32,9 +60,9 @@
             {{ form.non_field_errors }}
             {% if not match_data %}
                 <label for="repeat">Please repeat for:</label>
-                <input type="number" name="repeat" min="1" max="10" step="1"/> weeks
+                <input type="number" name="repeat" value="1" min="1" max="10" step="1"/> weeks
             {% endif %}
-            <button class="create-edit-match-btn" type="submit">Submit</button>
+            <button class="create-edit-match-btn click-shrink" type="submit">Submit</button>
         </form>
          
     </section>

@@ -475,8 +475,8 @@
     }
 
     .group-id {
-        background-color: $brand-starry-night-blue;
-        padding: 4px;
+        background-color: $brand-irises-green;
+        padding: 6px;
         font-size: 8px;
         color: $white;
     }
@@ -631,12 +631,41 @@
     }
 
     .match-data {
-        padding: 28px;
+        padding: 10px 28px;
         color: $white;
-
+        
+        .overview-container {
+            text-align: left;
+            font-size: 8px;
+            
+            .cancelled {
+                color: $error-red;
+                font-weight: 600;
+            }
+            
+            .scheduled {
+                color: $preference-green;
+                font-weight: 600;
+            }
+            
+            p {
+                display: inline-block;
+                margin: 2px 8px 2px 0;
+            }
+        }
+        
+        
         form {
             max-width: 300px;
-
+            position: relative;
+            
+            .close-parent-btn {
+                text-align: right;
+                color: $white;
+                top: -28px;
+                right: 0;
+            }
+            
             textarea {
                 width: 100%;
                 height: 60px;
@@ -664,7 +693,7 @@
 
     .player-availability {
         background-color: $white;
-        color: $brand-starry-night-blue;
+        color: $brand-irises-green;
         padding: 28px;
         min-height: 55vh;
     }

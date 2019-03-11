@@ -166,6 +166,11 @@ button,
     font-size: 18px;
     margin-top: 0.2px; }
 
+.edit-match-btn {
+  width: 52px;
+  height: 17px;
+  line-height: 16px; }
+
 .start-off-screen {
   right: -100%; }
 
@@ -580,8 +585,8 @@ footer {
   box-sizing: border-box;
   margin-bottom: 0; }
 .group-home .group-id {
-  background-color: #0375B4;
-  padding: 4px;
+  background-color: #007849;
+  padding: 6px;
   font-size: 8px;
   color: #fff; }
 .group-home .content {
@@ -681,10 +686,28 @@ footer {
     padding: 28px 28px 0;
     color: #fff; }
   .matches-page .match-data {
-    padding: 28px;
+    padding: 10px 28px;
     color: #fff; }
+    .matches-page .match-data .overview-container {
+      text-align: left;
+      font-size: 8px; }
+      .matches-page .match-data .overview-container .cancelled {
+        color: #fd3636;
+        font-weight: 600; }
+      .matches-page .match-data .overview-container .scheduled {
+        color: #23e623;
+        font-weight: 600; }
+      .matches-page .match-data .overview-container p {
+        display: inline-block;
+        margin: 2px 8px 2px 0; }
     .matches-page .match-data form {
-      max-width: 300px; }
+      max-width: 300px;
+      position: relative; }
+      .matches-page .match-data form .close-parent-btn {
+        text-align: right;
+        color: #fff;
+        top: -28px;
+        right: 0; }
       .matches-page .match-data form textarea {
         width: 100%;
         height: 60px;
@@ -704,7 +727,7 @@ footer {
         margin: 10px 0; }
   .matches-page .player-availability {
     background-color: #fff;
-    color: #0375B4;
+    color: #007849;
     padding: 28px;
     min-height: 55vh; }
   .matches-page .member-container {

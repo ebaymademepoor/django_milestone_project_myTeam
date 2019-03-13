@@ -145,7 +145,7 @@ button,
 
 .group-rtn-btn {
   position: absolute;
-  top: 24px;
+  top: 20px;
   right: 32px;
   width: 46px;
   margin: 0; }
@@ -757,6 +757,36 @@ footer {
     .matches-page .member-container .user-container {
       display: inline-block;
       width: 24%; }
+    .matches-page .member-container .row {
+      display: flex;
+      justify-content: space-around; }
+    .matches-page .member-container .availability-container {
+      width: 100px; }
+      .matches-page .member-container .availability-container .i-have-confirmed,
+      .matches-page .member-container .availability-container .i-am-unavailable,
+      .matches-page .member-container .availability-container .i-am-unconfirmed,
+      .matches-page .member-container .availability-container .confirmed,
+      .matches-page .member-container .availability-container .unavailable,
+      .matches-page .member-container .availability-container .unconfirmed {
+        padding: 10px;
+        border-radius: 32px;
+        font-weight: 600; }
+      .matches-page .member-container .availability-container .i-have-confirmed,
+      .matches-page .member-container .availability-container .confirmed {
+        background-color: #23e623; }
+      .matches-page .member-container .availability-container .i-am-unavailable,
+      .matches-page .member-container .availability-container .unavailable {
+        background-color: #fd3636;
+        color: #fff; }
+      .matches-page .member-container .availability-container .i-am-unconfirmed,
+      .matches-page .member-container .availability-container .unconfirmed {
+        background-color: #dadada;
+        color: #262228; }
+      .matches-page .member-container .availability-container .i-have-confirmed,
+      .matches-page .member-container .availability-container .i-am-unavailable,
+      .matches-page .member-container .availability-container .i-am-unconfirmed {
+        cursor: pointer;
+        transition: all 1s ease; }
     .matches-page .member-container .shirt {
       display: inline-block;
       height: 46px;
@@ -832,6 +862,7 @@ a:visited {
   max-width: 1024px;
   margin: 0 auto; }
 
+.hidden,
 .start-hidden {
   display: none;
   position: absolute; }

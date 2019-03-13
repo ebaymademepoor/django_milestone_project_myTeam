@@ -14,7 +14,7 @@
         {% if match_data %}
         <div class="container overview-container">
             <div class="row">
-                <p>Match ID:<span>{{ match_data.pk }}</span></p> 
+                <p>Match ID:<span id="match-id">{{ match_data.pk }}</span></p> 
                 <p>Date:<span>{{ match_data.date_of_match|date:'d-m-Y' }}</span></p> 
                 <p>Time:<span>{{ match_data.time_of_match|time:"H:i" }}</span></p> 
             </div>
@@ -75,8 +75,6 @@
         
         {% if avail_data|lower != "<QuerySet []>"|lower %}
         
-        We have some data
-        
             <!--Regardless of availability status, we add every member of the 
             group to the match page...-->
             
@@ -107,9 +105,19 @@
                                 {% for entry in avail_data %}
                                     {% if user|lower == entry.player|lower %}
                                         {% if entry.status == 1 %}
-                                            <p class="status">Confirmed</p>
+                                            {% if user|lower == this_user.email|lower %}
+                                                <p class="i-have-confirmed">Confirmed</p>
+                                                <span id="avail-table-pk" class="hidden">{{ entry.pk }}</span> 
+                                            {% else %}
+                                                <p class="confirmed">Confirmed</p>
+                                            {% endif %}
                                         {% else %}
-                                            <p class="status">Unavailable</p>
+                                            {% if user|lower == this_user.email|lower %}
+                                                <p class="i-am-unavailable">Unavailable</p>
+                                                <span id="avail-table-pk" class="hidden">{{ entry.pk }}</span> 
+                                            {% else %}
+                                                <p class="unavailable">Unavailable</p>
+                                            {% endif %}
                                         {% endif %}
                                     {% endif %}
                                 {% endfor %}
@@ -117,7 +125,13 @@
                             <!--If not, their status is yet to be confirmed...-->
                             
                             {% else %}
-                                <p>Unconfirmed</p> 
+                                {% if user|lower == this_user.email|lower %}
+                                    <p class="i-am-unconfirmed">Unconfirmed</p>
+                                    <span id="avail-table-pk" class="hidden"></span>
+                                {% else %}
+                                    <p class="unconfirmed">Unconfirmed</p>
+                                    <span id="avail-table-pk" class="hidden">{{ entry.pk }}</span>
+                                {% endif %}
                             {% endif %}
                         </div>
                     </div>
@@ -148,7 +162,12 @@
                             <p><p class="name">{{ user.username }}</p></p> 
                         </div>
                         <div class="availability-container">
-                            <p>Unconfirmed</p>
+                            {% if user|lower == this_user.email|lower %}
+                                    <p class="i-am-unconfirmed">Unconfirmed</p> 
+                                {% else %}
+                                    <p class="unconfirmed">Unconfirmed</p>
+                                    <span id="avail-table-pk" class="hidden">{{ entry.pk }}</span>
+                                {% endif %}
                         </div>
                     </div>
                 </div>

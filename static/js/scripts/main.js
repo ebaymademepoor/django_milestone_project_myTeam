@@ -1,3 +1,7 @@
+// Global Vars
+
+let preventClick = false
+
 // A message function to the user ----------------------------------------------
 
 function displayMessage(message) {
@@ -151,6 +155,44 @@ function preparePositionPrefData(element){
         return newFormData;
 }
 
+function updateMatchAvailability(buttonClicked){
+    
+    let status = 0
+    
+    // Upon click of the users availability box, change the classes and the status
+    
+    if(buttonClicked == "i-have-confirmed"){
+        $('.' + buttonClicked).removeClass("i-have-confirmed").addClass("i-am-unavailable").text("Unavailable");
+        status = 0
+        console.log("You were confirmed but you are now unavailable");
+    } else {
+        console.log("You just made yourself available");
+        status = 1
+        $('.' + buttonClicked).removeClass("i-am-unavailable i-am-unconfirmed").addClass("i-have-confirmed").text("Confirmed");
+    }
+    
+    // Build new data based on the results collected and return
+    
+    let matchID = $("#match-id").text();
+    let availTablePk = 0;
+    
+    if ($("#avail-table-pk").text() === ""){
+        availTablePk = 0;
+    } else {
+        availTablePk = $("#avail-table-pk").text();
+    }
+
+    let availabilityData = {};
+    
+    availabilityData["matchID"] = matchID;
+    availabilityData["availTablePk"] = availTablePk;
+    availabilityData["status"] = status;
+    
+    console.log(availabilityData);
+    return availabilityData;
+    
+}
+
 // Enables post of data to database --------------------------------------------
 
 function postData(type, data) {
@@ -174,6 +216,12 @@ function postData(type, data) {
         let profileURL= "../../rate_player/";
         let playerRated = $('#profile-id').text(); // the ID of the player being rated
         postToDatabase(profileURL, ratingData, playerRated);
+    } else if(type == "update-match-availability-status") {
+        preventClick = true
+        let availabilityData = data;
+        let matchesURL = "../../update_availability_status/";
+        let customRoute = availabilityData["matchID"] + "/" + availabilityData["availTablePk"];
+        postToDatabase(matchesURL, availabilityData, customRoute);
     }
 };
 
@@ -194,9 +242,17 @@ function postToDatabase(url, data, route){
             
             $('#update-form').remove();
             
-            if(url != "../update_position_pref/"){
+            if(url === "../../update_availability_status/"){
+                
+                // For use on updating availability status only if instance has just been created, the pk of the instance needs to be updated to avoid creating multiple instances
+                    
+                $("#avail-table-pk").text(json["instanceID"]);
+                preventClick = false
+                
+            } else if (url != "../update_position_pref/"){
                 if(json["result"] == 'Update successful!'){
-                    displayMessage("GOAL!  Details updated...");    
+                    displayMessage("GOAL!  Details updated...");
+                    
                 } else {
                     displayMessage("Hmmm, we're not sure that worked, please try later...");
                 }
@@ -342,6 +398,15 @@ $(document).ready(function() {
         let data = collectFormData("rate-player-form");
         if(data != null){
             postData("attribute-rating", data);    
+        }
+    });
+    
+     // Updates player match availability status when submitted ------------------
+    
+    $(".i-am-unconfirmed, .i-have-confirmed, .i-am-unavailable").click(function() {
+        if (preventClick === false){
+            let data = updateMatchAvailability(this.className);
+            postData("update-match-availability-status", data);
         }
     });
     

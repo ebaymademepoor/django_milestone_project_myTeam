@@ -1,9 +1,10 @@
 import datetime
 import re
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
-from .forms import CreateOrEditMatchHelperForm, processMatchRequestForm
+from .forms import CreateOrEditMatchHelperForm, processMatchRequestForm, UpdateMatchAvailabilityForm
 from groups.models import Group
 from .models import MatchData, AvailabilityTable
 from profile_and_stats.models import UserProfileData
@@ -11,12 +12,16 @@ from django.utils import timezone, six
 from django.utils.dateparse import parse_date
 from django.utils.timezone import get_fixed_timezone, utc
 from django.db import connection
+import json
 
 # Create your views here.
 @login_required
 def match_instance(request, groupid, matchid):
     
+    my_profile = UserProfileData.objects.get(email=request.user.email)
+    
     if int(matchid) == 0:
+        
         match_form = CreateOrEditMatchHelperForm()
         this_match = None
         avail_data = None
@@ -28,9 +33,7 @@ def match_instance(request, groupid, matchid):
         except:
             avail_data = None    
     
-    print(connection.queries)
-    
-    return render(request, 'match_page.html', { "match_form": match_form, "groupid" : groupid, "matchid": matchid, "match_data": this_match, "avail_data":avail_data })
+    return render(request, 'match_page.html', { "match_form": match_form, "groupid" : groupid, "matchid": matchid, "match_data": this_match, "avail_data":avail_data, "this_user" : my_profile })
 
 @login_required    
 def add_or_edit_a_match(request, groupid, matchid):
@@ -110,3 +113,36 @@ def add_or_edit_a_match(request, groupid, matchid):
     
     return redirect(reverse('group-home', kwargs={"id" : groupid}))
     
+@login_required
+def update_availability_status(request, matchid, availability_table_id):
+    
+    if request.method == "POST":
+        
+        try:
+            availability = AvailabilityTable.objects.get(pk=availability_table_id)
+        except:
+            availability = None
+        
+        new_data = {}
+        new_data["player"] = request.user.pk
+        new_data["matchID"] = request.POST["matchID"]
+        new_data["status"] = request.POST["status"]
+        new_data["availability_group"] = Group.objects.get(linked_group__pk=matchid).pk
+        
+        form = UpdateMatchAvailabilityForm(new_data, instance=availability)
+        
+        response_data = {}
+        
+        if form.is_valid():
+            new_record = form.save()
+            
+            response_data['result'] = 'Update successful!'
+            response_data['instanceID'] = new_record.pk
+            
+            
+            return HttpResponse(json.dumps(response_data),content_type="application/json")
+        else:
+            print(form.errors)
+            return HttpResponse(json.dumps({"ERROR":"Error in updating availability"}), content_type="application/json")
+    else:
+        return redirect(reverse('index'))

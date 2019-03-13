@@ -1,5 +1,5 @@
 from django import forms
-from .models import MatchData
+from .models import MatchData, AvailabilityTable
 
 class CreateOrEditMatchHelperForm(forms.ModelForm):
     """
@@ -14,3 +14,8 @@ class processMatchRequestForm(forms.ModelForm):
     class Meta:
         model = MatchData
         fields = ['venue', 'match_status', 'date_of_match', 'time_of_match', 'creator', 'associated_group', 'match_notes']
+        
+class UpdateMatchAvailabilityForm(forms.ModelForm):
+    class Meta:
+        model = AvailabilityTable
+        fields = ['player', 'matchID', 'status', 'availability_group']

@@ -736,6 +736,52 @@
             display: inline-block;
             width: 24%;
         }
+        
+        .row {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .availability-container {
+            
+            width: 100px;
+            
+            .i-have-confirmed,
+            .i-am-unavailable,
+            .i-am-unconfirmed,
+            .confirmed,
+            .unavailable,
+            .unconfirmed {
+                padding: 10px;
+                border-radius: 32px;
+                font-weight: 600;
+            }
+            
+            .i-have-confirmed,
+            .confirmed {
+                background-color: $preference-green;
+            }
+            
+            .i-am-unavailable,
+            .unavailable {
+                background-color: $error-red;
+                color: $white;
+            }
+            
+            .i-am-unconfirmed,
+            .unconfirmed {
+                background-color: $unconfirmed-grey;
+                color: $brand-evening-black;
+            }
+            
+            .i-have-confirmed,
+            .i-am-unavailable,
+            .i-am-unconfirmed {
+                cursor: pointer;
+                transition: all 1s ease;
+            }
+            
+        }
 
         .shirt {
             display: inline-block;

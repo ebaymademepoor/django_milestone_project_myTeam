@@ -433,6 +433,7 @@
         h2 {
             margin-bottom: 5px;
             min-height: 33px;
+            color: $brand-irises-green;
         }
 
         p {
@@ -472,6 +473,11 @@
         padding: 28px;
         box-sizing: border-box;
         margin-bottom: 0;
+        border-radius: 0;
+        
+        h2 {
+            color: $white;
+        }
 
     }
 
@@ -637,7 +643,7 @@
         
         .overview-container {
             text-align: left;
-            font-size: 8px;
+            font-size: 10px;
             
             span {
                 margin-left: 6px;
@@ -665,6 +671,7 @@
         form {
             max-width: 300px;
             position: relative;
+            font-size: 10px;
             
             .close-parent-btn {
                 text-align: right;
@@ -679,9 +686,14 @@
                 box-sizing: border-box;
                 margin-top: 10px;
                 font-family: 'Montserrat', sans-serif;
-                font-size: 11px;
+                font-size: 10px;
             }
-
+            
+            input,
+            select {
+                font-size: 10px;
+            }
+            
             select {
                 float: right;
                 font-family: 'Montserrat', sans-serif;
@@ -694,6 +706,14 @@
             p {
                 justify-content: space-between;
                 margin: 10px 0;
+            }
+            
+            option:first-of-type {
+                background-color: $preference-green;
+            }
+            
+            option {
+                background-color: $error-red;
             }
         }
     }

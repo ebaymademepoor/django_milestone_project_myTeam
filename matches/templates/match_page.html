@@ -66,27 +66,64 @@
         </form>
          
     </section>
-    {% if group_data %}
-    <section class="player-availability">
-        <h3>Player availability</h3> 
-        <div class="container member-container">
-            {% for user in group_data.users.all %}
-                <div class="row">
-                    <div class="user-container">
-                        <a class="shirt click-shrink" href="{% url 'player-profile' user.pk group_data.pk %}">
-                            <span class="container">
-                                <p id="curve-{{ user.pk }}" class="member-content username">
+    {% if match_data %}
+        <section class="player-availability">
+            
+        <h3>Player availability</h3>
+        {% for group in group_data %}
+        
+            <!--Regardless of availability status, we add every member of the 
+            group to the match page...-->
+            
+            {% for user in group.users.all %}
+                
+                <div class="container member-container">
+                    <div class="row">
+                        <div class="user-container">
+                            <a class="shirt click-shrink" href="{% url 'player-profile' user.pk groupid %}">
+                                <span class="container">
+                                    <p id="curve-{{ user.pk }}" class="member-content username">
                                     {% if user.nickname %}
                                         {{ user.nickname }}
                                     {% else %}?????{% endif %}
-                                </p>
-                            </span>
-                        </a>
+                                    </p>
+                                </span>
+                            </a>
+                            <p><p class="name">{{ user.username }}</p></p> 
+                        </div>
+                        <div class="availability-container">
+                            
+                            <!--Has the group member registered a status for this match?-->
+                
+                            {% if user.email|lower in user.player_detail.all|lower %}
+                            
+                                <!--If so, what status has they registered?-->
+                            
+                                {% for status in user.player_detail.all %}
+                                    
+                                    {% if status.status == 1 %}
+                                        <p class="status">Confirmed</p>
+                                    {% else %}
+                                        <p class="status">Unavailable</p>
+                                    {% endif %}
+                                    
+                                {% endfor %}
+                            {% else %}
+                                
+                                <!--If not, their status is yet to be confirmed...-->
+                                
+                                <p>Unconfirmed</p> 
+                            {% endif %}     
+                            
+                            
+                        </div>
                     </div>
                 </div>
+                
             {% endfor %}
-        </div>
-    </section>
+        {% endfor %}
+        
+        </section>
     {% endif %}
 </div>
 

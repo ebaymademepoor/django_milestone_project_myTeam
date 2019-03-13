@@ -1,31 +1,33 @@
+import datetime
+import re
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
 from .forms import CreateOrEditMatchHelperForm, processMatchRequestForm
 from groups.models import Group
-from .models import MatchData
+from .models import MatchData, AvailabilityTable
 from profile_and_stats.models import UserProfileData
-import datetime
-import re
 from django.utils import timezone, six
 from django.utils.dateparse import parse_date
 from django.utils.timezone import get_fixed_timezone, utc
+from django.db import connection
 
 # Create your views here.
 @login_required
 def match_instance(request, groupid, matchid):
     
     if int(matchid) == 0:
-
         match_form = CreateOrEditMatchHelperForm()
         this_match = None
-        group_data = None
+        availability = None
     else:
+        group_data = Group.objects.filter(linked_group__pk__exact=matchid)
         this_match = get_object_or_404(MatchData, pk=matchid)
         match_form = CreateOrEditMatchHelperForm(instance=this_match)
-        group_data = Group.objects.get(pk=groupid)
     
-    return render(request, 'match_page.html', { "match_form": match_form, "groupid" : groupid, "matchid": matchid, "match_data": this_match, "group_data" : group_data })
+    print(connection.queries)
+    
+    return render(request, 'match_page.html', { "match_form": match_form, "groupid" : groupid, "matchid": matchid, "match_data": this_match, "group_data": group_data })
 
 @login_required    
 def add_or_edit_a_match(request, groupid, matchid):

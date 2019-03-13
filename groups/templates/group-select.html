@@ -5,7 +5,7 @@
 {% block content %}
 <div class="page-container group-page">
     
-    {% if reg_error == "yes" %}
+    {% if reg_error == "yes-on-create" %}
     <form class="create-group-form" method="POST" action="{% url 'create-group' %}" autocomplete="off">
     {% else %}
     <form class="create-group-form start-hidden" method="POST" action="{% url 'create-group' %}" autocomplete="off">

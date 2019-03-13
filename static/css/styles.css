@@ -560,7 +560,8 @@ footer {
     max-width: 146px; }
     .group-box .group-details-container h2 {
       margin-bottom: 5px;
-      min-height: 33px; }
+      min-height: 33px;
+      color: #007849; }
     .group-box .group-details-container p {
       font-size: 14px; }
   .group-box .members-details-container {
@@ -584,7 +585,11 @@ footer {
   color: #fff;
   padding: 28px;
   box-sizing: border-box;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  border-radius: 0; }
+  .group-home header h2,
+  .group-home .group-box h2 {
+    color: #fff; }
 .group-home .group-id {
   background-color: #007849;
   padding: 6px;
@@ -691,7 +696,7 @@ footer {
     color: #fff; }
     .matches-page .match-data .overview-container {
       text-align: left;
-      font-size: 8px; }
+      font-size: 10px; }
       .matches-page .match-data .overview-container span {
         margin-left: 6px;
         font-weight: 500; }
@@ -707,7 +712,8 @@ footer {
         font-weight: 600; }
     .matches-page .match-data form {
       max-width: 300px;
-      position: relative; }
+      position: relative;
+      font-size: 10px; }
       .matches-page .match-data form .close-parent-btn {
         text-align: right;
         color: #fff;
@@ -719,7 +725,10 @@ footer {
         box-sizing: border-box;
         margin-top: 10px;
         font-family: 'Montserrat', sans-serif;
-        font-size: 11px; }
+        font-size: 10px; }
+      .matches-page .match-data form input,
+      .matches-page .match-data form select {
+        font-size: 10px; }
       .matches-page .match-data form select {
         float: right;
         font-family: 'Montserrat', sans-serif;
@@ -730,6 +739,10 @@ footer {
       .matches-page .match-data form p {
         justify-content: space-between;
         margin: 10px 0; }
+      .matches-page .match-data form option:first-of-type {
+        background-color: #23e623; }
+      .matches-page .match-data form option {
+        background-color: #fd3636; }
   .matches-page .player-availability {
     background-color: #fff;
     color: #007849;

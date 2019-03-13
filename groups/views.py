@@ -69,10 +69,12 @@ def create_group(request):
                 
             else:
                 if create_group_form.errors:
-                    return render(request, 'group-select.html', {"create_group_form": create_group_form, "reg_error":"yes" })
+                    join_group_form = JoinGroupForm()
+                    return render(request, 'group-select.html', {"create_group_form": create_group_form, "reg_error":"yes-on-create", "join_group_form": join_group_form })
                 else:
                     messages.error(request, "Oh dear, something went wrong.  Please try later")
-                    return render(request, 'group-select.html', {"create_group_form": create_group_form, "reg_error":"yes" })
+                    join_group_form = JoinGroupForm()
+                    return render(request, 'group-select.html', {"create_group_form": create_group_form, "reg_error":"yes-on-create", "join_group_form": join_group_form })
         
     else:
         return redirect(reverse('group-select'))    

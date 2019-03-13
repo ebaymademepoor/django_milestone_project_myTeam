@@ -35,6 +35,7 @@ class AvailabilityTable(models.Model):
     player = models.ForeignKey(UserProfileData, on_delete=models.CASCADE, null=False, blank=False, related_name="player_detail")
     matchID = models.ForeignKey(MatchData, on_delete=models.CASCADE, null=False, blank=False, related_name="match") 
     status = models.DecimalField(max_digits=1, decimal_places=0, default=0, null=True, blank=False)
+    availability_group = models.ForeignKey(Group, on_delete=models.CASCADE, null=False, blank=False, related_name="linked_availability_group")
     
     class Meta:
         ordering = ('matchID', 'status', 'player')

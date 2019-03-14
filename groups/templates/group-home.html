@@ -10,7 +10,15 @@
             <div class="container group-details-container">
                 <h2>{{ group_data.group_name }}</h2>
                 <p>Creator - {{ group_data.creator }}</p>
-                <p>Next match - TBC</p>
+                <p>Next match -
+                {% if "2" in group_data.next_match.all|lower %}
+                    {% for entry in group_data.next_match %} 
+                        <span>{{ entry.date_of_match }}</span>
+                    {% endfor %}
+                {% else %}
+                    <span>TBC</span>
+                {% endif %}
+                </p>
             </div>
             <div class="container members-details-container">
                 <div class="flex">

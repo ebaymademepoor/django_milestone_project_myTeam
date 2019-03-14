@@ -63,10 +63,10 @@ table {
   -moz-box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43);
   box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43); }
 
-.group-home .content .matches-box .match-link {
-  -webkit-box-shadow: inset -7px -7px 13px -6px rgba(255, 255, 255, 0.43);
-  -moz-box-shadow: inset -7px -7px 13px -6px rgba(255, 255, 255, 0.43);
-  box-shadow: inset -7px -7px 13px -6px rgba(255, 255, 255, 0.43); }
+.group-home .content .matches-box .match-link:nth-of-type(even) {
+  -webkit-box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63);
+  box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63); }
 
 nav .logo-pic, .group-home .content .member-box .member-container .shirt, .matches-page .member-container .shirt {
   background-position: center;
@@ -161,7 +161,7 @@ button,
   text-align: center;
   height: 20px;
   line-height: 20px;
-  background-color: #FFCE00; }
+  background-color: #826900; }
   .add-a-match-btn i {
     font-size: 18px;
     margin-top: 0.2px; }
@@ -179,6 +179,9 @@ button,
 
 .click-shrink:active {
   transform: scale(0.9); }
+
+.click-color-change:active {
+  background-color: #23e623 !important; }
 
 nav {
   background-color: #FFCE00; }
@@ -591,10 +594,12 @@ footer {
   .group-home .group-box h2 {
     color: #fff; }
 .group-home .group-id {
-  background-color: #007849;
+  background-color: #826900;
   padding: 6px;
   font-size: 8px;
-  color: #fff; }
+  color: #fff;
+  position: relative;
+  top: -1px; }
 .group-home .content {
   box-sizing: border-box; }
   .group-home .content .member-box,
@@ -624,7 +629,7 @@ footer {
         height: 46px;
         width: 100%;
         margin: 8px 0;
-        background-image: url("../img/transparent-shirt-red.png"); }
+        background-image: url("../img/transparent-shirt.png"); }
         .group-home .content .member-box .member-container .shirt .container {
           height: 100%;
           width: 100%;
@@ -650,7 +655,6 @@ footer {
     color: #0375B4;
     background-color: #fff;
     text-align: left;
-    padding: 0 20px 17px;
     position: relative; }
     .group-home .content .matches-box .container p {
       margin: 2px 0; }
@@ -658,23 +662,45 @@ footer {
       padding: 6px 0;
       text-align: left;
       display: inline-block;
-      width: 91%; }
-    .group-home .content .matches-box .row {
-      justify-content: center;
-      flex-wrap: wrap; }
+      width: 91%;
+      color: #262228; }
+    .group-home .content .matches-box .row:first-of-type {
+      padding: 2px 20px;
+      box-sizing: border-box;
+      justify-content: center; }
+    .group-home .content .matches-box .matches-row {
+      background-color: #262228;
+      justify-content: space-evenly;
+      overflow: hidden; }
+    .group-home .content .matches-box .match-link:nth-of-type(even) {
+      background-color: #826900;
+      width: 36%;
+      max-width: 150px; }
     .group-home .content .matches-box .match-link {
+      position: relative;
+      left: 6.5%;
       text-align: center;
-      background-color: #0375B4;
-      margin: 3px 7px;
+      background-color: #262228;
       display: inline-block;
       padding: 4px;
       font-size: 8px;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%; }
+      width: 30%;
+      max-width: 100px;
+      height: 56px;
+      -webkit-transform-origin: 100% 0;
+      -ms-transform-origin: 100% 0;
+      transform-origin: 100% 0;
+      -webkit-transform: skew(-24deg);
+      -ms-transform: skew(-24deg);
+      transform: skew(-24deg); }
       .group-home .content .matches-box .match-link .match-box {
         width: 100%;
         height: 100%; }
+        .group-home .content .matches-box .match-link .match-box p {
+          -webkit-transform: skew(24deg);
+          -ms-transform: skew(24deg);
+          transform: skew(24deg);
+          text-align: left; }
 
 .user-attributes-section label,
 .user-attributes-section input {
@@ -792,7 +818,7 @@ footer {
       height: 46px;
       width: 100%;
       margin: 8px 0;
-      background-image: url("../img/transparent-shirt-red.png"); }
+      background-image: url("../img/transparent-shirt.png"); }
       .matches-page .member-container .shirt .container {
         height: 100%;
         width: 100%;

@@ -22,6 +22,12 @@
     box-shadow: inset -7px -7px 13px -6px rgba(255,255,255,0.43);
 }
 
+%matches-box-shadow {
+    -webkit-box-shadow: inset -5px -5px 38px -12px rgba(0,0,0,0.63);
+    -moz-box-shadow: inset -5px -5px 38px -12px rgba(0,0,0,0.63);
+    box-shadow: inset -5px -5px 38px -12px rgba(0,0,0,0.63);
+}
+
 %contain-picture {
     background-position: center;
     background-size: contain;

@@ -9,3 +9,7 @@
 .click-shrink:active {
     transform: scale(0.9);
 }
+
+.click-color-change:active {
+    background-color: $preference-green !important;
+}

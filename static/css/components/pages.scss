@@ -482,10 +482,12 @@
     }
 
     .group-id {
-        background-color: $brand-irises-green;
+        background-color: $brand-evening-black-offset;
         padding: 6px;
         font-size: 8px;
         color: $white;
+        position: relative;
+        top: -1px;
     }
 
     .content {
@@ -526,7 +528,7 @@
                     height: 46px;
                     width: 100%;
                     margin: 8px 0;
-                    background-image: url('../img/transparent-shirt-red.png');
+                    background-image: url('../img/transparent-shirt.png');
                     @extend %contain-picture;
 
                     .container {
@@ -567,7 +569,6 @@
             color: $brand-starry-night-blue;
             background-color: $white;
             text-align: left;
-            padding: 0 20px 17px;
             position: relative;
 
             .container p {
@@ -579,31 +580,59 @@
                 text-align: left;
                 display: inline-block;
                 width: 91%;
+                color: $brand-evening-black;
             }
-
-            .row {
+            
+            .row:first-of-type {
+                padding: 2px 20px;
+                box-sizing: border-box;
                 justify-content: center;
-                flex-wrap: wrap;
             }
-
+            
+            .matches-row {
+                background-color: $brand-evening-black;
+                justify-content: space-evenly;
+                overflow: hidden;
+            }
+            
+            .match-link:nth-of-type(even) {
+                background-color: $brand-evening-black-offset;
+                width: 36%;
+                max-width: 150px;
+                @extend %matches-box-shadow;
+            }
+            
             .match-link {
+                position: relative;
+                left: 6.5%;
                 text-align: center;
-                background-color: $brand-starry-night-blue;
-                margin: 3px 7px;
+                background-color: $brand-evening-black;
                 display: inline-block;
                 padding: 4px;
                 font-size: 8px;
-                width: 70px;
-                height: 70px;
-                border-radius: 50%;
-                @extend %inset-shadow-white;
-
+                width: 30%;
+                max-width: 100px;
+                height: 56px;
+                
+                -webkit-transform-origin: 100% 0;
+                -ms-transform-origin: 100% 0;
+                transform-origin: 100% 0;
+                -webkit-transform: skew(-24deg);
+                -ms-transform: skew(-24deg);
+                transform: skew(-24deg);
+                
                 .match-box {
 
                     width: 100%;
                     height: 100%;
                     @extend %centralise-inner-container;
-
+                    
+                    p {
+                        -webkit-transform: skew(24deg);
+                        -ms-transform: skew(24deg);
+                        transform: skew(24deg);
+                        text-align: left;
+                    }
                 }
             }
 
@@ -788,7 +817,7 @@
             height: 46px;
             width: 100%;
             margin: 8px 0;
-            background-image: url('../img/transparent-shirt-red.png');
+            background-image: url('../img/transparent-shirt.png');
             @extend %contain-picture;
 
             .container {

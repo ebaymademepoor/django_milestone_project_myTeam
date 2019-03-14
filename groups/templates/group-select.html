@@ -48,7 +48,7 @@
         {% else %}
             {% for group in my_groups %}
             <a href="{% url 'group-home' group.pk %}">
-                <div class="container click-shrink group-box inset-shadow">
+                <div class="container sm-click-shrink group-box inset-shadow">
                     <div class="container group-details-container">
                         <h2>{{ group.group_name }}</h2>
                         <p>Creator - {{ group.creator }}</p>

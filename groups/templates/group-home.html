@@ -27,13 +27,16 @@
     </section>
     <section class="content">
         <div class="matches-box">
-            <h3>Matches</h3>
-            <a href="{% url 'matches' group_data.pk 0 %}" class="link-btn add-a-match-btn click-shrink"><i class="fas fa-plus-square"></i></a> 
+            <div class="row">
+                <h3>Matches</h3>
+                <a href="{% url 'matches' group_data.pk 0 %}" class="link-btn add-a-match-btn click-shrink"><i class="fas fa-plus-square"></i></a> 
+            </div> 
+            
             {% if matches %}
-                <div class="row">
+                <div class="row matches-row">
                 {% for match in matches %}
                 
-                    <a class="match-link" href="{% url 'matches' group_data.pk match.pk %}">
+                    <a class="match-link click-color-change" href="{% url 'matches' group_data.pk match.pk %}">
                         <div class="match-box">
                             <div class="container">
                                 <p>Match ID: {{ match.id }}</p> 

@@ -102,7 +102,9 @@ button,
     text-align: center;
     height: 20px;
     line-height: 20px;
-    background-color: $brand-evening-black-offset;
+    background-color: $brand-sunflower-yellow;
+    border-radius: 2px;
+    border: none;
     
     @extend %inset-shadow;
     

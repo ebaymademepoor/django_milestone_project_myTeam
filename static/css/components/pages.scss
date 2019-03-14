@@ -476,7 +476,7 @@
         max-width: unset;
         background-color: $brand-evening-black;
         color: $white;
-        padding: 28px;
+        padding: 28px 28px 16px;
         box-sizing: border-box;
         margin-bottom: 0;
         border-radius: 0;
@@ -493,7 +493,6 @@
         font-size: 8px;
         color: $white;
         position: relative;
-        top: -1px;
     }
 
     .content {
@@ -572,8 +571,8 @@
 
         .matches-box {
             width: 100%;
-            color: $brand-starry-night-blue;
-            background-color: $white;
+            color: $brand-sunflower-yellow;
+            background-color: $brand-evening-black;
             text-align: left;
             position: relative;
 
@@ -586,13 +585,16 @@
                 text-align: left;
                 display: inline-block;
                 width: 91%;
-                color: $brand-evening-black;
             }
             
             .row:first-of-type {
                 padding: 2px 20px;
                 box-sizing: border-box;
                 justify-content: center;
+            }
+            
+            .no-matches {
+                padding: 20px;
             }
             
             .matches-row {
@@ -639,6 +641,9 @@
                         transform: skew(24deg);
                         text-align: left;
                         width: 66px;
+                        font-family: 'Staatliches', cursive;
+                        font-size: 9px;
+                        letter-spacing: 0.2px;
                     }
                     
                     span {
@@ -668,6 +673,7 @@
 }
 
 // match_page.html -------------------------------------------------------------
+
 .matches-page {
 
     background-color: $brand-irises-green;
@@ -688,16 +694,6 @@
             span {
                 margin-left: 6px;
                 font-weight: 500;
-            }
-            
-            .cancelled {
-                color: $error-red;
-                font-weight: 600;
-            }
-            
-            .scheduled {
-                color: $preference-green;
-                font-weight: 600;
             }
             
             p {

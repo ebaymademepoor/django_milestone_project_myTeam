@@ -28,7 +28,7 @@
     <section class="content">
         <div class="matches-box">
             <div class="row">
-                <h3>Matches</h3>
+                <h3>Recent / Upcoming Matches</h3>
                 <a href="{% url 'matches' group_data.pk 0 %}" class="link-btn add-a-match-btn click-shrink"><i class="fas fa-plus-square"></i></a> 
             </div> 
             
@@ -41,13 +41,11 @@
                             <div class="container">
                                 <p>Match ID: <span>{{ match.id }}</span></p> 
                                 <p>Status:
-                                    <span>
-                                        {% if match.match_status == "S" %} 
-                                        ON 
-                                        {% else %}
-                                        CANCELLED
-                                        {% endif %}
-                                    </span>         
+                                    {% if match.match_status == "S" %} 
+                                        <span class="scheduled">ON</span>
+                                    {% else %}
+                                        <span class="cancelled">CANCELLED</span>
+                                    {% endif %}
                                 </p> 
                                 <p>Date: <span>{{ match.date_of_match|date:'d-m-Y' }}</span></p> 
                                 <p>Kick off: <span>{{ match.time_of_match|time:"H:i" }}</span></p> 
@@ -57,7 +55,7 @@
                 {% endfor %}
                 </div>
             {% else %}
-                <p>There are currently no matches scheduled</p> 
+                <p class="no-matches">There are currently no matches scheduled</p> 
             {% endif %}
         </div>
         

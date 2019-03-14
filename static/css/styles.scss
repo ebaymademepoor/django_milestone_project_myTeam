@@ -100,3 +100,13 @@ a:visited {
         align-items: center;
         justify-content: start;
 }
+
+.cancelled {
+    color: $error-red;
+    font-weight: 600 !important;
+}
+            
+.scheduled {
+    color: $preference-green;
+    font-weight: 600 !important;
+}

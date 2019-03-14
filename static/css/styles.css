@@ -161,7 +161,9 @@ button,
   text-align: center;
   height: 20px;
   line-height: 20px;
-  background-color: #826900; }
+  background-color: #FFCE00;
+  border-radius: 2px;
+  border: none; }
   .add-a-match-btn i {
     font-size: 18px;
     margin-top: 0.2px; }
@@ -593,7 +595,7 @@ footer {
   max-width: unset;
   background-color: #262228;
   color: #fff;
-  padding: 28px;
+  padding: 28px 28px 16px;
   box-sizing: border-box;
   margin-bottom: 0;
   border-radius: 0; }
@@ -605,8 +607,7 @@ footer {
   padding: 6px;
   font-size: 8px;
   color: #fff;
-  position: relative;
-  top: -1px; }
+  position: relative; }
 .group-home .content {
   box-sizing: border-box; }
   .group-home .content .member-box,
@@ -659,8 +660,8 @@ footer {
       padding: 0 0 6px 0; }
   .group-home .content .matches-box {
     width: 100%;
-    color: #0375B4;
-    background-color: #fff;
+    color: #FFCE00;
+    background-color: #262228;
     text-align: left;
     position: relative; }
     .group-home .content .matches-box .container p {
@@ -669,12 +670,13 @@ footer {
       padding: 6px 0;
       text-align: left;
       display: inline-block;
-      width: 91%;
-      color: #262228; }
+      width: 91%; }
     .group-home .content .matches-box .row:first-of-type {
       padding: 2px 20px;
       box-sizing: border-box;
       justify-content: center; }
+    .group-home .content .matches-box .no-matches {
+      padding: 20px; }
     .group-home .content .matches-box .matches-row {
       background-color: #262228;
       justify-content: space-evenly;
@@ -708,7 +710,10 @@ footer {
           -ms-transform: skew(24deg);
           transform: skew(24deg);
           text-align: left;
-          width: 66px; }
+          width: 66px;
+          font-family: 'Staatliches', cursive;
+          font-size: 9px;
+          letter-spacing: 0.2px; }
         .group-home .content .matches-box .match-link .match-box span {
           float: right; }
 
@@ -736,12 +741,6 @@ footer {
       .matches-page .match-data .overview-container span {
         margin-left: 6px;
         font-weight: 500; }
-      .matches-page .match-data .overview-container .cancelled {
-        color: #fd3636;
-        font-weight: 600; }
-      .matches-page .match-data .overview-container .scheduled {
-        color: #23e623;
-        font-weight: 600; }
       .matches-page .match-data .overview-container p {
         display: inline-block;
         margin: 2px 8px 2px 0;
@@ -921,5 +920,13 @@ a:visited {
   display: flex;
   align-items: center;
   justify-content: start; }
+
+.cancelled {
+  color: #fd3636;
+  font-weight: 600 !important; }
+
+.scheduled {
+  color: #23e623;
+  font-weight: 600 !important; }
 
 /*# sourceMappingURL=styles.css.map */

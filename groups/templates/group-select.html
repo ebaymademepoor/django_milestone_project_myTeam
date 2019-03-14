@@ -52,7 +52,16 @@
                     <div class="container group-details-container">
                         <h2>{{ group.group_name }}</h2>
                         <p>Creator - {{ group.creator }}</p>
-                        <p>Next match - TBC</p>
+                        <p>Next match -
+                            {% if "2" in group.next_match.all|lower %}
+                                {% for entry in group.next_match %} 
+                                    {{ entry.date_of_match }}
+                                {% endfor %}
+                            {% else %}
+                            TBC
+                            {% endif %}
+                            
+                        </p>
                     </div>
                     <div class="container members-details-container">
                         <div class="flex">

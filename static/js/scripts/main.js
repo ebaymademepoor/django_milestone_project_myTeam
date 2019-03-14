@@ -460,7 +460,8 @@ $(document).ready(function() {
             scale: {
                 ticks: {
                     beginAtZero: true,
-                    max: 10
+                    max: 10,
+                    stepSize: 2
                 }
             }   
         }

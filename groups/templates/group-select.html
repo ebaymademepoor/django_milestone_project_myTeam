@@ -14,7 +14,7 @@
         {% csrf_token %}
         {{ create_group_form.as_p }}
         {{ form.non_field_errors }}
-        <button class="new-group-btn make-pointer" type="submit">Create</button>
+        <button class="new-group-btn make-pointer click-shrink" type="submit">Create</button>
     </form>
     
     {% if reg_error == "yes" %}
@@ -26,7 +26,7 @@
         {% csrf_token %}
         {{ join_group_form.as_p }}
         {{ form.non_field_errors }}
-        <button class="join-group-btn make-pointer" type="submit">Join</button>
+        <button class="join-group-btn make-pointer click-shrink" type="submit">Join</button>
     </form>
     
     <section class="create-join-group-area">

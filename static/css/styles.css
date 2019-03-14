@@ -457,6 +457,10 @@ footer {
   color: #0375B4; }
 .user-attributes-section .container {
   margin-bottom: 22px; }
+.user-attributes-section .chart-container,
+.user-attributes-section .btn-container,
+.user-attributes-section .attr-container {
+  margin-bottom: 0px; }
 .user-attributes-section .row {
   width: 100%; }
 .user-attributes-section dt,
@@ -678,7 +682,7 @@ footer {
       max-width: 150px; }
     .group-home .content .matches-box .match-link {
       position: relative;
-      left: 6.5%;
+      left: 4.5%;
       text-align: center;
       background-color: #262228;
       display: inline-block;
@@ -700,7 +704,10 @@ footer {
           -webkit-transform: skew(24deg);
           -ms-transform: skew(24deg);
           transform: skew(24deg);
-          text-align: left; }
+          text-align: left;
+          width: 66px; }
+        .group-home .content .matches-box .match-link .match-box span {
+          float: right; }
 
 .user-attributes-section label,
 .user-attributes-section input {

@@ -1,6 +1,7 @@
 // Global Vars
 
 let preventClick = false
+var ctx = $("#myChart");
 
 // A message function to the user ----------------------------------------------
 
@@ -351,6 +352,30 @@ function curvePlayerNames(){
     }
 }
 
+// Prepares chart data for radar chart
+
+function prepareChartData(){
+    if($('.gk-rate').text() === ""){
+        let gkRating = parseInt($('.gk-rate').val());
+        let defRating = parseInt($('.def-rate').val());
+        let moveRating = parseInt($('.move-rate').val());
+        let passRating = parseInt($('.pass-rate').val());
+        let finRating = parseInt($('.fin-rate').val());
+        
+        let ratingsList = [gkRating, defRating, moveRating, passRating, finRating];
+        return ratingsList
+    } else {
+        let gkRating = $('.gk-rate').text();
+        let defRating = parseInt($('.def-rate').text());
+        let moveRating = parseInt($('.move-rate').text());
+        let passRating = parseInt($('.pass-rate').text());
+        let finRating = parseInt($('.fin-rate').text());
+        
+        let ratingsList = [gkRating, defRating, moveRating, passRating, finRating];
+        return ratingsList
+    }
+}
+
 // Script ----------------------------------------------------------------------
 
 $(document).ready(function() {
@@ -358,7 +383,6 @@ $(document).ready(function() {
     // activateButton will allow buttons to perform their set funtion based on their id...
     
     activateButton();
-    
     
     // Helper functions
     closeParent();
@@ -411,6 +435,36 @@ $(document).ready(function() {
     });
     
     curvePlayerNames();
+    
+    
+    // Chart.js Radar chart
+    
+    var myRadarChart = new Chart(ctx, {
+        
+        type: 'radar',
+        data: {
+            labels: ['Goalkeeping', 'Defending', 'Movement', 'Passing', 'Finishing'],
+            datasets: [{
+                data: prepareChartData(),
+                backgroundColor: 'rgba(35, 230, 35, 0.3)',
+                borderColor: 'rgba(35, 230, 35, 0.9)'
+            }]
+        },
+        options: {
+            legend: {
+                display: false,
+            },
+            title: {
+                display: false,
+            },
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 10
+                }
+            }   
+        }
+    });
     
     // This code retrieves our form csrf token to enable safe ajax requests --------
 

@@ -87,22 +87,24 @@
     </section>
     <section class="user-attributes-section">
         <h4>User attributes (max 10) - number of user votes = <span>{{ votes }}</span></h4>
-        <dl class="container">
+        <dl class="container attr-container">
             <div class="row">
-                <dt>Goalkeeping</dt><dd>{{ attributes.avg_gk }}</dd>
-                <dt>Passing</dt><dd>{{ attributes.avg_pass }}</dd>
+                <dt>Goalkeeping</dt><dd class="gk-rate">{{ attributes.avg_gk }}</dd>
+                <dt>Passing</dt><dd class="pass-rate">{{ attributes.avg_pass }}</dd>
             </div>
             <div class="row">
-                <dt>Defending</dt><dd>{{ attributes.avg_def }}</dd>
-                <dt>Finishing</dt><dd>{{ attributes.avg_fin }}</dd>
+                <dt>Defending</dt><dd class="def-rate">{{ attributes.avg_def }}</dd>
+                <dt>Finishing</dt><dd class="fin-rate">{{ attributes.avg_fin }}</dd>
             </div>
             <div class="row">
-                <dt>Movement</dt><dd>{{ attributes.avg_move }}</dd>
+                <dt>Movement</dt><dd class="move-rate">{{ attributes.avg_move }}</dd>
                 <dt>Outfield Score</dt><dd>{{ avg_outfield }}</dd>
             </div>
         </dl>
-        <div class="container">
-            <div>ATTRIBUTES GRAPH TO GO HERE</div> 
+        <div class="container chart-container">
+            
+            <canvas id="myChart" width="400" height="400"></canvas>
+            
         </div>
     </section>
     <section class="user-form-section">

@@ -282,6 +282,12 @@
     .container {
         margin-bottom: 22px;
     }
+    
+    .chart-container,
+    .btn-container,
+    .attr-container {
+        margin-bottom: 0px;
+    }
 
     .row {
         width: 100%;
@@ -604,7 +610,7 @@
             
             .match-link {
                 position: relative;
-                left: 6.5%;
+                left: 4.5%;
                 text-align: center;
                 background-color: $brand-evening-black;
                 display: inline-block;
@@ -632,6 +638,11 @@
                         -ms-transform: skew(24deg);
                         transform: skew(24deg);
                         text-align: left;
+                        width: 66px;
+                    }
+                    
+                    span {
+                        float: right;
                     }
                 }
             }

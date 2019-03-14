@@ -115,34 +115,50 @@ def add_or_edit_a_match(request, groupid, matchid):
     
 @login_required
 def update_availability_status(request, matchid, availability_table_id):
-    
+    """ 
+    Allows user to make themselves available or unavailable for a match by
+    creating an instance for that match that confirms their availability
+    """
     if request.method == "POST":
+        
+        # Edit or create an instance by checking if one is already available
         
         try:
             availability = AvailabilityTable.objects.get(pk=availability_table_id)
         except:
             availability = None
         
+        group = Group.objects.get(linked_group__pk=matchid)
+        
+        # Prepare the data received via js ajax
+        
         new_data = {}
         new_data["player"] = request.user.pk
         new_data["matchID"] = request.POST["matchID"]
         new_data["status"] = request.POST["status"]
-        new_data["availability_group"] = Group.objects.get(linked_group__pk=matchid).pk
+        new_data["availability_group"] = group.pk
         
-        form = UpdateMatchAvailabilityForm(new_data, instance=availability)
+        """ Security check to make sure data is all related, is user in 
+        associated group? """
         
-        response_data = {}
+        if str(request.user.email) in str(group.users.all()):
         
-        if form.is_valid():
-            new_record = form.save()
+            form = UpdateMatchAvailabilityForm(new_data, instance=availability)
             
-            response_data['result'] = 'Update successful!'
-            response_data['instanceID'] = new_record.pk
+            response_data = {}
             
-            
-            return HttpResponse(json.dumps(response_data),content_type="application/json")
+            if form.is_valid():
+                new_record = form.save()
+                
+                response_data['result'] = 'Update successful!'
+                response_data['instanceID'] = new_record.pk
+                
+                
+                return HttpResponse(json.dumps(response_data),content_type="application/json")
+            else:
+                print(form.errors)
+                return HttpResponse(json.dumps({"ERROR":"Error in updating availability"}), content_type="application/json")
         else:
-            print(form.errors)
-            return HttpResponse(json.dumps({"ERROR":"Error in updating availability"}), content_type="application/json")
+            return HttpResponse(json.dumps({"ERROR":"You are not a member of this group!"}), content_type="application/json")
     else:
         return redirect(reverse('index'))

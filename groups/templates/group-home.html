@@ -39,15 +39,18 @@
                     <a class="match-link click-color-change" href="{% url 'matches' group_data.pk match.pk %}">
                         <div class="match-box">
                             <div class="container">
-                                <p>Match ID: {{ match.id }}</p> 
-                                <p>Status: 
-                                    {% if match.match_status == "S" %} 
-                                    ON 
-                                    {% else %}
-                                    CANCELLED
-                                    {% endif %}</p> 
-                                <p>Date: {{ match.date_of_match|date:'d-m-Y' }}</p> 
-                                <p>Kick off: {{ match.time_of_match|time:"H:i" }}</p> 
+                                <p>Match ID: <span>{{ match.id }}</span></p> 
+                                <p>Status:
+                                    <span>
+                                        {% if match.match_status == "S" %} 
+                                        ON 
+                                        {% else %}
+                                        CANCELLED
+                                        {% endif %}
+                                    </span>         
+                                </p> 
+                                <p>Date: <span>{{ match.date_of_match|date:'d-m-Y' }}</span></p> 
+                                <p>Kick off: <span>{{ match.time_of_match|time:"H:i" }}</span></p> 
                             </div>
                         </div>
                     </a>

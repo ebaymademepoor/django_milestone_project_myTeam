@@ -90,15 +90,15 @@
                 <div class="container">
                     
                     <div class="row">
-                        <label for="gk_score">Goalkeeping</label><input name="gk_score" type="number" min="1" max="10" step="1" required value="{{ ratings.gk_score }}"> 
-                        <label for="passing_score">Passing</label><input name="passing_score" type="number" min="1" max="10" step="1" required value="{{ ratings.passing_score }}"> 
+                        <label for="gk_score">Goalkeeping</label><input class="gk-rate" name="gk_score" type="number" min="1" max="10" step="1" required value="{{ ratings.gk_score }}"> 
+                        <label for="passing_score">Passing</label><input class="pass-rate" name="passing_score" type="number" min="1" max="10" step="1" required value="{{ ratings.passing_score }}"> 
                     </div>
                     <div class="row">
-                        <label for="def_score">Defending</label><input name="def_score" type="number" min="1" max="10" step="1" required value="{{ ratings.def_score }}"> 
-                        <label for="finishing_score">Finishing</label><input name="finishing_score" type="number" min="1" max="10" step="1" required value="{{ ratings.finishing_score }}"> 
+                        <label for="def_score">Defending</label><input class="def-rate" name="def_score" type="number" min="1" max="10" step="1" required value="{{ ratings.def_score }}"> 
+                        <label for="finishing_score">Finishing</label><input class="fin-rate" name="finishing_score" type="number" min="1" max="10" step="1" required value="{{ ratings.finishing_score }}"> 
                     </div>
                     <div class="row">
-                        <label for="movement_score">Movement</label><input name="movement_score" type="number" min="1" max="10" step="1" required value="{{ ratings.movement_score }}"> 
+                        <label for="movement_score">Movement</label><input class="move-rate" name="movement_score" type="number" min="1" max="10" step="1" required value="{{ ratings.movement_score }}"> 
                         <label for="outfield_score">Outfield Score</label>
                         <p>
                             {% if ratings.outfield_score %}
@@ -109,12 +109,12 @@
                         </p>  
                     </div>
                 </div>
-                <div class="container">
+                <div class="container btn-container">
                     <button class="update-player-attributes-btn">Update</button> 
                 </div>
             </form>
-            <div class="container">
-                <div>ATTRIBUTES GRAPH TO GO HERE</div> 
+            <div class="container chart-container">
+                <canvas id="myChart" width="400" height="400"></canvas> 
             </div>
         </section>
     {% endif %}

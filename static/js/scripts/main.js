@@ -461,7 +461,8 @@ $(document).ready(function() {
                 ticks: {
                     beginAtZero: true,
                     max: 10,
-                    stepSize: 2
+                    stepSize: 2,
+                    display: false
                 }
             }   
         }

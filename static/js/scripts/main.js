@@ -58,10 +58,10 @@ function returnExistingProfileData(){
     return profileData;
 }
 
-function collectFormData(formIDName){
+function collectFormData(type, formName){
     // Collects any form data ready to be POSTED via ajax
     
-    var formData = $("#" + formIDName).serializeArray(); // The serialized new data entered into the form
+    var formData = $(type + formName).serializeArray(); // The serialized new data entered into the form
     
     // Check is any values are blank or not filled in
         
@@ -74,7 +74,7 @@ function collectFormData(formIDName){
     
     // If rating a player, ensure values are between 1 and 10
     
-    if(formIDName == "rate-player-form"){
+    if(formName == "rate-player-form"){
         for(i = 0; i < formData.length; i++){
            if(formData[i].value < 1 || formData[i].value > 10){
                 displayMessage("Your ratings must be between 1 & 10, please adjust accordingly...")
@@ -132,6 +132,34 @@ function replaceOldValuesInRealtime(data){
     Object.entries(data).forEach(([key, value]) => {
         $('.' + key).next().text(value);
     });    
+}
+
+function collectTeamSettingsData(type, formName){
+    // Collects any form data ready to be POSTED via ajax
+    
+    var formData = $(type + formName); // The serialized new data entered into the form
+    
+    let userData = [];
+    
+    for(i = 0; i < formData.length; i++){
+        let thisUsersData = [];
+        
+        for(ii = 0; ii < formData[i].length; ii++){
+            if(formData[i][ii].name === "force-pick"){
+                if(formData[i][ii].checked === true){
+                   thisUsersData[formData[i][ii].name] = "true";
+                } else {
+                    thisUsersData[formData[i][ii].name] = "false";
+                }
+            } else {
+                thisUsersData[formData[i][ii].name] = formData[i][ii].value;    
+            }
+        }
+        
+        userData.push(thisUsersData);        
+    }
+
+    console.log(userData);
 }
 
 // Edit data functions (position preferences) ----------------------------------
@@ -295,6 +323,9 @@ function activateButton() {
             case "open-create-group-form-icon":    
                 $('.create-group-form').show();
                 break;
+            case "pick-teams-btn":
+                collectTeamSettingsData(".", "player-data-row")
+                break;
             default:
                 console.log('No action Available');
                 console.log(this.id);
@@ -343,8 +374,6 @@ function unhideABox(buttonClickedClass, classToUnhide){
 function curvePlayerNames(){
     
     let playersOnPage = $('.username');
-    
-    console.log(playersOnPage);
     
     for(i = 0; i < playersOnPage.length; i++){
         const circleType = new CircleType(document.getElementById(playersOnPage[i].id));
@@ -419,7 +448,7 @@ $(document).ready(function() {
     $('body').on("click", ".update-player-attributes-btn", function(e) {
         e.preventDefault();
         console.log("form submitted!");
-        let data = collectFormData("rate-player-form");
+        let data = collectFormData("#", "rate-player-form");
         if(data != null){
             postData("attribute-rating", data);    
         }

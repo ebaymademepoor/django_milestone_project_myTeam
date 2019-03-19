@@ -4,28 +4,83 @@
 
 {% block content %}
 
-<h2>Team Generation</h2> 
-
-<div class="member-box">
-            <div class="row">
-                <h2>Group members</h2>
+    <section class="team-gen-settings-pg">
+        <div class="container member-container">
+            <h2>Team Generation</h2> 
+            
+            <div class="options-header">
+                <h3>Options</h3>
+                <p>Available</p> 
+                <p>Force pick</p> 
             </div>
-            <div class="container member-container">
-                {% for user in group_data.users.all %}
-                <div class="user-container">
-                    <a class="shirt click-shrink" href="{% url 'player-profile' user.pk group_data.pk %}">
-                        <span class="container">
-                            {% if user.nickname %}
-                                <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname }}</p>
-                            {% else %}
-                                <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username }}</p>
-                            {% endif %}
-                        </span>
-                    </a>
+            
+            
+            {% for user in group_data.users.all %}
+            <form class="row player-data-row">
+                <div class="container player-pref-container">
+                    <input class="member-content username" type="text" name="users-name" value="{{ user.username }}" readonly>
+                    
+                    {% if user.gk_pref == 0 %}
+                        <input class="cant-play" name="gk-pref" value="{{ user.gk_pref }}" readonly>
+                    {% elif user.gk_pref == 1 %}
+                        <input class="can-play" name="gk-pref" value="{{ user.gk_pref }}" readonly>
+                    {% else %}
+                        <input class="pref-play" name="gk-pref" value="{{ user.gk_pref }}" readonly>
+                    {% endif %}
+                    
+                    {% if user.def_pref == 0 %}
+                        <input class="cant-play" name="def-pref" value="{{ user.def_pref }}" readonly>
+                    {% elif user.def_pref == 1 %}
+                        <input class="can-play" name="def-pref" value="{{ user.def_pref }}" readonly>
+                    {% else %}
+                        <input class="pref-play" name="def-pref" value="{{ user.def_pref }}" readonly>
+                    {% endif %}
+                    
+                    {% if user.mid_pref == 0 %}
+                        <input class="cant-play" name="mid-pref" value="{{ user.mid_pref }}" readonly>
+                    {% elif user.mid_pref == 1 %}
+                        <input class="can-play" name="mid-pref" value="{{ user.mid_pref }}" readonly>
+                    {% else %}
+                        <input class="pref-play" name="mid-pref" value="{{ user.mid_pref }}" readonly>
+                    {% endif %}
+                    
+                    {% if user.att_pref == 0 %}
+                        <input class="cant-play" name="att-pref" value="{{ user.att_pref }}" readonly>
+                    {% elif user.att_pref == 1 %}
+                        <input class="can-play" name="att-pref" value="{{ user.att_pref }}" readonly>
+                    {% else %}
+                        <input class="pref-play" name="att-pref" value="{{ user.att_pref }}" readonly>
+                    {% endif %}
+                    
                 </div>
-                {% endfor %}
-            </div>
+                
+                {% if user.email|lower in avail_data.all|lower %}
+                
+                    {% for data in avail_data %}
+                        {% if data.player|lower == user.email|lower %}
+                            {% if data.status == 1 %}
+                                <input class="confirmed" type="text" name="available" value="Yes" readonly>
+                            {% elif data.status == 0 %}
+                                <input class="unavailable" type="text" name="available" value="No" readonly>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <input class="unconfirmed" type="text" name="available" value="TBC" readonly>
+                {% endif %}
+                
+                <div class="gen-options-box">
+                    <label class="switch">
+                        <input type="checkbox" name="force-pick" value="true">
+                        <span class="slider round"></span>
+                    </label>
+                
+                </div>
+            </form> 
+            {% endfor %}
+            
         </div>
+        <button id="pick-teams-btn">Pick Teams</button> 
     </section>
 
 {% endblock %}

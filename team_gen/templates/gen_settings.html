@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Team generation settings {% endblock %}
+
+{% block content %}
+
+<h2>Team Generation</h2> 
+
+<div class="member-box">
+            <div class="row">
+                <h2>Group members</h2>
+            </div>
+            <div class="container member-container">
+                {% for user in group_data.users.all %}
+                <div class="user-container">
+                    <a class="shirt click-shrink" href="{% url 'player-profile' user.pk group_data.pk %}">
+                        <span class="container">
+                            {% if user.nickname %}
+                                <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname }}</p>
+                            {% else %}
+                                <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username }}</p>
+                            {% endif %}
+                        </span>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

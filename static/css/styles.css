@@ -168,10 +168,13 @@ button,
     font-size: 18px;
     margin-top: 0.2px; }
 
-.edit-match-btn {
-  width: 52px;
+.edit-match-btn,
+.team-gen-link-btn {
+  width: 86px;
   height: 17px;
-  line-height: 16px; }
+  line-height: 16px;
+  font-size: 8px;
+  margin-bottom: 0; }
 
 .start-off-screen {
   right: -100%; }
@@ -841,6 +844,11 @@ footer {
           padding: 0; }
           .matches-page .member-container .shirt .container .username div {
             margin-top: 5px; }
+  .matches-page .team-generation {
+    padding: 10px 28px;
+    background-color: #826900; }
+    .matches-page .team-generation a {
+      margin: 0; }
 
 .index-page-bg-settings {
   width: 100%;

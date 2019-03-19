@@ -7,7 +7,7 @@ class Group(models.Model):
     group_name = models.CharField(max_length=26, blank=False, null=False)
     password = models.CharField(max_length=160, blank=False, null=False)
     date_created = models.DateTimeField(auto_now_add=True, blank=False)
-    users = models.ManyToManyField(UserProfileData)
+    users = models.ManyToManyField(UserProfileData, related_name="my_group")
     
     def next_match(self):
         return self.linked_group.filter(date_of_match__gte=timezone.now())[0:1]

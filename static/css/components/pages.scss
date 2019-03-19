@@ -845,5 +845,13 @@
             }
         }
     }
-
+    
+    .team-generation {
+        padding: 10px 28px;
+        background-color: $brand-evening-black-offset;
+        
+        a {
+            margin: 0;   
+        }
+    }
 }

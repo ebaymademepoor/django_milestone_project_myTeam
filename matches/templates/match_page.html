@@ -66,8 +66,14 @@
         </form>
          
     </section>
+    
     {% if match_data %}
-        <section class="player-availability">
+        <section class="team-generation">
+            <a class="click-shrink link-btn team-gen-link-btn" href="{% url 'team-gen-settings' matchid %}">Generate Teams</a> 
+        </section>
+        
+        
+    <section class="player-availability">
             
         <h3>Player availability</h3>
         
@@ -85,14 +91,13 @@
                         <div class="user-container">
                             <a class="shirt click-shrink" href="{% url 'player-profile' user.pk groupid %}">
                                 <span class="container">
-                                    <p id="curve-{{ user.pk }}" class="member-content username">
                                     {% if user.nickname %}
-                                        {{ user.nickname }}
-                                    {% else %}?????{% endif %}
-                                    </p>
+                                        <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname }}</p>
+                                    {% else %}
+                                        <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username }}</p>
+                                    {% endif %}
                                 </span>
                             </a>
-                            <p><p class="name">{{ user.username }}</p></p> 
                         </div>
                         <div class="availability-container">
                             
@@ -136,7 +141,6 @@
                         </div>
                     </div>
                 </div>
-                <hr>
             {% endfor %}
         
         
@@ -153,14 +157,15 @@
                         <div class="user-container">
                             <a class="shirt click-shrink" href="{% url 'player-profile' user.pk groupid %}">
                                 <span class="container">
-                                    <p id="curve-{{ user.pk }}" class="member-content username">
-                                    {% if user.nickname %}
-                                        {{ user.nickname }}
-                                    {% else %}?????{% endif %}
-                                    </p>
+                                    <span class="container">
+                                        {% if user.nickname %}
+                                            <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname }}</p>
+                                        {% else %}
+                                            <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username }}</p>
+                                        {% endif %}
+                                    </span>
                                 </span>
                             </a>
-                            <p><p class="name">{{ user.username }}</p></p> 
                         </div>
                         <div class="availability-container">
                             {% if user|lower == this_user.email|lower %}
@@ -172,7 +177,6 @@
                         </div>
                     </div>
                 </div>
-                <hr> 
             {% endfor %}
         {% endif %}
         </section>

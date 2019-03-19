@@ -76,13 +76,12 @@
                 <div class="user-container">
                     <a class="shirt click-shrink" href="{% url 'player-profile' user.pk group_data.pk %}">
                         <span class="container">
-                            <p id="curve-{{ user.pk }}" class="member-content username">
-                                {% if user.nickname %}
-                                    {{ user.nickname }}
-                                {% else %}?????{% endif %}
-                            </p>
-                        </span> 
-                        <p class="member-content name">{{ user.username }}</p>
+                            {% if user.nickname %}
+                                <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname }}</p>
+                            {% else %}
+                                <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username }}</p>
+                            {% endif %}
+                        </span>
                     </a>
                 </div>
                 {% endfor %}

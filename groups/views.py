@@ -22,7 +22,7 @@ def group_select(request):
     # Query to retrieve group information
     
     my_profile = UserProfileData.objects.get(email=request.user.email)
-    my_groups = my_profile.group_set.all()
+    my_groups = my_profile.my_group.all()
     
     # Query to retrieve all data from a particular group
     # Carlo = Group.objects.get(group_name="Carlo")

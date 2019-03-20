@@ -215,7 +215,7 @@
     }
 
     .can-play-box {
-        background-color: orange !important;
+        background-color: $can-play-amber !important;
     }
 
     .cant-play-box {
@@ -834,7 +834,6 @@
 }
 
 // Used on multiple pages... ---------------------------------------------------
-
 .shirt {
     display: inline-block;
     height: 46px;
@@ -866,61 +865,143 @@
     min-height: 85vh;
     box-sizing: border-box;
     padding: 20px;
-    
+
     .options-header {
         text-align: left;
         margin: 18px 0 10px;
         display: flex;
         align-items: center;
-        
+
         p {
             font-family: 'Staatliches', cursive;
             font-size: 8px;
-            width: 40px;
+            width: 42px;
+        }
+        
+        p:first-of-type {
+            text-align: center;
         }
     }
-    
+
+    input {
+        width: 56px;
+        border: unset;
+    }
+
     h3,
     p {
         display: inline-block;
         text-align: left;
     }
-        
-    h3 {
-        width: 80px;
+
+
+    h3,
+    .user-name-and-stats-container {
+        width: 86px;
     }
-    
+
     .row {
         display: flex;
         align-items: center;
 
     }
-    
-    .username {
-        width: 80px;
-    }
-    
-    input {
-        width: 40px;
-        border: unset;
-    }
-    
+
     input:focus {
         outline: none;
     }
-    
-    .player-pref-container {
-        width: 80px;
+
+    .player-container {
+        text-align: left;
+
+        label {
+            font-size: 8px;
+        }
+
+        .user-name-and-stats-container {
+            text-align: left;
+            position: relative;
+
+            input {
+                display: inline-block;
+            }
+            .attr-container {
+                display: inline-block;
+                position: absolute;
+
+                input {
+                    color: $white;
+                    padding: 5px;
+                    background-color: $brand-starry-night-blue;
+                    font-size: 8px;
+                    text-align: center;
+                    font-weight: 600;
+                    display: block;
+                    width: 20px;
+                }
+
+                input:first-of-type {
+                    background-color: $brand-irises-green;
+                }
+
+            }
+        }
+
+
+        .position-pref-container {
+            width: 10%;
+            display: inline-block;
+            text-align: center;
+
+            label,
+            input {
+                width: 8px;
+                display: block;
+                margin: 0 2px 4px 0;
+            }
+        }
     }
-    
+
+    .avail-container {
+        width: 42px;
+
+        i {
+            font-size: 16px;
+        }
+        
+        .fa-check-circle {
+            color: $preference-green;
+        }
+        
+        .fa-times-circle {
+            color: $error-red;
+        }
+        
+        .fa-question-circle {
+            color: $brand-evening-black;
+        }
+    }
+
     .cant-play,
     .can-play,
     .pref-play {
-        height: 2px;
-        width: 2px;
+        height: 4px;
+        width: 4px;
         font-size: 0;
         border-radius: 50%;
         display: inline-block;
         margin: 1px;
     }
+
+    .cant-play {
+        background-color: $error-red;
+    }
+
+    .can-play {
+        background-color: $can-play-amber;
+    }
+
+    .pref-play {
+        background-color: $preference-green;
+    }
+
 }

@@ -924,34 +924,81 @@ footer {
     .team-gen-settings-pg .options-header p {
       font-family: 'Staatliches', cursive;
       font-size: 8px;
-      width: 40px; }
+      width: 42px; }
+    .team-gen-settings-pg .options-header p:first-of-type {
+      text-align: center; }
+  .team-gen-settings-pg input {
+    width: 56px;
+    border: unset; }
   .team-gen-settings-pg h3,
   .team-gen-settings-pg p {
     display: inline-block;
     text-align: left; }
-  .team-gen-settings-pg h3 {
-    width: 80px; }
+  .team-gen-settings-pg h3,
+  .team-gen-settings-pg .user-name-and-stats-container {
+    width: 86px; }
   .team-gen-settings-pg .row {
     display: flex;
     align-items: center; }
-  .team-gen-settings-pg .username {
-    width: 80px; }
-  .team-gen-settings-pg input {
-    width: 40px;
-    border: unset; }
   .team-gen-settings-pg input:focus {
     outline: none; }
-  .team-gen-settings-pg .player-pref-container {
-    width: 80px; }
+  .team-gen-settings-pg .player-container {
+    text-align: left; }
+    .team-gen-settings-pg .player-container label {
+      font-size: 8px; }
+    .team-gen-settings-pg .player-container .user-name-and-stats-container {
+      text-align: left;
+      position: relative; }
+      .team-gen-settings-pg .player-container .user-name-and-stats-container input {
+        display: inline-block; }
+      .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container {
+        display: inline-block;
+        position: absolute; }
+        .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container input {
+          color: #fff;
+          padding: 5px;
+          background-color: #0375B4;
+          font-size: 8px;
+          text-align: center;
+          font-weight: 600;
+          display: block;
+          width: 20px; }
+        .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container input:first-of-type {
+          background-color: #007849; }
+    .team-gen-settings-pg .player-container .position-pref-container {
+      width: 10%;
+      display: inline-block;
+      text-align: center; }
+      .team-gen-settings-pg .player-container .position-pref-container label,
+      .team-gen-settings-pg .player-container .position-pref-container input {
+        width: 8px;
+        display: block;
+        margin: 0 2px 4px 0; }
+  .team-gen-settings-pg .avail-container {
+    width: 42px; }
+    .team-gen-settings-pg .avail-container i {
+      font-size: 16px; }
+    .team-gen-settings-pg .avail-container .fa-check-circle {
+      color: #23e623; }
+    .team-gen-settings-pg .avail-container .fa-times-circle {
+      color: #fd3636; }
+    .team-gen-settings-pg .avail-container .fa-question-circle {
+      color: #262228; }
   .team-gen-settings-pg .cant-play,
   .team-gen-settings-pg .can-play,
   .team-gen-settings-pg .pref-play {
-    height: 2px;
-    width: 2px;
+    height: 4px;
+    width: 4px;
     font-size: 0;
     border-radius: 50%;
     display: inline-block;
     margin: 1px; }
+  .team-gen-settings-pg .cant-play {
+    background-color: #fd3636; }
+  .team-gen-settings-pg .can-play {
+    background-color: orange; }
+  .team-gen-settings-pg .pref-play {
+    background-color: #23e623; }
 
 .index-page-bg-settings {
   width: 100%;
@@ -1012,7 +1059,7 @@ a:visited {
 
 .hidden,
 .start-hidden {
-  display: none;
+  display: none !important;
   position: absolute; }
 
 .uppercase {

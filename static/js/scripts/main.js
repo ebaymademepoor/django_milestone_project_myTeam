@@ -159,7 +159,7 @@ function collectTeamSettingsData(type, formName){
         userData.push(thisUsersData);        
     }
 
-    console.log(userData);
+    return userData;
 }
 
 // Edit data functions (position preferences) ----------------------------------
@@ -217,9 +217,37 @@ function updateMatchAvailability(buttonClicked){
     availabilityData["availTablePk"] = availTablePk;
     availabilityData["status"] = status;
     
-    console.log(availabilityData);
     return availabilityData;
     
+}
+
+function pickTeams(genSettings){
+    
+    let teamOne = [];
+    let teamTwo = [];
+    
+    var allPlayers = [];
+    allPlayers = sortByKeyDesc(genSettings, "gk-pref");
+    
+    let preferredKeepers = earmarkPlayers(allPlayers, "gk-pref", 2);
+    
+    if(preferredKeepers.length < 3){
+        let newSelections = earmarkPlayers();
+        
+    }
+}
+
+function earmarkPlayers(data, filter, minValue){
+    let newList = [];
+    
+    data.forEach(function(player){
+        
+        if(parseInt(player[filter]) === minValue){
+            newList.push(player);
+        }
+    
+    });
+    console.log(newList);
 }
 
 // Enables post of data to database --------------------------------------------
@@ -308,6 +336,21 @@ function postToDatabase(url, data, route){
 
 // Helper functions ------------------------------------------------------------
 
+function sortByKeyDesc(array, key) {
+    return array.sort(function (a, b) {
+        
+        var x = a[key]; var y = b[key];
+        return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+    });
+}
+    
+function sortByKeyAsc(array, key) {
+    return array.sort(function (a, b) {
+        var x = a[key]; var y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+}
+
 function activateButton() {
     
     // Switch statement to help manage button functionality ------------------------
@@ -316,6 +359,7 @@ function activateButton() {
         switch (this.id) {
             case "open-sign-in-btn":
                 $('.login-form').show();
+                console.log("clicked")
                 break;
             case "open-sign-up-btn":
                 $('.sign-up-form').show();
@@ -324,14 +368,14 @@ function activateButton() {
                 $('.create-group-form').show();
                 break;
             case "pick-teams-btn":
-                collectTeamSettingsData(".", "player-data-row")
+                pickTeams(collectTeamSettingsData(".", "player-data-row"));
                 break;
             default:
                 console.log('No action Available');
                 console.log(this.id);
         }
     });
-};
+}
 
 function closeParent(){
     

@@ -971,7 +971,7 @@ footer {
       text-align: center; }
       .team-gen-settings-pg .player-container .position-pref-container label,
       .team-gen-settings-pg .player-container .position-pref-container input {
-        width: 8px;
+        width: 6px;
         display: block;
         margin: 0 2px 4px 0; }
   .team-gen-settings-pg .avail-container {
@@ -1059,7 +1059,7 @@ a:visited {
 
 .hidden,
 .start-hidden {
-  display: none !important;
+  display: none;
   position: absolute; }
 
 .uppercase {

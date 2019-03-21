@@ -134,34 +134,6 @@ function replaceOldValuesInRealtime(data){
     });    
 }
 
-function collectTeamSettingsData(type, formName){
-    // Collects any form data ready to be POSTED via ajax
-    
-    var formData = $(type + formName); // The serialized new data entered into the form
-    
-    let userData = [];
-    
-    for(i = 0; i < formData.length; i++){
-        let thisUsersData = [];
-        
-        for(ii = 0; ii < formData[i].length; ii++){
-            if(formData[i][ii].name === "force-pick"){
-                if(formData[i][ii].checked === true){
-                   thisUsersData[formData[i][ii].name] = "true";
-                } else {
-                    thisUsersData[formData[i][ii].name] = "false";
-                }
-            } else {
-                thisUsersData[formData[i][ii].name] = formData[i][ii].value;    
-            }
-        }
-        
-        userData.push(thisUsersData);        
-    }
-
-    return userData;
-}
-
 // Edit data functions (position preferences) ----------------------------------
 
 function preparePositionPrefData(element){
@@ -221,32 +193,69 @@ function updateMatchAvailability(buttonClicked){
     
 }
 
-function pickTeams(genSettings){
+// Team Generation Functions ---------------------------------------------------
+
+function collectTeamSettingsData(type, formName){
+    // Collects any form data ready to be POSTED via ajax
+    
+    var formData = $(type + formName); // The serialized new data entered into the form
+    
+    let userData = [];
+    
+    for(i = 0; i < formData.length; i++){
+        let thisUsersData = [];
+        
+        for(ii = 0; ii < formData[i].length; ii++){
+            if(formData[i][ii].name === "force-pick"){
+                if(formData[i][ii].checked === true){
+                   thisUsersData[formData[i][ii].name] = "true";
+                } else {
+                    thisUsersData[formData[i][ii].name] = "false";
+                }
+            } else {
+                thisUsersData[formData[i][ii].name] = formData[i][ii].value;    
+            }
+        }
+        
+        userData.push(thisUsersData);        
+    }
+
+    return userData;
+}
+
+function pickTeams(allPlayerDataAndSettings){
     
     let teamOne = [];
     let teamTwo = [];
     
-    var allPlayers = [];
-    allPlayers = sortByKeyDesc(genSettings, "gk-pref");
+    playersInTheHat = [];
     
-    let preferredKeepers = earmarkPlayers(allPlayers, "gk-pref", 2);
+    /* Confirm which players from the group are available to play or have been 
+     given force pick status */
     
-    if(preferredKeepers.length < 3){
-        let newSelections = earmarkPlayers();
-        
-    }
+    allPlayerDataAndSettings.forEach(function(player){
+        if(player["available"] === "Yes" || player["force-pick"] === "true"){
+            playersInTheHat.push(player);
+        }
+    });
+    
+    
+    
+    console.log(playersInTheHat);
 }
 
-function earmarkPlayers(data, filter, minValue){
+function earmarkPlayers(data, filter, operator, minValue){
     let newList = [];
     
     data.forEach(function(player){
         
-        if(parseInt(player[filter]) === minValue){
+        if(operator == "==="){
+            if(parseInt(player[filter]) === minValue){
             newList.push(player);
+            }    
         }
-    
     });
+    
     console.log(newList);
 }
 

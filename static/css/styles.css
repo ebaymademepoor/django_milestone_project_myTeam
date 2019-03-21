@@ -963,6 +963,8 @@ footer {
           font-weight: 600;
           display: block;
           width: 20px; }
+        .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container .hidden {
+          display: none; }
         .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container input:first-of-type {
           background-color: #007849; }
     .team-gen-settings-pg .player-container .position-pref-container {

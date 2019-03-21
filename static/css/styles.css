@@ -68,7 +68,8 @@ table {
   -moz-box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63);
   box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63); }
 
-nav .logo-pic, .group-home .content .member-box .member-container .shirt, .shirt {
+nav .logo-pic, .group-home .content .member-box .member-container .shirt, .shirt, .team-gen-pg .user-playing-positions-section .pitch-row .team-1-player,
+.team-gen-pg .user-playing-positions-section .pitch-row .team-2-player {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat; }
@@ -178,6 +179,15 @@ button,
 
 #pick-teams-btn {
   background-color: #262228; }
+
+#regen-btn,
+#back-to-settings-btn {
+  display: inline-block;
+  font-size: 8px;
+  width: 48px;
+  height: 14px;
+  background-color: black;
+  margin: 0 2px 0; }
 
 /* The switch - the box around the slider */
 .switch {
@@ -912,49 +922,57 @@ footer {
       .shirt .container .username div {
         margin-top: 5px; }
 
-.team-gen-settings-pg {
+.overflow-container {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden; }
+
+.team-gen-pg .team-gen-settings-pg {
   min-height: 85vh;
   box-sizing: border-box;
   padding: 20px; }
-  .team-gen-settings-pg .options-header {
+  .team-gen-pg .team-gen-settings-pg .options-header {
     text-align: left;
     margin: 18px 0 10px;
     display: flex;
     align-items: center; }
-    .team-gen-settings-pg .options-header p {
+    .team-gen-pg .team-gen-settings-pg .options-header p {
       font-family: 'Staatliches', cursive;
       font-size: 8px;
       width: 42px; }
-    .team-gen-settings-pg .options-header p:first-of-type {
+    .team-gen-pg .team-gen-settings-pg .options-header p:first-of-type {
       text-align: center; }
-  .team-gen-settings-pg input {
+  .team-gen-pg .team-gen-settings-pg input {
     width: 56px;
     border: unset; }
-  .team-gen-settings-pg h3,
-  .team-gen-settings-pg p {
+  .team-gen-pg .team-gen-settings-pg h3,
+  .team-gen-pg .team-gen-settings-pg p {
     display: inline-block;
     text-align: left; }
-  .team-gen-settings-pg h3,
-  .team-gen-settings-pg .user-name-and-stats-container {
+  .team-gen-pg .team-gen-settings-pg h3,
+  .team-gen-pg .team-gen-settings-pg .user-name-and-stats-container {
     width: 86px; }
-  .team-gen-settings-pg .row {
+  .team-gen-pg .team-gen-settings-pg .row {
     display: flex;
     align-items: center; }
-  .team-gen-settings-pg input:focus {
+  .team-gen-pg .team-gen-settings-pg input:focus {
     outline: none; }
-  .team-gen-settings-pg .player-container {
+  .team-gen-pg .team-gen-settings-pg .player-container {
     text-align: left; }
-    .team-gen-settings-pg .player-container label {
+    .team-gen-pg .team-gen-settings-pg .player-container label {
       font-size: 8px; }
-    .team-gen-settings-pg .player-container .user-name-and-stats-container {
+    .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container {
       text-align: left;
       position: relative; }
-      .team-gen-settings-pg .player-container .user-name-and-stats-container input {
+      .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container .hidden {
+        display: none; }
+      .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container input {
         display: inline-block; }
-      .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container {
+      .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container {
         display: inline-block;
         position: absolute; }
-        .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container input {
+        .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container input {
           color: #fff;
           padding: 5px;
           background-color: #0375B4;
@@ -963,44 +981,83 @@ footer {
           font-weight: 600;
           display: block;
           width: 20px; }
-        .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container .hidden {
+        .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container .hidden {
           display: none; }
-        .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container input:first-of-type {
+        .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container input:first-of-type {
           background-color: #007849; }
-    .team-gen-settings-pg .player-container .position-pref-container {
+    .team-gen-pg .team-gen-settings-pg .player-container .position-pref-container {
       width: 10%;
       display: inline-block;
       text-align: center; }
-      .team-gen-settings-pg .player-container .position-pref-container label,
-      .team-gen-settings-pg .player-container .position-pref-container input {
+      .team-gen-pg .team-gen-settings-pg .player-container .position-pref-container label,
+      .team-gen-pg .team-gen-settings-pg .player-container .position-pref-container input {
         width: 6px;
         display: block;
         margin: 0 2px 4px 0; }
-  .team-gen-settings-pg .avail-container {
+  .team-gen-pg .team-gen-settings-pg .avail-container {
     width: 42px; }
-    .team-gen-settings-pg .avail-container i {
+    .team-gen-pg .team-gen-settings-pg .avail-container i {
       font-size: 16px; }
-    .team-gen-settings-pg .avail-container .fa-check-circle {
+    .team-gen-pg .team-gen-settings-pg .avail-container .fa-check-circle {
       color: #23e623; }
-    .team-gen-settings-pg .avail-container .fa-times-circle {
+    .team-gen-pg .team-gen-settings-pg .avail-container .fa-times-circle {
       color: #fd3636; }
-    .team-gen-settings-pg .avail-container .fa-question-circle {
+    .team-gen-pg .team-gen-settings-pg .avail-container .fa-question-circle {
       color: #262228; }
-  .team-gen-settings-pg .cant-play,
-  .team-gen-settings-pg .can-play,
-  .team-gen-settings-pg .pref-play {
+  .team-gen-pg .team-gen-settings-pg .cant-play,
+  .team-gen-pg .team-gen-settings-pg .can-play,
+  .team-gen-pg .team-gen-settings-pg .pref-play {
     height: 4px;
     width: 4px;
     font-size: 0;
     border-radius: 50%;
     display: inline-block;
     margin: 1px; }
-  .team-gen-settings-pg .cant-play {
+  .team-gen-pg .team-gen-settings-pg .cant-play {
     background-color: #fd3636; }
-  .team-gen-settings-pg .can-play {
+  .team-gen-pg .team-gen-settings-pg .can-play {
     background-color: orange; }
-  .team-gen-settings-pg .pref-play {
+  .team-gen-pg .team-gen-settings-pg .pref-play {
     background-color: #23e623; }
+.team-gen-pg .user-playing-positions-section {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 1s; }
+  .team-gen-pg .user-playing-positions-section h4 {
+    margin-bottom: 10px;
+    margin-right: 64px;
+    display: inline-block; }
+  .team-gen-pg .user-playing-positions-section .half-pitch .gk-row-team1 .team-1-player,
+  .team-gen-pg .user-playing-positions-section .half-pitch .gk-row-team1 .team-2-player,
+  .team-gen-pg .user-playing-positions-section .half-pitch .gk-row-team2 .team-1-player,
+  .team-gen-pg .user-playing-positions-section .half-pitch .gk-row-team2 .team-2-player {
+    background-image: url("../img/transparent-shirt-yellow.png"); }
+  .team-gen-pg .user-playing-positions-section .pitch-row {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; }
+    .team-gen-pg .user-playing-positions-section .pitch-row .team-1-player,
+    .team-gen-pg .user-playing-positions-section .pitch-row .team-2-player {
+      height: 40px;
+      width: 40px; }
+      .team-gen-pg .user-playing-positions-section .pitch-row .team-1-player p,
+      .team-gen-pg .user-playing-positions-section .pitch-row .team-2-player p {
+        font-family: 'Staatliches', cursive;
+        margin-left: -100%;
+        margin-right: -100%;
+        text-align: center;
+        font-size: 10px;
+        color: #FFCE00;
+        position: relative;
+        top: 40px;
+        text-shadow: -1px 1px 4px #000000; }
+    .team-gen-pg .user-playing-positions-section .pitch-row .team-1-player {
+      background-image: url("../img/transparent-shirt.png"); }
+    .team-gen-pg .user-playing-positions-section .pitch-row .team-2-player {
+      background-image: url("../img/transparent-shirt-red.png"); }
 
 .index-page-bg-settings {
   width: 100%;

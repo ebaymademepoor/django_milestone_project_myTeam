@@ -102,7 +102,7 @@
                         <label for="outfield_score">Outfield Score</label>
                         <p>
                             {% if ratings.outfield_score %}
-                                {{ ratings.outfield_score }}
+                                {{ ratings.outfield_score|floatformat:2 }}
                             {% else %}
                                 n / a
                             {% endif %}

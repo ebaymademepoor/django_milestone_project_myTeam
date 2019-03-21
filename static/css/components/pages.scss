@@ -861,151 +861,225 @@
 }
 
 //  gen_settings.html ----------------------------------------------------------
-.team-gen-settings-pg {
-    min-height: 85vh;
+.overflow-container {
+    width: 100%;
     box-sizing: border-box;
-    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
 
-    .options-header {
-        text-align: left;
-        margin: 18px 0 10px;
-        display: flex;
-        align-items: center;
+.team-gen-pg {
+    .team-gen-settings-pg {
+        min-height: 85vh;
+        box-sizing: border-box;
+        padding: 20px;
 
-        p {
-            font-family: 'Staatliches', cursive;
-            font-size: 8px;
-            width: 42px;
-        }
-        
-        p:first-of-type {
-            text-align: center;
-        }
-    }
-
-    input {
-        width: 56px;
-        border: unset;
-    }
-
-    h3,
-    p {
-        display: inline-block;
-        text-align: left;
-    }
-
-
-    h3,
-    .user-name-and-stats-container {
-        width: 86px;
-    }
-
-    .row {
-        display: flex;
-        align-items: center;
-
-    }
-
-    input:focus {
-        outline: none;
-    }
-
-    .player-container {
-        text-align: left;
-
-        label {
-            font-size: 8px;
-        }
-
-        .user-name-and-stats-container {
+        .options-header {
             text-align: left;
-            position: relative;
+            margin: 18px 0 10px;
+            display: flex;
+            align-items: center;
 
-            input {
-                display: inline-block;
+            p {
+                font-family: 'Staatliches', cursive;
+                font-size: 8px;
+                width: 42px;
             }
-            .attr-container {
-                display: inline-block;
-                position: absolute;
 
-                input {
-                    color: $white;
-                    padding: 5px;
-                    background-color: $brand-starry-night-blue;
-                    font-size: 8px;
-                    text-align: center;
-                    font-weight: 600;
-                    display: block;
-                    width: 20px;
-                }
-                
+            p:first-of-type {
+                text-align: center;
+            }
+        }
+
+        input {
+            width: 56px;
+            border: unset;
+        }
+
+        h3,
+        p {
+            display: inline-block;
+            text-align: left;
+        }
+
+
+        h3,
+        .user-name-and-stats-container {
+            width: 86px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .player-container {
+            text-align: left;
+
+            label {
+                font-size: 8px;
+            }
+
+            .user-name-and-stats-container {
+                text-align: left;
+                position: relative;
+
                 .hidden {
                     display: none;
                 }
 
-                input:first-of-type {
-                    background-color: $brand-irises-green;
+                input {
+                    display: inline-block;
+                }
+                .attr-container {
+                    display: inline-block;
+                    position: absolute;
+
+                    input {
+                        color: $white;
+                        padding: 5px;
+                        background-color: $brand-starry-night-blue;
+                        font-size: 8px;
+                        text-align: center;
+                        font-weight: 600;
+                        display: block;
+                        width: 20px;
+                    }
+
+                    .hidden {
+                        display: none;
+                    }
+
+                    input:first-of-type {
+                        background-color: $brand-irises-green;
+                    }
+
+                }
+            }
+
+
+            .position-pref-container {
+                width: 10%;
+                display: inline-block;
+                text-align: center;
+
+                label,
+                input {
+                    width: 6px;
+                    display: block;
+                    margin: 0 2px 4px 0;
+                }
+            }
+        }
+
+        .avail-container {
+            width: 42px;
+
+            i {
+                font-size: 16px;
+            }
+
+            .fa-check-circle {
+                color: $preference-green;
+            }
+
+            .fa-times-circle {
+                color: $error-red;
+            }
+
+            .fa-question-circle {
+                color: $brand-evening-black;
+            }
+        }
+
+        .cant-play,
+        .can-play,
+        .pref-play {
+            height: 4px;
+            width: 4px;
+            font-size: 0;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 1px;
+        }
+
+        .cant-play {
+            background-color: $error-red;
+        }
+
+        .can-play {
+            background-color: $can-play-amber;
+        }
+
+        .pref-play {
+            background-color: $preference-green;
+        }
+    }
+
+    .user-playing-positions-section {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        box-sizing: border-box;
+        transition: all 1s ;
+        
+        
+        h4 {
+            margin-bottom: 10px;
+            margin-right: 64px;
+            display: inline-block;
+        }
+
+        .half-pitch {
+            .gk-row-team1,
+            .gk-row-team2 {
+
+                .team-1-player,
+                .team-2-player {
+                    background-image: url('../img/transparent-shirt-yellow.png');
                 }
 
             }
         }
 
 
-        .position-pref-container {
-            width: 10%;
-            display: inline-block;
-            text-align: center;
+        .pitch-row {
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
 
-            label,
-            input {
-                width: 6px;
-                display: block;
-                margin: 0 2px 4px 0;
+            .team-1-player,
+            .team-2-player {
+                height: 40px;
+                width: 40px;
+                @extend %contain-picture;
+
+
+                p {
+                    font-family: 'Staatliches', cursive;
+                    margin-left: -100%;
+                    margin-right: -100%;
+                    text-align: center;
+                    font-size: 10px;
+                    color: $brand-sunflower-yellow;
+                    position: relative;
+                    top: 40px;
+                    text-shadow: -1px 1px 4px #000000;
+                }
+            }
+
+            .team-1-player {
+                background-image: url('../img/transparent-shirt.png');
+            }
+            .team-2-player {
+                background-image: url('../img/transparent-shirt-red.png');
             }
         }
     }
-
-    .avail-container {
-        width: 42px;
-
-        i {
-            font-size: 16px;
-        }
-        
-        .fa-check-circle {
-            color: $preference-green;
-        }
-        
-        .fa-times-circle {
-            color: $error-red;
-        }
-        
-        .fa-question-circle {
-            color: $brand-evening-black;
-        }
-    }
-
-    .cant-play,
-    .can-play,
-    .pref-play {
-        height: 4px;
-        width: 4px;
-        font-size: 0;
-        border-radius: 50%;
-        display: inline-block;
-        margin: 1px;
-    }
-
-    .cant-play {
-        background-color: $error-red;
-    }
-
-    .can-play {
-        background-color: $can-play-amber;
-    }
-
-    .pref-play {
-        background-color: $preference-green;
-    }
-
 }

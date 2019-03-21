@@ -225,8 +225,8 @@ function collectTeamSettingsData(type, formName){
 
 function pickTeams(allPlayerDataAndSettings){
     
-    let teamOne = [];
-    let teamTwo = [];
+    let team1 = [];
+    let team2 = [];
     
     playersInTheHat = [];
     
@@ -235,28 +235,163 @@ function pickTeams(allPlayerDataAndSettings){
     
     allPlayerDataAndSettings.forEach(function(player){
         if(player["available"] === "Yes" || player["force-pick"] === "true"){
+            player["avg_tot"] = (parseFloat(player["avg_gk"]) + parseFloat(player["avg_out"]))/2;
             playersInTheHat.push(player);
         }
     });
     
+    // Sort players by average of all scores, best to worst.....
     
+    let playersSortedByAvgScore = sortByKeyDesc(playersInTheHat, "avg_tot");
     
-    console.log(playersInTheHat);
+    let pickNo = 1;
+    let teamNo = createANumber(2);
+    
+    /* Select a random team between 1 and 2 and split each pair of players 
+    into a team... */
+    
+    playersSortedByAvgScore.forEach(function(player){
+        if(pickNo === 1){
+            
+            if(teamNo === 1){
+                team1.push(player);
+                player["team"] = 1;
+            } else {
+                team2.push(player);
+                player["team"] = 2;
+            }
+            pickNo = 2;
+        } else {
+            if(teamNo === 1){
+                team2.push(player);
+                player["team"] = 2;
+                pickNo = 1;
+                teamNo = createANumber(2)
+            } else {
+                team1.push(player);
+                player["team"] = 1;
+                pickNo = 1;
+                teamNo = createANumber(2)
+            }
+        }
+    })
+    
+    return playersSortedByAvgScore;
 }
 
-function earmarkPlayers(data, filter, operator, minValue){
-    let newList = [];
+function assignPlayingPositions(teamData){
+    let team1 = [];
+    let team2 = [];
     
-    data.forEach(function(player){
-        
-        if(operator == "==="){
-            if(parseInt(player[filter]) === minValue){
-            newList.push(player);
-            }    
+    // Seperate players back into 2 teams...
+    
+    teamData.forEach(function(player){
+        if(player["team"] === 1){
+            team1.push(player);
+        } else {
+            team2.push(player);
         }
     });
     
-    console.log(newList);
+    let goalkeepers = 0
+    
+    
+    team1.forEach(function(player){
+        player["picked-position"] = positionAllocation(player, goalkeepers, createANumber(4), 1); 
+        if(player["picked-position"] === "gk"){
+            goalkeepers += 1;
+        } else if(player["picked-position"] === undefined){
+            player["picked-position"] === "def"
+        }
+        
+        console.log(player["picked-position"]);
+    });
+    
+    
+    goalkeepers = 0
+    
+    
+    team2.forEach(function(player){
+        player["picked-position"] = positionAllocation(player, goalkeepers, createANumber(4), 1);    
+        if(player["picked-position"] === "gk"){
+            goalkeepers += 1;
+        } else if(player["picked-position"] === undefined){
+            player["picked-position"] === "def"
+        }
+        
+        console.log(player["picked-position"]);
+    });
+    
+    var bothTeamsData = $.merge(team1, team2);
+    
+    return bothTeamsData;
+}
+
+function positionAllocation(thisPlayer, gk, randomNo, numberOfTries){
+    console.log("Tries = " + numberOfTries);
+    console.log(thisPlayer);
+    console.log("Goalkeepers = " + gk);
+    console.log("Random No = " + randomNo);
+    
+    if(numberOfTries === 10){
+        if(gk != 0){
+            let positions = ["def", "mid", "att"];
+            return positions[createANumber(3)];
+        } else {
+            let positions = ["gk", "def", "mid", "att"];
+            return positions[createANumber(4)];
+        }
+    } else {
+        if(randomNo === 1 ){
+            if(gk < 1 && parseInt(thisPlayer["gk-pref"], 10) > 0){
+                return "gk";
+            } else {
+                numberOfTries += 1;
+                return positionAllocation(thisPlayer, gk, createANumber(4), numberOfTries);
+            }
+        } else if(randomNo === 2){
+            if(parseInt(thisPlayer["def-pref"], 10) > 0){
+                return "def";
+            } else {
+                numberOfTries += 1;
+                return positionAllocation(thisPlayer, gk, createANumber(4), numberOfTries);
+            }
+        } else if(randomNo === 3){
+            if(parseInt(thisPlayer["mid-pref"], 10) > 0){
+                return "mid";
+            } else {
+                numberOfTries += 1;
+                return positionAllocation(thisPlayer, gk, createANumber(4), numberOfTries);
+            }
+        } else {
+            if(parseInt(thisPlayer["att-pref"], 10) > 0){
+                return "att";
+            } else {
+                numberOfTries += 1;
+                return positionAllocation(thisPlayer, gk, createANumber(4), numberOfTries);
+            }
+        }    
+    }
+}
+
+function addPlayersToPitch(teamSelection){
+    teamSelection.forEach(function(player){
+        if(player["team"] === 1){
+            var thisPlayer = '<div class="team-1-player"><p>'
+            + player["full-username"] + '</p></div>';
+            
+            let rowToAppend = '.' + player["picked-position"] + "-row-team1";
+                
+            $(rowToAppend).append(thisPlayer);
+       } else {
+           thisPlayer = '<div class="team-2-player"><p>'
+            + player["full-username"] + '</p></div>';
+        
+            let rowToAppend = '.' + player["picked-position"] + "-row-team2";
+                
+            $(rowToAppend).append(thisPlayer);
+       }
+    });
 }
 
 // Enables post of data to database --------------------------------------------
@@ -360,6 +495,11 @@ function sortByKeyAsc(array, key) {
     });
 }
 
+function createANumber(highestNum) {
+    var randomNumber = Math.floor(Math.random() * highestNum) + 1;
+    return randomNumber;
+}
+
 function activateButton() {
     
     // Switch statement to help manage button functionality ------------------------
@@ -377,7 +517,22 @@ function activateButton() {
                 $('.create-group-form').show();
                 break;
             case "pick-teams-btn":
-                pickTeams(collectTeamSettingsData(".", "player-data-row"));
+                $('.team-1-player, .team-2-player').remove(); // Remove exisitng team generation
+                var teamData = pickTeams(collectTeamSettingsData(".", "player-data-row")); // Allocate teams
+                var pickedTeamsAndPositions = assignPlayingPositions(teamData);
+                addPlayersToPitch(pickedTeamsAndPositions); // Render in html template
+                $(".user-playing-positions-section").removeClass("start-off-screen");
+                $(".user-playing-positions-section").addClass('slide-in-from-right');
+                break;
+            case "regen-btn":
+                $('.team-1-player, .team-2-player').remove(); // Remove exisitng team generation
+                var teamData = pickTeams(collectTeamSettingsData(".", "player-data-row")); // Allocate teams
+                var pickedTeamsAndPositions = assignPlayingPositions(teamData);
+                addPlayersToPitch(pickedTeamsAndPositions); // Render in html template
+                break;
+            case "back-to-settings-btn":
+                $(".user-playing-positions-section").removeClass("slide-in-from-right");
+                $(".user-playing-positions-section").addClass('start-off-screen');
                 break;
             default:
                 console.log('No action Available');

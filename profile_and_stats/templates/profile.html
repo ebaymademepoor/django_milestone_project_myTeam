@@ -89,16 +89,16 @@
         <h4>User attributes (max 10) - number of user votes = <span>{{ votes }}</span></h4>
         <dl class="container attr-container">
             <div class="row">
-                <dt>Goalkeeping</dt><dd class="gk-rate">{{ attributes.avg_gk }}</dd>
-                <dt>Passing</dt><dd class="pass-rate">{{ attributes.avg_pass }}</dd>
+                <dt>Goalkeeping</dt><dd class="gk-rate">{{ attributes.avg_gk|floatformat:2 }}</dd>
+                <dt>Passing</dt><dd class="pass-rate">{{ attributes.avg_pass|floatformat:2 }}</dd>
             </div>
             <div class="row">
-                <dt>Defending</dt><dd class="def-rate">{{ attributes.avg_def }}</dd>
-                <dt>Finishing</dt><dd class="fin-rate">{{ attributes.avg_fin }}</dd>
+                <dt>Defending</dt><dd class="def-rate">{{ attributes.avg_def|floatformat:2 }}</dd>
+                <dt>Finishing</dt><dd class="fin-rate">{{ attributes.avg_fin|floatformat:2 }}</dd>
             </div>
             <div class="row">
-                <dt>Movement</dt><dd class="move-rate">{{ attributes.avg_move }}</dd>
-                <dt>Outfield Score</dt><dd>{{ avg_outfield }}</dd>
+                <dt>Movement</dt><dd class="move-rate">{{ attributes.avg_move|floatformat:2 }}</dd>
+                <dt>Outfield Score</dt><dd>{{ avg_outfield|floatformat:2 }}</dd>
             </div>
         </dl>
         <div class="container chart-container">

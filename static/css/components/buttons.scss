@@ -130,6 +130,19 @@ button,
     background-color: $brand-evening-black;
 }
 
+#regen-btn,
+#back-to-settings-btn {
+    display: inline-block;
+    font-size: 8px;
+    width: 48px;
+    height: 14px;
+    background-color: black;
+    margin: 0 2px 0;
+    
+}
+
+
+
 // Animated switch buttons -----------------------------------------------------
 
 /* The switch - the box around the slider */

@@ -11,8 +11,11 @@
                 
                 <div class="options-header">
                     <h3>Options</h3>
-                    <p>Available</p> 
-                    <p>Force pick</p> 
+                    <p>Available</p>
+                    <p>Force pick</p>
+                    <p>Force exclude</p>
+                    <p>Force team</p>
+                    <p>Force position</p>
                 </div>
                 
                 
@@ -115,6 +118,32 @@
                                 <span class="slider round"></span>
                             </label>
                         </div>
+                        
+                        <div class="gen-options-box">
+                            <label class="switch">
+                                <input type="checkbox" name="force-exclude" value="true">
+                                <span class="slider exclude round"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="gen-options-box">
+                            <select name="force-team" id="force-team">
+                                <option></option> 
+                                <option>1</option> 
+                                <option>2</option> 
+                            </select> 
+                        </div>
+                        
+                        <div class="gen-options-box">
+                            <select name="force-position" id="force-position">
+                                <option></option> 
+                                <option>GK</option> 
+                                <option>DEF</option> 
+                                <option>MID</option> 
+                                <option>ATT</option> 
+                            </select> 
+                        </div>
+                        
                         
                     </form> 
                     <hr> 

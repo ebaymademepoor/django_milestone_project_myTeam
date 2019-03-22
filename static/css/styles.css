@@ -228,8 +228,8 @@ button,
 input:checked + .slider {
   background-color: #23e623; }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #23e623; }
+input:checked + .exclude {
+  background-color: #fd3636; }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(14px);
@@ -940,7 +940,8 @@ footer {
     .team-gen-pg .team-gen-settings-pg .options-header p {
       font-family: 'Staatliches', cursive;
       font-size: 8px;
-      width: 42px; }
+      width: 30px;
+      margin: 0 3px; }
     .team-gen-pg .team-gen-settings-pg .options-header p:first-of-type {
       text-align: center; }
   .team-gen-pg .team-gen-settings-pg input {
@@ -1019,6 +1020,12 @@ footer {
     background-color: orange; }
   .team-gen-pg .team-gen-settings-pg .pref-play {
     background-color: #23e623; }
+.team-gen-pg .player-data-row .gen-options-box {
+  margin: 0 2px; }
+.team-gen-pg .player-data-row select,
+.team-gen-pg .player-data-row option {
+  font-size: 12px;
+  font-family: 'Staatliches', cursive; }
 .team-gen-pg .user-playing-positions-section {
   position: absolute;
   top: 0;

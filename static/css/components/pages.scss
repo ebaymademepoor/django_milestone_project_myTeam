@@ -883,7 +883,8 @@
             p {
                 font-family: 'Staatliches', cursive;
                 font-size: 8px;
-                width: 42px;
+                width: 30px;
+                margin: 0 3px;
             }
 
             p:first-of-type {
@@ -1020,7 +1021,22 @@
             background-color: $preference-green;
         }
     }
-
+    
+    .player-data-row {
+        
+        .gen-options-box {
+            margin: 0 2px;
+        }
+        
+        select,
+        option {
+            font-size: 12px;
+            font-family: 'Staatliches', cursive;
+        }
+        
+    }
+    
+    
     .user-playing-positions-section {
         position: absolute;
         top: 0;

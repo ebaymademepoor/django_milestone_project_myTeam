@@ -189,8 +189,8 @@ input:checked + .slider {
   background-color: $preference-green;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px $preference-green;
+input:checked + .exclude {
+  background-color: $error-red;
 }
 
 input:checked + .slider:before {

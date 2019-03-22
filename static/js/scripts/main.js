@@ -336,10 +336,10 @@ function positionAllocation(thisPlayer, gk, randomNo, numberOfTries){
     if(numberOfTries === 10){
         if(gk != 0){
             let positions = ["def", "mid", "att"];
-            return positions[createANumber(3)];
+            return positions[createANumber(3)-1];
         } else {
             let positions = ["gk", "def", "mid", "att"];
-            return positions[createANumber(4)];
+            return positions[createANumber(4)-1];
         }
     } else {
         if(randomNo === 1 ){

@@ -92,9 +92,9 @@
                             <a class="shirt click-shrink" href="{% url 'player-profile' user.pk groupid %}">
                                 <span class="container">
                                     {% if user.nickname %}
-                                        <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname }}</p>
+                                        <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname|truncatechars:8 }}</p>
                                     {% else %}
-                                        <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username }}</p>
+                                        <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username|truncatechars:8 }}</p>
                                     {% endif %}
                                 </span>
                             </a>

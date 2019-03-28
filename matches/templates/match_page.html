@@ -32,7 +32,13 @@
                 <p>Notes:<span>{{ match_data.match_notes }}</span></p>
             </div>
             <div class="link-btn edit-match-btn click-shrink">Edit Match</div> 
+            
+            {% if match_data.match_completed %}
+                <a class="link-btn rate-performance-link-btn click-shrink" href="">Rate Players</a>
+            {% endif %}
         </div>
+            
+        
         {% endif %}
         
         {% if match_data %}

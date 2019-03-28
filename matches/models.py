@@ -2,6 +2,7 @@ from django.db import models
 from profile_and_stats.models import UserProfileData
 from groups.models import Group
 from django.utils import timezone
+import datetime
 
 # Create your models here.
 class MatchData(models.Model):
@@ -24,6 +25,10 @@ class MatchData(models.Model):
         choices=MATCH_STATUS_CHOICES,
         default=SCHEDULED,
     )
+    
+    def match_completed(self):
+        if self.date_of_match < timezone.now().date():
+            return True
     
     class Meta:
         ordering = ('date_of_match', 'time_of_match')   

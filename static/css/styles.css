@@ -170,12 +170,18 @@ button,
     margin-top: 0.2px; }
 
 .edit-match-btn,
-.team-gen-link-btn {
+.team-gen-link-btn,
+.rate-performance-link-btn {
   width: 86px;
   height: 17px;
   line-height: 16px;
   font-size: 8px;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  display: inline-block; }
+
+.rate-performance-link-btn {
+  float: right;
+  background-color: #fd3636; }
 
 #pick-teams-btn {
   background-color: #262228; }

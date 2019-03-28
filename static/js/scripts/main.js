@@ -1,6 +1,6 @@
 // Global Vars
 
-let preventClick = false
+let preventClick = false;
 var ctx = $("#myChart");
 
 // A message function to the user ----------------------------------------------
@@ -205,52 +205,51 @@ function updateMatchAvailability(buttonClicked) {
 function collectTeamSettingsData(type, formName) {
     // Collects any form data ready to be POSTED via ajax
 
-    var formData = $(type + formName); // The serialized new data entered into the form
+    return new Promise((resolve, reject) => {
 
-    let userData = [];
+        var formData = $(type + formName); // The serialized new data entered into the form
 
-    for (i = 0; i < formData.length; i++) {
-        let thisUsersData = [];
+        let userData = [];
 
-        for (ii = 0; ii < formData[i].length; ii++) {
-            if (formData[i][ii].name === "force-pick") {
-                if (formData[i][ii].checked === true) {
-                    thisUsersData[formData[i][ii].name] = "true";
+
+        for (i = 0; i < formData.length; i++) {
+            let thisUsersData = [];
+
+            for (ii = 0; ii < formData[i].length; ii++) {
+                if (formData[i][ii].name === "force-pick") {
+                    if (formData[i][ii].checked === true) {
+                        thisUsersData[formData[i][ii].name] = "true";
+                    }
+                    else {
+                        thisUsersData[formData[i][ii].name] = "false";
+                    }
+                }
+                else if (formData[i][ii].name === "force-exclude") {
+                    if (formData[i][ii].checked === true) {
+                        thisUsersData[formData[i][ii].name] = "true";
+                    }
+                    else {
+                        thisUsersData[formData[i][ii].name] = "false";
+                    }
                 }
                 else {
-                    thisUsersData[formData[i][ii].name] = "false";
+                    thisUsersData[formData[i][ii].name] = formData[i][ii].value;
                 }
             }
-            else if (formData[i][ii].name === "force-exclude") {
-                if (formData[i][ii].checked === true) {
-                    thisUsersData[formData[i][ii].name] = "true";
-                }
-                else {
-                    thisUsersData[formData[i][ii].name] = "false";
-                }
-            }
-            else {
-                thisUsersData[formData[i][ii].name] = formData[i][ii].value;
-            }
+
+            userData.push(thisUsersData);
         }
 
-        userData.push(thisUsersData);
-    }
+        resolve(userData);
+    });
 
-    return userData;
 }
 
-function pickTeams(allPlayerDataAndSettings) {
+function playersToChooseTeamsFrom(playerData) {
 
-    let team1 = [];
-    let team2 = [];
+    let playersInTheHat = [];
 
-    playersInTheHat = [];
-
-    /* Confirm which players from the group are available to play or have been 
-     given force pick status */
-
-    allPlayerDataAndSettings.forEach(function(player) {
+    playerData.forEach(function(player) {
         if (player["force-exclude"] != "true") {
             if (player["available"] === "Yes" || player["force-pick"] === "true") {
                 player["avg_tot"] = (parseFloat(player["avg_gk"]) + parseFloat(player["avg_out"])) / 2;
@@ -259,315 +258,339 @@ function pickTeams(allPlayerDataAndSettings) {
         }
     });
 
-    let playersToBeAllocated = [];
-
-    // Assign players to any teams they have been forced pushed to...
-
-    playersInTheHat.forEach(function(player) {
-        if (player["force-team"] === "1") {
-            team1.push(player);
-            player["team"] = 1;
-        }
-        else if (player["force-team"] === "2") {
-            team2.push(player);
-            player["team"] = 2;
-        }
-        else {
-            playersToBeAllocated.push(player);
-        }
-    });
-
-    let team1Keepers = howManyKeepersOnTeam(team1, "force-position");
-    let team2Keepers = howManyKeepersOnTeam(team2,  "force-position");
-
-    let playersStillToBeAllocated = [];
-
-    playersToBeAllocated.forEach(function(player) {
-        if (player["force-position"] === "GK" && team1Keepers === 0) {
-            team1.push(player);
-            player["team"] = 1;
-        }
-        else if (player["force-position"] === "GK" && team2Keepers === 0) {
-            team2.push(player);
-            player["team"] = 2;
-        }
-        else {
-            playersStillToBeAllocated.push(player);
-        }
-    });
-
-
-
-
-    // Sort players by average of all scores, best to worst.....
-    let playersSortedByAvgScore = sortByKeyDesc(playersStillToBeAllocated, "avg_tot");
-
-    let pickNo = 1;
-    let teamNo = createANumber(2);
-
-    /* Select a random team between 1 and 2 and split each pair of players 
-    into a team... */
-
-    playersSortedByAvgScore.forEach(function(player) {
-
-        if (team1.length === team2.length) {
-
-            if (pickNo === 1) {
-
-                if (teamNo === 1) {
-                    team1.push(player);
-                    player["team"] = 1;
-                }
-                else {
-                    team2.push(player);
-                    player["team"] = 2;
-                }
-                pickNo = 2;
-            }
-            else {
-                if (teamNo === 1) {
-                    team2.push(player);
-                    player["team"] = 2;
-                    pickNo = 1;
-                    teamNo = createANumber(2)
-                }
-                else {
-                    team1.push(player);
-                    player["team"] = 1;
-                    pickNo = 1;
-                    teamNo = createANumber(2)
-                }
-            }
-        }
-        else if (team1.length > team2.length) {
-            team2.push(player);
-            player["team"] = 2;
-        }
-        else {
-            team1.push(player);
-            player["team"] = 1;
-        }
-    })
-
-    var bothTeamsData = $.merge(team1, team2);
-
-    return bothTeamsData;
+    return playersInTheHat;
 }
 
-function assignAMissingKeeper(team) {
+function attachPlayerToForcedTeam(teamData){
+    teamData.forEach(function(player) {
+        if (parseInt(player["force-team"]) === 1) {
+            player["team"] = 1;
+            
+            if (player["force-position"] === "GK") {
+                player["picked-position"] = "gk";
+            }    
+        } else if (parseInt(player["force-team"]) === 2) {
+            player["team"] = 2;
+
+            if (player["force-position"] === "GK") {
+                player["picked-position"] = "gk";
+            }
+        }
+    });
     
-    var newTeam = team;
-    
-    let existingKeepers = howManyKeepersOnTeam(newTeam, "picked-position");
-    
-    if (existingKeepers < 1) {
-        
-        let sortByGKPref = sortByKeyDesc(newTeam, "gk-pref");
-        let maxPref = [];
-        let midPref = [];
-
-        sortByGKPref.forEach(function(player) {
-            if (player["gk-pref"] == "2") {
-                maxPref.push(player);
-            }
-            else if (player["gk-pref"] == "1") {
-                midPref.push(player);
-            }
-
-            if (maxPref.length != 0) {
-                let newKeeper = maxPref[createANumber(maxPref.length - 1)];
-                newTeam.forEach(function(player){
-                    if(player["users-name"] === newKeeper["users-name"]){
-                        player["picked-position"] = "gk";
-                        
-                    }
-                })
-            }
-            else if (midPref.length != 0) {
-                let newKeeper = midPref[createANumber(maxPref.length - 1)];
-                newTeam.forEach(function(player){
-                    if(player["users-name"] === newKeeper["users-name"]){
-                        player["picked-position"] = "gk";
-                        
-                    }
-                })
-            }
-            else {
-                let newKeeper = newTeam[createANumber(maxPref.length - 1)];
-                newTeam.forEach(function(player){
-                    if(player["users-name"] === newKeeper["users-name"]){
-                        player["picked-position"] = "gk";
-                        
-                    }
-                })
-            }
-
-        });
-
-        return newTeam;
-    }
+    return teamData;
 }
 
-function assignPlayingPositions(teamData) {
-    let team1 = [];
-    let team2 = [];
 
-    // Seperate players back into 2 teams...
+function moreThanOneKeeperCheck(teamData){
+    
+    var team1Keepers = 0;
+    var team2Keepers = 0;
+    let allKeepers = 0;
 
     teamData.forEach(function(player) {
-
-
-        if (player["team"] === 1) {
-            team1.push(player);
-        }
-        else if (player["team"] === 2) {
-            team2.push(player);
-        }
-    });
-
-    let goalkeepers = 0
-
-    team1.forEach(function(player) {
-        if (player["force-position"] === "gk") {
-            goalkeepers += 1;
-        }
-    })
-
-    team1.forEach(function(player) {
-        player["picked-position"] = positionAllocation(player, goalkeepers, createANumber(4), 1);
-        if (player["picked-position"] === "gk") {
-            goalkeepers += 1;
-        }
-        else if (player["picked-position"] === undefined) {
-            player["picked-position"] === "def"
+        if (player["force-position"] === "GK" || player["picked-position"] === "gk") {
+            allKeepers += 1;
+            
+            if (parseInt(player["team"]) === 1) {
+                team1Keepers += 1;
+            } else if (parseInt(player["team"]) === 2) {
+                team2Keepers += 1;
+            }
         }
     });
 
-
-    goalkeepers = 0
-
-    team2.forEach(function(player) {
-        if (player["force-position"] === "gk") {
-            goalkeepers += 1;
-        }
-    })
-
-    team2.forEach(function(player) {
-        player["picked-position"] = positionAllocation(player, goalkeepers, createANumber(4), 1);
-        if (player["picked-position"] === "gk") {
-            goalkeepers += 1;
-        }
-        else if (player["picked-position"] === undefined) {
-            player["picked-position"] === "def"
-        }
-    });
-
-    var bothTeamsData = $.merge(team1, team2);
-
-    return bothTeamsData;
+    if (team1Keepers > 1 || team2Keepers > 1 || allKeepers > 2) {
+        displayMessage("Too many Keepers Selected");
+    } else {
+        return teamData;
+    }
 }
 
-function howManyKeepersOnTeam(team, attr) {
-    
-    var keepers = 0;
+function separatePlayersByAllocatedUnallocated(teamData){
+    // Confirm players allocated to a team and those to be allocated...
 
-    team.forEach(function(player) {
-        if(attr === "force-position"){
-            console.log("Matched force");     
-            console.log(player);
+            let playersInATeam = [];
+            let playerstoBeAllocated = [];
+
+            teamData.forEach(function(player) {
+                if (player["team"] != undefined) {
+                    playersInATeam.push(player);
+                }
+                else {
+                    playerstoBeAllocated.push(player);
+                }
+            });
+
+            return [playersInATeam, playerstoBeAllocated];
+}
+
+function checkTeamScores(teamData){
+    // Determine how many players are in each team and their team score so far...
+
+    let teamsSummary = [
+        {"team" : 1, "Score": 0, "Players": 0 },
+        {"team" : 2, "Score": 0, "Players": 0 }
+    ];
+
+    
+    teamData[0].forEach(function(player) {
+        
+        if (parseInt(player["team"]) === 1) {
+            teamsSummary[0]["Players"] += 1;
             
-            if (player["force-position"] === "GK"){
-                keepers += 1;
-                console.log("Finally");
-            }
-        } else if(attr === "picked-position"){
-            console.log(player);
-            console.log("Matched picked");     
-            
-            if (player["picked-position"] === "gk") {
-               keepers += 1;
-               console.log("Finally");   
+            if(player["force-position"] === "GK"){
+                teamsSummary[0]["Score"] += parseFloat(player["avg_gk"]);    
             } else {
-                console.log(player["picked-position"]);
+                teamsSummary[0]["Score"] += parseFloat(player["avg_out"]);
+            }
+        } else if (parseInt(player["team"]) === 2) {
+            teamsSummary[1]["Players"] += 1;
+            
+            if(player["force-position"] === "GK"){
+                teamsSummary[1]["Score"] += parseFloat(player["avg_gk"]);    
+            } else {
+                teamsSummary[1]["Score"] += parseFloat(player["avg_out"]);
+            }
+        }
+    }); 
+        
+    teamsSummary[0]["avg-score"] = 
+        teamsSummary[0]["Score"] / teamsSummary[0]["Players"];
+    
+    teamsSummary[1]["avg-score"] = 
+        teamsSummary[1]["Score"] / teamsSummary[1]["Players"];
+    
+    
+    return [teamData, teamsSummary];
+}
+
+function allocateRemainingTeams(teamData){
+    
+    
+    
+    let playersToBeAllocated = teamData[0][1];
+    let playersAllocated = teamData[0][0];
+    
+    // Sort players by average of all scores, best to worst.....
+    let playersSortedByAvgScore = sortByKeyDesc(playersToBeAllocated, "avg_out");
+    let team1Data = teamData[1][0];
+    let team2Data = teamData[1][1];
+    let keepers = [0,0];
+    
+    playersAllocated.forEach(function(player){
+        
+        if(player["force-position"] === "GK"){
+           let index = player["team"] - 1; 
+           keepers[index] +=1
+        }
+    })
+    
+    /* Allocate a team number to any players yet to be allocated 
+    to a team... */
+
+    playersSortedByAvgScore.forEach(function(player) {
+        
+        if (player["force-position"] === "GK"){
+            if(keepers[0] === 0){
+                player["team"] = 1;
+                team1Data["Players"] += 1;
+                team1Data["Score"] += parseFloat(player["avg_gk"]);
+                keepers[0] += 1;
+            } else {
+                player["team"] = 2;
+                team2Data["Players"] += 1;
+                team2Data["Score"] += parseFloat(player["avg_gk"]);    
+            }
+        } else if (team1Data["Players"] > team2Data["Players"]) {
+            player["team"] = 2;
+            team2Data["Players"] += 1;
+            team2Data["Score"] += parseFloat(player["avg_out"]);
+
+        } else if (team1Data["Players"] < team2Data["Players"]) {
+            player["team"] = 1;
+            team1Data["Players"] += 1;
+            team1Data["Score"] += parseFloat(player["avg_out"]);
+        } else {
+            let teamNo = createANumber(2);
+            player["team"] = teamNo;
+
+            if (teamNo === 1) {
+                team1Data["Players"] += 1;
+                team1Data["Score"] += parseFloat(player["avg_out"]);
+            }
+            else if (teamNo === 2) {
+                team2Data["Players"] += 1;
+                team2Data["Score"] += parseFloat(player["avg_out"]);
             }
         }
     });
     
-    return keepers;
+    team1Data["avg-score"] = 
+        team1Data["Score"] / team1Data["Players"];
+    
+    team2Data["avg-score"] = 
+        team2Data["Score"] / team2Data["Players"];
+    
+    console.log(playersAllocated)
+    console.log(playersToBeAllocated)
+    
+    
+    let allPlayers = $.merge(playersAllocated, playersSortedByAvgScore);
+    
+    console.log(allPlayers)
+    
+    let finalTeamSelectionData = [allPlayers, [team1Data, team2Data]];
+
+    return finalTeamSelectionData;
 }
 
-function positionAllocation(thisPlayer, gk, randomNo, numberOfTries) {
+function assignForcedPositions(teamsData) {
 
-    if (thisPlayer["force-position"] != "") {
-        return thisPlayer["force-position"].toLowerCase();
-    }
-    else {
-        if (numberOfTries === 10) {
-            if (gk != 0) {
-                let positions = ["def", "mid", "att"];
-                return positions[createANumber(3) - 1];
-            }
-            else {
-                let positions = ["gk", "def", "mid", "att"];
-                return positions[createANumber(4) - 1];
-            }
-        }
-        else {
-            if (randomNo === 1) {
-                if (gk < 1 && parseInt(thisPlayer["gk-pref"], 10) > 0) {
-                    return "gk";
-                }
-                else {
-                    numberOfTries += 1;
-                    return positionAllocation(thisPlayer, gk, createANumber(4), numberOfTries);
-                }
-            }
-            else if (randomNo === 2) {
-                if (parseInt(thisPlayer["def-pref"], 10) > 0) {
-                    return "def";
-                }
-                else {
-                    numberOfTries += 1;
-                    return positionAllocation(thisPlayer, gk, createANumber(4), numberOfTries);
-                }
-            }
-            else if (randomNo === 3) {
-                if (parseInt(thisPlayer["mid-pref"], 10) > 0) {
-                    return "mid";
-                }
-                else {
-                    numberOfTries += 1;
-                    return positionAllocation(thisPlayer, gk, createANumber(4), numberOfTries);
-                }
-            }
-            else {
-                if (parseInt(thisPlayer["att-pref"], 10) > 0) {
-                    return "att";
-                }
-                else {
-                    numberOfTries += 1;
-                    return positionAllocation(thisPlayer, gk, createANumber(4), numberOfTries);
-                }
-            }
-        }
-    }
-}
-
-function calculateTeamsAverageScore(team, attribute) {
-    let scores = [];
-
-    team.forEach(function(player) {
-        if (player["picked-position"] === "gk") {
-            scores.push(parseFloat(player["avg_gk"]));
-        }
-        else {
-            scores.push(parseFloat(player[attribute]));
+    teamsData[0].forEach(function(thisPlayer) {
+        if (thisPlayer["force-position"] != "") {
+            thisPlayer["picked-position"] = thisPlayer["force-position"].toLowerCase();
         }
     })
 
-    const teamScore = scores.reduce((total, amount) => total + amount);
-    const avgScore = teamScore / scores.length;
-    return avgScore;
+    return teamsData;
+}
+
+function setupTeams(teamData){
+        let assignedPlayers = [[],[]];
+        
+        let unassignedPlayers = [[],[]];
+    
+        let positionsOfPlayers = [
+            { "team": 1, "gk": 0, "def": 0, "mid": 0, "att": 0 },
+            { "team": 2, "gk": 0, "def": 0, "mid": 0, "att": 0 }
+        ];
+
+        teamData[0].forEach(function(player) {
+            
+            if (player["picked-position"] === undefined) {
+                let team = player["team"] -1;
+                unassignedPlayers[team].push(player);
+            } else {
+                let team = player["team"] -1;
+                assignedPlayers[team].push(player);
+                
+                let index = parseInt(player["team"]) - 1;
+                let playerPosition = player["picked-position"];
+                positionsOfPlayers[index][playerPosition] += 1;
+            }
+        })    
+        
+        return {"assignedPlayers" : assignedPlayers, "unassignedPlayers" : unassignedPlayers, "positionsOfPlayers" : positionsOfPlayers};
+}
+
+function assignPositionsForRemainingPlayers(teamData) {
+    
+    
+        let assignedPlayers = teamData["assignedPlayers"];
+        let unassignedPlayers = teamData["unassignedPlayers"];
+        let positionsOfPlayers = teamData["positionsOfPlayers"]
+        
+        let potentialPositions = ["gk", "def", "mid", "att"];
+        
+        
+        let positionLoop = 0;
+        let minPlayersInPosition = 0;
+        let thisPosition = potentialPositions[positionLoop];
+        
+    
+        for(var i = 0; i < positionsOfPlayers.length; i++){
+            
+            let positionLoop = 0;
+            let minPlayersInPosition = 0;
+            let thisPosition = potentialPositions[positionLoop];
+            
+            
+            while(unassignedPlayers[i].length > 0){
+        
+                if (positionsOfPlayers[i][thisPosition] === minPlayersInPosition) {
+                    
+                      
+                    let preferredPlayers = [];
+                    let canPlayPlayers = [];
+                    let cannotPlayPlayers = [];
+                    let pickedPlayer;
+                
+                    unassignedPlayers[i].forEach(function(player){
+        
+                        if (player[thisPosition + "-pref"] == 2) {
+                            preferredPlayers.push(player);
+                        } else if (player[thisPosition + "-pref"] == 1) {
+                            canPlayPlayers.push(player);
+                        } else {
+                            cannotPlayPlayers.push(player);
+                        }
+                    })
+    
+                    let random = 0
+    
+                    if (preferredPlayers.length === 1) {
+                        pickedPlayer = preferredPlayers[0];
+                    } else if (preferredPlayers.length > 1) {
+                        random = Math.floor(Math.random() * preferredPlayers.length);
+                        pickedPlayer = preferredPlayers[random];
+                    } else if (canPlayPlayers.length === 1) {
+                        pickedPlayer = canPlayPlayers[0];
+                    } else if (canPlayPlayers.length > 1) {
+                        random = Math.floor(Math.random() * canPlayPlayers.length);
+                        pickedPlayer = canPlayPlayers[random];
+                    } else {
+                        random = Math.floor(Math.random() * cannotPlayPlayers.length);
+                        pickedPlayer = cannotPlayPlayers[random];
+                    }
+                    
+                    var index = unassignedPlayers[i].findIndex(player => player["full-username"] === pickedPlayer["full-username"]);
+                    
+                    unassignedPlayers[i][index]["picked-position"] = thisPosition;
+                    
+                    
+                    if (index > -1) {
+                        assignedPlayers[i].push(unassignedPlayers[i][index]);
+                        unassignedPlayers[i].splice(index, 1);
+                    }
+                   
+                    positionsOfPlayers[i][thisPosition] += 1;    
+                    
+                    if (positionLoop === 3) {
+                        positionLoop = 1;
+                        minPlayersInPosition += 1;
+                        thisPosition = potentialPositions[positionLoop];
+                    } else {
+                        positionLoop += 1;
+                        thisPosition = potentialPositions[positionLoop];
+                    }
+                    
+                    
+                    
+                } else {
+                    if (positionLoop === 3) {
+                        positionLoop = 1;
+                        minPlayersInPosition += 1;
+                        thisPosition = potentialPositions[positionLoop];
+                    } else {
+                        positionLoop += 1;
+                        thisPosition = potentialPositions[positionLoop];
+                    }
+                    
+                    
+                }
+        
+            }   
+        }
+            
+    
+    let mergedTeams = $.merge(assignedPlayers[0], assignedPlayers[1]);
+
+    return mergedTeams;
+}
+
+function assignSinglePlayer(playersToBeAssigned, positionBeingReviewed){
+        
 }
 
 function addPlayersToPitch(teamSelection) {
@@ -590,6 +613,58 @@ function addPlayersToPitch(teamSelection) {
         }
     });
 }
+
+function runTeamGenerationPromises(){
+    $('.team-1-player, .team-2-player').remove(); // Remove exisitng team generation
+    collectTeamSettingsData(".", "player-data-row")
+        .then((result) => {
+            
+            // Result = Array of objects containing player data pulls through
+            return playersToChooseTeamsFrom(result);
+        }).then((result) => {
+            
+            // Result = Only available players are provided
+            return attachPlayerToForcedTeam(result);
+        }).then((result) => {
+                        
+            // Result = Console suggests all players allocated to a team 
+            return moreThanOneKeeperCheck(result);
+        }).then((result) => {
+                
+            // Result = Keepers are recognised correctly and raise error if too many
+            return separatePlayersByAllocatedUnallocated(result);
+        }).then((result) => {    
+                
+            // Result = Players seperated successfully into allocated / unallocated
+                        
+            return checkTeamScores(result);
+        }).then((result) => {        
+                        
+            // Result = Teams are passed through along with summary of teams picked so far    
+            return allocateRemainingTeams(result);
+        }).then((result) => {
+                        
+            // Result = Players are passed through with team numbers an the second array entry holds team player and avg stats
+            //  This can be distorted slightly if 2 keepers have not been picked as avg_out is counted if gk not specified
+            return assignForcedPositions(result);
+                        
+        }).then((result) => {
+                        
+            // Result = Players are allocated any forced positions
+                    
+            return setupTeams(result);
+        }).then((result) => {
+                        
+            // Result = object of Assigned and unassigned players, along with team / player position summary
+                        
+            return assignPositionsForRemainingPlayers(result);
+        }).then((result) => {
+            addPlayersToPitch(result); // Render in html template
+            $(".user-playing-positions-section").removeClass("start-off-screen");
+            $(".user-playing-positions-section").addClass('slide-in-from-right');
+        })
+}
+
 
 // Enables post of data to database --------------------------------------------
 
@@ -618,10 +693,10 @@ function postData(type, data) {
         postToDatabase(profileURL, ratingData, playerRated);
     }
     else if (type == "update-match-availability-status") {
-        preventClick = true
         let availabilityData = data;
         let matchesURL = "../../update_availability_status/";
         let customRoute = availabilityData["matchID"] + "/" + availabilityData["availTablePk"];
+        console.log(customRoute);
         postToDatabase(matchesURL, availabilityData, customRoute);
     }
 };
@@ -648,7 +723,7 @@ function postToDatabase(url, data, route) {
                 // For use on updating availability status only if instance has just been created, the pk of the instance needs to be updated to avoid creating multiple instances
 
                 $("#avail-table-pk").text(json["instanceID"]);
-                preventClick = false
+                preventClick = false;
 
             }
             else if (url != "../update_position_pref/") {
@@ -721,18 +796,10 @@ function activateButton() {
                 $('.create-group-form').show();
                 break;
             case "pick-teams-btn":
-                $('.team-1-player, .team-2-player').remove(); // Remove exisitng team generation
-                var teamData = pickTeams(collectTeamSettingsData(".", "player-data-row")); // Allocate teams
-                var pickedTeamsAndPositions = assignPlayingPositions(teamData);
-                addPlayersToPitch(pickedTeamsAndPositions); // Render in html template
-                $(".user-playing-positions-section").removeClass("start-off-screen");
-                $(".user-playing-positions-section").addClass('slide-in-from-right');
+                runTeamGenerationPromises();
                 break;
             case "regen-btn":
-                $('.team-1-player, .team-2-player').remove(); // Remove exisitng team generation
-                var teamData = pickTeams(collectTeamSettingsData(".", "player-data-row")); // Allocate teams
-                var pickedTeamsAndPositions = assignPlayingPositions(teamData);
-                addPlayersToPitch(pickedTeamsAndPositions); // Render in html template
+                runTeamGenerationPromises();
                 break;
             case "back-to-settings-btn":
                 $(".user-playing-positions-section").removeClass("slide-in-from-right");
@@ -871,9 +938,14 @@ $(document).ready(function() {
 
     $(".i-am-unconfirmed, .i-have-confirmed, .i-am-unavailable").click(function() {
         if (preventClick === false) {
-            let data = updateMatchAvailability(this.className);
-            postData("update-match-availability-status", data);
+            preventClick = true;
+
+
+
+            // let data = updateMatchAvailability(this.className);
+            // postData("update-match-availability-status", data);
         }
+
     });
 
     curvePlayerNames();

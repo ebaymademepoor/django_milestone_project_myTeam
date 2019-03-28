@@ -162,40 +162,39 @@ function preparePositionPrefData(element) {
 }
 
 function updateMatchAvailability(buttonClicked) {
-
-    let status = 0
-
+    
+    let status = 0;
+    
     // Upon click of the users availability box, change the classes and the status
 
-    if (buttonClicked == "i-have-confirmed") {
-        $('.' + buttonClicked).removeClass("i-have-confirmed").addClass("i-am-unavailable").text("Unavailable");
-        status = 0
+    if (buttonClicked.className === "i-have-confirmed") {
+        $('.' + buttonClicked.className).removeClass("i-have-confirmed").addClass("i-am-unavailable").text("Unavailable");
+        status = 0;
         console.log("You were confirmed but you are now unavailable");
-    }
-    else {
+    } else if (buttonClicked.className === "i-am-unavailable" || buttonClicked.className === "i-am-unconfirmed"){
         console.log("You just made yourself available");
-        status = 1
-        $('.' + buttonClicked).removeClass("i-am-unavailable i-am-unconfirmed").addClass("i-have-confirmed").text("Confirmed");
+        status = 1;
+        $('.' + buttonClicked.className).removeClass("i-am-unavailable i-am-unconfirmed").addClass("i-have-confirmed").text("Confirmed");
     }
 
     // Build new data based on the results collected and return
 
-    let matchID = $("#match-id").text();
-    let availTablePk = 0;
-
-    if ($("#avail-table-pk").text() === "") {
+    let availTablePk = buttonClicked.id;
+    
+    if(availTablePk === ""){
         availTablePk = 0;
     }
-    else {
-        availTablePk = $("#avail-table-pk").text();
-    }
+    
+    let matchID = $("#match-id").text();
 
     let availabilityData = {};
-
+    
     availabilityData["matchID"] = matchID;
     availabilityData["availTablePk"] = availTablePk;
     availabilityData["status"] = status;
-
+    
+    console.log(availabilityData);
+    
     return availabilityData;
 
 }
@@ -696,7 +695,6 @@ function postData(type, data) {
         let availabilityData = data;
         let matchesURL = "../../update_availability_status/";
         let customRoute = availabilityData["matchID"] + "/" + availabilityData["availTablePk"];
-        console.log(customRoute);
         postToDatabase(matchesURL, availabilityData, customRoute);
     }
 };
@@ -722,9 +720,13 @@ function postToDatabase(url, data, route) {
 
                 // For use on updating availability status only if instance has just been created, the pk of the instance needs to be updated to avoid creating multiple instances
 
-                $("#avail-table-pk").text(json["instanceID"]);
-                preventClick = false;
+                if(data["availTablePk"] === 0){
+                    console.log("Yep")
+                    console.log(json["instanceID"])
+                    $(".i-have-confirmed").attr( 'id', json["instanceID"] );
+                }
 
+                preventClick = false;
             }
             else if (url != "../update_position_pref/") {
                 if (json["result"] == 'Update successful!') {
@@ -940,10 +942,8 @@ $(document).ready(function() {
         if (preventClick === false) {
             preventClick = true;
 
-
-
-            // let data = updateMatchAvailability(this.className);
-            // postData("update-match-availability-status", data);
+            let data = updateMatchAvailability(this);
+            postData("update-match-availability-status", data);
         }
 
     });

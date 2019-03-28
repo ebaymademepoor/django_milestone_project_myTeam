@@ -117,15 +117,13 @@
                                     {% if user|lower == entry.player|lower %}
                                         {% if entry.status == 1 %}
                                             {% if user|lower == this_user.email|lower %}
-                                                <p class="i-have-confirmed">Confirmed</p>
-                                                <span id="avail-table-pk" class="hidden">{{ entry.pk }}</span> 
+                                                <p id="{{ entry.pk }}" class="i-have-confirmed">Confirmed</p>
                                             {% else %}
                                                 <p class="confirmed">Confirmed</p>
                                             {% endif %}
                                         {% else %}
                                             {% if user|lower == this_user.email|lower %}
-                                                <p class="i-am-unavailable">Unavailable</p>
-                                                <span id="avail-table-pk" class="hidden">{{ entry.pk }}</span> 
+                                                <p id="{{ entry.pk }}" class="i-am-unavailable">Unavailable</p>
                                             {% else %}
                                                 <p class="unavailable">Unavailable</p>
                                             {% endif %}
@@ -138,10 +136,8 @@
                             {% else %}
                                 {% if user|lower == this_user.email|lower %}
                                     <p class="i-am-unconfirmed">Unconfirmed</p>
-                                    <span id="avail-table-pk" class="hidden"></span>
                                 {% else %}
                                     <p class="unconfirmed">Unconfirmed</p>
-                                    <span id="avail-table-pk" class="hidden">{{ entry.pk }}</span>
                                 {% endif %}
                             {% endif %}
                         </div>
@@ -178,7 +174,7 @@
                                     <p class="i-am-unconfirmed">Unconfirmed</p> 
                                 {% else %}
                                     <p class="unconfirmed">Unconfirmed</p>
-                                    <span id="avail-table-pk" class="hidden">{{ entry.pk }}</span>
+                                    <span id="avail-table-pk-{{ entry.pk }}" class="hidden">{{ entry.pk }}</span>
                                 {% endif %}
                         </div>
                     </div>

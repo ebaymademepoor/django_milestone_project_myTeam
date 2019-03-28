@@ -1037,7 +1037,8 @@ footer {
   top: 0;
   width: 100%;
   box-sizing: border-box;
-  transition: all 1s; }
+  transition: all 1s;
+  height: 100%; }
   .team-gen-pg .user-playing-positions-section h4 {
     margin-bottom: 10px;
     margin-right: 64px;

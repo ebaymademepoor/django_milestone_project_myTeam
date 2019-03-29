@@ -68,6 +68,12 @@ table {
   -moz-box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63);
   box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63); }
 
+.team-gen-pg .user-playing-positions-section .team-scores .team-1-score,
+.team-gen-pg .user-playing-positions-section .team-scores .team-2-score {
+  -webkit-box-shadow: 4px 4px 11px 2px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: 4px 4px 11px 2px rgba(0, 0, 0, 0.42);
+  box-shadow: 4px 4px 11px 2px rgba(0, 0, 0, 0.42); }
+
 nav .logo-pic, .group-home .content .member-box .member-container .shirt, .shirt, .team-gen-pg .user-playing-positions-section .pitch-row .team-1-player,
 .team-gen-pg .user-playing-positions-section .pitch-row .team-2-player {
   background-position: center;
@@ -1082,6 +1088,31 @@ footer {
       background-image: url("../img/transparent-shirt.png"); }
     .team-gen-pg .user-playing-positions-section .pitch-row .team-2-player {
       background-image: url("../img/transparent-shirt-red.png"); }
+  .team-gen-pg .user-playing-positions-section .team-scores {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: 'Staatliches', cursive;
+    text-align: center;
+    box-sizing: border-box; }
+    .team-gen-pg .user-playing-positions-section .team-scores .team-1-score,
+    .team-gen-pg .user-playing-positions-section .team-scores .team-2-score {
+      display: inline-block;
+      width: 74px;
+      color: white; }
+      .team-gen-pg .user-playing-positions-section .team-scores .team-1-score p,
+      .team-gen-pg .user-playing-positions-section .team-scores .team-2-score p {
+        padding: 4px; }
+      .team-gen-pg .user-playing-positions-section .team-scores .team-1-score p:nth-of-type(2),
+      .team-gen-pg .user-playing-positions-section .team-scores .team-2-score p:nth-of-type(2) {
+        padding: 8px;
+        background-color: #fff;
+        color: #262228; }
+    .team-gen-pg .user-playing-positions-section .team-scores .team-1-score {
+      background-color: #0375B4; }
+    .team-gen-pg .user-playing-positions-section .team-scores .team-2-score {
+      background-color: #ed1c24; }
 
 .index-page-bg-settings {
   width: 100%;

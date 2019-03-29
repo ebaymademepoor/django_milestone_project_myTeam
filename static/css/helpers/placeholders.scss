@@ -28,8 +28,15 @@
     box-shadow: inset -5px -5px 38px -12px rgba(0,0,0,0.63);
 }
 
+%floating-shadow {
+    -webkit-box-shadow: 4px 4px 11px 2px rgba(0, 0, 0, 0.42);
+    -moz-box-shadow: 4px 4px 11px 2px rgba(0, 0, 0, 0.42);
+    box-shadow: 4px 4px 11px 2px rgba(0, 0, 0, 0.42);
+}
+
 %contain-picture {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
 }
+

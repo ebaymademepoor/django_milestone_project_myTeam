@@ -168,8 +168,6 @@ def save_a_generated_team(request, groupid, matchid):
     
     if request.method == "POST":
         
-        print(request.POST["saved_team"])
-        
         try:
             match = MatchData.objects.get(pk=matchid)
         except: 

@@ -1096,5 +1096,44 @@
                 background-image: url('../img/transparent-shirt-red.png');
             }
         }
+        
+        .team-scores {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            font-family: 'Staatliches', cursive;
+            text-align: center;
+            box-sizing: border-box;
+            
+            .team-1-score,
+            .team-2-score {
+                display: inline-block;
+                width: 74px;
+                color: white ;
+                @extend %floating-shadow;
+                
+                p {
+                    padding: 4px;
+                }
+                
+                p:nth-of-type(2) {
+                    padding: 8px;
+                    background-color: $white;
+                    color: $brand-evening-black;
+                }
+            }
+            
+            .team-1-score {
+                background-color: $brand-starry-night-blue;
+            }
+            
+            .team-2-score {
+                background-color: $shirt-red;
+            }
+            
+            
+            
+        }
     }
 }

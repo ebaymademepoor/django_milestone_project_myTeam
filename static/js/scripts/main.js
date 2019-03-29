@@ -625,6 +625,20 @@ function addPlayersToPitch(teamSelection) {
     });
 }
 
+function addStatstoPitch(teamData){
+    teamData[1].forEach(function(team) {
+        
+            var thisTeamsScore = '<div class="team-' + team["team"] + '-score">' 
+            + '<p>' + 'Team - ' + team["team"] + '</p>'
+            + '<p>' + 'Score: ' + (Math.round(team["Score"] * 100) / 100) + '</p>' 
+            + '</div>';
+
+            let rowToAppend = '.team-scores';
+
+            $(rowToAppend).append(thisTeamsScore);
+    });
+}
+
 function runTeamGenerationPromises(){
     $('.team-1-player, .team-2-player').remove(); // Remove exisitng team generation
     collectTeamSettingsData(".", "player-data-row")
@@ -670,8 +684,13 @@ function runTeamGenerationPromises(){
                         
             return assignPositionsForRemainingPlayers(result);
         }).then((result) => {
+            $('.team-1-score, .team-2-score').remove(); // Remove exisitng team generation
             addPlayersToPitch(result); // Render in html template
             currentGeneratedTeam = result;
+            let teamsArray = [];
+            teamsArray.push(currentGeneratedTeam);
+            let stats = checkTeamScores(teamsArray);
+            addStatstoPitch(stats);
             $(".user-playing-positions-section").removeClass("start-off-screen");
             $(".user-playing-positions-section").addClass('slide-in-from-right');
         })
@@ -850,8 +869,12 @@ function activateButton() {
                 break;
             case "view-saved-teams-btn":
                 getSavedTeamData().then((teams) => {
-                    $('.team-1-player, .team-2-player').remove(); // Remove exisitng team generation
+                    $('.team-1-player, .team-2-player, .team-1-score, .team-2-score').remove(); // Remove exisitng team generation
                     addPlayersToPitch(teams);
+                    let teamsArray = [];
+                    teamsArray.push(teams);
+                    let stats = checkTeamScores(teamsArray);
+                    addStatstoPitch(stats);
                     scrollTo(".nav-content-container");
                     $(".user-playing-positions-section").removeClass("start-off-screen");
                     $(".user-playing-positions-section").addClass('slide-in-from-right');

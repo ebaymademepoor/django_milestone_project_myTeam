@@ -852,6 +852,7 @@ function activateButton() {
                 getSavedTeamData().then((teams) => {
                     $('.team-1-player, .team-2-player').remove(); // Remove exisitng team generation
                     addPlayersToPitch(teams);
+                    scrollTo(".nav-content-container");
                     $(".user-playing-positions-section").removeClass("start-off-screen");
                     $(".user-playing-positions-section").addClass('slide-in-from-right');
                 });

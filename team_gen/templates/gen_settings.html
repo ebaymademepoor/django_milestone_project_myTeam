@@ -9,6 +9,9 @@
             <div class="container member-container">
                 <h2>Team Generation</h2> 
                 
+                <div id="group-id" class="hidden">{{ group_data.pk }}</div>
+                <div id="match-id"class="hidden">{{ match_data.pk }}</div>
+                
                 <div class="options-header">
                     <h3>Options</h3>
                     <p>Available</p>
@@ -143,18 +146,25 @@
                                 <option>ATT</option> 
                             </select> 
                         </div>
-                        
-                        
                     </form> 
                     <hr> 
                 {% endfor %}
             </div>
-            <button id="pick-teams-btn">Pick Teams</button> 
+            <div class="row btn-row">
+                <button id="pick-teams-btn" class="click-shrink">Pick Teams</button>
+                {% if match_data.selected_team  %}
+                    <button id="view-saved-teams-btn" class="click-shrink">Saved Teams</button>
+                {% else %}
+                    <button id="view-saved-teams-btn" class="click-shrink hidden">Saved Teams</button>
+                {% endif %}    
+            </div>
+            
         </section>
         <section class="user-playing-positions-section start-off-screen">
             <h4>Generated Teams</h4>
-            <button id="back-to-settings-btn">Settings</button>
-            <button id="regen-btn">Regen</button>
+            <button id="back-to-settings-btn" class="click-shrink">Settings</button>
+            <button id="regen-btn" class="click-shrink">Regen</button>
+            <button id="save-teams-btn" class="click-shrink">Save</button> 
             <div class="half-pitch">
                 <div class="pitch-row gk-row-team1"></div>
                 <div class="pitch-row def-row-team1"></div>
@@ -168,6 +178,11 @@
                 <div class="pitch-row gk-row-team2"></div>
             </div>
         </section>
+        <section class="saved-team-data">
+            {% if match_data.selected_team  %}
+                <div class="hidden">{{ match_data.selected_team }}</div> 
+            {% endif %}
+        </section> 
     </div>
 </div>
 {% endblock %}

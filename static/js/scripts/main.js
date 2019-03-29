@@ -2,8 +2,16 @@
 
 let preventClick = false;
 var ctx = $("#myChart");
+let currentGeneratedTeam
+let currentSavedTeams
 
 // A message function to the user ----------------------------------------------
+
+function scrollTo(classOrId){
+    $('html, body').animate({
+        scrollTop: ($(classOrId).offset().top)
+    }, 500);
+}
 
 function displayMessage(message) {
 
@@ -11,9 +19,7 @@ function displayMessage(message) {
 
     $('.message-para').text(message);
     slideInMessagesBox();
-    $('html, body').animate({
-        scrollTop: ($('.messages-container').offset().top)
-    }, 500);
+    scrollTo('.nav-content-container');
 }
 
 // Edit data functions (personal details) --------------------------------------
@@ -212,7 +218,7 @@ function collectTeamSettingsData(type, formName) {
 
 
         for (i = 0; i < formData.length; i++) {
-            let thisUsersData = [];
+            let thisUsersData = {};
 
             for (ii = 0; ii < formData[i].length; ii++) {
                 if (formData[i][ii].name === "force-pick") {
@@ -431,13 +437,7 @@ function allocateRemainingTeams(teamData){
     team2Data["avg-score"] = 
         team2Data["Score"] / team2Data["Players"];
     
-    console.log(playersAllocated)
-    console.log(playersToBeAllocated)
-    
-    
     let allPlayers = $.merge(playersAllocated, playersSortedByAvgScore);
-    
-    console.log(allPlayers)
     
     let finalTeamSelectionData = [allPlayers, [team1Data, team2Data]];
 
@@ -588,8 +588,20 @@ function assignPositionsForRemainingPlayers(teamData) {
     return mergedTeams;
 }
 
-function assignSinglePlayer(playersToBeAssigned, positionBeingReviewed){
+function getSavedTeamData(){
+    return new Promise((resolve, reject) => {
+        let savedTeams = $(".saved-team-data").text();
         
+        console.log(savedTeams)
+        
+        if(savedTeams != ""){
+            teams = JSON.parse(savedTeams);    
+        } else {
+            teams = JSON.parse(currentSavedTeams);
+        }
+        
+        resolve(teams);
+    });
 }
 
 function addPlayersToPitch(teamSelection) {
@@ -659,6 +671,7 @@ function runTeamGenerationPromises(){
             return assignPositionsForRemainingPlayers(result);
         }).then((result) => {
             addPlayersToPitch(result); // Render in html template
+            currentGeneratedTeam = result;
             $(".user-playing-positions-section").removeClass("start-off-screen");
             $(".user-playing-positions-section").addClass('slide-in-from-right');
         })
@@ -667,7 +680,7 @@ function runTeamGenerationPromises(){
 
 // Enables post of data to database --------------------------------------------
 
-function postData(type, data) {
+function preparePostData(type, data) {
 
     // Sends new data to the database via ajax request
 
@@ -696,19 +709,39 @@ function postData(type, data) {
         let matchesURL = "../../update_availability_status/";
         let customRoute = availabilityData["matchID"] + "/" + availabilityData["availTablePk"];
         postToDatabase(matchesURL, availabilityData, customRoute);
+    } else if (type == "save-team"){
+        let teamData = data["team"];
+        let stringData = stringify(teamData);
+        let savedTeam = {};
+        savedTeam["saved_team"] = stringData;
+        let saveTeamURL = "../../match/save_a_generated_team/";
+        let customRoute = data["group"] + "/" + data["match"];
+        
+        postToDatabase(saveTeamURL, savedTeam, customRoute);    
     }
 };
 
+function stringify(jsonItem){
+    let stringData = JSON.stringify(jsonItem);
+        
+    return stringData
+}
 
 function postToDatabase(url, data, route) {
-
+    
+    console.log(data)
+    console.log(url)
+    console.log(route)
+    
     //  ajax function will now take this data and post it accordingly via our python view
 
     $.ajax({
         url: url + route, // the endpoint
         type: "POST", // http method
         data: data,
-
+        
+        
+        
         // handle a successful response
         success: function(json) {
             console.log(json); // log the returned json to the console
@@ -727,13 +760,20 @@ function postToDatabase(url, data, route) {
                 }
 
                 preventClick = false;
-            }
-            else if (url != "../update_position_pref/") {
+            } else if (url === "../../match/save_a_generated_team/") {
+                if (json["result"] == 'Update successful!') {
+                    displayMessage("Your team has been saved!\n  GREAT SAVE!");
+                    $('#view-saved-teams-btn').show();
+                    currentSavedTeams = json["selected_team"]
+                    preventClick = false;
+                } else {
+                    displayMessage("Hmmm, we're not sure that worked, please try later...");
+                }
+            } else if (url != "../update_position_pref/") {
                 if (json["result"] == 'Update successful!') {
                     displayMessage("GOAL!  Details updated...");
 
-                }
-                else {
+                } else {
                     displayMessage("Hmmm, we're not sure that worked, please try later...");
                 }
             }
@@ -799,6 +839,7 @@ function activateButton() {
                 break;
             case "pick-teams-btn":
                 runTeamGenerationPromises();
+                scrollTo(".nav-content-container");
                 break;
             case "regen-btn":
                 runTeamGenerationPromises();
@@ -806,6 +847,14 @@ function activateButton() {
             case "back-to-settings-btn":
                 $(".user-playing-positions-section").removeClass("slide-in-from-right");
                 $(".user-playing-positions-section").addClass('start-off-screen');
+                break;
+            case "view-saved-teams-btn":
+                getSavedTeamData().then((teams) => {
+                    $('.team-1-player, .team-2-player').remove(); // Remove exisitng team generation
+                    addPlayersToPitch(teams);
+                    $(".user-playing-positions-section").removeClass("start-off-screen");
+                    $(".user-playing-positions-section").addClass('slide-in-from-right');
+                });
                 break;
             default:
                 console.log('No action Available');
@@ -890,98 +939,10 @@ function prepareChartData() {
 // Script ----------------------------------------------------------------------
 
 $(document).ready(function() {
-
-    // activateButton will allow buttons to perform their set funtion based on their id...
-
-    activateButton();
-
-    // Helper functions
-    closeParent();
-    removeParent();
-    slideInMessagesBox();
-    unhideABox("show-create-new-group-form", "create-group-form");
-    unhideABox("show-join-group-form", "join-group-form");
-    unhideABox("edit-match-btn", "match-form");
-
-    createEditProfileDataForm();
-    preparePositionPrefData();
-
-    // Updates profile database with new user info when submitted ------------------
-
-    $('body').on("click", ".update-form-btn", function(e) {
-        e.preventDefault();
-        console.log("form submitted!");
-        let data = returnExistingProfileData();
-        postData("user-personal-details", data);
-    });
-
-    // Updates profile database with new position prefs info when submitted ------------------
-
-    $(".attack, .midfield, .defense, .goalkeeper").click(function() {
-
-        let elementClicked = this.id;
-        let data = preparePositionPrefData(elementClicked);
-        postData("user-position-prefs", data);
-
-    });
-
-    // Updates AttributeRating database with new or edited rating when submitted ----
-
-    $('body').on("click", ".update-player-attributes-btn", function(e) {
-        e.preventDefault();
-        console.log("form submitted!");
-        let data = collectFormData("#", "rate-player-form");
-        if (data != null) {
-            postData("attribute-rating", data);
-        }
-    });
-
-    // Updates player match availability status when submitted ------------------
-
-    $(".i-am-unconfirmed, .i-have-confirmed, .i-am-unavailable").click(function() {
-        if (preventClick === false) {
-            preventClick = true;
-
-            let data = updateMatchAvailability(this);
-            postData("update-match-availability-status", data);
-        }
-
-    });
-
-    curvePlayerNames();
-
-
-    // Chart.js Radar chart
-
-    var myRadarChart = new Chart(ctx, {
-
-        type: 'radar',
-        data: {
-            labels: ['Goalkeeping', 'Defending', 'Movement', 'Passing', 'Finishing'],
-            datasets: [{
-                data: prepareChartData(),
-                backgroundColor: 'rgba(35, 230, 35, 0.3)',
-                borderColor: 'rgba(35, 230, 35, 0.9)'
-            }]
-        },
-        options: {
-            legend: {
-                display: false,
-            },
-            title: {
-                display: false,
-            },
-            scale: {
-                ticks: {
-                    beginAtZero: true,
-                    max: 10,
-                    stepSize: 2,
-                    display: false
-                }
-            }
-        }
-    });
-
+    
+    
+    
+    
     // This code retrieves our form csrf token to enable safe ajax requests --------
 
     $(function() {
@@ -1040,4 +1001,120 @@ $(document).ready(function() {
 
     });
 
+    // activateButton will allow buttons to perform their set funtion based on their id...
+
+    activateButton();
+
+    // Helper functions
+    closeParent();
+    removeParent();
+    slideInMessagesBox();
+    unhideABox("show-create-new-group-form", "create-group-form");
+    unhideABox("show-join-group-form", "join-group-form");
+    unhideABox("edit-match-btn", "match-form");
+
+    createEditProfileDataForm();
+    preparePositionPrefData();
+
+    // Updates profile database with new user info when submitted ------------------
+
+    $('body').on("click", ".update-form-btn", function(e) {
+        e.preventDefault();
+        console.log("form submitted!");
+        let data = returnExistingProfileData();
+        preparePostData("user-personal-details", data);
+    });
+
+    // Updates profile database with new position prefs info when submitted ------------------
+
+    $(".attack, .midfield, .defense, .goalkeeper").click(function() {
+
+        let elementClicked = this.id;
+        let data = preparePositionPrefData(elementClicked);
+        preparePostData("user-position-prefs", data);
+
+    });
+
+    // Updates AttributeRating database with new or edited rating when submitted ----
+
+    $('body').on("click", ".update-player-attributes-btn", function(e) {
+        e.preventDefault();
+        console.log("form submitted!");
+        let data = collectFormData("#", "rate-player-form");
+        if (data != null) {
+            preparePostData("attribute-rating", data);
+        }
+    });
+
+    // Updates player match availability status when submitted ------------------
+
+    $(".i-am-unconfirmed, .i-have-confirmed, .i-am-unavailable").click(function() {
+        if (preventClick === false) {
+            preventClick = true;
+
+            let data = updateMatchAvailability(this);
+            preparePostData("update-match-availability-status", data);
+        }
+
+    });
+    
+    // Saves a generated team when submitted -----------------------------------
+
+    $("#save-teams-btn").click(function() {
+        $(".saved-team-data").text("");
+        let data = currentGeneratedTeam;
+        
+        if(data === undefined){
+            displayMessage("There is currently no team generated");
+        } else if (preventClick === false) {
+            preventClick = true;
+            
+            let fullData = {};
+            
+            let groupid = $('#group-id').text()
+            let matchid = $('#match-id').text()
+            
+            fullData["team"] = currentGeneratedTeam;
+            fullData["group"] = parseInt(groupid);
+            fullData["match"] = parseInt(matchid);
+            console.log(fullData);
+            preparePostData("save-team", fullData);
+        }
+
+    });
+
+
+    curvePlayerNames();
+
+
+    // Chart.js Radar chart
+
+    var myRadarChart = new Chart(ctx, {
+
+        type: 'radar',
+        data: {
+            labels: ['Goalkeeping', 'Defending', 'Movement', 'Passing', 'Finishing'],
+            datasets: [{
+                data: prepareChartData(),
+                backgroundColor: 'rgba(35, 230, 35, 0.3)',
+                borderColor: 'rgba(35, 230, 35, 0.9)'
+            }]
+        },
+        options: {
+            legend: {
+                display: false,
+            },
+            title: {
+                display: false,
+            },
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 10,
+                    stepSize: 2,
+                    display: false
+                }
+            }
+        }
+    });
 });

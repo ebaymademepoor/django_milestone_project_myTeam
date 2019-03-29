@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
-from .forms import CreateOrEditMatchHelperForm, processMatchRequestForm, UpdateMatchAvailabilityForm
+from .forms import CreateOrEditMatchHelperForm, processMatchRequestForm, UpdateMatchAvailabilityForm, SaveTeamsForm
 from groups.models import Group
 from .models import MatchData, AvailabilityTable
 from profile_and_stats.models import UserProfileData
@@ -162,3 +162,33 @@ def update_availability_status(request, matchid, availability_table_id):
             return HttpResponse(json.dumps({"ERROR":"You are not a member of this group!"}), content_type="application/json")
     else:
         return redirect(reverse('index'))
+        
+@login_required    
+def save_a_generated_team(request, groupid, matchid):
+    
+    if request.method == "POST":
+        
+        print(request.POST["saved_team"])
+        
+        try:
+            match = MatchData.objects.get(pk=matchid)
+        except: 
+            match - None
+        
+        response_data = {}
+        response_data["selected_team"] = request.POST["saved_team"]
+        
+        form = SaveTeamsForm(response_data, instance = match)
+        
+        if form.is_valid():
+            saved_teams = form.save()
+                
+            response_data['result'] = 'Update successful!'
+            response_data['instanceID'] = saved_teams.pk
+                
+                
+            return HttpResponse(json.dumps(response_data),content_type="application/json")
+        else:
+            print(form.errors)
+            return HttpResponse(json.dumps({"ERROR":"Error in saving your teams, please try later"}), content_type="application/json")
+        

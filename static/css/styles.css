@@ -183,17 +183,24 @@ button,
   float: right;
   background-color: #fd3636; }
 
-#pick-teams-btn {
-  background-color: #262228; }
+#pick-teams-btn,
+#view-saved-teams-btn {
+  background-color: #262228;
+  font-size: 12px; }
 
 #regen-btn,
-#back-to-settings-btn {
+#back-to-settings-btn,
+#save-teams-btn {
   display: inline-block;
   font-size: 8px;
   width: 48px;
   height: 14px;
-  background-color: black;
+  background-color: #262228;
   margin: 0 2px 0; }
+
+#save-teams-btn {
+  background-color: #FFCE00;
+  color: #262228; }
 
 /* The switch - the box around the slider */
 .switch {
@@ -248,6 +255,9 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%; }
+
+.btn-row {
+  justify-content: space-evenly; }
 
 .start-off-screen {
   right: -100%; }
@@ -1041,7 +1051,7 @@ footer {
   height: 100%; }
   .team-gen-pg .user-playing-positions-section h4 {
     margin-bottom: 10px;
-    margin-right: 64px;
+    margin-right: 55px;
     display: inline-block; }
   .team-gen-pg .user-playing-positions-section .half-pitch .gk-row-team1 .team-1-player,
   .team-gen-pg .user-playing-positions-section .half-pitch .gk-row-team1 .team-2-player,

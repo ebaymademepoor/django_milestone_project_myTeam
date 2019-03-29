@@ -2,6 +2,7 @@ from django.db import models
 from profile_and_stats.models import UserProfileData
 from groups.models import Group
 from django.utils import timezone
+from jsonfield import JSONField
 import datetime
 
 # Create your models here.
@@ -13,6 +14,7 @@ class MatchData(models.Model):
     venue = models.TextField(max_length="100", null=False, blank=False)
     players = models.ManyToManyField(UserProfileData, related_name="linked_players")
     match_notes = models.TextField(max_length="200", null=True, blank=True)
+    selected_team = models.CharField(max_length = 10000, null=True, blank=True)
     
     SCHEDULED = "S"
     CANCELLED = "C"    

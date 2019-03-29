@@ -19,3 +19,8 @@ class UpdateMatchAvailabilityForm(forms.ModelForm):
     class Meta:
         model = AvailabilityTable
         fields = ['player', 'matchID', 'status', 'availability_group']
+        
+class SaveTeamsForm(forms.ModelForm):
+    class Meta:
+        model = MatchData
+        fields = ['selected_team']

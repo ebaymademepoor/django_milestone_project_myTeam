@@ -2,7 +2,6 @@ from django.db import models
 from profile_and_stats.models import UserProfileData
 from groups.models import Group
 from django.utils import timezone
-from jsonfield import JSONField
 import datetime
 
 # Create your models here.

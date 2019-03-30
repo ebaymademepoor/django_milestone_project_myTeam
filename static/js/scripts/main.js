@@ -705,10 +705,8 @@ function preparePostData(type, data) {
 
     if (type === "user-personal-details") {
         let newFormData = prepareNewProfileData(data);
-        console.log(newFormData)
         let profileURL = "../update_profile_data/";
         let profileID = $('#profile-id').text(); // the ID of the profile that needs to be updated
-        console.log(profileID)
         postToDatabase(profileURL, newFormData, profileID);
     }
     else if (type === "user-position-prefs") {
@@ -748,10 +746,6 @@ function stringify(jsonItem){
 
 function postToDatabase(url, data, route) {
     
-    console.log(data)
-    console.log(url)
-    console.log(route)
-    
     //  ajax function will now take this data and post it accordingly via our python view
 
     $.ajax({
@@ -779,6 +773,19 @@ function postToDatabase(url, data, route) {
                 }
 
                 preventClick = false;
+            } else if (url === "../update_profile_data/") {
+                if (json["result"] == 'Update successful!') {
+                    displayMessage("GOAL!  Details updated...");
+                    
+                    // This code will replace data on profile section with new data
+                    replaceOldValuesInRealtime(data);
+                    
+                    $('.username').empty().text(data["nickname"]); 
+                    curvePlayerNames();
+                    
+                } else {
+                    displayMessage("Sorry, that didn't work. " + json["errors"]);
+                }
             } else if (url === "../../match/save_a_generated_team/") {
                 if (json["result"] == 'Update successful!') {
                     displayMessage("Your team has been saved!\n  GREAT SAVE!");
@@ -788,7 +795,7 @@ function postToDatabase(url, data, route) {
                 } else {
                     displayMessage("Hmmm, we're not sure that worked, please try later...");
                 }
-            } else if (url != "../update_position_pref/") {
+            } else {
                 if (json["result"] == 'Update successful!') {
                     displayMessage("GOAL!  Details updated...");
 
@@ -797,10 +804,8 @@ function postToDatabase(url, data, route) {
                 }
             }
 
-            // This code will replace data on profile section with new data
-            if (url.indexOf("update_profile_data") != -1) {
-                replaceOldValuesInRealtime(data);
-            }
+            
+            
 
         },
 

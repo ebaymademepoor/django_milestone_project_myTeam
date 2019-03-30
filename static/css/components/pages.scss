@@ -106,7 +106,7 @@
     position: absolute;
     height: 200px;
     z-index: 5;
-    top: 155px;
+    top: 136px;
     padding: 30px;
     background-color: white;
     width: 100%;
@@ -155,7 +155,10 @@
     color: $brand-irises-green;
 
     .header {
-        margin-bottom: 20px;
+        
+        h4 {
+            margin-bottom: 0;
+        }
     }
 
     h1 {
@@ -188,6 +191,24 @@
             color: $brand-starry-night-blue;
         }
 
+    }
+    
+    .shirt {
+        margin: 20px 0;
+        height: 110px;
+        color: $white;
+        
+        span {
+            
+            .username {
+                margin-top: 5px;
+            }
+            
+            div {
+                font-size: 16px;
+            }
+            
+        }
     }
 
     .first_name,

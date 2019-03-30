@@ -90,7 +90,8 @@ def update_profile_data(request, id):
                 return HttpResponse(json.dumps(response_data),content_type="application/json")
             else:
                 print(form.errors)
-                return HttpResponse(json.dumps({"ERROR":"Error in updating profile"}), content_type="application/json")
+                response_data["errors"] = "There is a 14 character limit on each field...";
+                return HttpResponse(json.dumps(response_data), content_type="application/json")
         else:
              return HttpResponse(json.dumps({"ERROR":"Error in updating profile - unauth user"}), content_type="application/json")
     else:

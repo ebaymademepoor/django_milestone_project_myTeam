@@ -444,7 +444,7 @@ footer {
   position: absolute;
   height: 200px;
   z-index: 5;
-  top: 155px;
+  top: 136px;
   padding: 30px;
   background-color: white;
   width: 100%;
@@ -477,8 +477,8 @@ footer {
 
 .user-info-section {
   color: #007849; }
-  .user-info-section .header {
-    margin-bottom: 20px; }
+  .user-info-section .header h4 {
+    margin-bottom: 0; }
   .user-info-section h1 {
     margin: 0;
     max-width: 200px;
@@ -500,6 +500,14 @@ footer {
       width: 60%;
       background-color: #ececec;
       color: #0375B4; }
+  .user-info-section .shirt {
+    margin: 20px 0;
+    height: 110px;
+    color: #fff; }
+    .user-info-section .shirt span .username {
+      margin-top: 5px; }
+    .user-info-section .shirt span div {
+      font-size: 16px; }
   .user-info-section .license-expiry > dt,
   .user-info-section .license-expiry > dd {
     background-color: #0375B4 !important;

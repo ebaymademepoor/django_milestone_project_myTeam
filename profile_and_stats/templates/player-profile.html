@@ -11,6 +11,16 @@
             <a class="group-rtn-btn link-btn click-shrink" href="{% url 'group-home' groupid %}">Back</a>
         </div>
         
+        <div class="player-shirt-container shirt">
+            <span class="container">
+                {% if profile.nickname %}
+                    <p id="curve-{{ user.pk }}" class="member-content username">{{ player.nickname|truncatechars:10 }}</p>
+                {% else %}
+                    <p id="curve-{{ user.pk }}" class="member-content username">{{ player.username|truncatechars:10 }}</p>
+                {% endif %}
+            </span>
+        </div> 
+        
         <dl class="container">
             <dt>First Name</dt><dd>{{ player.first_name }}</dd>
             <dt>Surname</dt><dd>{{ player.surname }}</dd>

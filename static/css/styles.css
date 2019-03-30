@@ -880,12 +880,13 @@ footer {
     color: #007849;
     padding: 28px;
     min-height: 55vh; }
+    .matches-page .player-availability h3 {
+      margin-bottom: 20px; }
   .matches-page .member-container {
     text-align: center;
     display: flex;
     justify-content: space-evenly;
-    flex-wrap: wrap;
-    margin-top: 20px; }
+    flex-wrap: wrap; }
     .matches-page .member-container .user-container {
       display: inline-block;
       width: 24%; }
@@ -967,7 +968,7 @@ footer {
     .team-gen-pg .team-gen-settings-pg .options-header p:first-of-type {
       text-align: center; }
   .team-gen-pg .team-gen-settings-pg input {
-    width: 56px;
+    width: 68px;
     border: unset; }
   .team-gen-pg .team-gen-settings-pg h3,
   .team-gen-pg .team-gen-settings-pg p {
@@ -975,14 +976,15 @@ footer {
     text-align: left; }
   .team-gen-pg .team-gen-settings-pg h3,
   .team-gen-pg .team-gen-settings-pg .user-name-and-stats-container {
-    width: 86px; }
+    width: 100px; }
   .team-gen-pg .team-gen-settings-pg .row {
     display: flex;
     align-items: center; }
   .team-gen-pg .team-gen-settings-pg input:focus {
     outline: none; }
   .team-gen-pg .team-gen-settings-pg .player-container {
-    text-align: left; }
+    text-align: left;
+    width: 100px; }
     .team-gen-pg .team-gen-settings-pg .player-container label {
       font-size: 8px; }
     .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container {
@@ -1009,7 +1011,7 @@ footer {
         .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container input:first-of-type {
           background-color: #007849; }
     .team-gen-pg .team-gen-settings-pg .player-container .position-pref-container {
-      width: 10%;
+      width: 13%;
       display: inline-block;
       text-align: center; }
       .team-gen-pg .team-gen-settings-pg .player-container .position-pref-container label,

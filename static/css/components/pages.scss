@@ -761,6 +761,10 @@
         color: $brand-irises-green;
         padding: 28px;
         min-height: 55vh;
+        
+        h3 {
+            margin-bottom: 20px;
+        }
     }
 
     .member-container {
@@ -768,7 +772,6 @@
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        margin-top: 20px;
 
         .user-container {
             display: inline-block;
@@ -893,7 +896,7 @@
         }
 
         input {
-            width: 56px;
+            width: 68px;
             border: unset;
         }
 
@@ -906,7 +909,7 @@
 
         h3,
         .user-name-and-stats-container {
-            width: 86px;
+            width: 100px;
         }
 
         .row {
@@ -921,6 +924,7 @@
 
         .player-container {
             text-align: left;
+            width: 100px;
 
             label {
                 font-size: 8px;
@@ -965,7 +969,7 @@
 
 
             .position-pref-container {
-                width: 10%;
+                width: 13%;
                 display: inline-block;
                 text-align: center;
 

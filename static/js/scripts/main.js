@@ -613,9 +613,21 @@ function getSavedTeamData(){
 
 function addPlayersToPitch(teamSelection) {
     teamSelection.forEach(function(player) {
+        
+        console.log(player);
+        let name = "";
+        
+        if(player["nickname"]){
+            name = player["nickname"];
+        } else {
+            name = player["full-username"];
+        }
+        
+        console.log(name);
+        
         if (player["team"] === 1) {
             var thisPlayer = '<div class="team-1-player"><p>' +
-                player["full-username"] + '</p></div>';
+                name + '</p></div>';
 
             let rowToAppend = '.' + player["picked-position"] + "-row-team1";
 
@@ -623,7 +635,7 @@ function addPlayersToPitch(teamSelection) {
         }
         else {
             thisPlayer = '<div class="team-2-player"><p>' +
-                player["full-username"] + '</p></div>';
+                name + '</p></div>';
 
             let rowToAppend = '.' + player["picked-position"] + "-row-team2";
 

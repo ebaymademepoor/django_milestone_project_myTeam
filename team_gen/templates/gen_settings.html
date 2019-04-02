@@ -28,7 +28,8 @@
                             <div class="container user-name-and-stats-container">
                                 {% if user.nickname %}
                                     <input class="member-content username" type="text" name="users-name" value="{{ user.nickname|truncatechars:9 }}" readonly>
-                                    <input class="hidden" type="text" name="full-username" value="{{ user.nickname }}" readonly>
+                                    <input class="hidden" type="text" name="nickname" value="{{ user.nickname }}" readonly>
+                                    <input class="hidden" type="text" name="full-username" value="{{ user.username }}" readonly>
                                 {% else %}
                                     <input class="member-content username" type="text" name="users-name" value="{{ user.username|truncatechars:9 }}" readonly>
                                     <input class="hidden" type="text" name="full-username" value="{{ user.username }}" readonly>

@@ -190,3 +190,37 @@ def save_a_generated_team(request, groupid, matchid):
             print(form.errors)
             return HttpResponse(json.dumps({"ERROR":"Error in saving your teams, please try later"}), content_type="application/json")
         
+        
+@login_required
+def rate_performance_page(request, matchid):
+    
+    # Select match and current user
+    
+    match = MatchData.objects.get(pk=matchid)
+    group = Group.objects.get(pk=match.associated_group.pk)
+    this_user = UserProfileData.objects.get(username=request.user.username)
+    
+    # If a team had been saved, prepare the data of the players to be rated excluding the current user...
+    
+    if match.selected_team:
+        
+        teams = json.loads(match.selected_team)
+        players_to_rate = []
+    
+        for entry in teams:
+            if entry["full-username"] != this_user.username:
+                for member in group.users.all():
+                    print(member.username)
+                    print(entry["full-username"])
+                    
+                    if member.username == entry["full-username"]:
+                        entry["username"] = entry["full-username"]
+                        entry["nickname"] = member.nickname
+                        players_to_rate.append(entry)
+                
+        
+    else:
+        players_to_rate = ["Sorry, no teams were saved for this game so player performance ratings are unavailable"]
+    
+    
+    return render(request, 'rate_performance.html', { "players_to_rate" : players_to_rate })

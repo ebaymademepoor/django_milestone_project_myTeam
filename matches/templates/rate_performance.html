@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Match{% endblock %}
+
+{% block content %}
+<div class="page-container rate-performance-page">
+    <section class="header">
+         <h2>Rate Players</h2> 
+    </section>
+    
+    
+    <section class="match-data">
+        {% if match_data %}
+        <div class="container overview-container">
+            <div class="row">
+                <p>Match ID:<span id="match-id">{{ match_data.pk }}</span></p> 
+                <p>Date:<span>{{ match_data.date_of_match|date:'d-m-Y' }}</span></p> 
+                <p>Time:<span>{{ match_data.time_of_match|time:"H:i" }}</span></p> 
+            </div>
+        </div>
+            
+        
+        {% endif %}
+        
+    </section>
+    <section>
+        {% if players_to_rate.length <= 1 %}
+            <p>{{ players_to_rate }}</p> 
+        {% else %}
+            {% for player in players_to_rate %}
+                {% if player.nickname %}
+                    <p>{{ player.nickname }}</p> 
+                {% else %}
+                    <p>{{ player.username }}</p> 
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </section>
+    
+</div>
+
+
+{% endblock %}

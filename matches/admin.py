@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MatchData, AvailabilityTable
+from .models import MatchData, AvailabilityTable, PerformanceRating
 
 class BookAdmin(admin.ModelAdmin):
     readonly_fields = ('pk',)
@@ -10,5 +10,5 @@ class AvailBookAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(MatchData, BookAdmin)
+admin.site.register(PerformanceRating, AvailBookAdmin)
 admin.site.register(AvailabilityTable, AvailBookAdmin)
-

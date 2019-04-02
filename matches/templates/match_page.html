@@ -34,7 +34,7 @@
             <div class="link-btn edit-match-btn click-shrink">Edit Match</div> 
             
             {% if match_data.match_completed %}
-                <a class="link-btn rate-performance-link-btn click-shrink" href="">Rate Players</a>
+                <a class="link-btn rate-performance-link-btn click-shrink" href="{% url 'rate-performance' matchid %}">Rate Players</a>
             {% endif %}
         </div>
             

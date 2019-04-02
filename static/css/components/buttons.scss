@@ -226,3 +226,12 @@ input:checked + .slider:before {
 .btn-row {
     justify-content: space-evenly;
 }
+
+// Profile.html buttons --------------------------------------------------------
+
+.add-new-image-btn {
+    margin: 3px 0 0;
+    height: 23px;
+    width: 78px;
+    background-color: #23e623;
+}

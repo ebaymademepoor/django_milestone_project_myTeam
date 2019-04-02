@@ -11,6 +11,9 @@ class EditProfileForm(forms.ModelForm):
         model = UserProfileData
         fields = ('first_name', 'surname', 'nickname')
         
+class AddImageForm(forms.Form):
+        image = forms.ImageField(label="")
+        
 class EditProfileDOB(forms.ModelForm):
     class Meta:
         model = UserProfileData

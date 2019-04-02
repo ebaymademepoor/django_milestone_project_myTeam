@@ -10,17 +10,28 @@
             <h4>User Details - {{ user.email }} ( <span id="profile-id">{{ profile.pk }}</span> )</h4> 
         </div>
         
-        <div class="player-shirt-container shirt">
-            <span class="container">
-                {% if profile.nickname %}
-                    <p id="curve-{{ user.pk }}" class="member-content username">{{ profile.nickname|truncatechars:10 }}</p>
-                {% else %}
-                    <p id="curve-{{ user.pk }}" class="member-content username">{{ profile.username|truncatechars:10 }}</p>
-                {% endif %}
-            </span>
-        </div> 
+        {% if profile.user_photo %}
+            <div class="user-photo-img" style="background-image: url({{ profile.user_photo.url }});"></div>
+        {% else %}
+            <div class="player-shirt-container shirt">
+                <span class="container">
+                    {% if profile.nickname %}
+                        <p id="curve-{{ user.pk }}" class="member-content username">{{ profile.nickname|truncatechars:10 }}</p>
+                    {% else %}
+                        <p id="curve-{{ user.pk }}" class="member-content username">{{ profile.username|truncatechars:10 }}</p>
+                    {% endif %}
+                </span>
+            </div> 
+        {% endif %}
+        <form class="image-form" enctype="multipart/form-data" method="POST" action="{% url 'add_new_image' profile.pk %}">
+            {% csrf_token %}
+            <div class="container">
+                {{ add_new_image_form.as_p }}   
+                <button class="add-new-image-btn click-shrink" type="submit">Update <i class="fas fa-check"></i></button>
+            </div>
+        </form>
         
-        <dl class="container">
+        <dl class="data-container">
             <dt class="first_name">First Name</dt><dd>{{ profile.first_name }}</dd>
             <dt class="surname">Surname</dt><dd>{{ profile.surname }}</dd>
             <dt>Email</dt><dd>{{ user.email }}</dd>
@@ -30,11 +41,7 @@
             <dt>Registration Date</dt><dd>{{ profile.registration_date }}</dd>
         </dl>
         
-        <div class="pic-container">
-            <div class="user-photo" style="background-image: url('{{ MEDIA_URL }}{{ profile.user_photo }})"></div>            
-        </div>
-        
-        <dl class="container license-expiry">
+        <dl class="data-container license-expiry">
             <dt>Full License Expiry</dt><dd>{{ profile.license_expiry_date }}</dd>   
         </dl>
         

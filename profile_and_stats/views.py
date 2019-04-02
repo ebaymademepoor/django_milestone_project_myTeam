@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.db.models import Avg
 from .models import UserProfileData, AttributeRating
 from groups.models import Group
-from .forms import EditProfileForm, EditProfileDOB, EditPositionPref, RatePlayerForm
+from .forms import EditProfileForm, EditProfileDOB, EditPositionPref, RatePlayerForm, AddImageForm
 import json
 import datetime
 
@@ -55,8 +55,10 @@ def user_profile(request, id):
                     total_outfield_scores += value
         
             avg_outfield_score = total_outfield_scores / (len(users_rated_attributes) - 1 )
-
-        return render(request, 'profile.html', { "profile": users_profile_data, "attributes" : users_rated_attributes, "avg_outfield" : avg_outfield_score, "votes":len_votes })
+        
+        user_photo_form = AddImageForm()
+        
+        return render(request, 'profile.html', { "profile": users_profile_data, "attributes" : users_rated_attributes, "avg_outfield" : avg_outfield_score, "votes":len_votes, "add_new_image_form" : user_photo_form })
     else:
         messages.error(request, "We're sorry, you cannot access this page, it's not yours!")
         return redirect(reverse('index'))
@@ -96,6 +98,33 @@ def update_profile_data(request, id):
              return HttpResponse(json.dumps({"ERROR":"Error in updating profile - unauth user"}), content_type="application/json")
     else:
         return redirect(reverse('index'))
+
+@login_required
+def add_new_image(request, id):
+    
+    if request.method == "POST":
+        
+        
+        # Security check - is logged in session user the same as profile that has asked to be updated?
+        
+        if int(request.user.pk) == int(id):
+            
+            form = AddImageForm(request.POST, request.FILES)
+
+            if form.is_valid():
+                print("form okay")
+                print(form.errors)
+                profile = get_object_or_404(UserProfileData, pk=id)
+                profile.user_photo = form.cleaned_data["image"]
+                profile.save()
+                return redirect('profile', id)
+            else:
+                print("form not okay")
+                print(form)
+                print(form.errors)
+        
+    return redirect('profile', id)
+        
         
 @login_required
 def update_position_pref(request, id):

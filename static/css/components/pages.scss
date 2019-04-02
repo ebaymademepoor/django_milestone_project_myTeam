@@ -151,9 +151,30 @@
     }
 }
 
+.image-form {
+    
+    p { 
+        display: inline-block;
+        
+        input {
+            max-width: 83px;
+            font-family: 'Staatliches', cursive;
+            vertical-align: inherit;
+        }
+        
+    }
+    
+    i {
+        font-size: 10px;
+        text-align: center;
+        color: $white;
+        font-weight: 600;
+    }
+}
+
 .user-info-section {
     color: $brand-irises-green;
-
+        
     .header {
         
         h4 {
@@ -172,12 +193,17 @@
         font-size: 6px;
     }
 
-    .container {
+    .user-photo-img {
+        @extend %user-image-photo;
+    }
+
+    .data-container {
         box-sizing: border-box;
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         text-align: center;
+        margin-top: 20px;
 
         dt {
             width: 40%;

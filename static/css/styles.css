@@ -80,6 +80,14 @@ nav .logo-pic, .group-home .content .member-box .member-container .shirt, .shirt
   background-size: contain;
   background-repeat: no-repeat; }
 
+.user-info-section .user-photo-img {
+  margin: 20px auto 0;
+  height: 148px;
+  width: 117px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+
 /* --- Widths */
 button,
 .link-btn {
@@ -264,6 +272,12 @@ input:checked + .slider:before {
 
 .btn-row {
   justify-content: space-evenly; }
+
+.add-new-image-btn {
+  margin: 3px 0 0;
+  height: 23px;
+  width: 78px;
+  background-color: #23e623; }
 
 .start-off-screen {
   right: -100%; }
@@ -475,6 +489,18 @@ footer {
   padding: 6px 0;
   font-size: 9px; }
 
+.image-form p {
+  display: inline-block; }
+  .image-form p input {
+    max-width: 83px;
+    font-family: 'Staatliches', cursive;
+    vertical-align: inherit; }
+.image-form i {
+  font-size: 10px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600; }
+
 .user-info-section {
   color: #007849; }
   .user-info-section .header h4 {
@@ -486,17 +512,18 @@ footer {
   .user-info-section h1 ~ p {
     display: inline-block;
     font-size: 6px; }
-  .user-info-section .container {
+  .user-info-section .data-container {
     box-sizing: border-box;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    text-align: center; }
-    .user-info-section .container dt {
+    text-align: center;
+    margin-top: 20px; }
+    .user-info-section .data-container dt {
       width: 40%;
       background-color: #007849;
       color: #fff; }
-    .user-info-section .container dd {
+    .user-info-section .data-container dd {
       width: 60%;
       background-color: #ececec;
       color: #0375B4; }

@@ -25,10 +25,17 @@ function displayMessage(message) {
 // Edit data functions (personal details) --------------------------------------
 
 function createEditProfileDataForm() {
-
+    
     // This function creates a form for the profile info that the user would like to update
 
     $("dt").click(function() {
+        
+        // First remove any exisiting form that has been generated already...
+        
+        $('#update-form').remove();
+        
+        //  Then create a new form...
+        
         var field = this.className;
         var profileID = $('#profile-id').text();
 

@@ -277,7 +277,9 @@ input:checked + .slider:before {
   margin: 3px 0 0;
   height: 23px;
   width: 78px;
-  background-color: #23e623; }
+  background-color: #23e623;
+  position: relative;
+  top: 1px; }
 
 .start-off-screen {
   right: -100%; }
@@ -499,7 +501,8 @@ footer {
   font-size: 10px;
   text-align: center;
   color: #fff;
-  font-weight: 600; }
+  font-weight: 600;
+  margin-left: 4px; }
 
 .user-info-section {
   color: #007849; }
@@ -527,6 +530,8 @@ footer {
       width: 60%;
       background-color: #ececec;
       color: #0375B4; }
+  .user-info-section .data-container:nth-of-type(2) {
+    margin-top: 0; }
   .user-info-section .shirt {
     margin: 20px 0;
     height: 110px;

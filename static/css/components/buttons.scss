@@ -234,4 +234,6 @@ input:checked + .slider:before {
     height: 23px;
     width: 78px;
     background-color: #23e623;
+    position: relative;
+    top: 1px;
 }

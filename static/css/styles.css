@@ -45,7 +45,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.user-playing-positions-section .half-pitch .row, .group-box .members-details-container .flex, .group-home .content .matches-box .match-link .match-box, .index-page-bg-settings, .flex-center-content {
+.user-playing-positions-section .half-pitch .row, .group-box .members-details-container .flex, .group-home .content .matches-box .match-link .match-box, .please-wait, .rate-performance-page .player,
+.rate-performance-page .completed-box, .rate-performance-page .player .centralise,
+.rate-performance-page .completed-box .centralise, .index-page-bg-settings, .flex-center-content {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -194,7 +196,6 @@ button,
   display: inline-block; }
 
 .rate-performance-link-btn {
-  float: right;
   background-color: #fd3636; }
 
 #pick-teams-btn,
@@ -281,6 +282,27 @@ input:checked + .slider:before {
   position: relative;
   top: 1px; }
 
+.performance-btn-row {
+  margin-bottom: 20px; }
+  .performance-btn-row button {
+    border-radius: 50%;
+    height: 66px;
+    width: 66px;
+    margin: 10px; }
+  .performance-btn-row .good {
+    background-color: #23e623; }
+  .performance-btn-row .average {
+    background-color: orange; }
+  .performance-btn-row .poor {
+    background-color: #fd3636; }
+
+.skip {
+  background-color: #0375B4; }
+
+.submit-perform-ratings {
+  background-color: #262228;
+  font-size: 10px; }
+
 .start-off-screen {
   right: -100%; }
 
@@ -296,6 +318,15 @@ input:checked + .slider:before {
 .click-color-change:active {
   background-color: #23e623 !important; }
 
+.rotate {
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite; }
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
 nav {
   background-color: #FFCE00; }
   nav .logo {
@@ -359,7 +390,7 @@ footer {
   text-align: center;
   top: 40px;
   color: #fff;
-  background-color: #262228;
+  background-color: rgba(106, 64, 128, 0.78);
   padding: 5px;
   z-index: 100;
   transition-property: right;
@@ -371,6 +402,7 @@ footer {
     align-items: center; }
     .messages-box .container p {
       text-align: left;
+      font-size: 10px;
       margin-right: 16px; }
 
 .opening-section,
@@ -885,11 +917,12 @@ footer {
     .matches-page .match-data form {
       max-width: 300px;
       position: relative;
-      font-size: 10px; }
+      font-size: 10px;
+      margin-top: 30px; }
       .matches-page .match-data form .close-parent-btn {
         text-align: right;
         color: #fff;
-        top: -28px;
+        top: -4px;
         right: 0; }
       .matches-page .match-data form textarea {
         width: 100%;
@@ -1099,7 +1132,7 @@ footer {
   height: 100%; }
   .team-gen-pg .user-playing-positions-section h4 {
     margin-bottom: 10px;
-    margin-right: 55px;
+    margin-right: 12px;
     display: inline-block; }
   .team-gen-pg .user-playing-positions-section .half-pitch .gk-row-team1 .team-1-player,
   .team-gen-pg .user-playing-positions-section .half-pitch .gk-row-team1 .team-2-player,
@@ -1155,6 +1188,75 @@ footer {
       background-color: #0375B4; }
     .team-gen-pg .user-playing-positions-section .team-scores .team-2-score {
       background-color: #ed1c24; }
+
+.please-wait {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 50;
+  color: #fff;
+  background-color: #262228; }
+  .please-wait i {
+    margin-top: 20px;
+    font-size: 20px; }
+
+.rate-performance-page {
+  padding: 20px;
+  overflow: hidden;
+  background-color: #007849;
+  color: #fff; }
+  .rate-performance-page h2 {
+    margin-bottom: 10px; }
+  .rate-performance-page .match-data {
+    width: 100%;
+    background-color: #262228;
+    padding: 10px;
+    box-sizing: border-box; }
+    .rate-performance-page .match-data p {
+      margin: 4px 0;
+      font-size: 10px; }
+    .rate-performance-page .match-data p:last-of-type {
+      margin-bottom: 0; }
+  .rate-performance-page .user-info-section {
+    position: relative; }
+  .rate-performance-page .container {
+    color: #fff; }
+  .rate-performance-page .user-photo-img ~ p {
+    width: 117px;
+    background-color: #262228;
+    padding: 3px 0;
+    margin: 0 auto; }
+  .rate-performance-page .player,
+  .rate-performance-page .completed-box {
+    background-color: #007849;
+    display: inline-block;
+    width: 100%;
+    height: 70vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    box-sizing: border-box; }
+    .rate-performance-page .player .centralise,
+    .rate-performance-page .completed-box .centralise {
+      height: 100%; }
+      .rate-performance-page .player .centralise .container .player-image-container,
+      .rate-performance-page .completed-box .centralise .container .player-image-container {
+        box-sizing: border-box;
+        width: 100%;
+        height: 170px;
+        margin-bottom: 20px; }
+        .rate-performance-page .player .centralise .container .player-image-container .user-photo-img,
+        .rate-performance-page .completed-box .centralise .container .player-image-container .user-photo-img {
+          margin-top: 0; }
+    .rate-performance-page .player .final-container button,
+    .rate-performance-page .player .final-container p,
+    .rate-performance-page .completed-box .final-container button,
+    .rate-performance-page .completed-box .final-container p {
+      margin: 40px auto; }
+  .rate-performance-page .completed-box {
+    z-index: 2; }
 
 .index-page-bg-settings {
   width: 100%;

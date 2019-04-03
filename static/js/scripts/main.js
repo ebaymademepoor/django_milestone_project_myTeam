@@ -754,6 +754,27 @@ function preparePostData(type, data) {
         let customRoute = data["group"] + "/" + data["match"];
         
         postToDatabase(saveTeamURL, savedTeam, customRoute);    
+    } else if (type === "submit-performance-ratings"){
+        let performanceRatings;
+        let customRoute;
+        
+        console.log(data.length)
+        
+        if(data.length === 0){
+            customRoute = 0;
+            performanceRatings = "No data";
+        } else {
+            performanceRatings = data;
+            customRoute = performanceRatings[0]["matchid"];    
+        }
+        
+        let ratingsURL = "../add_ratings_to_db/";
+        let stringData = stringify(performanceRatings);
+        let ratingsData = {};
+        ratingsData["ratings"] = stringData;
+        $(".please-wait").removeClass("start-off-screen");
+        $(".please-wait").addClass('slide-in-from-right');
+        postToDatabase(ratingsURL, ratingsData, customRoute);    
     }
 };
 
@@ -813,6 +834,19 @@ function postToDatabase(url, data, route) {
                     preventClick = false;
                 } else {
                     displayMessage("Hmmm, we're not sure that worked, please try later...");
+                }
+            } else if(url === "../add_ratings_to_db/"){
+                if (json["result"] == 'Update successful!') {
+                    $('.please-wait .container > i').remove();
+                    $('.please-wait .container > p').text("Ratings submitted!");
+                    window.location.href = json["root-url"] + '/group/group_home/' + json["groupid"];
+                } else if (json["result"] === 'No ratings provided...'){
+                    $('.please-wait .container > i').remove();
+                    $('.please-wait .container > p').text("All players skipped!");
+                    window.location.href = json["root-url"] + '/group/group_select/';
+                } else {
+                    $('.please-wait .container > i').remove();
+                    $('.please-wait .container > p').text("Therer was an error, please try later");
                 }
             } else {
                 if (json["result"] == 'Update successful!') {
@@ -905,8 +939,7 @@ function activateButton() {
                 });
                 break;
             default:
-                console.log('No action Available');
-                console.log(this.id);
+                
         }
     });
 }
@@ -984,13 +1017,54 @@ function prepareChartData() {
     }
 }
 
-// Script ----------------------------------------------------------------------
+// Player performance rating functions -----------------------------------------
 
-$(document).ready(function() {
+function collectAndSubmitPerformanceRatings(){
     
+    let ratingsList = [];
     
+    $(".good, .average, .poor, .skip").click(function() {
+        
+        let thisPlayer = {};
+        let playerData = $(this).closest('div[class^="player"]');
+        let add
+            
+        if(this.className === "good click-shrink"){
+            rating = 5;
+            add = true
+        } else if (this.className === "average click-shrink"){
+            rating = 3;
+            add = true
+        } else if (this.className === "poor click-shrink"){
+            rating = 1;
+            add = true
+        } else if (this.className === "skip click-shrink"){
+            add = false
+            playerData.remove();
+        }
+        
+        if(add){
+            thisPlayer["username"] = playerData.children(".player-username").text();
+            thisPlayer["rating"] = rating;
+            thisPlayer["matchid"] = $('#match-id').text();
+            thisPlayer["date-of-match"] = $('#date-of-match').text();
+            
+            ratingsList.push(thisPlayer);
+            
+            playerData.remove();
+        }
+    });
     
-    
+    $(".submit-perform-ratings").click(function() {
+        preventClick = true;
+        preparePostData("submit-performance-ratings", ratingsList);
+    });
+
+}
+
+//  CSRF Token function --------------------------------------------------------
+
+function prepareCSRFToken(){
     // This code retrieves our form csrf token to enable safe ajax requests --------
 
     $(function() {
@@ -1049,6 +1123,14 @@ $(document).ready(function() {
 
     });
 
+}
+
+// Script ----------------------------------------------------------------------
+
+$(document).ready(function() {
+    
+    prepareCSRFToken();
+    
     // activateButton will allow buttons to perform their set funtion based on their id...
 
     activateButton();
@@ -1063,7 +1145,8 @@ $(document).ready(function() {
 
     createEditProfileDataForm();
     preparePositionPrefData();
-
+    collectAndSubmitPerformanceRatings();
+    
     // Updates profile database with new user info when submitted ------------------
 
     $('body').on("click", ".update-form-btn", function(e) {

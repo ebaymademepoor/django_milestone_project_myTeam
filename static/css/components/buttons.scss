@@ -127,7 +127,6 @@ button,
 }
 
 .rate-performance-link-btn {
-    float: right;
     background-color: $error-red;
 }
 
@@ -236,4 +235,38 @@ input:checked + .slider:before {
     background-color: #23e623;
     position: relative;
     top: 1px;
+}
+
+// Rate_performance.html -------------------------------------------------------
+
+.performance-btn-row {
+    margin-bottom: 20px;
+    
+    button {
+        border-radius: 50%;
+        height: 66px;
+        width: 66px;
+        margin: 10px;
+    }
+    
+    .good {
+        background-color: $preference-green;
+    }
+    
+    .average {
+        background-color: $can-play-amber;
+    }
+    
+    .poor {
+        background-color: $error-red;
+    }
+}
+
+.skip {
+    background-color: $brand-starry-night-blue;
+}
+
+.submit-perform-ratings {
+    background-color: $brand-evening-black;
+    font-size: 10px;
 }

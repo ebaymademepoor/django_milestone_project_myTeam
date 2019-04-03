@@ -9,7 +9,6 @@
          <a class="group-rtn-btn link-btn click-shrink" href="{% url 'group-home' groupid %}">Back</a>
     </section>
     
-    
     <section class="match-data">
         {% if match_data %}
         <div class="container overview-container">
@@ -31,10 +30,12 @@
             <div class="row">
                 <p>Notes:<span>{{ match_data.match_notes }}</span></p>
             </div>
-            <div class="link-btn edit-match-btn click-shrink">Edit Match</div> 
             
-            {% if match_data.match_completed %}
+            
+            {% if match_data.match_completed and not match_ratings %}
                 <a class="link-btn rate-performance-link-btn click-shrink" href="{% url 'rate-performance' matchid %}">Rate Players</a>
+            {% elif not match_data.match_completed %}
+                <div class="link-btn edit-match-btn click-shrink">Edit Match</div> 
             {% endif %}
         </div>
             
@@ -74,10 +75,11 @@
     </section>
     
     {% if match_data %}
+        {% if not match_data.match_completed %}
         <section class="team-generation">
             <a class="click-shrink link-btn team-gen-link-btn" href="{% url 'team-gen-settings' matchid %}">Generate Teams</a> 
         </section>
-        
+    {% endif %}
         
     <section class="player-availability">
             

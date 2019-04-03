@@ -88,7 +88,7 @@ footer {
     text-align: center;
     top: 40px;
     color: $white;
-    background-color: $brand-evening-black;
+    background-color: $messages-purple;
     padding: 5px;
     z-index: 100;
     
@@ -103,6 +103,7 @@ footer {
     
         p {
             text-align: left;
+            font-size: 10px;
             margin-right: 16px;
         }   
     }

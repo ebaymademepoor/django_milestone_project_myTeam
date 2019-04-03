@@ -1,5 +1,5 @@
 from django import forms
-from .models import MatchData, AvailabilityTable
+from .models import MatchData, AvailabilityTable, PerformanceRating
 
 class CreateOrEditMatchHelperForm(forms.ModelForm):
     """
@@ -24,3 +24,8 @@ class SaveTeamsForm(forms.ModelForm):
     class Meta:
         model = MatchData
         fields = ['selected_team']
+        
+class RatePlayerPerformanceForm(forms.ModelForm):
+    class Meta:
+        model = PerformanceRating
+        fields = ('performance_player_rated', 'performance_rated_by', 'performance_rating', 'performance_matchID')

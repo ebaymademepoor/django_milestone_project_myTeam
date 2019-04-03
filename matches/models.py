@@ -53,7 +53,7 @@ class PerformanceRating(models.Model):
     performance_player_rated = models.ForeignKey(UserProfileData, on_delete=models.CASCADE, related_name="performance_player_rated")
     performance_rated_by = models.ForeignKey(UserProfileData, on_delete=models.CASCADE, related_name="performance_rated_by")
     performance_rating = models.DecimalField(max_digits=1, decimal_places=0, default=0, null=False, blank=False)
-    performace_matchID = models.ForeignKey(MatchData, on_delete=models.CASCADE, null=False, blank=False, related_name="performance_match_id")
+    performance_matchID = models.ForeignKey(MatchData, on_delete=models.CASCADE, null=False, blank=False, related_name="performance_match_id")
     
     def __str__(self):
-        return "Performance ratings for {0} - rated by {1} for match {2}".format(self.performance_player_rated, self.performance_rated_by, self.matchID)
+        return "Performance ratings for {0} - rated by {1} for match {2}".format(self.performance_player_rated, self.performance_rated_by, self.performance_matchID)

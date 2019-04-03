@@ -4,6 +4,12 @@
 
 {% block content %}
 <div class="page-container rate-performance-page">
+    <div class="please-wait start-off-screen">
+        <div class="container">
+            <p>Please Wait</p>
+            <i class="fas fa-circle-notch rotate"></i>
+        </div>
+    </div> 
     <section class="header">
          <h2>Rate Players</h2> 
     </section>
@@ -13,9 +19,10 @@
         {% if match_data %}
         <div class="container overview-container">
             <div class="row">
-                <p>Match ID:<span id="match-id">{{ match_data.pk }}</span></p> 
-                <p>Date:<span>{{ match_data.date_of_match|date:'d-m-Y' }}</span></p> 
-                <p>Time:<span>{{ match_data.time_of_match|time:"H:i" }}</span></p> 
+                <h3>Ratings for</h3> 
+                <p>Match ID:  <span id="match-id">{{ match_data.pk }}</span></p> 
+                <p>Date:  <span id="date-of-match">{{ match_data.date_of_match|date:'d-m-Y' }}</span></p> 
+                <p>Time:  <span>{{ match_data.time_of_match|time:"H:i" }}</span></p> 
             </div>
         </div>
             
@@ -23,20 +30,60 @@
         {% endif %}
         
     </section>
-    <section>
+    <section class="user-info-section players-to-rate">
         {% if players_to_rate.length <= 1 %}
             <p>{{ players_to_rate }}</p> 
         {% else %}
             {% for player in players_to_rate %}
-                {% if player.nickname %}
-                    <p>{{ player.nickname }}</p> 
-                {% else %}
-                    <p>{{ player.username }}</p> 
-                {% endif %}
+                <div class="player">
+                    <div class="hidden player-username">{{ player.username }}</div>
+                    <div class="centralise">
+                        <div class="container">
+                            <div class="player-image-container">
+                                {% if player.user_photo %}
+                                    <div class="user-photo-img" style="background-image: url({{ player.user_photo.url }});"></div>
+                                    {% if player.nickname %}
+                                        <p>{{ player.nickname }}</p>
+                                    {% else %}
+                                        <p>{{ player.username }}</p> 
+                                    {% endif %}
+                                {% else %}
+                                    <div class="player-shirt-container shirt">
+                                        <span class="container">
+                                            {% if player.nickname %}
+                                                <p id="curve-{{ player.pk }}" class="member-content username">{{ player.nickname|truncatechars:10 }}</p>
+                                            {% else %}
+                                                <p id="curve-{{ player.pk }}" class="member-content username">{{ player.username|truncatechars:10 }}</p>
+                                            {% endif %}
+                                        </span>
+                                    </div> 
+                                {% endif %}
+                            </div> 
+                        
+
+                            <div class="performance-btn-row">
+                                <button class="good click-shrink">Good</button>
+                                <button class="average click-shrink">Average</button>
+                                <button class="poor click-shrink">Poor</button>
+                            </div>
+                            <div class="row">
+                                <button class="skip click-shrink">Skip</button> 
+                            </div> 
+                        </div>
+                    </div>
+                </div>    
             {% endfor %}
+            <div class="completed-box">
+                <div class="centralise">
+                    <div class="container final-container">
+                        <p>Your opinion counts!</p> 
+                        <p>Thank you for your input.</p> 
+                        <button class="click-shrink submit-perform-ratings">Submit Ratings</a>
+                    </div>
+                </div>
+            </div>
         {% endif %}
     </section>
-    
 </div>
 
 

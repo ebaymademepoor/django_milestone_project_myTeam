@@ -4,9 +4,9 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
-from .forms import CreateOrEditMatchHelperForm, processMatchRequestForm, UpdateMatchAvailabilityForm, SaveTeamsForm
+from .forms import CreateOrEditMatchHelperForm, processMatchRequestForm, UpdateMatchAvailabilityForm, SaveTeamsForm, RatePlayerPerformanceForm
 from groups.models import Group
-from .models import MatchData, AvailabilityTable
+from .models import MatchData, AvailabilityTable, PerformanceRating
 from profile_and_stats.models import UserProfileData
 from django.utils import timezone, six
 from django.utils.dateparse import parse_date
@@ -19,6 +19,7 @@ import json
 def match_instance(request, groupid, matchid):
     
     my_profile = UserProfileData.objects.get(email=request.user.email)
+    match_ratings = PerformanceRating.objects.filter(performance_rated_by=my_profile, performance_matchID=matchid)
     
     if int(matchid) == 0:
         
@@ -33,7 +34,7 @@ def match_instance(request, groupid, matchid):
         except:
             avail_data = None    
     
-    return render(request, 'match_page.html', { "match_form": match_form, "groupid" : groupid, "matchid": matchid, "match_data": this_match, "avail_data":avail_data, "this_user" : my_profile })
+    return render(request, 'match_page.html', { "match_form": match_form, "groupid" : groupid, "matchid": matchid, "match_data": this_match, "avail_data":avail_data, "this_user" : my_profile, "match_ratings" : match_ratings })
 
 @login_required    
 def add_or_edit_a_match(request, groupid, matchid):
@@ -210,12 +211,12 @@ def rate_performance_page(request, matchid):
         for entry in teams:
             if entry["full-username"] != this_user.username:
                 for member in group.users.all():
-                    print(member.username)
-                    print(entry["full-username"])
                     
                     if member.username == entry["full-username"]:
                         entry["username"] = entry["full-username"]
                         entry["nickname"] = member.nickname
+                        entry["pk"] = member.pk
+                        entry["user_photo"] = member.user_photo
                         players_to_rate.append(entry)
                 
         
@@ -223,4 +224,51 @@ def rate_performance_page(request, matchid):
         players_to_rate = ["Sorry, no teams were saved for this game so player performance ratings are unavailable"]
     
     
-    return render(request, 'rate_performance.html', { "players_to_rate" : players_to_rate })
+    return render(request, 'rate_performance.html', { "players_to_rate" : players_to_rate, "match_data" : match })
+    
+@login_required
+def add_ratings_to_db(request, matchid):
+    
+    
+    if request.method == "POST":
+        if matchid == "0":
+            response_data = {}
+            response_data['result'] = 'No ratings provided...'
+            response_data['root-url'] = request.META["HTTP_ORIGIN"]
+            
+            return HttpResponse(json.dumps(response_data),content_type="application/json")
+        else:    
+            this_user = UserProfileData.objects.get(username=request.user.username)
+            this_group = Group.objects.get(linked_group__pk=matchid)
+            data = json.loads(request.POST["ratings"])
+            
+            success_count = 0
+            
+            for rating in data:
+                this_rating = {}
+                rated_player = UserProfileData.objects.get(username=rating["username"])
+                
+                this_rating["performance_player_rated"] = rated_player
+                this_rating["performance_rated_by"] = this_user
+                this_rating["performance_rating"] = rating["rating"]
+                this_rating["performance_matchID"] = rating["matchid"]
+                
+                form = RatePlayerPerformanceForm(this_rating)
+            
+                if form.is_valid():
+                    saved_performance_record = form.save()
+                    success_count += 1    
+            
+            if success_count == len(data):
+            
+                response_data = {}
+                response_data['result'] = 'Update successful!'
+                response_data['root-url'] = request.META["HTTP_ORIGIN"]
+                response_data['groupid'] = this_group.pk
+                        
+                return HttpResponse(json.dumps(response_data),content_type="application/json")
+            else:
+                print(form.errors)
+                return HttpResponse(json.dumps({"ERROR":"Error in saving your ratings, please try later"}), content_type="application/json")
+    
+    

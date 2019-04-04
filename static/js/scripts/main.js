@@ -843,8 +843,9 @@ function postToDatabase(url, data, route) {
                 }
             } else {
                 if (json["result"] == 'Update successful!') {
-                    displayMessage("GOAL!  Details updated...");
-
+                    if(url !== "../update_position_pref/"){
+                        displayMessage("GOAL!  Details updated...");    
+                    }
                 } else {
                     displayMessage("Hmmm, we're not sure that worked, please try later...");
                 }

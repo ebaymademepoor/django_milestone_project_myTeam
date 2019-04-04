@@ -1,11 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from helpers import rotate_image
 
+import os
 import sys
 from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 def one_month_hence():
@@ -46,7 +50,7 @@ class UserProfileData(models.Model):
         # im = im.resize((100, 100))
 
         # after modifications, save it to the output
-        im.save(output, format='JPEG', quality=10)
+        im.save(output, format='JPEG', quality=30)
         output.seek(0)
 
         # change the imagefield value to be the newley modifed image value
@@ -57,6 +61,12 @@ class UserProfileData(models.Model):
         
     def __str__(self):
         return self.email
+
+@receiver(post_save, sender=UserProfileData, dispatch_uid="update_image_profile")
+def update_image(sender, instance, **kwargs):
+  if instance.user_photo:
+    fullpath = instance.user_photo
+    rotate_image(fullpath)
         
 class AttributeRating(models.Model):
     player_rated = models.ForeignKey(UserProfileData, on_delete=models.CASCADE, related_name="player_rated")

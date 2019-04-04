@@ -28,7 +28,7 @@ class MatchData(models.Model):
     )
     
     def match_completed(self):
-        if self.date_of_match < timezone.now().date():
+        if datetime.datetime.combine(self.date_of_match, self.time_of_match) < datetime.datetime.now():
             return True
     
     class Meta:

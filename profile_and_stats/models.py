@@ -2,6 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+import sys
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+
+
 def one_month_hence():
     return timezone.now() + timezone.timedelta(days=30)
 
@@ -29,6 +35,26 @@ class UserProfileData(models.Model):
     class Meta:
         ordering = ('username',)
     
+    
+    def save(self):
+        # Opening the uploaded image
+        im = Image.open(self.user_photo)
+
+        output = BytesIO()
+
+        # Resize/modify the image
+        # im = im.resize((100, 100))
+
+        # after modifications, save it to the output
+        im.save(output, format='JPEG', quality=10)
+        output.seek(0)
+
+        # change the imagefield value to be the newley modifed image value
+        self.user_photo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.user_photo.name.split('.')[0], 'image/jpeg',
+                                        sys.getsizeof(output), None)
+
+        super(UserProfileData, self).save()
+        
     def __str__(self):
         return self.email
         

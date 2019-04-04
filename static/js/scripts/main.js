@@ -102,7 +102,6 @@ function collectFormData(type, formName) {
     }
 
     if (error != true) {
-        console.log(formData);
         return formData;
     }
 }
@@ -183,9 +182,9 @@ function updateMatchAvailability(buttonClicked) {
     if (buttonClicked.className === "i-have-confirmed") {
         $('.' + buttonClicked.className).removeClass("i-have-confirmed").addClass("i-am-unavailable").text("Unavailable");
         status = 0;
-        console.log("You were confirmed but you are now unavailable");
+        
     } else if (buttonClicked.className === "i-am-unavailable" || buttonClicked.className === "i-am-unconfirmed"){
-        console.log("You just made yourself available");
+        
         status = 1;
         $('.' + buttonClicked.className).removeClass("i-am-unavailable i-am-unconfirmed").addClass("i-have-confirmed").text("Confirmed");
     }
@@ -206,7 +205,7 @@ function updateMatchAvailability(buttonClicked) {
     availabilityData["availTablePk"] = availTablePk;
     availabilityData["status"] = status;
     
-    console.log(availabilityData);
+    
     
     return availabilityData;
 
@@ -599,7 +598,7 @@ function getSavedTeamData(){
     return new Promise((resolve, reject) => {
         let savedTeams = $(".saved-team-data").text();
         
-        console.log(savedTeams)
+        
         
         if(savedTeams != ""){
             teams = JSON.parse(savedTeams);    
@@ -614,7 +613,7 @@ function getSavedTeamData(){
 function addPlayersToPitch(teamSelection) {
     teamSelection.forEach(function(player) {
         
-        console.log(player);
+        
         let name = "";
         
         if(player["nickname"]){
@@ -623,7 +622,7 @@ function addPlayersToPitch(teamSelection) {
             name = player["full-username"];
         }
         
-        console.log(name);
+        
         
         if (player["team"] === 1) {
             var thisPlayer = '<div class="team-1-player"><p>' +
@@ -758,8 +757,6 @@ function preparePostData(type, data) {
         let performanceRatings;
         let customRoute;
         
-        console.log(data.length)
-        
         if(data.length === 0){
             customRoute = 0;
             performanceRatings = "No data";
@@ -797,9 +794,7 @@ function postToDatabase(url, data, route) {
         
         // handle a successful response
         success: function(json) {
-            console.log(json); // log the returned json to the console
-            console.log("success"); // another sanity check
-
+            
             $('#update-form').remove();
 
             if (url === "../../update_availability_status/") {
@@ -807,8 +802,6 @@ function postToDatabase(url, data, route) {
                 // For use on updating availability status only if instance has just been created, the pk of the instance needs to be updated to avoid creating multiple instances
 
                 if(data["availTablePk"] === 0){
-                    console.log("Yep")
-                    console.log(json["instanceID"])
                     $(".i-have-confirmed").attr( 'id', json["instanceID"] );
                 }
 
@@ -906,7 +899,6 @@ function activateButton() {
         switch (this.id) {
             case "open-sign-in-btn":
                 $('.login-form').show();
-                console.log("clicked")
                 break;
             case "open-sign-up-btn":
                 $('.sign-up-form').show();
@@ -1151,7 +1143,6 @@ $(document).ready(function() {
 
     $('body').on("click", ".update-form-btn", function(e) {
         e.preventDefault();
-        console.log("form submitted!");
         let data = returnExistingProfileData();
         preparePostData("user-personal-details", data);
     });
@@ -1170,7 +1161,6 @@ $(document).ready(function() {
 
     $('body').on("click", ".update-player-attributes-btn", function(e) {
         e.preventDefault();
-        console.log("form submitted!");
         let data = collectFormData("#", "rate-player-form");
         if (data != null) {
             preparePostData("attribute-rating", data);
@@ -1208,15 +1198,13 @@ $(document).ready(function() {
             fullData["team"] = currentGeneratedTeam;
             fullData["group"] = parseInt(groupid);
             fullData["match"] = parseInt(matchid);
-            console.log(fullData);
+            
             preparePostData("save-team", fullData);
         }
 
     });
 
-
     curvePlayerNames();
-
 
     // Chart.js Radar chart
 

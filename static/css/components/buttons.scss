@@ -6,7 +6,7 @@ button,
     text-transform: uppercase;
     color: $white;
     font-family: 'Staatliches', cursive;
-    outline:none;
+    outline: none;
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -21,7 +21,6 @@ button,
 }
 
 // Index.html buttons ----------------------------------------------------------
-
 .get-started-btn {
     background-color: $brand-sunflower-yellow;
     display: block;
@@ -32,15 +31,14 @@ button,
 }
 
 // get_started.html buttons ----------------------------------------------------
-
 .open-sign-in-btn,
 .sign-in-btn {
     background-color: $brand-starry-night-blue;
     position: absolute;
-    left: 0; 
-    right: 0; 
-    margin-left: auto; 
-    margin-right: auto; 
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     bottom: 20px;
 }
 
@@ -94,7 +92,6 @@ button,
 }
 
 // Group-home.html buttons -----------------------------------------------------
-
 .add-a-match-btn {
     display: inline-block;
     font-size: 8px;
@@ -105,9 +102,9 @@ button,
     background-color: $brand-sunflower-yellow;
     border-radius: 2px;
     border: none;
-    
+
     @extend %inset-shadow;
-    
+
     i {
         font-size: 18px;
         margin-top: 0.2px;
@@ -131,7 +128,6 @@ button,
 }
 
 // Team Generation Buttons -----------------------------------------------------
-
 #pick-teams-btn,
 #view-saved-teams-btn {
     background-color: $brand-evening-black;
@@ -147,7 +143,7 @@ button,
     height: 14px;
     background-color: $brand-evening-black;
     margin: 0 2px 0;
-    
+
 }
 
 #save-teams-btn {
@@ -156,78 +152,79 @@ button,
 }
 
 // Animated switch buttons -----------------------------------------------------
-
 /* The switch - the box around the slider */
+
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 30px;
-  height: 16px;
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 16px;
 }
 
 /* Hide default HTML checkbox */
+
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 /* The slider */
+
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 10px;
-  width: 10px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
-input:checked + .slider {
-  background-color: $preference-green;
+input:checked+.slider {
+    background-color: $preference-green;
 }
 
-input:checked + .exclude {
-  background-color: $error-red;
+input:checked+.exclude {
+    background-color: $error-red;
 }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(14px);
-  -ms-transform: translateX(14px);
-  transform: translateX(14px);
+input:checked+.slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
 }
 
 /* Rounded sliders */
+
 .slider.round {
-  border-radius: 34px;
+    border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 // General ---------------------------------------------------------------------
-
 .btn-row {
     justify-content: space-evenly;
 }
 
 // Profile.html buttons --------------------------------------------------------
-
 .add-new-image-btn {
     margin: 3px 0 0;
     height: 23px;
@@ -238,25 +235,24 @@ input:checked + .slider:before {
 }
 
 // Rate_performance.html -------------------------------------------------------
-
 .performance-btn-row {
     margin-bottom: 20px;
-    
+
     button {
         border-radius: 50%;
         height: 66px;
         width: 66px;
         margin: 10px;
     }
-    
+
     .good {
         background-color: $preference-green;
     }
-    
+
     .average {
         background-color: $can-play-amber;
     }
-    
+
     .poor {
         background-color: $error-red;
     }
@@ -270,3 +266,112 @@ input:checked + .slider:before {
     background-color: $brand-evening-black;
     font-size: 10px;
 }
+
+// Raised button code ----------------------------------------------------------
+// #rate-player-form {
+
+    input {
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 4px;
+        padding: 0 16px;
+        height: 36px;
+        vertical-align: middle;
+        text-align: center;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+        color: rgb(255, 255, 255);
+        background-color: rgb(33, 150, 243);
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 36px;
+        overflow: hidden;
+        outline: none;
+        cursor: pointer;
+        transition: box-shadow 0.2s;
+    }
+
+    input::-moz-focus-inner {
+        border: none;
+    }
+
+    /* Overlay */
+    input::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgb(255, 255, 255);
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+
+    /* Ripple */
+    input::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        border-radius: 50%;
+        padding: 50%;
+        width: 32px;
+        /* Safari */
+        height: 32px;
+        /* Safari */
+        background-color: rgb(255, 255, 255);
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+        transition: opacity 1s, transform 0.5s;
+    }
+
+    /* Hover, Focus */
+    input:hover,
+    input:focus {
+        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    input:hover::before {
+        opacity: 0.08;
+    }
+
+    input:focus::before {
+        opacity: 0.24;
+    }
+
+    input:hover:focus::before {
+        opacity: 0.3;
+    }
+
+    /* Active */
+    input:active {
+        box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+
+    input:active::after {
+        opacity: 0.32;
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0s;
+    }
+
+    /* Disabled */
+    input:disabled {
+        color: rgba(0, 0, 0, 0.38);
+        background-color: rgba(0, 0, 0, 0.12);
+        box-shadow: none;
+        cursor: initial;
+    }
+
+    input:disabled::before {
+        opacity: 0;
+    }
+
+    input:disabled::after {
+        opacity: 0;
+    }
+// }

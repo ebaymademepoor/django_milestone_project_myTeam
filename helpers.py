@@ -3,7 +3,7 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
 
-def optimise_image(photo):
+def optimise_image(photo, new_quality_value_max_100):
     # Opening the uploaded image and rotate if required
         try:
             im = Image.open(photo)
@@ -30,7 +30,7 @@ def optimise_image(photo):
         # im = im.resize((100, 100))
         
         # after modifications, save it to the output
-        im.save(output, format='JPEG', quality=30)
+        im.save(output, format='JPEG', quality=new_quality_value_max_100)
         output.seek(0)
         
         # change the imagefield value to be the newley modifed image value

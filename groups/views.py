@@ -9,6 +9,7 @@ from .models import Group, GroupMember
 from profile_and_stats.models import UserProfileData
 from matches.models import MatchData
 from django.utils import timezone
+import datetime
 
 # Create your views here.
 
@@ -89,9 +90,12 @@ def group_home(request, id):
         messages.error(request, "Hmm, we can't find that group.  Is that the correct ID?!")
         return redirect(reverse('group-select'))
     
-    last_weeks_date = timezone.now() - timezone.timedelta(days=7)
+    todays_date = datetime.datetime.now().date()
+    last_weeks_date = datetime.datetime.now().date() - timezone.timedelta(days=7)
+    
+    print(todays_date)
         
-    groups_matches = MatchData.objects.filter(associated_group=this_group).filter(date_of_match__gte=last_weeks_date)[0:3]
+    groups_matches = MatchData.objects.filter(associated_group=this_group).filter(date_of_match__gte=last_weeks_date).reverse()[0:3]
     
     # Ensure user is a member of the group top allow access
     

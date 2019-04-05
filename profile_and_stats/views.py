@@ -122,17 +122,13 @@ def add_new_image(request, id):
             form = AddImageForm(request.POST, request.FILES)
 
             if form.is_valid():
-                print("form okay")
-                print(form.errors)
                 profile = get_object_or_404(UserProfileData, pk=id)
                 image = form.cleaned_data["image"]
-                super_optimised_image = optimise_image(image)
+                super_optimised_image = optimise_image(image, 30)
                 profile.user_photo = super_optimised_image
                 profile.save()
                 return redirect('profile', id)
             else:
-                print("form not okay")
-                print(form)
                 print(form.errors)
         
     return redirect('profile', id)

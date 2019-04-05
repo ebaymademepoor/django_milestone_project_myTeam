@@ -63,12 +63,22 @@ def user_profile(request, id):
         # Retrieve any performance ratings
             
         try:
-            filtered_ratings = PerformanceRating.objects.filter(performance_player_rated=users_profile_data)
+            filtered_ratings = PerformanceRating.objects.filter(
+                performance_player_rated=users_profile_data).values(
+                    'performance_matchID__date_of_match').annotate(
+                        avg_rating=Avg('performance_rating'))[0:5]
+            
+            
             performance_ratings = filtered_ratings
+            overall_form_rating = filtered_ratings.aggregate(avg_rating=Avg('performance_rating'))
         except:
             performance_ratings = None
+            overall_form_rating = None
         
-        return render(request, 'profile.html', { "profile": users_profile_data, "attributes" : users_rated_attributes, "avg_outfield" : avg_outfield_score, "votes":len_votes, "add_new_image_form" : user_photo_form, "performance_ratings" : performance_ratings })
+        return render(request, 'profile.html', { "profile": users_profile_data, 
+            "attributes" : users_rated_attributes, "avg_outfield" : avg_outfield_score, 
+            "votes":len_votes, "add_new_image_form" : user_photo_form, 
+            "performance_ratings" : performance_ratings, "overall_form_rating" : overall_form_rating })
     else:
         messages.error(request, "We're sorry, you cannot access this page, it's not yours!")
         return redirect(reverse('index'))
@@ -200,8 +210,24 @@ def player_profile(request, playerid, groupid):
             except:
                 this_rating_instance = None
             
+            # Retrieve any performance ratings
             
-            return render(request, 'player-profile.html', { "player" : player, "age" : my_age, "my_profile" : my_profile_page, "groupid" : groupid, "ratings": this_rating_instance })
+            try:
+                filtered_ratings = PerformanceRating.objects.filter(
+                    performance_player_rated=player).values(
+                        'performance_matchID__date_of_match').annotate(
+                            avg_rating=Avg('performance_rating'))[0:5]
+                
+                
+                performance_ratings = filtered_ratings
+                overall_form_rating = filtered_ratings.aggregate(avg_rating=Avg('performance_rating'))
+            except:
+                performance_ratings = None
+                overall_form_rating = None
+            
+            return render(request, 'player-profile.html', { "player" : player, "age" : my_age,
+                "my_profile" : my_profile_page, "groupid" : groupid, "ratings": this_rating_instance,
+                "performance_ratings" : performance_ratings, "overall_form_rating" : overall_form_rating })
         else:
             messages.error(request, "Sorry but you are not linked to this player and cannot view their profile")
             return redirect(reverse('group-select'))

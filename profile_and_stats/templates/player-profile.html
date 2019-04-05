@@ -134,12 +134,16 @@
         <h4>User form (last 5 games)</h4>
         <div class="container">
             <dl>
-                <dt>Most recent game</dt><dd>RATED: TBC</dd>
-                <dt>Game 2</dt><dd>RATED: TBC</dd>
-                <dt>Game 3</dt><dd>RATED: TBC</dd>
-                <dt>Game 4</dt><dd>RATED: TBC</dd>
-                <dt>Game 5</dt><dd>RATED: TBC</dd>
-                <dt>OVERALL FORM</dt><dd>TBC</dd>
+                {% if performance_ratings %}
+                    {% for rating in performance_ratings.all %}
+                        <dt>Match on - {{ rating.performance_matchID__date_of_match }}</dt><dd>RATED: {{ rating.avg_rating|floatformat:2 }}</dd>
+                    {% endfor %}
+                        
+                    <dt>OVERALL FORM</dt><dd>RATED: {{ overall_form_rating.avg_rating|floatformat:2 }}</dd>
+                    
+                {% else %}
+                    <dt>You have never been rated!</dt>
+                {% endif %}
             </dl>
         </div>
     </section>

@@ -45,17 +45,17 @@ class UserProfileData(models.Model):
                 for orientation in ExifTags.TAGS.keys():
                     if ExifTags.TAGS[orientation] == 'Orientation':
                         break
-                    exif = dict(im._getexif().items())
+                exif = dict(im._getexif().items())
         
-                    if exif[orientation] == 3:
-                        im = im.rotate(180, expand=True)
-                    elif exif[orientation] == 6:
-                        im = im.rotate(270, expand=True)
-                    elif exif[orientation] == 8:
-                        im = im.rotate(90, expand=True)
-                        im.save(self.user_photo)
-                        im.close()
-            except (AttributeError, KeyError, IndexError):
+                if exif[orientation] == 3:
+                    im = im.rotate(180, expand=True)
+                elif exif[orientation] == 6:
+                    im = im.rotate(270, expand=True)
+                elif exif[orientation] == 8:
+                    im = im.rotate(90, expand=True)
+                im.save(self.user_photo)
+                im.close()
+            except:
                 im = Image.open(self.user_photo)
             
             
@@ -71,7 +71,6 @@ class UserProfileData(models.Model):
             # change the imagefield value to be the newley modifed image value
             self.user_photo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.user_photo.name.split('.')[0], 'image/jpeg',
                                             sys.getsizeof(output), None)
-            
             
             super(UserProfileData, self).save()
             

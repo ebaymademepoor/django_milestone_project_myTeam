@@ -653,16 +653,22 @@
             .matches-row {
                 background-color: $brand-evening-black;
                 justify-content: space-evenly;
-                overflow: hidden;
                 display: flex;
                 align-items: center;
                 justify-content: start;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space: nowrap;
+                
+                &::-webkit-scrollbar {
+                    display: none;
+                }
             }
 
             .match-link:nth-of-type(even) {
                 background-color: $brand-evening-black-offset;
                 width: 36%;
-                max-width: 150px;
+                max-width: 120px;
                 @extend %matches-box-shadow;
             }
 
@@ -675,6 +681,7 @@
                 padding: 4px;
                 font-size: 8px;
                 width: 30%;
+                min-width: 100px;
                 max-width: 100px;
                 height: 56px;
 

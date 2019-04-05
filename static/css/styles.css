@@ -846,14 +846,18 @@ footer {
     .group-home .content .matches-box .matches-row {
       background-color: #262228;
       justify-content: space-evenly;
-      overflow: hidden;
       display: flex;
       align-items: center;
-      justify-content: start; }
+      justify-content: start;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap; }
+      .group-home .content .matches-box .matches-row::-webkit-scrollbar {
+        display: none; }
     .group-home .content .matches-box .match-link:nth-of-type(even) {
       background-color: #826900;
       width: 36%;
-      max-width: 150px; }
+      max-width: 120px; }
     .group-home .content .matches-box .match-link {
       position: relative;
       left: 4.5%;
@@ -863,6 +867,7 @@ footer {
       padding: 4px;
       font-size: 8px;
       width: 30%;
+      min-width: 100px;
       max-width: 100px;
       height: 56px;
       -webkit-transform-origin: 100% 0;

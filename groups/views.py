@@ -95,7 +95,7 @@ def group_home(request, id):
     
     print(todays_date)
         
-    groups_matches = MatchData.objects.filter(associated_group=this_group).filter(date_of_match__gte=last_weeks_date).reverse()[0:3]
+    groups_matches = MatchData.objects.filter(associated_group=this_group).filter(date_of_match__gte=last_weeks_date).reverse()[0:8]
     
     # Ensure user is a member of the group top allow access
     

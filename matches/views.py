@@ -68,45 +68,73 @@ def add_or_edit_a_match(request, groupid, matchid):
                 for key, value in request.POST.items():
                     match_data[key] = value
                 
-                match_data["creator"] = UserProfileData.objects.get(pk=request.user.pk)
-                match_data["associated_group"] = this_group.pk
+                # Check to see if a match for this group has already been created for this date...
                 
-                match_data_form = processMatchRequestForm(match_data, instance=this_match)
+                try:
+                    exisitng_match_on_same_date = MatchData.objects.get(associated_group=groupid, date_of_match=match_data["date_of_match"])
+                except:
+                    exisitng_match_on_same_date = None
                 
-                # Save the first booking...
-                
-                if match_data_form.is_valid():
-                    match = match_data_form.save()
-                    
-                    # Check to see if the user requested a repeat booking...
-                    
-                    try:
-                        repeats = int(match_data["repeat"])
-                    except:
-                        repeats = 0
-                    
-                    if int(repeats) > 0:
-                        
-                        # If repeats then book in a match for each requested repeat instance...
-                        
-                        match_booking = 1
-                        while repeats > match_booking:
-                            d = parse_date(str(match_data["date_of_match"]))
-                            d += timezone.timedelta(days=7)
-                            match_data["date_of_match"] = d
-                            match_booking += 1
-                            match_data_form = processMatchRequestForm(match_data, instance=this_match)
-                            if match_data_form.is_valid():
-                                match = match_data_form.save()
-                    
-                    if match.match_status == "S":
-                        messages.success(request, "Match arranged for {0} on {1}".format(match_data["time_of_match"], match_data["date_of_match"]))
-                    else:
-                        messages.success(request, "Match at {0} on {1} is marked as cancelled".format(match_data["time_of_match"], match_data["date_of_match"]))
+                if exisitng_match_on_same_date:
+                    messages.error(request, "You already have a match arranged on {}".format(match_data["date_of_match"]))
+                    return redirect('group-home', groupid)  
                 else:
-                    print(match_data_form.errors)
-                    messages.error(request, "Something went wrong")
-                    return redirect(reverse('group-select'))  
+                
+                    match_data["creator"] = UserProfileData.objects.get(pk=request.user.pk)
+                    match_data["associated_group"] = this_group.pk
+                    
+                    match_data_form = processMatchRequestForm(match_data, instance=this_match)
+                    
+                    # Save the first booking...
+                    
+                    if match_data_form.is_valid():
+                        match = match_data_form.save()
+                        
+                        # Check to see if the user requested a repeat booking...
+                        
+                        try:
+                            repeats = int(match_data["repeat"])
+                        except:
+                            repeats = 0
+                        
+                        if int(repeats) > 0:
+                            
+                            # If repeats then book in a match for each requested repeat instance...
+                            
+                            first_match = parse_date(str(match_data["date_of_match"]))
+                            
+                            match_booking = 1
+                            while repeats > match_booking:
+                                d = parse_date(str(match_data["date_of_match"]))
+                                d += timezone.timedelta(days=7)
+                                match_data["date_of_match"] = d
+                                
+                        
+                                
+                                try:
+                                    exisitng_match_on_same_date = MatchData.objects.get(associated_group=groupid, date_of_match=match_data["date_of_match"])
+                                except:
+                                    exisitng_match_on_same_date = None
+                                
+                                if exisitng_match_on_same_date == None:
+                                
+                                    match_data_form = processMatchRequestForm(match_data, instance=this_match)
+                                    if match_data_form.is_valid():
+                                        match = match_data_form.save()
+                                        match_booking += 1
+                        
+                                else:
+                                    match_booking += 1
+                        
+                        
+                        if match.match_status == "S":
+                            messages.success(request, "Match arranged for {0} on {1} - repeated for {2} weeks".format(match_data["time_of_match"], first_match.strftime('%d/%m/%Y'), repeats))
+                        else:
+                            messages.success(request, "Match at {0} on {1} is marked as cancelled".format(match_data["time_of_match"], first_match.strftime('%d/%m/%Y')))
+                    else:
+                        print(match_data_form.errors)
+                        messages.error(request, "Something went wrong")
+                        return redirect('group-home', groupid)  
                 
         else:
             messages.error(request, "You can't do that here")

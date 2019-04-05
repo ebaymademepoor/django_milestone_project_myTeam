@@ -70,7 +70,15 @@ def user_profile(request, id):
             
             
             performance_ratings = filtered_ratings
-            overall_form_rating = filtered_ratings.aggregate(avg_rating=Avg('performance_rating'))
+                
+            total_form_rating = 0
+            count = 0
+                
+            for item in filtered_ratings.all():
+                count += 1
+                total_form_rating += item["avg_rating"]    
+            
+            overall_form_rating = {"score" :total_form_rating / count, "votes" : count}
         except:
             performance_ratings = None
             overall_form_rating = None
@@ -217,10 +225,18 @@ def player_profile(request, playerid, groupid):
                     performance_player_rated=player).values(
                         'performance_matchID__date_of_match').annotate(
                             avg_rating=Avg('performance_rating'))[0:5]
-                
-                
+            
+            
                 performance_ratings = filtered_ratings
-                overall_form_rating = filtered_ratings.aggregate(avg_rating=Avg('performance_rating'))
+                
+                total_form_rating = 0
+                count = 0
+                
+                for item in filtered_ratings.all():
+                    count += 1
+                    total_form_rating += item["avg_rating"]    
+            
+                overall_form_rating = {"score" :total_form_rating / count, "votes" : count}
             except:
                 performance_ratings = None
                 overall_form_rating = None

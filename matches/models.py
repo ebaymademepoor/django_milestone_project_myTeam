@@ -59,4 +59,4 @@ class PerformanceRating(models.Model):
         ordering = ('performance_matchID',)   
     
     def __str__(self):
-        return "Performance ratings for {0} - rated by {1} for match {2}".format(self.performance_player_rated, self.performance_rated_by, self.performance_matchID)
+        return "Performance ratings for {0} - rated by {1} for match {2}, rating is {3}".format(self.performance_player_rated, self.performance_rated_by, self.performance_matchID, self.performance_rating)

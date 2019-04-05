@@ -133,7 +133,7 @@
                         <dt>Match on - {{ rating.performance_matchID__date_of_match }}</dt><dd>RATED: {{ rating.avg_rating|floatformat:2 }}</dd>
                     {% endfor %}
                     
-                    <dt>OVERALL FORM</dt><dd>RATED: {{ overall_form_rating.avg_rating|floatformat:2 }}</dd>
+                    <dt>OVERALL FORM</dt><dd>RATED: {{ overall_form_rating.score|floatformat:2 }}</dd>
                 
                 {% else %}
                     <dt>You have never been rated!</dt>

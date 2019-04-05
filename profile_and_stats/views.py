@@ -8,6 +8,7 @@ from .models import UserProfileData, AttributeRating
 from groups.models import Group
 from matches.models import PerformanceRating
 from .forms import EditProfileForm, EditProfileDOB, EditPositionPref, RatePlayerForm, AddImageForm
+from helpers import optimise_image
 import json
 import datetime
 
@@ -124,7 +125,9 @@ def add_new_image(request, id):
                 print("form okay")
                 print(form.errors)
                 profile = get_object_or_404(UserProfileData, pk=id)
-                profile.user_photo = form.cleaned_data["image"]
+                image = form.cleaned_data["image"]
+                super_optimised_image = optimise_image(image)
+                profile.user_photo = super_optimised_image
                 profile.save()
                 return redirect('profile', id)
             else:

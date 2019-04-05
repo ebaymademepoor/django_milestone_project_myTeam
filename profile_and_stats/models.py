@@ -1,12 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-from helpers import rotate_image
-import os
-import sys
-from PIL import Image, ExifTags
-from io import BytesIO
-from django.core.files.uploadedfile import InMemoryUploadedFile
 
 def one_month_hence():
     return timezone.now() + timezone.timedelta(days=30)
@@ -34,44 +28,6 @@ class UserProfileData(models.Model):
     
     class Meta:
         ordering = ('username',)
-    
-    
-    def save(self):
-        # Opening the uploaded image and rotate if required
-        if self.user_photo:
-            try:
-                im = Image.open(self.user_photo)
-                
-                for orientation in ExifTags.TAGS.keys():
-                    if ExifTags.TAGS[orientation] == 'Orientation':
-                        break
-                exif = dict(im._getexif().items())
-        
-                if exif[orientation] == 3:
-                    im = im.rotate(180, expand=True)
-                elif exif[orientation] == 6:
-                    im = im.rotate(270, expand=True)
-                elif exif[orientation] == 8:
-                    im = im.rotate(90, expand=True)
-                im.save(self.user_photo)
-            except:
-                im = Image.open(self.user_photo)
-            
-            
-            output = BytesIO()
-    
-            # Resize/modify the image
-            # im = im.resize((100, 100))
-            
-            # after modifications, save it to the output
-            im.save(output, format='JPEG', quality=30)
-            output.seek(0)
-            
-            # change the imagefield value to be the newley modifed image value
-            self.user_photo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.user_photo.name.split('.')[0], 'image/jpeg',
-                                            sys.getsizeof(output), None)
-            
-            super(UserProfileData, self).save()
             
     def __str__(self):
         return self.email

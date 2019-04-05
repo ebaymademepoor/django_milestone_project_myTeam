@@ -54,7 +54,6 @@ class UserProfileData(models.Model):
                 elif exif[orientation] == 8:
                     im = im.rotate(90, expand=True)
                 im.save(self.user_photo)
-                im.close()
             except:
                 im = Image.open(self.user_photo)
             

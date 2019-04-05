@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.db.models import Avg
 from .models import UserProfileData, AttributeRating
 from groups.models import Group
+from matches.models import PerformanceRating
 from .forms import EditProfileForm, EditProfileDOB, EditPositionPref, RatePlayerForm, AddImageForm
 import json
 import datetime
@@ -58,7 +59,15 @@ def user_profile(request, id):
         
         user_photo_form = AddImageForm()
         
-        return render(request, 'profile.html', { "profile": users_profile_data, "attributes" : users_rated_attributes, "avg_outfield" : avg_outfield_score, "votes":len_votes, "add_new_image_form" : user_photo_form })
+        # Retrieve any performance ratings
+            
+        try:
+            filtered_ratings = PerformanceRating.objects.filter(performance_player_rated=users_profile_data)
+            performance_ratings = filtered_ratings
+        except:
+            performance_ratings = None
+        
+        return render(request, 'profile.html', { "profile": users_profile_data, "attributes" : users_rated_attributes, "avg_outfield" : avg_outfield_score, "votes":len_votes, "add_new_image_form" : user_photo_form, "performance_ratings" : performance_ratings })
     else:
         messages.error(request, "We're sorry, you cannot access this page, it's not yours!")
         return redirect(reverse('index'))
@@ -191,6 +200,7 @@ def player_profile(request, playerid, groupid):
                 this_rating_instance = AttributeRating.objects.get(rated_by=request.user.pk, player_rated=playerid)
             except:
                 this_rating_instance = None
+            
             
             return render(request, 'player-profile.html', { "player" : player, "age" : my_age, "my_profile" : my_profile_page, "groupid" : groupid, "ratings": this_rating_instance })
         else:

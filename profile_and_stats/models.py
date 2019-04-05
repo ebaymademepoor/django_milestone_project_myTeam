@@ -32,11 +32,7 @@ class UserProfileData(models.Model):
         if self.license_expiry_date > timezone.now():
             return True
     
-    class Meta:
-        ordering = ('username',)
-    
-    
-    def save(self):
+    def amended_photo(self):
         # Opening the uploaded image and rotate if required
         if self.user_photo:
             try:
@@ -60,7 +56,7 @@ class UserProfileData(models.Model):
             
             output = BytesIO()
     
-            # Resize/modify the image
+            # Resize/modify the image (to be implemented in the future if required)
             # im = im.resize((100, 100))
             
             # after modifications, save it to the output
@@ -70,11 +66,12 @@ class UserProfileData(models.Model):
             # change the imagefield value to be the newley modifed image value
             self.user_photo = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.user_photo.name.split('.')[0], 'image/jpeg',
                                             sys.getsizeof(output), None)
-            
-            super(UserProfileData, self).save()
-            
-    def __str__(self):
-        return self.email
+    
+        class Meta:
+            ordering = ('username',)
+
+        def __str__(self):
+            return self.email
 
         
 class AttributeRating(models.Model):

@@ -36,7 +36,7 @@ class UserProfileData(models.Model):
         ordering = ('username',)
     
     
-    def amend_photo(self):
+    def save(self):
         # Opening the uploaded image and rotate if required
         if self.user_photo:
             try:
@@ -60,7 +60,7 @@ class UserProfileData(models.Model):
             
             output = BytesIO()
     
-            # Resize/modify the image (to be implemented in the future if required)
+            # Resize/modify the image
             # im = im.resize((100, 100))
             
             # after modifications, save it to the output

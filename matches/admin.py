@@ -9,9 +9,10 @@ class AvailBookAdmin(admin.ModelAdmin):
     readonly_fields = ('pk',)
 
 class PerformanceRatingAdmin(admin.ModelAdmin):
-    list_display = ('performance_player_rated', 'performance_rated_by',
+    list_display = ('pk', 'performance_player_rated', 'performance_rated_by',
         'performance_matchID', 'performance_rating')
-
+    
+    
 # Register your models here.
 admin.site.register(MatchData, BookAdmin)
 admin.site.register(PerformanceRating, PerformanceRatingAdmin)

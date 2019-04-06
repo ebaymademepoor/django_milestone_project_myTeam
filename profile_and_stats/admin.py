@@ -5,7 +5,8 @@ class BookAdmin(admin.ModelAdmin):
     readonly_fields = ('pk',)
 
 class RatingsAdmin(admin.ModelAdmin):
-    readonly_fields = ('pk', 'outfield_score')
+    list_display = ('pk',  'player_rated', 'rated_by', 'last_updated',)
+    readonly_fields = ('pk', 'outfield_score', 'last_updated')
 
 # Register your models here.
 admin.site.register(UserProfileData, BookAdmin)

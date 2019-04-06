@@ -41,6 +41,7 @@ class AttributeRating(models.Model):
     passing_score = models.DecimalField(max_digits=2, decimal_places=0, default=0, null=False, blank=False)
     finishing_score = models.DecimalField(max_digits=2, decimal_places=0, default=0, null=False, blank=False)
     movement_score = models.DecimalField(max_digits=2, decimal_places=0, default=0, null=False, blank=False)
+    last_updated = models.DateField(auto_now=True)
     
     def outfield_score(self):
         scores = [self.def_score, self.passing_score, self.finishing_score, self.movement_score]

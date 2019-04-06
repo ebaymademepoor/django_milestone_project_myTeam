@@ -201,7 +201,8 @@ button,
 #pick-teams-btn,
 #view-saved-teams-btn {
   background-color: #262228;
-  font-size: 12px; }
+  font-size: 12px;
+  position: relative; }
 
 #regen-btn,
 #back-to-settings-btn,
@@ -652,6 +653,17 @@ footer {
 
 .user-form-section {
   background-color: #0375B4; }
+  .user-form-section .container:first-of-type {
+    color: white;
+    margin: 0 0 40px; }
+    .user-form-section .container:first-of-type p:first-of-type {
+      background-color: #007849;
+      margin: 10px auto 20px;
+      font-size: 20px;
+      padding: 18px 9px;
+      width: 40px;
+      font-weight: 900;
+      text-align: center; }
   .user-form-section h4 {
     color: #fff; }
   .user-form-section dt {
@@ -1305,6 +1317,9 @@ h2 {
 
 h3 {
   font-size: 1.4em; }
+
+h5 {
+  font-size: 0.8em; }
 
 a,
 a:visited {

@@ -374,6 +374,21 @@
 .user-form-section {
     background-color: $brand-starry-night-blue;
 
+    .container:first-of-type {
+        color: white;
+        margin: 0 0 40px;
+        
+        p:first-of-type {
+            background-color: $brand-irises-green;
+            margin: 10px auto 20px;
+            font-size: 20px;
+            padding: 18px 9px;
+            width: 40px;
+            font-weight: 900;
+            text-align: center;
+        }
+    }
+
     h4 {
         color: $white;
     }

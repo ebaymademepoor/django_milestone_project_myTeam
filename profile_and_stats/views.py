@@ -61,6 +61,13 @@ def user_profile(request, id):
         user_photo_form = AddImageForm()
         
         # Retrieve any performance ratings
+        
+        try:
+            all_time_rating = PerformanceRating.objects.filter(
+                performance_player_rated=users_profile_data).aggregate(
+                all_time_rating=Avg('performance_rating'))
+        except:
+            all_time_rating = None
             
         try:
             filtered_ratings = PerformanceRating.objects.filter(
@@ -86,7 +93,8 @@ def user_profile(request, id):
         return render(request, 'profile.html', { "profile": users_profile_data, 
             "attributes" : users_rated_attributes, "avg_outfield" : avg_outfield_score, 
             "votes":len_votes, "add_new_image_form" : user_photo_form, 
-            "performance_ratings" : performance_ratings, "overall_form_rating" : overall_form_rating })
+            "performance_ratings" : performance_ratings, "overall_form_rating" : overall_form_rating,
+            "all_time_rating" : all_time_rating})
     else:
         messages.error(request, "We're sorry, you cannot access this page, it's not yours!")
         return redirect(reverse('index'))
@@ -219,6 +227,11 @@ def player_profile(request, playerid, groupid):
                 this_rating_instance = None
             
             # Retrieve any performance ratings
+            try:
+                all_time_rating = PerformanceRating.objects.filter(
+                    performance_player_rated=player).aggregate(all_time_rating=Avg('performance_rating'))
+            except:
+                all_time_rating = None
             
             try:
                 filtered_ratings = PerformanceRating.objects.filter(
@@ -243,7 +256,8 @@ def player_profile(request, playerid, groupid):
             
             return render(request, 'player-profile.html', { "player" : player, "age" : my_age,
                 "my_profile" : my_profile_page, "groupid" : groupid, "ratings": this_rating_instance,
-                "performance_ratings" : performance_ratings, "overall_form_rating" : overall_form_rating })
+                "performance_ratings" : performance_ratings, "overall_form_rating" : overall_form_rating,
+                "all_time_rating" : all_time_rating })
         else:
             messages.error(request, "Sorry but you are not linked to this player and cannot view their profile")
             return redirect(reverse('group-select'))

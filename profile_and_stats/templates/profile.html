@@ -125,15 +125,24 @@
         </div>
     </section>
     <section class="user-form-section">
+        <div class="container">
+            <h3>All time performance rating</h3>
+            <h5>- Out of 5.00 -</h5> 
+            {% if all_time_rating != None %}
+                <p>{{ all_time_rating.all_time_rating|floatformat:2  }}</p>
+            {% else %}
+                <p>N/A</p> 
+            {% endif %}
+        </div>
         <h4>User form (last 5 games)</h4>
         <div class="container">
             <dl>
                 {% if performance_ratings %}
                     {% for rating in performance_ratings.all %}
-                        <dt>Match on - {{ rating.performance_matchID__date_of_match }}</dt><dd>RATED: {{ rating.avg_rating|floatformat:2 }}</dd>
+                        <dt>Match on - {{ rating.performance_matchID__date_of_match }}</dt><dd>RATED: {{ rating.avg_rating|floatformat:2 }} out of 5</dd>
                     {% endfor %}
                     
-                    <dt>OVERALL FORM</dt><dd>RATED: {{ overall_form_rating.score|floatformat:2 }}</dd>
+                    <dt>OVERALL FORM</dt><dd>RATED: {{ overall_form_rating.score|floatformat:2 }} out of 5</dd>
                 
                 {% else %}
                     <dt>You have never been rated!</dt>

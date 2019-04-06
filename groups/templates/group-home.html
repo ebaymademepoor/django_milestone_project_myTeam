@@ -49,7 +49,9 @@
                             <div class="container">
                                 <p>Match ID: <span>{{ match.id }}</span></p> 
                                 <p>Status:
-                                    {% if match.match_status == "S" %} 
+                                    {% if match.match_status == "S" and match.match_completed %}
+                                        <span class="scheduled">COMPLETED</span>
+                                    {% elif match.match_status == "S" %} 
                                         <span class="scheduled">ON</span>
                                     {% else %}
                                         <span class="cancelled">CANCELLED</span>

@@ -797,19 +797,55 @@ footer {
     color: #fff;
     width: 100%;
     background-color: #007849;
-    padding-bottom: 20px;
+    padding: 10px 20px;
     min-height: 55vh; }
+    .group-home .content .member-box .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+    .group-home .content .member-box .stick-to-top {
+      z-index: 5;
+      background-color: #007849;
+      padding-bottom: 10px; }
+    .group-home .content .member-box .key {
+      width: 10px;
+      height: 10px;
+      display: inline-block; }
+    .group-home .content .member-box label {
+      font-size: 8px;
+      vertical-align: middle;
+      margin: 0 5px; }
+    .group-home .content .member-box .key-text {
+      font-size: 8px;
+      width: 100%;
+      margin-bottom: 8px; }
+    .group-home .content .member-box .gk-key {
+      background-color: #FFCE00; }
+    .group-home .content .member-box .outfield-key {
+      background-color: #0375B4; }
+    .group-home .content .member-box .last-rated-key {
+      background-color: #262228; }
     .group-home .content .member-box .row {
       box-sizing: border-box;
-      padding: 20px; }
+      padding: 0px; }
     .group-home .content .member-box .member-container {
       text-align: center;
       display: flex;
-      justify-content: space-evenly;
-      flex-wrap: wrap; }
+      align-items: center; }
       .group-home .content .member-box .member-container .user-container {
         display: inline-block;
-        width: 24%; }
+        width: 24%;
+        min-width: 68px; }
+      .group-home .content .member-box .member-container .rating:nth-of-type(4) {
+        width: unset; }
+      .group-home .content .member-box .member-container .rating {
+        font-size: 10px;
+        width: 20px;
+        padding: 5px;
+        margin: 0 10px 0 0; }
+      .group-home .content .member-box .member-container .rating-date {
+        font-size: 10px;
+        padding: 5px; }
       .group-home .content .member-box .member-container .shirt {
         display: inline-block;
         height: 46px;
@@ -825,6 +861,25 @@ footer {
             font-family: 'Staatliches', cursive;
             width: 100%;
             padding: 0; }
+      .group-home .content .member-box .member-container .not-rated {
+        font-size: 8px; }
+      .group-home .content .member-box .member-container .data-container {
+        margin-left: 30px;
+        vertical-align: middle; }
+        .group-home .content .member-box .member-container .data-container p {
+          width: unset;
+          min-width: 28px; }
+      .group-home .content .member-box .member-container .data-container-no-data {
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly; }
+        .group-home .content .member-box .member-container .data-container-no-data p {
+          width: 62%;
+          text-align: left; }
+        .group-home .content .member-box .member-container .data-container-no-data i {
+          font-size: 14px;
+          margin-right: 14px; }
     .group-home .content .member-box h3 {
       font-size: 1em; }
     .group-home .content .member-box p,
@@ -1363,5 +1418,9 @@ a:visited {
 .scheduled {
   color: #23e623;
   font-weight: 600 !important; }
+
+.stick-to-top {
+  position: sticky;
+  top: 0; }
 
 /*# sourceMappingURL=styles.css.map */

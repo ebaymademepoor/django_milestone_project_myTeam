@@ -6,7 +6,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from .forms import CreateGroupForm, AddNewGroupMemberForm, JoinGroupForm
 from .models import Group, GroupMember
-from profile_and_stats.models import UserProfileData
+from profile_and_stats.models import UserProfileData, AttributeRating
 from matches.models import MatchData
 from django.utils import timezone
 import datetime
@@ -92,15 +92,15 @@ def group_home(request, id):
     
     todays_date = datetime.datetime.now().date()
     last_weeks_date = datetime.datetime.now().date() - timezone.timedelta(days=7)
-    
-    print(todays_date)
         
     groups_matches = MatchData.objects.filter(associated_group=this_group).filter(date_of_match__gte=last_weeks_date).reverse()[0:8]
+    
+    players_i_have_rated = AttributeRating.objects.filter(rated_by=this_user)
     
     # Ensure user is a member of the group top allow access
     
     if str(this_user.email) in str(this_group.users.all()):
-        return render(request, 'group-home.html', {"group_data": this_group, "matches" : groups_matches })
+        return render(request, 'group-home.html', {"group_data": this_group, "matches" : groups_matches, "players_i_have_rated" : players_i_have_rated, "this_user" : this_user })
     else:
         messages.error(request, "Sneeky, but you don't appear to be a member of the group you were trying to access! Join on this page if you have the access details...")
         return redirect(reverse('group-select'))

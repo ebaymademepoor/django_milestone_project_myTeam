@@ -152,18 +152,18 @@
 }
 
 .image-form {
-    
-    p { 
+
+    p {
         display: inline-block;
-        
+
         input {
             max-width: 83px;
             font-family: 'Staatliches', cursive;
             vertical-align: inherit;
         }
-        
+
     }
-    
+
     i {
         font-size: 10px;
         text-align: center;
@@ -175,9 +175,9 @@
 
 .user-info-section {
     color: $brand-irises-green;
-        
+
     .header {
-        
+
         h4 {
             margin-bottom: 0;
         }
@@ -219,27 +219,27 @@
         }
 
     }
-    
-    .data-container:nth-of-type(2){
+
+    .data-container:nth-of-type(2) {
         margin-top: 0;
     }
-    
-    
+
+
     .shirt {
         margin: 20px 0;
         height: 110px;
         color: $white;
-        
+
         span {
-            
+
             .username {
                 margin-top: 5px;
             }
-            
+
             div {
                 font-size: 16px;
             }
-            
+
         }
     }
 
@@ -377,7 +377,7 @@
     .container:first-of-type {
         color: white;
         margin: 0 0 40px;
-        
+
         p:first-of-type {
             background-color: $brand-irises-green;
             margin: 10px auto 20px;
@@ -577,23 +577,81 @@
             color: $white;
             width: 100%;
             background-color: $brand-irises-green;
-            padding-bottom: 20px;
+            padding: 10px 20px;
             min-height: 55vh;
+
+            .header-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .stick-to-top {
+                z-index: 5;
+                background-color: $brand-irises-green;
+                padding-bottom: 10px;
+            }
+
+            .key {
+                width: 10px;
+                height: 10px;
+                display: inline-block;
+            }
+
+            label {
+                font-size: 8px;
+                vertical-align: middle;
+                margin: 0 5px;
+            }
+
+            .key-text {
+                font-size: 8px;
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .gk-key {
+                background-color: $brand-sunflower-yellow;
+            }
+
+            .outfield-key {
+                background-color: $brand-starry-night-blue;
+            }
+
+            .last-rated-key {
+                background-color: $brand-evening-black;
+            }
 
             .row {
                 box-sizing: border-box;
-                padding: 20px;
+                padding: 0px;
             }
 
             .member-container {
                 text-align: center;
                 display: flex;
-                justify-content: space-evenly;
-                flex-wrap: wrap;
+                align-items: center;
 
                 .user-container {
                     display: inline-block;
                     width: 24%;
+                    min-width: 68px;
+                }
+
+                .rating:nth-of-type(4) {
+                    width: unset;
+                }
+
+                .rating {
+                    font-size: 10px;
+                    width: 20px;
+                    padding: 5px;
+                    margin: 0 10px 0 0;
+                }
+
+                .rating-date {
+                    font-size: 10px;
+                    padding: 5px;
                 }
 
                 .shirt {
@@ -615,6 +673,37 @@
                             width: 100%;
                             padding: 0;
                         }
+                    }
+                }
+                
+                .not-rated {
+                    font-size: 8px;
+                }
+                
+                .data-container {
+                    margin-left: 30px;
+                    vertical-align: middle;
+                    
+                    p {
+                        width: unset;
+                        min-width: 28px;
+                    }
+                }
+                
+                .data-container-no-data {
+                    margin-left: 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    
+                    p {
+                        width: 62%;
+                        text-align: left;
+                    }
+                    
+                    i {
+                        font-size: 14px;
+                        margin-right: 14px;
                     }
                 }
             }
@@ -674,7 +763,7 @@
                 overflow-x: scroll;
                 overflow-y: hidden;
                 white-space: nowrap;
-                
+
                 &::-webkit-scrollbar {
                     display: none;
                 }
@@ -837,7 +926,7 @@
         color: $brand-irises-green;
         padding: 28px;
         min-height: 55vh;
-        
+
         h3 {
             margin-bottom: 20px;
         }
@@ -1101,29 +1190,29 @@
             background-color: $preference-green;
         }
     }
-    
+
     .player-data-row {
-        
+
         .gen-options-box {
             margin: 0 2px;
         }
-        
+
         select,
         option {
             font-size: 12px;
             font-family: 'Staatliches', cursive;
         }
-        
+
     }
-    
+
     .user-playing-positions-section {
         position: absolute;
         top: 0;
         width: 100%;
         box-sizing: border-box;
-        transition: all 1s ;
+        transition: all 1s;
         height: 100%;
-        
+
         h4 {
             margin-bottom: 10px;
             margin-right: 12px;
@@ -1176,7 +1265,7 @@
                 background-image: url('../img/transparent-shirt-red.png');
             }
         }
-        
+
         .team-scores {
             padding: 20px;
             display: flex;
@@ -1185,41 +1274,40 @@
             font-family: 'Staatliches', cursive;
             text-align: center;
             box-sizing: border-box;
-            
+
             .team-1-score,
             .team-2-score {
                 display: inline-block;
                 width: 74px;
-                color: white ;
+                color: white;
                 @extend %floating-shadow;
-                
+
                 p {
                     padding: 4px;
                 }
-                
+
                 p:nth-of-type(2) {
                     padding: 8px;
                     background-color: $white;
                     color: $brand-evening-black;
                 }
             }
-            
+
             .team-1-score {
                 background-color: $brand-starry-night-blue;
             }
-            
+
             .team-2-score {
                 background-color: $shirt-red;
             }
-            
-            
-            
+
+
+
         }
     }
 }
 
 // Rate_performance.html -------------------------------------------------------
-
 .please-wait {
     width: 100%;
     position: absolute;
@@ -1229,7 +1317,7 @@
     color: $white;
     background-color: $brand-evening-black;
     @extend %centralise-inner-container;
-    
+
     i {
         margin-top: 20px;
         font-size: 20px;
@@ -1241,42 +1329,42 @@
     overflow: hidden;
     background-color: $brand-irises-green;
     color: $white;
-    
+
     h2 {
         margin-bottom: 10px;
     }
-    
+
     .match-data {
         width: 100%;
         background-color: $brand-evening-black;
         padding: 10px;
         box-sizing: border-box;
-        
+
         p {
             margin: 4px 0;
             font-size: 10px;
         }
-        
+
         p:last-of-type {
             margin-bottom: 0;
         }
     }
-    
+
     .user-info-section {
         position: relative;
     }
-    
+
     .container {
         color: $white;
     }
-    
-    .user-photo-img ~ p {
+
+    .user-photo-img~p {
         width: 117px;
         background-color: $brand-evening-black;
         padding: 3px 0;
         margin: 0 auto;
     }
-    
+
     .player,
     .completed-box {
         background-color: $brand-irises-green;
@@ -1289,26 +1377,26 @@
         left: 0;
         z-index: 5;
         box-sizing: border-box;
-        
+
         .centralise {
             @extend %centralise-inner-container;
             height: 100%;
-            
+
             .container {
-                
+
                 .player-image-container {
                     box-sizing: border-box;
                     width: 100%;
                     height: 170px;
                     margin-bottom: 20px;
-                    
+
                     .user-photo-img {
                         margin-top: 0;
                     }
                 }
             }
         }
-        
+
         .final-container {
             button,
             p {
@@ -1316,7 +1404,7 @@
             }
         }
     }
-    
+
     .completed-box {
         z-index: 2;
     }

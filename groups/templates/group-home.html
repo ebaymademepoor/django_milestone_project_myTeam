@@ -70,24 +70,68 @@
         </div>
         
         <div class="member-box">
-            <div class="row">
-                <h2>Group members</h2>
-            </div>
-            <div class="container member-container">
-                {% for user in group_data.users.all %}
-                <div class="user-container">
-                    <a class="shirt click-shrink" href="{% url 'player-profile' user.pk group_data.pk %}">
-                        <span class="container">
-                            {% if user.nickname %}
-                                <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname|truncatechars:9 }}</p>
-                            {% else %}
-                                <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username|truncatechars:9 }}</p>
-                            {% endif %}
-                        </span>
-                    </a>
+            <div class="stick-to-top">
+                <div class="header-container">
+                    <h2>Group members</h2>
+                
+                    <div class="container member-container">
+                        <div class="user-container">
+                            <a class="shirt click-shrink" href="{% url 'player-profile' this_user.pk group_data.pk %}">
+                                <span class="container">
+                                    {% if this_user.nickname %}
+                                        <p id="curve-{{ user.pk }}" class="member-content username">{{ this_user.nickname|truncatechars:9 }}</p>
+                                    {% else %}
+                                        <p id="curve-{{ user.pk }}" class="member-content username">{{ this_user.username|truncatechars:9 }}</p>
+                                    {% endif %}
+                                </span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                {% endfor %}
-            </div>
+                
+                
+                <div class="key-box">
+                    <p class="key-text">All ratings as scored by you...</p> 
+                    <div class="gk-key key"></div><label>GK Score</label>
+                    <div class="outfield-key key"></div><label>Outfield Score</label>
+                    <div class="last-rated-key key"></div><label>Date last rated</label>
+                </div>
+            </div> 
+            {% for user in group_data.users.all %}
+                {% if this_user != user %}
+                    <div class="container member-container row">
+                        <div class="user-container">
+                            <a class="shirt click-shrink" href="{% url 'player-profile' user.pk group_data.pk %}">
+                                <span class="container">
+                                    {% if user.nickname %}
+                                        <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname|truncatechars:9 }}</p>
+                                    {% else %}
+                                        <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username|truncatechars:9 }}</p>
+                                    {% endif %}
+                                </span>
+                            </a>
+                        </div>
+                    
+                    {% if user|lower in players_i_have_rated.all|lower %}
+                        {% for rating in players_i_have_rated.all %}
+                            {% if rating.player_rated|lower == user.email|lower %}
+                            <div class="data-container">
+                                <div class="gk-key key"></div><p class="rating">{{ rating.gk_score }}</p>    
+                                <div class="outfield-key key"></div><p class="rating">{{ rating.outfield_score }}</p>    
+                                <div class="last-rated-key key"></div><p class="rating-date">{{ rating.last_updated|date:'d-m-Y'  }}</p>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <div class="data-container-no-data">
+                            <i class="fas fa-arrow-circle-left"></i>
+                            <p class="not-rated">You have not rated this player.  Click their shirt to rate them...</p>     
+                        </div> 
+                    {% endif %}
+                    </div>
+                    
+                {% endif %}
+            {% endfor %}
         </div>
     </section>
 </div>

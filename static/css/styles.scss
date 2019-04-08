@@ -111,3 +111,8 @@ a:visited {
     color: $preference-green;
     font-weight: 600 !important;
 }
+
+.stick-to-top {
+    position: sticky;
+    top: 0;
+}

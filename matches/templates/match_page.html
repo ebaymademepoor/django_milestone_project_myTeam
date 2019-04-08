@@ -104,18 +104,19 @@
                 <div class="availability-container">
                     
                     <!--Has the group member registered a status for this match?-->
-                    
-                    {% for entry in avail_data %}
-                        {% if this_user|lower == entry.player|lower %}
-                            {% if entry.status == 1 %}
-                                <p id="{{ entry.pk }}" class="i-have-confirmed">Confirmed</p>
-                            {% elif entry.status == 0 %}
-                                <p id="{{ entry.pk }}" class="i-am-unavailable">Unavailable</p>
-                            {% else %}
-                                <p class="i-am-unconfirmed">Unconfirmed</p>
+                    {% if avail_data %}
+                        {% for entry in avail_data %}
+                            {% if this_user|lower == entry.player|lower %}
+                                {% if entry.status == 1 %}
+                                    <p id="{{ entry.pk }}" class="i-have-confirmed">Confirmed</p>
+                                {% elif entry.status == 0 %}
+                                    <p id="{{ entry.pk }}" class="i-am-unavailable">Unavailable</p>
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
-                    {% endfor %}
+                        {% endfor %}
+                    {% else %}
+                        <p class="i-am-unconfirmed">Unconfirmed</p>
+                    {% endif %}
                 </div>
                 {% if match_data.match_completed %}
                     <div class="ratings-submitted-container">
@@ -201,32 +202,33 @@
             <!-- Every member of the group to the match page...-->
             
             {% for user in match_data.associated_group.users.all %}
-                
-                <div class="container member-container">
-                    <div class="row">
-                        <div class="user-container">
-                            <a class="shirt click-shrink" href="{% url 'player-profile' user.pk groupid %}">
-                                <span class="container">
+                {% if this_user != user %}
+                    <div class="container member-container">
+                        <div class="row">
+                            <div class="user-container">
+                                <a class="shirt click-shrink" href="{% url 'player-profile' user.pk groupid %}">
                                     <span class="container">
-                                        {% if user.nickname %}
-                                            <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname }}</p>
-                                        {% else %}
-                                            <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username }}</p>
-                                        {% endif %}
+                                        <span class="container">
+                                            {% if user.nickname %}
+                                                <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname|truncatechars:8 }}</p>
+                                            {% else %}
+                                                <p id="curve-{{ user.pk }}" class="member-content username">{{ user.username|truncatechars:8 }}</p>
+                                            {% endif %}
+                                        </span>
                                     </span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="availability-container">
-                            {% if user|lower == this_user.email|lower %}
-                                    <p class="i-am-unconfirmed">Unconfirmed</p> 
-                                {% else %}
-                                    <p class="unconfirmed">Unconfirmed</p>
-                                    <span id="avail-table-pk-{{ entry.pk }}" class="hidden">{{ entry.pk }}</span>
-                                {% endif %}
+                                </a>
+                            </div>
+                            <div class="availability-container">
+                                {% if user|lower == this_user.email|lower %}
+                                        <p class="i-am-unconfirmed">Unconfirmed</p> 
+                                    {% else %}
+                                        <p class="unconfirmed">Unconfirmed</p>
+                                        <span id="avail-table-pk-{{ entry.pk }}" class="hidden">{{ entry.pk }}</span>
+                                    {% endif %}
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
         {% endif %}
         </section>

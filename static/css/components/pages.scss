@@ -675,32 +675,32 @@
                         }
                     }
                 }
-                
+
                 .not-rated {
                     font-size: 8px;
                 }
-                
+
                 .data-container {
                     margin-left: 30px;
                     vertical-align: middle;
-                    
+
                     p {
                         width: unset;
                         min-width: 28px;
                     }
                 }
-                
+
                 .data-container-no-data {
                     margin-left: 15px;
                     display: flex;
                     align-items: center;
                     justify-content: space-evenly;
-                    
+
                     p {
                         width: 62%;
                         text-align: left;
                     }
-                    
+
                     i {
                         font-size: 14px;
                         margin-right: 14px;
@@ -926,9 +926,39 @@
         color: $brand-irises-green;
         padding: 28px;
         min-height: 55vh;
-
+        position: relative;
+        
+        .ratings-header {
+            width: 88px;
+            text-align: center;
+            position: absolute;
+            right: 10px;
+            top: 26px;
+            font-size: 10px;
+        }
+        
         h3 {
             margin-bottom: 20px;
+        }
+
+        i {
+            font-size: 28px;
+        }
+
+        .fa-check-circle {
+            color: $preference-green;
+        }
+
+        .fa-times-circle {
+            color: $error-red;
+        }
+
+        .fa-question-circle {
+            color: $brand-evening-black;
+        }
+        
+        .fa-thumbs-down {
+            color: $error-red;
         }
     }
 

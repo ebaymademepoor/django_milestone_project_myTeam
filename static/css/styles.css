@@ -1024,9 +1024,27 @@ footer {
     background-color: #fff;
     color: #007849;
     padding: 28px;
-    min-height: 55vh; }
+    min-height: 55vh;
+    position: relative; }
+    .matches-page .player-availability .ratings-header {
+      width: 88px;
+      text-align: center;
+      position: absolute;
+      right: 10px;
+      top: 26px;
+      font-size: 10px; }
     .matches-page .player-availability h3 {
       margin-bottom: 20px; }
+    .matches-page .player-availability i {
+      font-size: 28px; }
+    .matches-page .player-availability .fa-check-circle {
+      color: #23e623; }
+    .matches-page .player-availability .fa-times-circle {
+      color: #fd3636; }
+    .matches-page .player-availability .fa-question-circle {
+      color: #262228; }
+    .matches-page .player-availability .fa-thumbs-down {
+      color: #fd3636; }
   .matches-page .member-container {
     text-align: center;
     display: flex;

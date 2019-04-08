@@ -50,8 +50,8 @@ class AvailabilityTable(models.Model):
         return "Player {0}'s status for {1} is {2}".format(self.player, self.matchID, self.status)
     
 class PerformanceRating(models.Model):
-    performance_player_rated = models.ForeignKey(UserProfileData, on_delete=models.CASCADE, related_name="performance_player_rated")
-    performance_rated_by = models.ForeignKey(UserProfileData, on_delete=models.CASCADE, related_name="performance_rated_by")
+    performance_player_rated = models.ForeignKey(UserProfileData, on_delete=models.CASCADE, related_name="perf_player_rated")
+    performance_rated_by = models.ForeignKey(UserProfileData, on_delete=models.CASCADE)
     performance_rating = models.DecimalField(max_digits=1, decimal_places=0, default=0, null=False, blank=False)
     performance_matchID = models.ForeignKey(MatchData, on_delete=models.CASCADE, null=False, blank=False, related_name="performance_match_id")
     

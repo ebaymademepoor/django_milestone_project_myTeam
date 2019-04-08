@@ -19,7 +19,18 @@ import json
 def match_instance(request, groupid, matchid):
     
     my_profile = UserProfileData.objects.get(email=request.user.email)
-    match_ratings = PerformanceRating.objects.filter(performance_rated_by=my_profile, performance_matchID=matchid)
+    
+    try:
+        match_ratings = list(PerformanceRating.objects.filter(
+            performance_matchID=matchid).values("performance_rated_by__email").distinct())
+    except:
+        match_ratings = None
+    
+    try:
+        my_ratings = PerformanceRating.objects.filter(performance_matchID=matchid, 
+            performance_rated_by=my_profile)
+    except:
+        my_ratings = "empty"
     
     if int(matchid) == 0:
         
@@ -29,12 +40,16 @@ def match_instance(request, groupid, matchid):
     else:
         this_match = get_object_or_404(MatchData, pk=matchid)
         match_form = CreateOrEditMatchHelperForm(instance=this_match)
+        
         try:
             avail_data = AvailabilityTable.objects.filter(matchID=matchid)
         except:
             avail_data = None    
     
-    return render(request, 'match_page.html', { "match_form": match_form, "groupid" : groupid, "matchid": matchid, "match_data": this_match, "avail_data":avail_data, "this_user" : my_profile, "match_ratings" : match_ratings })
+    return render(request, 'match_page.html', { "match_form": match_form,
+        "groupid" : groupid, "matchid": matchid, "match_data": this_match, 
+        "avail_data":avail_data, "this_user" : my_profile, 
+        "match_ratings" : match_ratings, "my_ratings": my_ratings })
 
 @login_required    
 def add_or_edit_a_match(request, groupid, matchid):

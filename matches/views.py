@@ -33,6 +33,11 @@ def match_instance(request, groupid, matchid):
     except:
         my_ratings = "empty"
     
+    try:
+        my_availability = AvailabilityTable.objects.get(matchID=matchid, player=my_profile)
+    except:
+        my_availability = None
+    
     if int(matchid) == 0:
         
         match_form = CreateOrEditMatchHelperForm()
@@ -50,7 +55,8 @@ def match_instance(request, groupid, matchid):
     return render(request, 'match_page.html', { "match_form": match_form,
         "groupid" : groupid, "matchid": matchid, "match_data": this_match, 
         "avail_data":avail_data, "this_user" : my_profile, 
-        "match_ratings" : match_ratings, "my_ratings": my_ratings })
+        "match_ratings" : match_ratings, "my_ratings": my_ratings,
+        "my_availability" : my_availability})
 
 @login_required    
 def add_or_edit_a_match(request, groupid, matchid):

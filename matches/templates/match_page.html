@@ -108,18 +108,12 @@
                 <div class="availability-container">
                     
                     <!--Has the group member registered a status for this match?-->
-                    {% if avail_data %}
-                        {% for entry in avail_data %}
-                            {% if this_user|lower == entry.player|lower %}
-                                {% if entry.status == 1 %}
-                                    <p id="{{ entry.pk }}" class="i-have-confirmed">Confirmed</p>
-                                {% elif entry.status == 0 %}
-                                    <p id="{{ entry.pk }}" class="i-am-unavailable">Unavailable</p>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
+                    {% if my_availability.status == 1 %}
+                        <p id="{{ entry.pk }}" class="i-have-confirmed">Confirmed</p>
+                    {% elif my_availability.status == 0 %}
+                        <p id="{{ entry.pk }}" class="i-am-unavailable">Unavailable</p>
                     {% else %}
-                        <p class="i-am-unconfirmed">Available?</p>
+                        <p class="i-am-unconfirmed">Available?</p>                
                     {% endif %}
                 </div>
                 {% if match_data.match_completed %}

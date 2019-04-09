@@ -351,8 +351,8 @@ def email_availability_reminder(request, matchid):
                     
                     for player in unconfirmed_players:
                         send_mail('Availability request for match on {0} at {1}'.format(this_match.date_of_match.strftime('%d/%m/%Y'), this_match.time_of_match), 
-                            "Hi {0},\n\nWe hope you're enjoying using MY TEAM!\n\nPlease could you take this opportunity to confirm your availability for the above match by clicking the link below...\n\nhttps://my-team-utility.herokuapp.com/match/match_instance/{1}/{2}\n\nThanks in advance, we hope you win!"
-                            .format(player["username"], this_match.associated_group.pk,this_match.pk), 'support@myteamutility.com', [player["email"]])
+                            "Hi {0},\n\nWe hope you're enjoying using MY TEAM!\n\nPlease could you take this opportunity to confirm your availability for the above match by clicking the link below...\n\nhttps://my-team-utility.herokuapp.com/match/match_instance/{2}/{3}\n\nRequest sent by user - {1}\n\nThanks in advance, we hope you win!"
+                            .format(player["username"], request.user.username, this_match.associated_group.pk,this_match.pk), 'support@myteamutility.com', [player["email"]])
                     
                     response_data['result'] = 'Update successful!'
                     if this_match.reminder_emails == 1:

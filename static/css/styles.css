@@ -654,11 +654,11 @@ footer {
 .user-form-section {
   background-color: #0375B4; }
   .user-form-section .container:first-of-type {
-    color: white;
-    margin: 0 0 40px; }
+    color: white; }
     .user-form-section .container:first-of-type p:first-of-type {
-      background-color: #007849;
-      margin: 10px auto 20px;
+      background-color: #fff;
+      color: #007849;
+      margin: 20px auto 30px;
       font-size: 20px;
       padding: 18px 9px;
       width: 40px;
@@ -803,10 +803,13 @@ footer {
       display: flex;
       align-items: center;
       justify-content: space-between; }
+      .group-home .content .member-box .header-container .member-container {
+        position: relative;
+        top: 5px; }
     .group-home .content .member-box .stick-to-top {
       z-index: 5;
       background-color: #007849;
-      padding-bottom: 10px; }
+      padding-bottom: 20px; }
     .group-home .content .member-box .key {
       width: 10px;
       height: 10px;

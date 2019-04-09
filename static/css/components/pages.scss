@@ -376,11 +376,11 @@
 
     .container:first-of-type {
         color: white;
-        margin: 0 0 40px;
 
         p:first-of-type {
-            background-color: $brand-irises-green;
-            margin: 10px auto 20px;
+            background-color: $white;
+            color: $brand-irises-green;
+            margin: 20px auto 30px;
             font-size: 20px;
             padding: 18px 9px;
             width: 40px;
@@ -584,12 +584,17 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                
+                .member-container {
+                    position: relative;
+                    top: 5px;
+                }
             }
 
             .stick-to-top {
                 z-index: 5;
                 background-color: $brand-irises-green;
-                padding-bottom: 10px;
+                padding-bottom: 20px;
             }
 
             .key {

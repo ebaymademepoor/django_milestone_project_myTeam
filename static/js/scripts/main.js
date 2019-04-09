@@ -1,6 +1,7 @@
 // Global Vars
 
 let preventClick = false;
+let preventClickForReminder = false;
 var ctx = $("#myChart");
 let currentGeneratedTeam
 let currentSavedTeams
@@ -772,6 +773,10 @@ function preparePostData(type, data) {
         $(".please-wait").removeClass("start-off-screen");
         $(".please-wait").addClass('slide-in-from-right');
         postToDatabase(ratingsURL, ratingsData, customRoute);    
+    } else if (type === "email-availability-reminder"){
+        let matchid = data;
+        let emailUrl = "../../email_availability_reminder/";
+        postToDatabase(emailUrl, "n/a", matchid)
     }
 };
 
@@ -821,10 +826,27 @@ function postToDatabase(url, data, route) {
                 }
             } else if (url === "../../match/save_a_generated_team/") {
                 if (json["result"] == 'Update successful!') {
-                    displayMessage("Your team has been saved!\n  GREAT SAVE!");
+                    displayMessage("GREAT SAVE! Your teams have been stored.");
                     $('#view-saved-teams-btn').show();
                     currentSavedTeams = json["selected_team"]
                     preventClick = false;
+                } else {
+                    displayMessage("Hmmm, we're not sure that worked, please try later...");
+                }
+            } else if (url === "../../email_availability_reminder/") {
+                
+                console.log(json["result"])
+                console.log(json["emails-sent"])
+                
+                if (json["result"] == 'Update successful!') {
+                    if(json["emails-sent"] === "One"){
+                        displayMessage("Emails sent!  You still have 1 reminder remaining for this match.");    
+                    } else if (json["emails-sent"] === "Two"){
+                        displayMessage("Emails sent!  You have now sent both of your reminder emails.");    
+                    }
+                    
+                } else if (json["result"] == 'All reminders sent'){
+                    displayMessage("I'm sorry but you have already sent out all of your reminder emails for this match!");    
                 } else {
                     displayMessage("Hmmm, we're not sure that worked, please try later...");
                 }
@@ -845,6 +867,7 @@ function postToDatabase(url, data, route) {
                 if (json["result"] == 'Update successful!') {
                     if(url !== "../update_position_pref/"){
                         displayMessage("GOAL!  Details updated...");    
+                        console.log(json["result"]);
                     }
                 } else {
                     displayMessage("Hmmm, we're not sure that worked, please try later...");
@@ -1204,7 +1227,19 @@ $(document).ready(function() {
         }
 
     });
-
+    
+    // Emails a reminder to any user within a group that has not advised of availability for any given match
+    
+    $("#email-availability-reminder-btn").click(function() {
+        if(preventClickForReminder === false){
+            preventClickForReminder = true;
+            let matchid = $('#match-id').text();
+            preparePostData("email-availability-reminder", matchid)    ;
+        }
+    });
+    
+    // Curves any text on a shirt...
+    
     curvePlayerNames();
 
     // Chart.js Radar chart

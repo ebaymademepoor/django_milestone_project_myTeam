@@ -79,6 +79,7 @@
     {% if match_data %}
         {% if not match_data.match_completed %}
         <section class="team-generation">
+            <button id="email-availability-reminder-btn" class="click-shrink">Email Reminders</button>
             <a class="click-shrink link-btn team-gen-link-btn" href="{% url 'team-gen-settings' matchid %}">Generate Teams</a> 
         </section>
     {% endif %}

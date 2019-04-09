@@ -29,3 +29,8 @@ class RatePlayerPerformanceForm(forms.ModelForm):
     class Meta:
         model = PerformanceRating
         fields = ('performance_player_rated', 'performance_rated_by', 'performance_rating', 'performance_matchID')
+        
+class SendReminderEmailForm(forms.ModelForm):
+    class Meta:
+        model = MatchData
+        fields = ['reminder_emails']

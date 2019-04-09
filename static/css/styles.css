@@ -187,13 +187,21 @@ button,
 
 .edit-match-btn,
 .team-gen-link-btn,
-.rate-performance-link-btn {
+.rate-performance-link-btn,
+#email-availability-reminder-btn {
   width: 86px;
-  height: 17px;
+  height: 18px;
   line-height: 16px;
   font-size: 8px;
   margin-bottom: 0;
-  display: inline-block; }
+  display: inline-block;
+  background-color: #262228;
+  padding: 0;
+  align-items: normal;
+  box-sizing: border-box; }
+
+#email-availability-reminder-btn {
+  margin: 0; }
 
 .rate-performance-link-btn {
   background-color: #fd3636; }
@@ -1089,7 +1097,9 @@ footer {
         transition: all 1s ease; }
   .matches-page .team-generation {
     padding: 10px 28px;
-    background-color: #826900; }
+    background-color: #826900;
+    display: flex;
+    justify-content: space-between; }
     .matches-page .team-generation a {
       margin: 0; }
 

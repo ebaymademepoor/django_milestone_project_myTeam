@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
-from .forms import CreateOrEditMatchHelperForm, processMatchRequestForm, UpdateMatchAvailabilityForm, SaveTeamsForm, RatePlayerPerformanceForm
+from .forms import CreateOrEditMatchHelperForm, processMatchRequestForm, UpdateMatchAvailabilityForm, SaveTeamsForm, RatePlayerPerformanceForm, SendReminderEmailForm
 from groups.models import Group
 from .models import MatchData, AvailabilityTable, PerformanceRating
 from profile_and_stats.models import UserProfileData
@@ -13,6 +13,7 @@ from django.utils.dateparse import parse_date
 from django.utils.timezone import get_fixed_timezone, utc
 from django.db import connection
 import json
+from django.core.mail import send_mail
 
 # Create your views here.
 @login_required
@@ -307,5 +308,67 @@ def add_ratings_to_db(request, matchid):
             else:
                 print(form.errors)
                 return HttpResponse(json.dumps({"ERROR":"Error in saving your ratings, please try later"}), content_type="application/json")
+
+@login_required    
+def email_availability_reminder(request, matchid):
+    """
+    Sends an email to every user in the match that has not submitted their availability
+    """
+    
+    if request.method == "POST":
+        # Security check - is the user posting for a match they are a member of?
+        
+        this_match = MatchData.objects.get(pk=matchid)
+        user_is_in_group = False
+        
+        for member in this_match.associated_group.users.all():
+            if str(request.user.email) == str(member):
+                user_is_in_group = True
+        
+        if user_is_in_group:
+            
+            # Next, check which players have already confirmed their availability...
+        
+            availability_submissions = AvailabilityTable.objects.filter(matchID=matchid).values_list('player__email')
+        
+            unconfirmed_players = []
+            
+            for member in this_match.associated_group.users.all():
+                availability_submitted = False 
+                for user in availability_submissions:
+                    if user[0] == member.email:
+                        availability_submitted = True
+                if availability_submitted == False:
+                    unconfirmed_players.append({"email" : member.email, "username" : member.username })
+            
+            response_data = {}
+            
+            if this_match.reminder_emails < 2:
+                form = SendReminderEmailForm({"reminder_emails" : this_match.reminder_emails + 1}, instance=this_match)
+                if form.is_valid():
+                    form.save()
+                    print("saved")
+                    
+                    for player in unconfirmed_players:
+                        send_mail('Availability request for match on {0} at {1}'.format(this_match.date_of_match.strftime('%d/%m/%Y'), this_match.time_of_match), 
+                            "Hi {0},\n\nWe hope you're enjoying using MY TEAM!\n\nPlease could you take this opportunity to confirm your availability for the above match by clicking the link below...\n\nhttps://my-team-utility.herokuapp.com/match/match_instance/{1}/{2}\n\nThanks in advance, we hope you win!"
+                            .format(player["username"], this_match.associated_group.pk,this_match.pk), 'support@myteamutility.com', [player["email"]])
+                    
+                    response_data['result'] = 'Update successful!'
+                    if this_match.reminder_emails == 1:
+                        response_data['emails-sent'] = "One"
+                    else:
+                        response_data['emails-sent'] = "Two"
+                else:
+                    response_data['result'] = 'Error'
+                    print(form.errors)
+                    
+            else:
+                response_data['result'] = 'All reminders sent'
+        
+        return HttpResponse(json.dumps(response_data),content_type="application/json")        
+    else:
+        response_data['result'] = 'Error'
+        return HttpResponse(json.dumps(response_data),content_type="application/json")
     
     

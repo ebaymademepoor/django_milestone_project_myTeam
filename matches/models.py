@@ -11,9 +11,10 @@ class MatchData(models.Model):
     date_of_match = models.DateField(auto_now=False, auto_now_add=False, null=False, blank=False)
     time_of_match = models.TimeField(auto_now=False, auto_now_add=False, null=False, blank=False)
     venue = models.TextField(max_length="100", null=False, blank=False)
-    players = models.ManyToManyField(UserProfileData, related_name="linked_players")
+    players = models.ManyToManyField(UserProfileData, blank=True, related_name="linked_players")
     match_notes = models.TextField(max_length="200", null=True, blank=True)
     selected_team = models.CharField(max_length = 10000, null=True, blank=True)
+    reminder_emails = models.DecimalField(max_digits=1, decimal_places=0, default=0, null=True, blank=False)
     
     SCHEDULED = "S"
     CANCELLED = "C"    

@@ -114,13 +114,22 @@ button,
 // Match_page.html buttons -----------------------------------------------------
 .edit-match-btn,
 .team-gen-link-btn,
-.rate-performance-link-btn {
+.rate-performance-link-btn,
+#email-availability-reminder-btn {
     width: 86px;
-    height: 17px;
+    height: 18px;
     line-height: 16px;
     font-size: 8px;
     margin-bottom: 0;
     display: inline-block;
+    background-color: $brand-evening-black;
+    padding: 0;
+    align-items: normal;
+    box-sizing: border-box;
+}
+
+#email-availability-reminder-btn  {
+    margin: 0;
 }
 
 .rate-performance-link-btn {

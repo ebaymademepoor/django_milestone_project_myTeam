@@ -1029,6 +1029,8 @@
     .team-generation {
         padding: 10px 28px;
         background-color: $brand-evening-black-offset;
+        display: flex;
+        justify-content: space-between;
 
         a {
             margin: 0;

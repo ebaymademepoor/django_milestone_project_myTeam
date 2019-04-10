@@ -17,7 +17,7 @@ if os.path.exists('env.py'):
     import env
     development = True
 else:
-    development = True
+    development = False
     
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -156,8 +156,8 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 # I use this if I want to use local static files and not have to keep using collectstatic..
-if development == False:
-    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+# if development == False:
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
 STATICFILES_LOCATION = 'static'
 STATIC_URL = '/static/'

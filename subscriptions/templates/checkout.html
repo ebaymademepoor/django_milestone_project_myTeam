@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block page_title %}
+    {% if type == "D" %}
+        Donations Page
+    {% else %}
+        Purchase Subscription
+    {% endif %}
+{% endblock %}
+
+{% block head_js %}
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script> 
+<script type="text/javascript"></script>
+    //<![CDATA[
+    Stripe.setPublishableKey = ('{{ publishable }}');
+    //]]>
+</script> 
+<script src="{% static 'js/stripe.js' %}"></script> 
+{% endblock %}
+
+{% block content %}
+<h2>Checkout</h2> 
+
+<form role="form" method="post" id="payment-form" action="{% url 'checkout' type %}">
+    <legend>Payment Details</legend> 
+    <div id="credit-card-errors">
+        <div class="alert-message block-message error" id="stripe-error-message"></div>
+    </div> 
+    {% if type == "D" %}
+        <label for="donation_value">Amount £</label> 
+        <input type="number" name="donation_value" step=".01" required> 
+    {% endif %}
+    {{ form.as_p }}
+    {% csrf_token %}
+    <div class="row">
+        <button id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">PAY NOW</button>
+    </div> 
+</form> 
+
+{% endblock %}

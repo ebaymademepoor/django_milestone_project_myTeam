@@ -21,6 +21,7 @@ from profile_and_stats import urls as profile_urls
 from groups import urls as group_urls
 from matches import urls as match_urls
 from team_gen import urls as team_urls
+from subscriptions import urls as subscription_urls
 from django.views import static
 from .settings import MEDIA_ROOT
 
@@ -32,5 +33,6 @@ urlpatterns = [
     url(r'^group/', include(group_urls)),
     url(r'^match/', include(match_urls)),
     url(r'^team/', include(team_urls)),
+    url(r'^checkout/', include(subscription_urls)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]

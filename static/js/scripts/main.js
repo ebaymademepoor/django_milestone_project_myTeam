@@ -1011,27 +1011,33 @@ function curvePlayerNames() {
 // Prepares chart data for radar chart
 
 function prepareChartData() {
-    if ($('.gk-rate').text() === "") {
-        let gkRating = parseInt($('.gk-rate').val());
-        let defRating = parseInt($('.def-rate').val());
-        let moveRating = parseInt($('.move-rate').val());
-        let passRating = parseInt($('.pass-rate').val());
-        let finRating = parseInt($('.fin-rate').val());
-
-        let ratingsList = [gkRating, defRating, moveRating, passRating, finRating];
-        return ratingsList
-    }
-    else {
-        let gkRating = $('.gk-rate').text();
-        let defRating = parseInt($('.def-rate').text());
-        let moveRating = parseInt($('.move-rate').text());
-        let passRating = parseInt($('.pass-rate').text());
-        let finRating = parseInt($('.fin-rate').text());
-
-        let ratingsList = [gkRating, defRating, moveRating, passRating, finRating];
-        return ratingsList
-    }
+    return new Promise((resolve, reject) => {
+        
+        let ratingsList = [];
+        
+        if ($('.gk-rate').text() === "") {
+            let gkRating = parseInt($('.gk-rate').val());
+            let defRating = parseInt($('.def-rate').val());
+            let moveRating = parseInt($('.move-rate').val());
+            let passRating = parseInt($('.pass-rate').val());
+            let finRating = parseInt($('.fin-rate').val());
+    
+            ratingsList = [gkRating, defRating, moveRating, passRating, finRating];
+        }
+        else {
+            let gkRating = $('.gk-rate').text();
+            let defRating = parseInt($('.def-rate').text());
+            let moveRating = parseInt($('.move-rate').text());
+            let passRating = parseInt($('.pass-rate').text());
+            let finRating = parseInt($('.fin-rate').text());
+    
+            ratingsList = [gkRating, defRating, moveRating, passRating, finRating];
+        }
+        
+        resolve(ratingsList);
+    });
 }
+    
 
 // Player performance rating functions -----------------------------------------
 
@@ -1243,33 +1249,40 @@ $(document).ready(function() {
     curvePlayerNames();
 
     // Chart.js Radar chart
+    if(ctx.length > 0){
+        prepareChartData().then((chartData)=> {
+        
+        
+        var myRadarChart = new Chart(ctx, {
 
-    var myRadarChart = new Chart(ctx, {
-
-        type: 'radar',
-        data: {
-            labels: ['Goalkeeping', 'Defending', 'Movement', 'Passing', 'Finishing'],
-            datasets: [{
-                data: prepareChartData(),
-                backgroundColor: 'rgba(35, 230, 35, 0.3)',
-                borderColor: 'rgba(35, 230, 35, 0.9)'
-            }]
-        },
-        options: {
-            legend: {
-                display: false,
+            type: 'radar',
+            data: {
+                labels: ['Goalkeeping', 'Defending', 'Movement', 'Passing', 'Finishing'],
+                datasets: [{
+                    data: chartData,
+                    backgroundColor: 'rgba(35, 230, 35, 0.3)',
+                    borderColor: 'rgba(35, 230, 35, 0.9)'
+                }]
             },
-            title: {
-                display: false,
-            },
-            scale: {
-                ticks: {
-                    beginAtZero: true,
-                    max: 10,
-                    stepSize: 2,
-                    display: false
+            options: {
+                legend: {
+                    display: false,
+                },
+                title: {
+                    display: false,
+                },
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        max: 10,
+                        stepSize: 2,
+                        display: false
+                    }
                 }
             }
-        }
-    });
+        });    
+    })    
+    }
+    
+
 });

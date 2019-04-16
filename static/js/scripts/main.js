@@ -20,7 +20,6 @@ function displayMessage(message) {
 
     $('.message-para').text(message);
     slideInMessagesBox();
-    scrollTo('.nav-content-container');
 }
 
 // Edit data functions (personal details) --------------------------------------

@@ -413,7 +413,7 @@ footer {
     box-sizing: border-box; }
 
 .messages-container {
-  position: absolute;
+  position: fixed;
   width: 100%;
   overflow: hidden;
   height: 140px; }
@@ -546,6 +546,10 @@ footer {
   margin-bottom: 60px; }
 .login-form p a {
   color: #fd3636; }
+
+.chartjs-render-monitor {
+  max-width: 300px;
+  margin: 0 auto; }
 
 #update-form {
   position: absolute;

@@ -1269,4 +1269,9 @@ $(document).ready(function() {
     
     createRadarChart();
     
+    setTimeout(function(){
+        $(".loading-screen").slideUp(1000);    
+    }, 1000)
+    
+        
 });

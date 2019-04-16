@@ -11,7 +11,11 @@
 nav {
 
     background-color: $brand-sunflower-yellow;
-
+    
+    .nav-i {
+        margin-right: 8px;
+    }
+    
     .logo {
         max-width: 29%;
     }
@@ -43,10 +47,6 @@ nav {
                 font-weight: 600;
             }
         }
-    }
-
-    .nav-i {
-        margin-right: 8px;
     }
 }
 
@@ -112,7 +112,6 @@ footer {
 }
 
 .loading-screen {
-    display: none;
     width: 100vw;
     height: 100vh;
     color: #000;

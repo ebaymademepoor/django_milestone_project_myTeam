@@ -373,6 +373,8 @@ input:checked + .slider:before {
 
 nav {
   background-color: #FFCE00; }
+  nav .nav-i {
+    margin-right: 8px; }
   nav .logo {
     max-width: 29%; }
   nav ul {
@@ -392,8 +394,6 @@ nav {
       font-size: 11px; }
       nav ul li a {
         font-weight: 600; }
-  nav .nav-i {
-    margin-right: 8px; }
 
 .nav-content-container {
   min-height: 62px;
@@ -445,7 +445,6 @@ footer {
       margin-right: 16px; }
 
 .loading-screen {
-  display: none;
   width: 100vw;
   height: 100vh;
   color: #000;

@@ -27,7 +27,7 @@
             </div>
             <ul>
                 {% if user.is_authenticated %}
-                    <li class="click-shrink"><a href="{% url 'group-select' %}"><i class="fas fa-layer-group nav-i"></i>Groups</a></li>
+                    <li class="click-shrink"><a href="{% url 'group-select' %}"><i class="fas fa-users nav-i"></i></i>Groups</a></li>
                     <li class="click-shrink"><a href="{% url 'profile' user.pk %}"><i class="fas fa-user nav-i"></i>Profile</a></li>
                     <li class="click-shrink"><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt nav-i"></i>Logout</a></li>
                 {% else %}

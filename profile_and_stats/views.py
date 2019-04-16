@@ -194,6 +194,7 @@ def player_profile(request, playerid, groupid):
     # Check that the group and player exist...
     
     try:
+        this_user = UserProfileData.objects.get(email=request.user.email)
         common_group = Group.objects.get(pk=groupid)
         player = UserProfileData.objects.get(pk=playerid)
     
@@ -253,7 +254,7 @@ def player_profile(request, playerid, groupid):
             return render(request, 'player-profile.html', { "player" : player, "age" : my_age,
                 "my_profile" : my_profile_page, "groupid" : groupid, "ratings": this_rating_instance,
                 "performance_ratings" : performance_ratings, "overall_form_rating" : overall_form_rating,
-                "all_time_rating" : all_time_rating })
+                "all_time_rating" : all_time_rating, "this_user" : this_user })
         else:
             messages.error(request, "Sorry but you are not linked to this player and cannot view their profile")
             return redirect(reverse('group-select'))

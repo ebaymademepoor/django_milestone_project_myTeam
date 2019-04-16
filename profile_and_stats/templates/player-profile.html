@@ -131,7 +131,7 @@
     {% endif %}
     
     <section class="user-form-section">
-        {% if player.has_current_license %}
+        {% if this_user.has_current_license %}
             <div class="container">
                 <h3>All time performance rating</h3>
                 <h5>- Out of 5.00 -</h5> 
@@ -149,13 +149,13 @@
                         <dt>OVERALL FORM</dt><dd>RATED: {{ overall_form_rating.score|floatformat:2 }} out of 5</dd>
                         
                     {% else %}
-                        <dt>You have never been rated!</dt>
+                        <dt>This players performance has never been rated!</dt>
                     {% endif %}
                 </dl>
             </div>    
             {% else %}
                 <p>N/A</p> 
-                <p>Your performance has never been rated.</p> 
+                <p>This players performance has never been rated.</p> 
             </div>
             {% endif %}
         {% else %}

@@ -1,5 +1,5 @@
 .start-off-screen {
-    right: -100%;    
+    right: -100%;
 }
 
 .slide-in-from-right {
@@ -19,13 +19,52 @@
 }
 
 .rotate {
-    -webkit-animation:spin 4s linear infinite;
-    -moz-animation:spin 4s linear infinite;
-    animation:spin 4s linear infinite;
+    -webkit-animation: spin 4s linear infinite;
+    -moz-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
 }
 
-@keyframes spin { 
+@keyframes spin {
     100% {
-        -webkit-transform: rotate(360deg); transform:rotate(360deg); 
-    } 
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.rotate-ball {
+    animation-name: rotate;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(359deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.bounce-ball {
+    position: relative;
+    animation-name: jump;
+    animation-direction: alternate;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes jump {
+    from {
+        top: -10px;
+
+    }
+    
+    to {
+        top: -40px;
+    }
 }

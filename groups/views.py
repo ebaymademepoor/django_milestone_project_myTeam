@@ -117,9 +117,9 @@ def join_group(request):
             
             this_group = Group.objects.get(pk=request.POST["group_id"])
             
-            if this_group.password == request.POST["password"]:
-                
-                # If so, check to see if the group password is correct...
+            # If so, check to see if the group password is correct...
+            
+            if this_group.password == request.POST["group_password"]:
                 
                 this_user = UserProfileData.objects.get(username=request.user.username)
                 

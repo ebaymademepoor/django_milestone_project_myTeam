@@ -8,6 +8,7 @@
         <section class="team-gen-settings-pg">
             <div class="container member-container">
                 <h2>Team Generation</h2> 
+                <a class="group-rtn-btn link-btn click-shrink" href="{% url 'matches' group_data.pk match_data.pk %}">Back</a>
                 
                 <div id="group-id" class="hidden">{{ group_data.pk }}</div>
                 <div id="match-id"class="hidden">{{ match_data.pk }}</div>

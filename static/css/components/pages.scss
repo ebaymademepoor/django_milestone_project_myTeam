@@ -388,6 +388,14 @@
             text-align: center;
         }
     }
+    
+    .expiry-container {
+        color: $white;
+        
+        p {
+            margin-top: 20px;
+        }
+    }
 
     h4 {
         color: $white;
@@ -1445,4 +1453,61 @@
     .completed-box {
         z-index: 2;
     }
+}
+
+// Checkout.html ---------------------------------------------------------------
+
+.checkout-page {
+    padding: 30px;
+    min-height: 88vh;
+    color: $brand-evening-black;
+    
+    h2 {
+        margin: 0 0 30px;
+    }
+    
+    p {
+        margin-bottom: 10px;
+    }
+    
+    .payment-form-container {
+        margin-top: 40px;
+        
+        form {
+            width: 70%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 18px;
+            background-color: #ffce00;
+        }
+        
+        p {
+            margin: 0;
+            width: 56px;
+            font-size: 0.8em;
+        }
+        
+        p {
+            display: inline-block;
+        }
+        
+        p:nth-of-type(2) {
+            width: 100%;
+        }
+        
+        label {
+            width: 100%;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        
+        input {
+            border-radius: 4px;
+            text-align: center;
+            width: 85%;
+        }
+    }
+    
+    
 }

@@ -45,7 +45,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.user-playing-positions-section .half-pitch .row, .group-box .members-details-container .flex, .group-home .content .matches-box .match-link .match-box, .please-wait, .rate-performance-page .player,
+.loading-screen, .user-playing-positions-section .half-pitch .row, .group-box .members-details-container .flex, .group-home .content .matches-box .match-link .match-box, .please-wait, .rate-performance-page .player,
 .rate-performance-page .completed-box, .rate-performance-page .player .centralise,
 .rate-performance-page .completed-box .centralise, .index-page-bg-settings, .flex-center-content {
   display: flex;
@@ -76,7 +76,7 @@ table {
   -moz-box-shadow: 4px 4px 11px 2px rgba(0, 0, 0, 0.42);
   box-shadow: 4px 4px 11px 2px rgba(0, 0, 0, 0.42); }
 
-nav .logo-pic, .group-home .content .member-box .member-container .shirt, .shirt, .team-gen-pg .user-playing-positions-section .pitch-row .team-1-player,
+.logo-pic, .group-home .content .member-box .member-container .shirt, .shirt, .team-gen-pg .user-playing-positions-section .pitch-row .team-1-player,
 .team-gen-pg .user-playing-positions-section .pitch-row .team-2-player {
   background-position: center;
   background-size: contain;
@@ -312,6 +312,10 @@ input:checked + .slider:before {
   background-color: #262228;
   font-size: 10px; }
 
+#submit_payment_btn {
+  width: 100%;
+  background-color: #23e623; }
+
 .start-off-screen {
   right: -100%; }
 
@@ -336,15 +340,41 @@ input:checked + .slider:before {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
+.rotate-ball {
+  animation-name: rotate;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(359deg); }
+  to {
+    transform: rotate(0deg); } }
+.bounce-ball {
+  position: relative;
+  animation-name: jump;
+  animation-direction: alternate;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; }
+
+@keyframes jump {
+  from {
+    top: -10px; }
+  to {
+    top: -40px; } }
+.logo-pic {
+  background-image: url("../img/my-team-logo.png");
+  width: 66px;
+  height: 27px;
+  display: inline-block; }
+
 nav {
   background-color: #FFCE00; }
   nav .logo {
     max-width: 29%; }
-  nav .logo-pic {
-    background-image: url("../img/my-team-logo.png");
-    width: 66px;
-    height: 27px;
-    display: inline-block; }
   nav ul {
     max-width: 70%; }
   nav .logo,
@@ -399,7 +429,7 @@ footer {
   text-align: center;
   top: 40px;
   color: #fff;
-  background-color: rgba(106, 64, 128, 0.78);
+  background-color: rgba(72, 14, 14, 0.78);
   padding: 5px;
   z-index: 100;
   transition-property: right;
@@ -413,6 +443,27 @@ footer {
       text-align: left;
       font-size: 10px;
       margin-right: 16px; }
+
+.loading-screen {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  color: #000;
+  font-size: 1.2em;
+  font-weight: 900;
+  top: 0;
+  z-index: 5000;
+  position: fixed;
+  background-color: white;
+  text-transform: uppercase; }
+  .loading-screen .logo {
+    position: relative;
+    top: -100px; }
+  .loading-screen p {
+    margin-bottom: 40px;
+    color: #262228; }
+  .loading-screen i {
+    font-size: 0.8em; }
 
 .opening-section,
 .get-organised,
@@ -672,6 +723,10 @@ footer {
       width: 40px;
       font-weight: 900;
       text-align: center; }
+  .user-form-section .expiry-container {
+    color: #fff; }
+    .user-form-section .expiry-container p {
+      margin-top: 20px; }
   .user-form-section h4 {
     color: #fff; }
   .user-form-section dt {
@@ -1360,6 +1415,40 @@ footer {
       margin: 40px auto; }
   .rate-performance-page .completed-box {
     z-index: 2; }
+
+.checkout-page {
+  padding: 30px;
+  min-height: 88vh;
+  color: #262228; }
+  .checkout-page h2 {
+    margin: 0 0 30px; }
+  .checkout-page p {
+    margin-bottom: 10px; }
+  .checkout-page .payment-form-container {
+    margin-top: 40px; }
+    .checkout-page .payment-form-container form {
+      width: 70%;
+      margin: 0 auto;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 18px;
+      background-color: #ffce00; }
+    .checkout-page .payment-form-container p {
+      margin: 0;
+      width: 56px;
+      font-size: 0.8em; }
+    .checkout-page .payment-form-container p {
+      display: inline-block; }
+    .checkout-page .payment-form-container p:nth-of-type(2) {
+      width: 100%; }
+    .checkout-page .payment-form-container label {
+      width: 100%;
+      display: inline-block;
+      margin: 5px 0; }
+    .checkout-page .payment-form-container input {
+      border-radius: 4px;
+      text-align: center;
+      width: 85%; }
 
 .index-page-bg-settings {
   width: 100%;

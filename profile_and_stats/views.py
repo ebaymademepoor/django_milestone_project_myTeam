@@ -124,7 +124,6 @@ def update_profile_data(request, id):
                 
                 response_data['result'] = 'Update successful!'
                 
-                
                 return HttpResponse(json.dumps(response_data),content_type="application/json")
             else:
                 print(form.errors)
@@ -139,7 +138,6 @@ def update_profile_data(request, id):
 def add_new_image(request, id):
     
     if request.method == "POST":
-        
         
         # Security check - is logged in session user the same as profile that has asked to be updated?
         
@@ -158,8 +156,7 @@ def add_new_image(request, id):
                 print(form.errors)
         
     return redirect('profile', id)
-        
-        
+
 @login_required
 def update_position_pref(request, id):
     profile = get_object_or_404(UserProfileData, pk=id)
@@ -183,7 +180,6 @@ def update_position_pref(request, id):
             form.save()
             
             response_data['result'] = 'Update successful!'
-            
             
             return HttpResponse(json.dumps(response_data),content_type="application/json")
         else:
@@ -279,7 +275,6 @@ def rate_player_or_edit_existing(request, player_rated):
         except:
             this_rating_instance = None
         
-        
         # Prepare data to be added to the database
         
         rating_data = {}
@@ -287,7 +282,6 @@ def rate_player_or_edit_existing(request, player_rated):
         for key, value in request.POST.items():
             rating_data[key] = value
             
-        
         rating_data["player_rated"] = player_rated
         rating_data["rated_by"] = this_user
         
@@ -299,7 +293,6 @@ def rate_player_or_edit_existing(request, player_rated):
             response_data = {}
             response_data['result'] = 'Update successful!'
             
-            
             return HttpResponse(json.dumps(response_data),content_type="application/json")
         else:
             print(ratings_form.errors)
@@ -307,5 +300,5 @@ def rate_player_or_edit_existing(request, player_rated):
         
     else:
         messages.error(request, "You can't do that here")
-        return redirect(reverse('group-select'))    
+        return redirect(reverse('group-select'))
     

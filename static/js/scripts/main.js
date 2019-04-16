@@ -96,7 +96,6 @@ function collectFormData(type, formName) {
                 var error = true
             }
 
-
             // Value must be an interger
             formData[i].value = Math.round(formData[i].value);
         }
@@ -205,9 +204,7 @@ function updateMatchAvailability(buttonClicked) {
     availabilityData["matchID"] = matchID;
     availabilityData["availTablePk"] = availTablePk;
     availabilityData["status"] = status;
-    
-    
-    
+
     return availabilityData;
 
 }
@@ -293,7 +290,6 @@ function attachPlayerToForcedTeam(teamData){
     return teamData;
 }
 
-
 function moreThanOneKeeperCheck(teamData){
     
     var team1Keepers = 0;
@@ -345,7 +341,6 @@ function checkTeamScores(teamData){
         {"team" : 2, "Score": 0, "Players": 0 }
     ];
 
-    
     teamData[0].forEach(function(player) {
         
         if (parseInt(player["team"]) === 1) {
@@ -373,14 +368,11 @@ function checkTeamScores(teamData){
     teamsSummary[1]["avg-score"] = 
         teamsSummary[1]["Score"] / teamsSummary[1]["Players"];
     
-    
     return [teamData, teamsSummary];
 }
 
 function allocateRemainingTeams(teamData){
-    
-    
-    
+
     let playersToBeAllocated = teamData[0][1];
     let playersAllocated = teamData[0][0];
     
@@ -491,32 +483,27 @@ function setupTeams(teamData){
 }
 
 function assignPositionsForRemainingPlayers(teamData) {
-    
-    
+
         let assignedPlayers = teamData["assignedPlayers"];
         let unassignedPlayers = teamData["unassignedPlayers"];
         let positionsOfPlayers = teamData["positionsOfPlayers"]
         
         let potentialPositions = ["gk", "def", "mid", "att"];
-        
-        
+
         let positionLoop = 0;
         let minPlayersInPosition = 0;
         let thisPosition = potentialPositions[positionLoop];
-        
-    
+
         for(var i = 0; i < positionsOfPlayers.length; i++){
             
             let positionLoop = 0;
             let minPlayersInPosition = 0;
             let thisPosition = potentialPositions[positionLoop];
-            
-            
+
             while(unassignedPlayers[i].length > 0){
         
                 if (positionsOfPlayers[i][thisPosition] === minPlayersInPosition) {
-                    
-                      
+
                     let preferredPlayers = [];
                     let canPlayPlayers = [];
                     let cannotPlayPlayers = [];
@@ -554,7 +541,6 @@ function assignPositionsForRemainingPlayers(teamData) {
                     
                     unassignedPlayers[i][index]["picked-position"] = thisPosition;
                     
-                    
                     if (index > -1) {
                         assignedPlayers[i].push(unassignedPlayers[i][index]);
                         unassignedPlayers[i].splice(index, 1);
@@ -571,8 +557,6 @@ function assignPositionsForRemainingPlayers(teamData) {
                         thisPosition = potentialPositions[positionLoop];
                     }
                     
-                    
-                    
                 } else {
                     if (positionLoop === 3) {
                         positionLoop = 1;
@@ -582,13 +566,9 @@ function assignPositionsForRemainingPlayers(teamData) {
                         positionLoop += 1;
                         thisPosition = potentialPositions[positionLoop];
                     }
-                    
-                    
                 }
-        
             }   
         }
-            
     
     let mergedTeams = $.merge(assignedPlayers[0], assignedPlayers[1]);
 
@@ -598,8 +578,6 @@ function assignPositionsForRemainingPlayers(teamData) {
 function getSavedTeamData(){
     return new Promise((resolve, reject) => {
         let savedTeams = $(".saved-team-data").text();
-        
-        
         
         if(savedTeams != ""){
             teams = JSON.parse(savedTeams);    
@@ -613,8 +591,7 @@ function getSavedTeamData(){
 
 function addPlayersToPitch(teamSelection) {
     teamSelection.forEach(function(player) {
-        
-        
+
         let name = "";
         
         if(player["nickname"]){
@@ -622,9 +599,7 @@ function addPlayersToPitch(teamSelection) {
         } else {
             name = player["full-username"];
         }
-        
-        
-        
+
         if (player["team"] === 1) {
             var thisPlayer = '<div class="team-1-player"><p>' +
                 name + '</p></div>';
@@ -795,8 +770,6 @@ function postToDatabase(url, data, route) {
         type: "POST", // http method
         data: data,
         
-        
-        
         // handle a successful response
         success: function(json) {
             
@@ -863,6 +836,13 @@ function postToDatabase(url, data, route) {
                     $('.please-wait .container > i').remove();
                     $('.please-wait .container > p').text("Therer was an error, please try later");
                 }
+            } else if (url === "../../rate_player/")    {
+                if (json["result"] == 'Update successful!') {
+                    createRadarChart();
+                    displayMessage("Ratings submitted!");    
+                } else {
+                    displayMessage("Hmmm, we're not sure that worked, please try later...");
+                }
             } else {
                 if (json["result"] == 'Update successful!') {
                     if(url !== "../update_position_pref/"){
@@ -873,10 +853,6 @@ function postToDatabase(url, data, route) {
                     displayMessage("Hmmm, we're not sure that worked, please try later...");
                 }
             }
-
-            
-            
-
         },
 
         // handle a non-successful response
@@ -1084,6 +1060,47 @@ function collectAndSubmitPerformanceRatings(){
 
 }
 
+// Create radar charts function ------------------------------------------------
+
+function createRadarChart(){
+    // Chart.js Radar chart
+    if(ctx.length > 0){
+        prepareChartData().then((chartData)=> {
+        
+        
+        var myRadarChart = new Chart(ctx, {
+
+            type: 'radar',
+            data: {
+                labels: ['Goalkeeping', 'Defending', 'Movement', 'Passing', 'Finishing'],
+                datasets: [{
+                    data: chartData,
+                    backgroundColor: 'rgba(35, 230, 35, 0.3)',
+                    borderColor: 'rgba(35, 230, 35, 0.9)'
+                }]
+            },
+            options: {
+                legend: {
+                    display: false,
+                },
+                title: {
+                    display: false,
+                },
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        max: 10,
+                        stepSize: 2,
+                        display: false
+                    }
+                }
+            }
+        });    
+    })    
+    }
+}
+
+
 //  CSRF Token function --------------------------------------------------------
 
 function prepareCSRFToken(){
@@ -1247,42 +1264,9 @@ $(document).ready(function() {
     // Curves any text on a shirt...
     
     curvePlayerNames();
-
-    // Chart.js Radar chart
-    if(ctx.length > 0){
-        prepareChartData().then((chartData)=> {
-        
-        
-        var myRadarChart = new Chart(ctx, {
-
-            type: 'radar',
-            data: {
-                labels: ['Goalkeeping', 'Defending', 'Movement', 'Passing', 'Finishing'],
-                datasets: [{
-                    data: chartData,
-                    backgroundColor: 'rgba(35, 230, 35, 0.3)',
-                    borderColor: 'rgba(35, 230, 35, 0.9)'
-                }]
-            },
-            options: {
-                legend: {
-                    display: false,
-                },
-                title: {
-                    display: false,
-                },
-                scale: {
-                    ticks: {
-                        beginAtZero: true,
-                        max: 10,
-                        stepSize: 2,
-                        display: false
-                    }
-                }
-            }
-        });    
-    })    
-    }
     
-
+    // Radar Chart creation..
+    
+    createRadarChart();
+    
 });

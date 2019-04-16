@@ -131,31 +131,40 @@
     {% endif %}
     
     <section class="user-form-section">
-        <div class="container">
-            <h3>All time performance rating</h3>
-            <h5>- Out of 5.00 -</h5> 
-            {% if all_time_rating.all_time_rating %}
-            <p>{{ all_time_rating.all_time_rating|floatformat:2  }}</p>
-        </div>
-        <h4>User form (last 5 games)</h4>
-        <div class="container">
-            <dl>
-                {% if performance_ratings %}
-                    {% for rating in performance_ratings.all %}
-                        <dt>Match on - {{ rating.performance_matchID__date_of_match }}</dt><dd>RATED: {{ rating.avg_rating|floatformat:2 }} out of 5</dd>
-                    {% endfor %}
+        {% if player.has_current_license %}
+            <div class="container">
+                <h3>All time performance rating</h3>
+                <h5>- Out of 5.00 -</h5> 
+                {% if all_time_rating.all_time_rating %}
+                <p>{{ all_time_rating.all_time_rating|floatformat:2  }}</p>
+            </div>
+            <h4>User form (last 5 games)</h4>
+            <div class="container">
+                <dl>
+                    {% if performance_ratings %}
+                        {% for rating in performance_ratings.all %}
+                            <dt>Match on - {{ rating.performance_matchID__date_of_match }}</dt><dd>RATED: {{ rating.avg_rating|floatformat:2 }} out of 5</dd>
+                        {% endfor %}
+                            
+                        <dt>OVERALL FORM</dt><dd>RATED: {{ overall_form_rating.score|floatformat:2 }} out of 5</dd>
                         
-                    <dt>OVERALL FORM</dt><dd>RATED: {{ overall_form_rating.score|floatformat:2 }} out of 5</dd>
-                    
-                {% else %}
-                    <dt>You have never been rated!</dt>
-                {% endif %}
-            </dl>
-        </div>    
+                    {% else %}
+                        <dt>You have never been rated!</dt>
+                    {% endif %}
+                </dl>
+            </div>    
+            {% else %}
+                <p>N/A</p> 
+                <p>Your performance has never been rated.</p> 
+            </div>
+            {% endif %}
         {% else %}
-            <p>N/A</p> 
-            <p>Your performance has never been rated.</p> 
-        </div>
+            <div class="expiry-container">
+                <h2>License expired</h2> 
+                <p>Oh no!  Your license has expired so you can no longer view your friends all time performance rating or recent form data.</p>     
+                <p>Fear not!  Simply click on the link below to renew your license for an addition 6 months...</p> 
+                <a class="link-btn" href="{% url 'checkout' "S" %}">Renewal</a>
+            </div>
         {% endif %}
     </section>
     

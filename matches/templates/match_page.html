@@ -32,11 +32,15 @@
                 <div class="row">
                     <p>Notes:<span>{{ match_data.match_notes }}</span></p>
                 </div>
-                
-                {% if match_data.match_completed and my_ratings|length < 1 and match_data.match_status == 'S' %}
-                        <a class="link-btn rate-performance-link-btn click-shrink" href="{% url 'rate-performance' matchid %}">Rate Players</a>
-                {% elif not match_data.match_completed %}
-                    <div class="link-btn edit-match-btn click-shrink">Edit Match</div> 
+                <hr> 
+                {% if match_data.selected_team != None %}
+                    {% if match_data.match_completed and my_ratings|length < 1 and match_data.match_status == 'S' %}
+                            <a class="link-btn rate-performance-link-btn click-shrink" href="{% url 'rate-performance' matchid %}">Rate Players</a>
+                    {% elif not match_data.match_completed %}
+                        <div class="link-btn edit-match-btn click-shrink">Edit Match</div> 
+                    {% endif %}
+                {% else %}
+                    <p>You cannot rate your groups player performances for this match as a team was not saved via the team generation screen.  Please save a team next time!</p> 
                 {% endif %}
             </div>
                 
@@ -219,6 +223,9 @@
                             <div class="availability-container">
                                 <i class="fas fa-question-circle"></i>
                             </div>
+                            <div class="ratings-submitted-container">
+                                <i class="far fa-thumbs-down"></i>
+                            </div> 
                         </div>
                     </div>
                 {% endif %}

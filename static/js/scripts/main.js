@@ -976,11 +976,11 @@ function unhideABox(buttonClickedClass, classToUnhide) {
 function curvePlayerNames() {
 
     let playersOnPage = $('.username');
-
+        
     for (i = 0; i < playersOnPage.length; i++) {
         const circleType = new CircleType(document.getElementById(playersOnPage[i].id));
         circleType.radius(50);
-    }
+    }    
 }
 
 // Prepares chart data for radar chart
@@ -1262,7 +1262,9 @@ $(document).ready(function() {
     
     // Curves any text on a shirt...
     
-    curvePlayerNames();
+    if($(".team-gen-pg").length != 1){
+        curvePlayerNames();
+    }
     
     // Radar Chart creation..
     

@@ -32,7 +32,9 @@
                 <div class="row">
                     <p>Notes:<span>{{ match_data.match_notes }}</span></p>
                 </div>
+                
                 <hr> 
+                
                 {% if match_data.selected_team != None %}
                     {% if match_data.match_completed and my_ratings|length < 1 and match_data.match_status == 'S' %}
                             <a class="link-btn rate-performance-link-btn click-shrink" href="{% url 'rate-performance' matchid %}">Rate Players</a>

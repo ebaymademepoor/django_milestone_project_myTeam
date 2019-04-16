@@ -62,12 +62,15 @@ nav {
 footer {
     background-color: $brand-evening-black;
     color: $white;
-    height: 56px;
-
+    height: 20vh;
+    align-items: start !important;
+    font-size: .8em;
+    
     .container {
         display: inline-block;
         width: 49.5%;
         box-sizing: border-box;
+        padding: 20px;
     }
 }
 
@@ -126,7 +129,7 @@ footer {
     
     .logo {
         position: relative;
-        top: -100px;
+        top: -50px;
     }
     
     p {

@@ -80,10 +80,11 @@ button,
 
 .group-rtn-btn {
     position: absolute;
-    top: 20px;
-    right: 32px;
+    top: 0;
+    right: 0;
     width: 46px;
     margin: 0;
+    border: unset;
 }
 
 .update-player-attributes-btn {

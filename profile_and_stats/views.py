@@ -194,73 +194,72 @@ def player_profile(request, playerid, groupid):
     # Check that the group and player exist...
     
     try:
-        this_user = UserProfileData.objects.get(email=request.user.email)
+        this_user = UserProfileData.objects.get(username=request.user.username)
         common_group = Group.objects.get(pk=groupid)
         player = UserProfileData.objects.get(pk=playerid)
-    
-        # IF YES... Security check - are the user and the selected player in the same group?
-        
-        if arePlayersInSameGroup(player.email, common_group.users.all(), request.user.email):
-            
-            #  If so, the page can be view and ratings can occur...
-            
-            try:
-                my_age = age(player.date_of_birth)
-            except:
-                my_age = "Not provided"
-            
-            # This will help prevent a player rating themselves if the are on their own player_profile page
-            
-            if int(request.user.pk) == int(playerid):
-                my_profile_page = True
-            else:
-                my_profile_page = False
-            
-            # Retrieve any existing ratings data
-            
-            try:
-                this_rating_instance = AttributeRating.objects.get(rated_by=request.user.pk, player_rated=playerid)
-            except:
-                this_rating_instance = None
-            
-            # Retrieve any performance ratings
-            try:
-                all_time_rating = PerformanceRating.objects.filter(
-                    performance_player_rated=player).aggregate(all_time_rating=Avg('performance_rating'))
-            except:
-                all_time_rating = None
-            
-            try:
-                filtered_ratings = PerformanceRating.objects.filter(
-                    performance_player_rated=player).values(
-                        'performance_matchID__date_of_match').annotate(
-                            avg_rating=Avg('performance_rating'))[0:5]
-            
-            
-                performance_ratings = filtered_ratings
-                
-                total_form_rating = 0
-                count = 0
-                
-                for item in filtered_ratings.all():
-                    count += 1
-                    total_form_rating += item["avg_rating"]    
-            
-                overall_form_rating = {"score" :total_form_rating / count, "votes" : count}
-            except:
-                performance_ratings = None
-                overall_form_rating = None
-            
-            return render(request, 'player-profile.html', { "player" : player, "age" : my_age,
-                "my_profile" : my_profile_page, "groupid" : groupid, "ratings": this_rating_instance,
-                "performance_ratings" : performance_ratings, "overall_form_rating" : overall_form_rating,
-                "all_time_rating" : all_time_rating, "this_user" : this_user })
-        else:
-            messages.error(request, "Sorry but you are not linked to this player and cannot view their profile")
-            return redirect(reverse('group-select'))
-            
     except:
         messages.error(request, "Sorry but we can't find what you are looking for!")
+        return redirect(reverse('group-select'))
+    
+    # IF YES... Security check - are the user and the selected player in the same group?
+    
+    if arePlayersInSameGroup(player.email, common_group.users.all(), request.user.email):
+        
+        #  If so, the page can be view and ratings can occur...
+        
+        try:
+            my_age = age(player.date_of_birth)
+        except:
+            my_age = "Not provided"
+        
+        # This will help prevent a player rating themselves if the are on their own player_profile page
+        
+        if int(request.user.pk) == int(playerid):
+            my_profile_page = True
+        else:
+            my_profile_page = False
+        
+        # Retrieve any existing ratings data
+        
+        try:
+            this_rating_instance = AttributeRating.objects.get(rated_by=request.user.pk, player_rated=playerid)
+        except:
+            this_rating_instance = None
+        
+        # Retrieve any performance ratings
+        try:
+            all_time_rating = PerformanceRating.objects.filter(
+                performance_player_rated=player).aggregate(all_time_rating=Avg('performance_rating'))
+        except:
+            all_time_rating = None
+        
+        try:
+            filtered_ratings = PerformanceRating.objects.filter(
+                performance_player_rated=player).values(
+                    'performance_matchID__date_of_match').annotate(
+                        avg_rating=Avg('performance_rating'))[0:5]
+        
+        
+            performance_ratings = filtered_ratings
+            
+            total_form_rating = 0
+            count = 0
+            
+            for item in filtered_ratings.all():
+                count += 1
+                total_form_rating += item["avg_rating"]    
+        
+            overall_form_rating = {"score" :total_form_rating / count, "votes" : count}
+        except:
+            performance_ratings = None
+            overall_form_rating = None
+        
+        return render(request, 'player-profile.html', { "player" : player, "age" : my_age,
+            "my_profile" : my_profile_page, "groupid" : groupid, "ratings": this_rating_instance,
+            "performance_ratings" : performance_ratings, "overall_form_rating" : overall_form_rating,
+            "all_time_rating" : all_time_rating, "this_user" : this_user})
+    else:
+        messages.error(request, "Sorry but you are not linked to this player and cannot view their profile")
         return redirect(reverse('group-select'))
 
 @login_required        

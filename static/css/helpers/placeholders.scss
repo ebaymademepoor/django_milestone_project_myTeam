@@ -10,6 +10,12 @@
     background-size: cover;
 }
 
+%cover-image-align-middle {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 %inset-shadow {
     -webkit-box-shadow: inset -7px -7px 13px -6px rgba(0,0,0,0.43);
     -moz-box-shadow: inset -7px -7px 13px -6px rgba(0,0,0,0.43);

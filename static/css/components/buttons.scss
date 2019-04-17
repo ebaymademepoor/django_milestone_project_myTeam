@@ -113,10 +113,9 @@ button,
 }
 
 // Match_page.html buttons -----------------------------------------------------
-.edit-match-btn,
 .team-gen-link-btn,
 .rate-performance-link-btn,
-#email-availability-reminder-btn {
+.edit-match-btn {
     width: 86px;
     height: 18px;
     line-height: 16px;
@@ -127,6 +126,15 @@ button,
     padding: 0;
     align-items: normal;
     box-sizing: border-box;
+}
+
+.edit-match-btn {
+    height: 40px;
+    width: 100%;
+    background-color: $brand-evening-black-offset;
+    border: unset;
+    line-height: 40px;
+    font-size: 10px;
 }
 
 #email-availability-reminder-btn  {
@@ -283,6 +291,20 @@ input:checked+.slider:before {
 #submit_payment_btn {
     width: 100%;
     background-color: $preference-green;
+}
+
+// Reset password buttons ------------------------------------------------------
+
+.password-reset-pages {
+    button {
+        background-color: $brand-evening-black;
+        font-size: 10px;
+    }
+    
+    .password-btn {
+        width: 172px;
+        height: 34px;
+    }
 }
 
 // Raised button code ----------------------------------------------------------

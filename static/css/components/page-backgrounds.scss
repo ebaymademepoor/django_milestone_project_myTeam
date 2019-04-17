@@ -22,3 +22,8 @@
     background-image: url('../img/vslegends2.jpg');
     @extend %cover-image-align-bottom;
 }
+
+.password-reset-pages {
+    background-image: url('../img/vslegends2.jpg');
+    @extend %cover-image-align-middle;
+}

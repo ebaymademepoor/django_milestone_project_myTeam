@@ -1176,7 +1176,6 @@ $(document).ready(function() {
     // Helper functions
     closeParent();
     removeParent();
-    slideInMessagesBox();
     unhideABox("show-create-new-group-form", "create-group-form");
     unhideABox("show-join-group-form", "join-group-form");
     unhideABox("edit-match-btn", "match-form");
@@ -1272,6 +1271,7 @@ $(document).ready(function() {
     
     setTimeout(function(){
         $(".loading-screen").slideUp(1000);    
+        slideInMessagesBox();
     }, 1000)
     
         

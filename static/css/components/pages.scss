@@ -869,12 +869,12 @@
     }
 
     .match-data {
-        padding: 10px 28px;
         color: $white;
 
         .overview-container {
             text-align: left;
             font-size: 10px;
+            padding-top: 18px;
 
             span {
                 margin-left: 6px;
@@ -886,6 +886,10 @@
                 margin: 2px 8px 2px 0;
                 font-weight: 600;
             }
+            
+            .row {
+                padding: 2px 28px;
+            }
         }
 
 
@@ -893,13 +897,13 @@
             max-width: 300px;
             position: relative;
             font-size: 10px;
-            margin-top: 30px;
-
+            padding: 28px;
+            
             .close-parent-btn {
                 text-align: right;
                 color: $white;
-                top: -4px;
-                right: 0;
+                top: 10px;
+                right: 28px;
             }
 
             textarea {
@@ -1005,6 +1009,7 @@
             font-family: 'Great Vibes', cursive;
             font-weight: 900;
             font-size: 16px;
+            padding-top: 1px;
         }
 
         .row {
@@ -1066,13 +1071,21 @@
     }
 
     .team-generation {
-        padding: 10px 28px;
-        background-color: $brand-evening-black-offset;
+        background-color: $brand-evening-black;
         display: flex;
-        justify-content: space-between;
-
-        a {
+        height: 40px;
+        justify-content: space-evenly;
+        
+        a,
+        button {
+            background-color: $brand-evening-black;
+            display: inline-block;
             margin: 0;
+            border: unset;
+            width: 49%;
+            height: 100%;
+            font-size: 10px;
+            line-height: 40px;
         }
     }
 }
@@ -1540,5 +1553,31 @@
         }
     }
     
+    
+}
+
+// Reset password templates ----------------------------------------------------
+
+.password-reset-pages {
+    padding: 28px;
+    color: $brand-irises-green;
+    @extend %centralise-inner-container;
+    
+    h1,
+    p,
+    label {
+        display: block;
+        margin-bottom :20px;
+    }
+    
+    p {
+       font-size: 10px;
+        line-height: 16px;
+    }
+    
+    .container {
+        background-color: $row-seperator-grey;
+        padding: 10px;
+    }
     
 }

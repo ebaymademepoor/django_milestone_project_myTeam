@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Staatliches" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/fontawesome-free-5.7.2-web/css/all.min.css' %}" type="text/css" />
     
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=1.8" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=1.9" type="text/css" />
     
     <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/circletype/dist/circletype.min.js' %}"></script>
@@ -50,21 +50,20 @@
         
     </div> 
     
-    
-    <div class="messages-container">
-        <div class="messages-box start-off-screen">
-            <button class="close-parent-btn"><i class="far fa-window-close"></i></button> 
-            <div class="container">
-                <p class="message-para">{% for message in messages %}{{ message }}{% endfor %}</p>
-            </div>
+
+    <div class="messages-box start-off-screen">
+        <button class="close-parent-btn"><i class="far fa-window-close"></i></button> 
+        <div class="container">
+            <p class="message-para">{% for message in messages %}{{ message }}{% endfor %}</p>
         </div>
     </div>
     
-    
     <h1>{% block page_heading %}{% endblock %}</h1> 
     
-    {% block content %}
-    {% endblock %}
+    <div class="site-container">
+        {% block content %}
+        {% endblock %}
+    </div>
     
     <footer class="flex-center-content">
         <div class="container">
@@ -78,6 +77,6 @@
         </div> 
     </footer>
     
-    <script type="text/javascript" src="{% static 'js/scripts/main.js' %}?v=1.8"></script>
+    <script type="text/javascript" src="{% static 'js/scripts/main.js' %}?v=1.9"></script>
 </body>
 </html>

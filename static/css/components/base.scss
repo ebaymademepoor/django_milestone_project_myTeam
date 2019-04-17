@@ -59,6 +59,10 @@ nav {
     justify-content: space-between;
 }
 
+.site-container {
+    overflow-x: hidden;
+}
+
 footer {
     background-color: $brand-evening-black;
     color: $white;
@@ -74,27 +78,19 @@ footer {
     }
 }
 
-.messages-container {
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
-    height: 140px;
-}
-
 .messages-box {
-    position: absolute;
-    left: 0;
+    position: fixed;
     margin-left: auto;
     width: 70%;
     min-width: 200px;
     max-width: 400px;
-    min-height: 32px;
     text-align: center;
-    top: 40px;
     color: $white;
     background-color: $messages-box;
     padding: 5px;
+    min-height: 30px;
     z-index: 100;
+    top: 75px;
 
     transition-property: right;
     transition-duration: 2s;

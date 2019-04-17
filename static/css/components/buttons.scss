@@ -82,7 +82,8 @@ button,
     position: absolute;
     top: 0;
     right: 0;
-    width: 46px;
+    width: 70px;
+    padding: 5px 0;
     margin: 0;
     border: unset;
 }
@@ -114,7 +115,6 @@ button,
 
 // Match_page.html buttons -----------------------------------------------------
 .team-gen-link-btn,
-.rate-performance-link-btn,
 .edit-match-btn {
     width: 86px;
     height: 18px;
@@ -128,6 +128,7 @@ button,
     box-sizing: border-box;
 }
 
+.rate-performance-link-btn,
 .edit-match-btn {
     height: 40px;
     width: 100%;
@@ -143,6 +144,7 @@ button,
 
 .rate-performance-link-btn {
     background-color: $error-red;
+    margin-bottom: 0;
 }
 
 // Team Generation Buttons -----------------------------------------------------
@@ -255,7 +257,6 @@ input:checked+.slider:before {
 
 // Rate_performance.html -------------------------------------------------------
 .performance-btn-row {
-    margin-bottom: 20px;
 
     button {
         border-radius: 50%;

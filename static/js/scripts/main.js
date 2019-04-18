@@ -619,16 +619,21 @@ function addPlayersToPitch(teamSelection) {
 }
 
 function addStatstoPitch(teamData){
+    
+    let i = 0;
+    
     teamData[1].forEach(function(team) {
-        
+            
             var thisTeamsScore = '<div class="team-' + team["team"] + '-score">' 
             + '<p>' + 'Team - ' + team["team"] + '</p>'
             + '<p>' + 'Score: ' + (Math.round(team["Score"] * 100) / 100) + '</p>' 
             + '</div>';
 
-            let rowToAppend = '.team-scores';
+            let rowToAppend = '.half-pitch';
 
-            $(rowToAppend).append(thisTeamsScore);
+            $($(rowToAppend)[i]).append(thisTeamsScore);
+            
+            i++;
     });
 }
 

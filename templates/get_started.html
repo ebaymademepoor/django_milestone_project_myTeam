@@ -9,10 +9,10 @@
     <section class="sign-in-section">
         <h2>Already a member?</h2>
         <p>Simply sign in my friend!</p>
-        <button id="open-sign-in-btn" class="open-sign-in-btn">Sign in</button> 
+        <button id="open-sign-in-btn" class="open-sign-in-btn hover-effect-gold">Sign in</button> 
     </section>
     <section class="sign-up-section">
-        <button id="open-sign-up-btn" class="open-sign-up-btn">Sign Up</button>
+        <button id="open-sign-up-btn" class="open-sign-up-btn hover-effect-gold">Sign Up</button>
         <div class="container">
             <h2>Is this your first time?</h2> 
             <p>Don't be shy, sign up and become a legend...</p> 
@@ -32,7 +32,7 @@
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             {{ login_form.as_p }}   
-            <button class="sign-in-btn click-shrink" type="submit">Login</button>
+            <button class="sign-in-btn click-shrink hover-effect-gold" type="submit">Login</button>
         </form>
         <!--Reset password link-->
         <p><a href="{% url 'password_reset' %}">Forgot Password</a></p> 
@@ -52,7 +52,7 @@
             {% csrf_token %}
             {{ registration_form.as_p }}
             {{ form.non_field_errors }}
-            <button class="sign-up-btn click-shrink" type="submit">Register</button>
+            <button class="sign-up-btn click-shrink hover-effect-gold" type="submit">Register</button>
         </form>
     </div>
 

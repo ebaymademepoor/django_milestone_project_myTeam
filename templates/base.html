@@ -23,15 +23,15 @@
     <nav>
         <div class="nav-content-container">
             <div class="logo click-shrink">
-                <a href="/" class="logo-pic"></a>
+                <a href="/" class="logo-pic grow"></a>
             </div>
             <ul>
                 {% if user.is_authenticated %}
-                    <li class="click-shrink"><a href="{% url 'group-select' %}"><i class="fas fa-users nav-i"></i></i>Groups</a></li>
-                    <li class="click-shrink"><a href="{% url 'profile' user.pk %}"><i class="fas fa-user nav-i"></i>Profile</a></li>
-                    <li class="click-shrink"><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt nav-i"></i>Logout</a></li>
+                    <li class="click-shrink grow"><a href="{% url 'group-select' %}"><i class="fas fa-users nav-i"></i></i>Groups</a></li>
+                    <li class="click-shrink grow"><a href="{% url 'profile' user.pk %}"><i class="fas fa-user nav-i"></i>Profile</a></li>
+                    <li class="click-shrink grow"><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt nav-i"></i>Logout</a></li>
                 {% else %}
-                    <li class="click-shrink"><a href="{% url 'get-started' %}"><i class="fas fa-play nav-i"></i>Get Started</a></li>
+                    <li class="click-shrink grow"><a href="{% url 'get-started' %}"><i class="fas fa-play nav-i"></i>Get Started</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -66,13 +66,13 @@
     </div>
     
     <footer class="flex-center-content">
-        <div class="container">
+        <div class="container hover-effect-gold">
             <a href="#">About Us</a> 
         </div> 
-        <div class="container">
+        <div class="container hover-effect-gold">
             <a href="#">Get in Touch</a> 
         </div> 
-        <div class="container">
+        <div class="container hover-effect-gold">
             <a href="{% url 'checkout' "D" %}">Donate</a> 
         </div> 
     </footer>

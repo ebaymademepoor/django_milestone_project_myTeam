@@ -37,7 +37,7 @@
         <div class="matches-box">
             <div class="row">
                 <h3>Recent / Upcoming Matches</h3>
-                <a href="{% url 'matches' group_data.pk 0 %}" class="link-btn add-a-match-btn click-shrink"><i class="fas fa-plus-square"></i></a> 
+                <a href="{% url 'matches' group_data.pk 0 %}" class="link-btn add-a-match-btn click-shrink hover-effect-gold"><i class="fas fa-plus-square"></i></a> 
             </div> 
             
             {% if matches %}
@@ -45,7 +45,7 @@
                 {% for match in matches %}
                 
                     <a class="match-link click-color-change" href="{% url 'matches' group_data.pk match.pk %}">
-                        <div class="match-box">
+                        <div class="match-box grow-match">
                             <div class="container">
                                 <p>Match ID: <span>{{ match.id }}</span></p> 
                                 <p>Status:
@@ -76,7 +76,7 @@
                 
                     <div class="container member-container">
                         <div class="user-container">
-                            <a class="shirt click-shrink" href="{% url 'player-profile' this_user.pk group_data.pk %}">
+                            <a class="shirt click-shrink grow" href="{% url 'player-profile' this_user.pk group_data.pk %}">
                                 <span class="container">
                                     {% if this_user.nickname %}
                                         <p id="curve-{{ user.pk }}" class="member-content username">{{ this_user.nickname|truncatechars:9 }}</p>
@@ -101,7 +101,7 @@
                 {% if this_user != user %}
                     <div class="container member-container row">
                         <div class="user-container">
-                            <a class="shirt click-shrink" href="{% url 'player-profile' user.pk group_data.pk %}">
+                            <a class="shirt click-shrink grow" href="{% url 'player-profile' user.pk group_data.pk %}">
                                 <span class="container">
                                     {% if user.nickname %}
                                         <p id="curve-{{ user.pk }}" class="member-content username">{{ user.nickname|truncatechars:9 }}</p>

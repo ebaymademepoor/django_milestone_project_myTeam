@@ -75,8 +75,8 @@ table {
   -moz-box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63);
   box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63); }
 
-.team-gen-pg .user-playing-positions-section .team-scores .team-1-score,
-.team-gen-pg .user-playing-positions-section .team-scores .team-2-score {
+.team-gen-pg .user-playing-positions-section .team-1-score,
+.team-gen-pg .user-playing-positions-section .team-2-score {
   -webkit-box-shadow: 4px 4px 11px 2px rgba(0, 0, 0, 0.42);
   -moz-box-shadow: 4px 4px 11px 2px rgba(0, 0, 0, 0.42);
   box-shadow: 4px 4px 11px 2px rgba(0, 0, 0, 0.42); }
@@ -223,9 +223,13 @@ button,
 
 #pick-teams-btn,
 #view-saved-teams-btn {
-  background-color: #262228;
+  background-color: #826900;
   font-size: 12px;
-  position: relative; }
+  position: relative;
+  width: 50%;
+  border: unset;
+  height: 100%;
+  margin: 0; }
 
 #regen-btn,
 #back-to-settings-btn,
@@ -234,8 +238,7 @@ button,
   font-size: 8px;
   width: 48px;
   height: 14px;
-  background-color: #262228;
-  margin: 0 2px 0; }
+  background-color: #262228; }
 
 #save-teams-btn {
   background-color: #FFCE00;
@@ -296,10 +299,13 @@ input:checked + .slider:before {
   border-radius: 50%; }
 
 .btn-row {
-  justify-content: space-evenly; }
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #fff;
+  height: 40px;
+  margin-top: 40px; }
 
 .add-new-image-btn {
-  margin: 3px 0 0;
   height: 23px;
   width: 78px;
   background-color: #23e623;
@@ -336,55 +342,6 @@ input:checked + .slider:before {
   width: 172px;
   height: 34px; }
 
-.start-off-screen {
-  right: -100%; }
-
-.slide-in-from-right {
-  right: 0; }
-
-.click-shrink:active {
-  transform: scale(0.9); }
-
-.sm-click-shrink:active {
-  transform: scale(0.96); }
-
-.click-color-change:active {
-  background-color: #23e623 !important; }
-
-.rotate {
-  -webkit-animation: spin 4s linear infinite;
-  -moz-animation: spin 4s linear infinite;
-  animation: spin 4s linear infinite; }
-
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-.rotate-ball {
-  animation-name: rotate;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear; }
-
-@keyframes rotate {
-  from {
-    transform: rotate(359deg); }
-  to {
-    transform: rotate(0deg); } }
-.bounce-ball {
-  position: relative;
-  animation-name: jump;
-  animation-direction: alternate;
-  animation-duration: .5s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out; }
-
-@keyframes jump {
-  from {
-    top: -10px; }
-  to {
-    top: -40px; } }
 .logo-pic {
   background-image: url("../img/my-team-logo.png");
   width: 66px;
@@ -684,7 +641,8 @@ footer {
     .user-playing-positions-section .key-box label {
       font-size: 8px; }
   .user-playing-positions-section .half-pitch {
-    border: 1px solid #fff; }
+    border: 1px solid #fff;
+    position: relative; }
     .user-playing-positions-section .half-pitch .row {
       height: 55px; }
       .user-playing-positions-section .half-pitch .row div {
@@ -826,7 +784,8 @@ footer {
   font-family: 'Staatliches', cursive;
   max-width: 320px;
   min-height: 113px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  color: #007849; }
   .group-box .group-details-container {
     display: inline-block;
     text-align: left;
@@ -835,9 +794,9 @@ footer {
     max-width: 146px; }
     .group-box .group-details-container h2 {
       margin-bottom: 5px;
-      min-height: 33px;
-      color: #007849; }
+      min-height: 33px; }
     .group-box .group-details-container p {
+      color: #fff;
       font-size: 14px; }
   .group-box .members-details-container {
     width: 64px;
@@ -845,7 +804,8 @@ footer {
     display: inline-block;
     text-align: center;
     border: 1px solid #fff;
-    float: right; }
+    float: right;
+    color: #fff; }
     .group-box .members-details-container p:last-of-type {
       font-size: 2em; }
     .group-box .members-details-container .flex {
@@ -1197,11 +1157,11 @@ footer {
     justify-content: space-evenly; }
     .matches-page .team-generation a,
     .matches-page .team-generation button {
-      background-color: #262228;
+      background-color: unset;
       display: inline-block;
       margin: 0;
       border: unset;
-      width: 49%;
+      width: 50%;
       height: 100%;
       font-size: 10px;
       line-height: 40px; }
@@ -1233,12 +1193,16 @@ footer {
 .team-gen-pg .team-gen-settings-pg {
   min-height: 85vh;
   box-sizing: border-box;
-  padding: 20px; }
+  padding: 20px 0px 0px; }
+  .team-gen-pg .team-gen-settings-pg h2 {
+    padding-left: 20px;
+    text-align: left; }
   .team-gen-pg .team-gen-settings-pg .options-header {
     text-align: left;
     margin: 18px 0 10px;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    padding: 0 20px; }
     .team-gen-pg .team-gen-settings-pg .options-header p {
       font-family: 'Staatliches', cursive;
       font-size: 8px;
@@ -1258,12 +1222,17 @@ footer {
     width: 100px; }
   .team-gen-pg .team-gen-settings-pg .row {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    justify-content: center;
+    height: 44px; }
+  .team-gen-pg .team-gen-settings-pg .row:nth-of-type(even) {
+    background-color: rgba(150, 150, 150, 0.1); }
   .team-gen-pg .team-gen-settings-pg input:focus {
     outline: none; }
   .team-gen-pg .team-gen-settings-pg .player-container {
     text-align: left;
-    width: 100px; }
+    width: 100px;
+    display: inline-block; }
     .team-gen-pg .team-gen-settings-pg .player-container label {
       font-size: 8px; }
     .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container {
@@ -1299,7 +1268,8 @@ footer {
         display: block;
         margin: 0 2px 4px 0; }
   .team-gen-pg .team-gen-settings-pg .avail-container {
-    width: 42px; }
+    width: 32px;
+    display: inline-block; }
     .team-gen-pg .team-gen-settings-pg .avail-container i {
       font-size: 16px; }
     .team-gen-pg .team-gen-settings-pg .avail-container .fa-check-circle {
@@ -1323,12 +1293,19 @@ footer {
     background-color: orange; }
   .team-gen-pg .team-gen-settings-pg .pref-play {
     background-color: #23e623; }
+.team-gen-pg .player-data-row .inner-container {
+  width: 88%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly; }
 .team-gen-pg .player-data-row .gen-options-box {
-  margin: 0 2px; }
+  margin: 0 2px;
+  display: inline-block; }
 .team-gen-pg .player-data-row select,
 .team-gen-pg .player-data-row option {
   font-size: 12px;
-  font-family: 'Staatliches', cursive; }
+  font-family: 'Staatliches', cursive;
+  width: 32px; }
 .team-gen-pg .user-playing-positions-section {
   position: absolute;
   top: 0;
@@ -1369,31 +1346,31 @@ footer {
       background-image: url("../img/transparent-shirt.png"); }
     .team-gen-pg .user-playing-positions-section .pitch-row .team-2-player {
       background-image: url("../img/transparent-shirt-red.png"); }
-  .team-gen-pg .user-playing-positions-section .team-scores {
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    font-family: 'Staatliches', cursive;
-    text-align: center;
-    box-sizing: border-box; }
-    .team-gen-pg .user-playing-positions-section .team-scores .team-1-score,
-    .team-gen-pg .user-playing-positions-section .team-scores .team-2-score {
-      display: inline-block;
-      width: 74px;
-      color: white; }
-      .team-gen-pg .user-playing-positions-section .team-scores .team-1-score p,
-      .team-gen-pg .user-playing-positions-section .team-scores .team-2-score p {
-        padding: 4px; }
-      .team-gen-pg .user-playing-positions-section .team-scores .team-1-score p:nth-of-type(2),
-      .team-gen-pg .user-playing-positions-section .team-scores .team-2-score p:nth-of-type(2) {
-        padding: 8px;
-        background-color: #fff;
-        color: #262228; }
-    .team-gen-pg .user-playing-positions-section .team-scores .team-1-score {
-      background-color: #0375B4; }
-    .team-gen-pg .user-playing-positions-section .team-scores .team-2-score {
-      background-color: #ed1c24; }
+  .team-gen-pg .user-playing-positions-section .team-1-score {
+    top: 0; }
+  .team-gen-pg .user-playing-positions-section .team-2-score {
+    bottom: 0;
+    right: 0; }
+  .team-gen-pg .user-playing-positions-section .team-1-score,
+  .team-gen-pg .user-playing-positions-section .team-2-score {
+    display: inline-block;
+    position: absolute;
+    width: 76px;
+    color: white;
+    font-size: 10px;
+    text-align: center; }
+    .team-gen-pg .user-playing-positions-section .team-1-score p,
+    .team-gen-pg .user-playing-positions-section .team-2-score p {
+      padding: 2px 0; }
+    .team-gen-pg .user-playing-positions-section .team-1-score p:nth-of-type(2),
+    .team-gen-pg .user-playing-positions-section .team-2-score p:nth-of-type(2) {
+      padding: 4px 0;
+      background-color: #fff;
+      color: #262228; }
+  .team-gen-pg .user-playing-positions-section .team-1-score {
+    background-color: #0375B4; }
+  .team-gen-pg .user-playing-positions-section .team-2-score {
+    background-color: #ed1c24; }
 
 .please-wait {
   width: 100%;
@@ -1508,6 +1485,9 @@ footer {
 .password-reset-pages {
   padding: 28px;
   color: #007849; }
+  .password-reset-pages input {
+    display: block;
+    margin: 0 auto; }
   .password-reset-pages h1,
   .password-reset-pages p,
   .password-reset-pages label {
@@ -1537,6 +1517,82 @@ footer {
 
 .password-reset-pages {
   background-image: url("../img/vslegends2.jpg"); }
+
+.start-off-screen {
+  right: -100%; }
+
+.slide-in-from-right {
+  right: 0; }
+
+.click-shrink:active {
+  transform: scale(0.9); }
+
+.sm-click-shrink:active {
+  transform: scale(0.96); }
+
+.click-color-change:active {
+  background-color: #23e623 !important; }
+
+.rotate {
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite; }
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+.rotate-ball {
+  animation-name: rotate;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(359deg); }
+  to {
+    transform: rotate(0deg); } }
+.bounce-ball {
+  position: relative;
+  animation-name: jump;
+  animation-direction: alternate;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; }
+
+@keyframes jump {
+  from {
+    top: -10px; }
+  to {
+    top: -40px; } }
+.grow {
+  transition: all 1s; }
+
+.grow:hover,
+.grow-match:hover {
+  transform: scale(1.1); }
+
+.hover-effect-yellow,
+.hover-effect-gold,
+.hover-effect-blue,
+.hover-effect-yellow-i,
+.hover-effect-red {
+  transition: all .5s; }
+
+.hover-effect-yellow:hover {
+  background-color: #FFCE00 !important; }
+
+.hover-effect-yellow-i:hover {
+  color: #FFCE00; }
+
+.hover-effect-gold:hover {
+  background-color: #826900 !important;
+  color: #fff; }
+
+.hover-effect-red:hover {
+  background-color: #ff0000; }
 
 body {
   font-family: 'Montserrat', sans-serif;

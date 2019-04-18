@@ -68,3 +68,37 @@
         top: -40px;
     }
 }
+
+.grow {
+    transition: all 1s;
+}
+
+.grow:hover,
+.grow-match:hover {
+    transform: scale(1.1);
+}
+
+.hover-effect-yellow,
+.hover-effect-gold,
+.hover-effect-blue,
+.hover-effect-yellow-i,
+.hover-effect-red {
+    transition: all .5s;
+}
+
+.hover-effect-yellow:hover {
+    background-color: $brand-sunflower-yellow !important;
+}
+
+.hover-effect-yellow-i:hover {
+    color: $brand-sunflower-yellow;
+}
+
+.hover-effect-gold:hover {
+    background-color: $brand-evening-black-offset !important;
+    color: $white;
+}
+
+.hover-effect-red:hover {
+    background-color: #ff0000;
+}

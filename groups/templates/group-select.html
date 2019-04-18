@@ -14,7 +14,7 @@
         {% csrf_token %}
         {{ create_group_form.as_p }}
         {{ form.non_field_errors }}
-        <button class="new-group-btn make-pointer click-shrink" type="submit">Create</button>
+        <button class="new-group-btn make-pointer click-shrink hover-effect-gold" type="submit">Create</button>
     </form>
     
     {% if reg_error == "yes" %}
@@ -26,7 +26,7 @@
         {% csrf_token %}
         {{ join_group_form.as_p }}
         {{ form.non_field_errors }}
-        <button class="join-group-btn make-pointer click-shrink" type="submit">Join</button>
+        <button class="join-group-btn make-pointer click-shrink hover-effect-gold" type="submit">Join</button>
     </form>
     
     <section class="create-join-group-area">
@@ -35,11 +35,11 @@
             <div class="create-group-box">
                 <p>Create a new group</p>
             </div>
-            <i class="fas fa-plus-square show-create-new-group-form make-pointer"></i>
+            <i class="fas fa-plus-square show-create-new-group-form make-pointer hover-effect-yellow-i"></i>
             <div class="join-group-box">
                 <p>Join an existing group</p>
             </div>
-            <i class="far fa-plus-square make-pointer show-join-group-form"></i>
+            <i class="far fa-plus-square make-pointer show-join-group-form hover-effect-yellow-i"></i>
         </div>
     </section>
     <section class="group-select-area">
@@ -48,7 +48,7 @@
         {% else %}
             {% for group in my_groups %}
             <a href="{% url 'group-home' group.pk %}">
-                <div class="container sm-click-shrink group-box inset-shadow">
+                <div class="container sm-click-shrink group-box inset-shadow hover-effect-gold">
                     <div class="container group-details-container">
                         <h2>{{ group.group_name }}</h2>
                         <p>Creator - {{ group.creator }}</p>

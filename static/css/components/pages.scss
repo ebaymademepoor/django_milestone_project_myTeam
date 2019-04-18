@@ -302,6 +302,7 @@
 
     .half-pitch {
         border: 1px solid $white;
+        position: relative;
 
         .row {
             height: 55px;
@@ -510,6 +511,7 @@
     max-width: 320px;
     min-height: 113px;
     box-sizing: border-box;
+    color: $brand-irises-green;
 
     .group-details-container {
         display: inline-block;
@@ -517,14 +519,14 @@
         margin-right: 10px;
         min-width: 60%;
         max-width: 146px;
-
+        
         h2 {
             margin-bottom: 5px;
             min-height: 33px;
-            color: $brand-irises-green;
         }
 
         p {
+            color: $white;
             font-size: 14px;
         }
     }
@@ -536,7 +538,8 @@
         text-align: center;
         border: 1px solid $white;
         float: right;
-
+        color: $white;
+        
         p:last-of-type {
             font-size: 2em;
         }
@@ -1079,11 +1082,11 @@
         
         a,
         button {
-            background-color: $brand-evening-black;
+            background-color: unset;
             display: inline-block;
             margin: 0;
             border: unset;
-            width: 49%;
+            width: 50%;
             height: 100%;
             font-size: 10px;
             line-height: 40px;
@@ -1130,13 +1133,19 @@
     .team-gen-settings-pg {
         min-height: 85vh;
         box-sizing: border-box;
-        padding: 20px;
-
+        padding: 20px 0px 0px; 
+        
+        h2 {
+            padding-left: 20px;
+            text-align: left;
+        }
+        
         .options-header {
             text-align: left;
             margin: 18px 0 10px;
             display: flex;
             align-items: center;
+            padding: 0 20px;
 
             p {
                 font-family: 'Staatliches', cursive;
@@ -1170,7 +1179,12 @@
         .row {
             display: flex;
             align-items: center;
-
+            justify-content: center;
+            height: 44px;
+        }
+        
+        .row:nth-of-type(even){
+            background-color: $row-seperator-grey;
         }
 
         input:focus {
@@ -1180,7 +1194,8 @@
         .player-container {
             text-align: left;
             width: 100px;
-
+            display: inline-block;
+            
             label {
                 font-size: 8px;
             }
@@ -1238,8 +1253,9 @@
         }
 
         .avail-container {
-            width: 42px;
-
+            width: 32px;
+            display: inline-block;
+            
             i {
                 font-size: 16px;
             }
@@ -1282,15 +1298,24 @@
     }
 
     .player-data-row {
-
+        
+        .inner-container {
+            width: 88%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        
         .gen-options-box {
             margin: 0 2px;
+            display: inline-block;
         }
 
         select,
         option {
             font-size: 12px;
             font-family: 'Staatliches', cursive;
+            width: 32px;
         }
 
     }
@@ -1355,44 +1380,43 @@
                 background-image: url('../img/transparent-shirt-red.png');
             }
         }
-
-        .team-scores {
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            font-family: 'Staatliches', cursive;
+        
+        .team-1-score {
+            top: 0;    
+        }
+        
+        .team-2-score {
+            bottom: 0;
+            right: 0;
+        }
+        
+        .team-1-score,
+        .team-2-score {
+            display: inline-block;
+            position: absolute;
+            width: 76px;
+            color: white;
+            @extend %floating-shadow;
+            font-size: 10px;
             text-align: center;
-            box-sizing: border-box;
 
-            .team-1-score,
-            .team-2-score {
-                display: inline-block;
-                width: 74px;
-                color: white;
-                @extend %floating-shadow;
-
-                p {
-                    padding: 4px;
-                }
-
-                p:nth-of-type(2) {
-                    padding: 8px;
-                    background-color: $white;
-                    color: $brand-evening-black;
-                }
+            p {
+                padding: 2px 0;
             }
 
-            .team-1-score {
-                background-color: $brand-starry-night-blue;
+            p:nth-of-type(2) {
+                padding: 4px 0;
+                background-color: $white;
+                color: $brand-evening-black;
             }
+        }
 
-            .team-2-score {
-                background-color: $shirt-red;
-            }
+        .team-1-score {
+            background-color: $brand-starry-night-blue;
+        }
 
-
-
+        .team-2-score {
+            background-color: $shirt-red;
         }
     }
 }
@@ -1575,6 +1599,11 @@
     padding: 28px;
     color: $brand-irises-green;
     @extend %centralise-inner-container;
+    
+    input {
+        display: block;
+        margin: 0 auto;
+    }
     
     h1,
     p,

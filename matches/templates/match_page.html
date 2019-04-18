@@ -6,7 +6,7 @@
 <div class="page-container matches-page">
     <section class="header">
          <h2>Match Details</h2> 
-         <a class="group-rtn-btn link-btn click-shrink" href="{% url 'group-home' groupid %}">Back</a>
+         <a class="group-rtn-btn link-btn click-shrink hover-effect-gold" href="{% url 'group-home' groupid %}">Back</a>
     </section>
     
     <section class="match-data">
@@ -37,9 +37,9 @@
                 
                 {% if match_data.selected_team != None %}
                     {% if match_data.match_completed and my_ratings|length < 1 and match_data.match_status == 'S' %}
-                            <a class="link-btn rate-performance-link-btn click-shrink" href="{% url 'rate-performance' matchid %}">Rate Players</a>
+                            <a class="link-btn rate-performance-link-btn click-shrink hover-effect-red" href="{% url 'rate-performance' matchid %}">Rate Players</a>
                     {% elif not match_data.match_completed %}
-                        <div class="link-btn edit-match-btn click-shrink">Edit Match</div> 
+                        <div class="link-btn edit-match-btn click-shrink hover-effect-yellow">Edit Match</div> 
                     {% endif %}
                 {% else %}
                     <p>You cannot rate your groups player performances for this match as a team was not saved via the team generation screen.  Please save a team next time!</p> 
@@ -85,8 +85,8 @@
     {% if match_data %}
         {% if not match_data.match_completed %}
         <section class="team-generation">
-            <button id="email-availability-reminder-btn" class="click-shrink">Email Reminders</button>
-            <a class="click-shrink link-btn team-gen-link-btn" href="{% url 'team-gen-settings' matchid %}">Generate Teams</a> 
+            <button id="email-availability-reminder-btn" class="click-shrink hover-effect-yellow">Email Reminders</button>
+            <a class="click-shrink link-btn team-gen-link-btn hover-effect-yellow" href="{% url 'team-gen-settings' matchid %}">Generate Teams</a> 
         </section>
     {% endif %}
         

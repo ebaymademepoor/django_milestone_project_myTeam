@@ -20,44 +20,50 @@
         </div>
     </section>
     
+    
     <section class="get-organised">
-        <div class="get-organised-bg index-page-bg-settings">
-            <h2>Get Organised</h2>
-        </div>
-        <div class="container">
-            
-            <p>
-                Getting organised is easy with myTeam.
-            </p>
-            <p>
-                Create or join a group with your team mates and add the details of your 
-                next match.  See who is available and who isn't, then use the team 
-                generator to create	fairer teams, no messing about and no more arguing																	
-                over uneven matches.
-            </p> 
-        </div>
+        <div class="row">
+            <div class="get-organised-bg index-page-bg-settings">
+                <h2>Get Organised</h2>
+            </div>
+            <div class="container">
+                
+                <p>
+                    Getting organised is easy with myTeam.
+                </p>
+                <p>
+                    Create or join a group with your team mates and add the details of your 
+                    next match.  See who is available and who isn't, then use the team 
+                    generator to create	fairer teams, no messing about and no more arguing																	
+                    over uneven matches.
+                </p> 
+            </div>
+        </div>     
     </section>
     
-    <section class="be-the-best">
-        <div class="be-the-best-bg index-page-bg-settings">
-            <h2>Be the best you can be</h2>
-        </div>
-        <div class="container">
-            
-            <p>
-                View your team mates and rate their playing attributes such as passing 
-                and shooting out of 10, they will do the same for you.  Use this data to
-                get a gauge for the areas of your game you need to improve and focus 
-                accordingly.
-            </p>
-            <p>
-                After each match, rate each players performance and	check your own form.
-                Team generation will take into account both form and attributes helping 
-                keep the teams well balanced.
-            </p> 
-            <a class="link-btn get-started-btn click-shrink hover-effect-gold" href="{% url 'get-started' %}">Get Started</a>
-        </div>
-    </section>
+    
+        <section class="be-the-best">
+            <div class="row reverse">
+                <div class="be-the-best-bg index-page-bg-settings">
+                    <h2>Be the best you can be</h2>
+                </div>
+                <div class="container">
+                    
+                    <p>
+                        View your team mates and rate their playing attributes such as passing 
+                        and shooting out of 10, they will do the same for you.  Use this data to
+                        get a gauge for the areas of your game you need to improve and focus 
+                        accordingly.
+                    </p>
+                    <p>
+                        After each match, rate each players performance and	check your own form.
+                        Team generation will take into account both form and attributes helping 
+                        keep the teams well balanced.
+                    </p> 
+                    <a class="link-btn get-started-btn click-shrink hover-effect-gold" href="{% url 'get-started' %}">Get Started</a>
+                </div>
+            </div>
+        </section>
 </div>
 																	
 {% endblock %}

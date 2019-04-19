@@ -11,6 +11,15 @@ button,
     margin-top: 10px;
     margin-bottom: 10px;
     letter-spacing: 1px;
+    
+    @include tablet {
+        width: 124px;    
+    }
+    
+    @include large-tablet {
+        width: 168px;    
+        font-size: 1.4em;
+    }
 }
 
 .link-btn {
@@ -25,9 +34,13 @@ button,
     background-color: $brand-sunflower-yellow;
     display: block;
     line-height: 32px;
-    margin: 0 auto 22px;
+    margin: 0 auto;
     cursor: pointer;
     border: 5px solid $brand-evening-black;
+    
+    @include tablet {
+        margin: 30px auto 22px;
+    }
 }
 
 // get_started.html buttons ----------------------------------------------------
@@ -40,11 +53,19 @@ button,
     margin-left: auto;
     margin-right: auto;
     bottom: 20px;
+    
+    @include tablet {
+        font-size: 1.2em;    
+    }
 }
 
 .open-sign-up-btn,
 .sign-up-btn {
     background-color: $brand-irises-green;
+    
+    @include tablet {
+        font-size: 1.2em;    
+    }
 }
 
 .sign-up-btn {
@@ -63,6 +84,20 @@ button,
     background-color: unset;
     margin: 2px;
     cursor: pointer;
+    
+    @include tablet {
+        width: 30px;
+        height: 30px;
+        
+        i {
+            font-size: 1.4em;
+        }
+    }
+    
+    @include large-tablet {
+        width: 42px;
+        height: 42px;
+    }
 }
 
 .messages-box .close-parent-btn {

@@ -6,6 +6,14 @@
     h1 {
         margin: 0 auto;
     }
+    
+    @include tablet {
+        height: 430px;
+    }
+    
+    @include large-tablet {
+        height: 578px;
+    }
 }
 
 .opening-section-bg {
@@ -16,14 +24,34 @@
 .get-organised-bg {
     background-image: url('../img/vslegends.jpg');
     @extend %cover-image-align-bottom;
+    
+    @include laptop {
+        width:70%;
+    }
+    
 }
 
 .be-the-best-bg {
     background-image: url('../img/vslegends2.jpg');
     @extend %cover-image-align-bottom;
+    
+    @include laptop {
+        width:70%;
+    }
 }
 
 .password-reset-pages {
     background-image: url('../img/vslegends2.jpg');
     @extend %cover-image-align-middle;
+}
+
+.site-container {
+    background-image: url('../img/stadium.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    @include laptop {
+        height: 88vh;
+        position: relative;
+    }
 }

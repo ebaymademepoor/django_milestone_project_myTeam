@@ -13,15 +13,18 @@
                 <div id="group-id" class="hidden">{{ group_data.pk }}</div>
                 <div id="match-id"class="hidden">{{ match_data.pk }}</div>
                 
-                <div class="options-header">
-                    <h3>Options</h3>
-                    <p>Available</p>
-                    <p>Force pick</p>
-                    <p>Force exclude</p>
-                    <p>Force team</p>
-                    <p>Force position</p>
+                <div class="row">
+                    <div class="inner-container">
+                        <div class="options-header">
+                            <h3>Options</h3>
+                            <p>Available</p>
+                            <p>Force pick</p>
+                            <p>Force exclude</p>
+                            <p>Force team</p>
+                            <p>Force position</p>
+                        </div>
+                    </div>
                 </div>
-                
                 
                 {% for user in group_data.users.all %}
                     <form class="row player-data-row">

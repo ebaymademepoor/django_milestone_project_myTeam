@@ -10,6 +10,7 @@
 
 nav {
 
+    height: 62px;
     background-color: $brand-sunflower-yellow;
     
     .nav-i {
@@ -33,6 +34,18 @@ nav {
 
     .logo {
         padding: 0 20px;
+        
+        @include tablet {
+            height: 100%;
+            padding: 0;
+        }
+    }
+    
+    .logo-pic {
+        @include tablet {
+            height: 100%;
+            width: 147px;
+        }
     }
 
     ul {
@@ -42,7 +55,17 @@ nav {
         li {
             padding: 0 4px;
             font-size: 11px;
-
+            
+            @include tablet {
+                font-size: 14px;
+                margin: 0 14px;
+            }
+            
+            @include large-tablet {
+                font-size: 16px;
+            }
+            
+            
             a {
                 font-weight: 600;
             }
@@ -51,6 +74,7 @@ nav {
 }
 
 .nav-content-container {
+    height: 100%;
     min-height: 62px;
     max-width: 1024px;
     margin: 0 auto;
@@ -66,15 +90,22 @@ nav {
 footer {
     background-color: $brand-evening-black;
     color: $white;
-    height: 20vh;
+    height: 16vh;
     align-items: start !important;
     font-size: .8em;
     
     .container {
         display: inline-block;
-        width: 49.5%;
+        width: 30%;
         box-sizing: border-box;
         padding: 20px;
+    }
+    
+    .footer-content-container {
+        width: 100%;
+        max-width: 1024px;
+        display: flex;
+        justify-content: space-evenly;
     }
 }
 
@@ -94,7 +125,16 @@ footer {
 
     transition-property: right;
     transition-duration: 2s;
-
+    
+    @include tablet {
+        min-height: 40px;
+    }
+    
+    @include large-tablet {
+        min-height: 66px;
+        max-width: 480px;
+    }
+    
     .container {
         width: 100%;
         height: 100%;
@@ -105,6 +145,15 @@ footer {
             text-align: left;
             font-size: 10px;
             margin-right: 16px;
+            
+            @include tablet {
+                font-size: 16px;    
+            }
+            
+            @include large-tablet {
+                font-size: 20px;    
+                margin: 6px;
+            }
         }
     }
 
@@ -126,15 +175,34 @@ footer {
     .logo {
         position: relative;
         top: -50px;
+        
+        @include large-tablet {
+            height: 80px;
+            width: 210px;
+            
+            .logo-pic {
+                height: 100%;
+                width: 100%;
+            }
+        }
     }
     
     p {
         margin-bottom: 40px;
         color: $brand-evening-black;
+        
+        @include large-tablet {
+            font-size: 55px;
+        }
     }
     
     i {
         font-size: 15px;
+        
+        @include large-tablet {
+            font-size: 30px;
+            margin: 66px;
+        }
     }
     
 }

@@ -7,6 +7,18 @@
     p {
         padding: 28px 28px 0;
         line-height: 19px;
+        
+        @include tablet {
+            padding: 28px 60px 0;
+        }
+        
+        @include large-tablet {
+            padding: 40px 144px 0;
+        }
+        
+        @include laptop {
+            padding: 40px 60px 0;
+        }
     }
 
     p:nth-of-type(2) {
@@ -26,6 +38,53 @@
 
 .be-the-best {
     color: $brand-irises-green;
+    background-color: $white;
+    
+    .container {
+        padding-bottom: 30px;
+    }
+}
+
+.opening-section,
+.be-the-best,
+.get-organised {
+    @include large-tablet {
+        .container {
+            padding: 40px 0;
+        }
+    }
+    
+    @include laptop {
+        .container {
+            padding: 40px 90px;
+        }
+    }
+}
+
+.get-organised,
+.be-the-best {
+    @include laptop {
+        
+        .row {
+            display: flex;
+        }
+        
+        .reverse {
+            flex-direction: row-reverse;
+        }
+        
+        .container {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 20px;
+            
+            p {
+                padding: 20px 20px;
+            }
+        }
+    }
 }
 
 // get_started.html ------------------------------------------------------------
@@ -46,6 +105,10 @@
 .sign-in-section {
     background-color: $brand-irises-green;
     padding: 30px 20px 20px;
+    
+    @include tablet {
+        padding-top: 80px;    
+    }
 }
 
 .sign-up-section {
@@ -59,6 +122,10 @@
         margin-left: auto;
         margin-right: auto;
         bottom: 20px;
+        
+        @include tablet {
+            bottom: 80px;    
+        }
     }
 }
 
@@ -73,7 +140,8 @@
     padding: 30px 20px;
     box-sizing: border-box;
     min-height: 66%;
-
+    max-width: 400px;
+    
     h3 {
         margin-bottom: 10px;
     }
@@ -88,6 +156,10 @@
         width: 90%;
         margin: 0 auto 8px;
         text-align: left;
+        
+        @include laptop {
+            margin: 0 auto 24px;
+        }
     }
 }
 
@@ -181,6 +253,7 @@
 
 .user-info-section {
     color: $brand-irises-green;
+    background-color: $white;
 
     .header {
 
@@ -334,7 +407,8 @@
 }
 
 .user-attributes-section {
-
+    background-color: $white;
+    
     h4 {
         color: $brand-starry-night-blue;
     }
@@ -1145,12 +1219,10 @@
         }
         
         .options-header {
-            text-align: left;
-            margin: 18px 0 10px;
+            width: 100%;
             display: flex;
-            align-items: center;
-            padding: 0 20px;
-
+            justify-content: space-evenly;
+            
             p {
                 font-family: 'Staatliches', cursive;
                 font-size: 8px;
@@ -1162,7 +1234,11 @@
                 text-align: center;
             }
         }
-
+        
+        .btn-row {
+            background-color: $brand-evening-black-offset;
+        }
+        
         input {
             width: 68px;
             border: unset;
@@ -1301,14 +1377,14 @@
         }
     }
 
+    .inner-container {
+        width: 88%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
     .player-data-row {
-        
-        .inner-container {
-            width: 88%;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-        }
         
         .gen-options-box {
             margin: 0 2px;

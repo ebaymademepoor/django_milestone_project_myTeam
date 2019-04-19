@@ -1502,6 +1502,14 @@ footer {
     background-color: rgba(150, 150, 150, 0.1);
     padding: 10px; }
 
+.info-pages-sections {
+  padding: 20px;
+  font-size: .9em; }
+  .info-pages-sections p {
+    margin: 12px 0; }
+  .info-pages-sections p:first-of-type {
+    margin: 20px 0 12px; }
+
 .index-page-bg-settings {
   width: 100%;
   height: 400px; }

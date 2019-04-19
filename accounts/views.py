@@ -119,3 +119,19 @@ def registration(request):
             return render(request, 'get_started.html', {"login_form": login_form, "registration_form": registration_form, "reg_error":"yes" })
             
     return redirect(reverse('get-started' ))
+    
+def about_us(request):
+    
+    """
+    Return the about us page
+    """
+        
+    return render(request, 'about_us.html')
+    
+def contact_us(request):
+    
+    """
+    Return the about us page
+    """
+        
+    return render(request, 'contact_us.html')

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Staatliches|Great+Vibes" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/fontawesome-free-5.7.2-web/css/all.min.css' %}" type="text/css" />
     
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=2.05" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=2.06" type="text/css" />
     
     <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/circletype/dist/circletype.min.js' %}"></script>
@@ -67,16 +67,16 @@
     
     <footer class="flex-center-content">
         <div class="container hover-effect-gold">
-            <a href="#">About Us</a> 
+            <a href="{% url 'about-us' %}">About Us</a> 
         </div> 
         <div class="container hover-effect-gold">
-            <a href="#">Get in Touch</a> 
+            <a href="{% url 'contact-us' %}">Get in Touch</a> 
         </div> 
         <div class="container hover-effect-gold">
             <a href="{% url 'checkout' "D" %}">Donate</a> 
         </div> 
     </footer>
     
-    <script type="text/javascript" src="{% static 'js/scripts/main.js' %}?v=2.05"></script>
+    <script type="text/javascript" src="{% static 'js/scripts/main.js' %}?v=2.06"></script>
 </body>
 </html>

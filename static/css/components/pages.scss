@@ -1627,3 +1627,18 @@
     }
     
 }
+
+// About_us.html / Contact_us.html----------------------------------------------
+
+.info-pages-sections {
+    padding: 20px;
+    font-size: .9em;
+    
+    p {
+        margin: 12px 0;
+    }
+    
+    p:first-of-type {
+        margin: 20px 0 12px;
+    }
+}

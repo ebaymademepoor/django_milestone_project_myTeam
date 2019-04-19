@@ -1034,6 +1034,8 @@ footer {
         display: inline-block;
         margin: 2px 8px 2px 0;
         font-weight: 600; }
+      .matches-page .match-data .overview-container .ratings-message {
+        padding: 10px 28px; }
       .matches-page .match-data .overview-container .row {
         padding: 2px 28px;
         box-sizing: border-box; }

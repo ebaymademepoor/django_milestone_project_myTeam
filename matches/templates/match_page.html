@@ -35,14 +35,12 @@
                 
                 <hr> 
                 
-                {% if match_data.selected_team != None %}
-                    {% if match_data.match_completed and my_ratings|length < 1 and match_data.match_status == 'S' %}
-                            <a class="link-btn rate-performance-link-btn click-shrink hover-effect-red" href="{% url 'rate-performance' matchid %}">Rate Players</a>
-                    {% elif not match_data.match_completed %}
-                        <div class="link-btn edit-match-btn click-shrink hover-effect-yellow">Edit Match</div> 
-                    {% endif %}
-                {% else %}
-                    <p>You cannot rate your groups player performances for this match as a team was not saved via the team generation screen.  Please save a team next time!</p> 
+                {% if match_data.match_completed and my_ratings|length < 1 and match_data.match_status == 'S' and match_data.selected_team != None %}
+                    <a class="link-btn rate-performance-link-btn click-shrink hover-effect-red" href="{% url 'rate-performance' matchid %}">Rate Players</a>
+                {% elif not match_data.match_completed %}
+                    <div class="link-btn edit-match-btn click-shrink hover-effect-yellow">Edit Match</div> 
+                {% elif my_ratings|length < 1 %}                
+                    <p class="ratings-message">You cannot rate your groups player performances for this match as a team was not saved via the team generation screen.  Please save a team before the match begins!</p> 
                 {% endif %}
             </div>
                 

@@ -1074,7 +1074,7 @@ footer {
   .matches-page .player-availability {
     background-color: #fff;
     color: #007849;
-    min-height: 55vh;
+    min-height: 58vh;
     position: relative; }
     .matches-page .player-availability .member-container:nth-of-type(odd) {
       background-color: rgba(150, 150, 150, 0.1); }
@@ -1206,7 +1206,7 @@ footer {
     .team-gen-pg .team-gen-settings-pg .options-header p {
       font-family: 'Staatliches', cursive;
       font-size: 8px;
-      width: 30px;
+      width: 32px;
       margin: 0 3px; }
     .team-gen-pg .team-gen-settings-pg .options-header p:first-of-type {
       text-align: center; }
@@ -1577,6 +1577,8 @@ footer {
 .hover-effect-yellow,
 .hover-effect-gold,
 .hover-effect-blue,
+.hover-effect-amber,
+.hover-effect-green,
 .hover-effect-yellow-i,
 .hover-effect-red {
   transition: all .5s; }
@@ -1593,6 +1595,15 @@ footer {
 
 .hover-effect-red:hover {
   background-color: #ff0000; }
+
+.hover-effect-amber:hover {
+  background-color: #ffe800; }
+
+.hover-effect-green:hover {
+  background-color: #42ff00; }
+
+.hover-effect-blue:hover {
+  background-color: #00a4ff; }
 
 body {
   font-family: 'Montserrat', sans-serif;

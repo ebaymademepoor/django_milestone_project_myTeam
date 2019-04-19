@@ -829,7 +829,6 @@ function postToDatabase(url, data, route) {
                 }
             } else if(url === "../add_ratings_to_db/"){
                 if (json["result"] == 'Update successful!') {
-                    $('.please-wait .container > i').remove();
                     $('.please-wait .container > p').text("Ratings submitted!");
                     window.location.href = json["root-url"] + '/group/group_home/' + json["groupid"];
                 } else if (json["result"] === 'No ratings provided...'){
@@ -1031,16 +1030,16 @@ function collectAndSubmitPerformanceRatings(){
         let playerData = $(this).closest('div[class^="player"]');
         let add
             
-        if(this.className === "good click-shrink"){
+        if(this.className === "good click-shrink hover-effect-green"){
             rating = 5;
             add = true
-        } else if (this.className === "average click-shrink"){
+        } else if (this.className === "average click-shrink hover-effect-amber"){
             rating = 3;
             add = true
-        } else if (this.className === "poor click-shrink"){
+        } else if (this.className === "poor click-shrink hover-effect-red"){
             rating = 1;
             add = true
-        } else if (this.className === "skip click-shrink"){
+        } else if (this.className === "skip click-shrink hover-effect-blue"){
             add = false
             playerData.remove();
         }

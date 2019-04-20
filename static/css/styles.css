@@ -382,6 +382,7 @@ input:checked + .slider:before {
   display: inline-block; }
 
 nav {
+  font-family: 'Staatliches', cursive;
   height: 62px;
   background-color: #FFCE00; }
   nav .nav-i {
@@ -410,16 +411,14 @@ nav {
     padding: 0 10px; }
     nav ul li {
       padding: 0 4px;
-      font-size: 11px; }
+      font-size: 1em; }
+      @media (min-width: 500px) {
+        nav ul li {
+          font-size: 1.2em; } }
       @media (min-width: 768px) {
         nav ul li {
-          font-size: 14px;
-          margin: 0 14px; } }
-      @media (min-width: 1024px) {
-        nav ul li {
-          font-size: 16px; } }
-      nav ul li a {
-        font-weight: 600; }
+          margin: 0 14px;
+          font-size: 1.4em; } }
 
 .nav-content-container {
   height: 100%;
@@ -505,7 +504,7 @@ footer {
     top: -50px; }
     @media (min-width: 1024px) {
       .loading-screen .logo {
-        height: 80px;
+        height: 60px;
         width: 210px; }
         .loading-screen .logo .logo-pic {
           height: 100%;
@@ -593,7 +592,8 @@ footer {
     padding: 40px 20px; }
     .get-organised .container p,
     .be-the-best .container p {
-      padding: 20px 20px; } }
+      padding: 20px 20px;
+      font-size: 0.8em; } }
 
 .sign-in-section,
 .sign-up-section {
@@ -875,32 +875,75 @@ footer {
   .group-page h1 {
     color: #fff;
     margin-bottom: 10px; }
+    @media (min-width: 768px) {
+      .group-page h1 {
+        margin-bottom: 40px; } }
   .group-page section {
     padding: 32px; }
+    @media (min-width: 768px) {
+      .group-page section {
+        padding: 52px; } }
+    @media (min-width: 1024px) {
+      .group-page section {
+        padding: 85px; } }
   .group-page .create-join-group-area {
     padding-bottom: 16px; }
     .group-page .create-join-group-area .container {
       text-align: unset;
       color: #fff; }
+      @media (min-width: 1024px) {
+        .group-page .create-join-group-area .container {
+          display: flex;
+          justify-content: flex-start; } }
     .group-page .create-join-group-area .create-group-box,
     .group-page .create-join-group-area .join-group-box {
-      border: 1px #fff solid;
       text-align: left;
       display: inline-block;
-      width: 90%;
+      width: 100%;
       margin: 5px 0;
-      padding: 6px 0 6px 6px;
       box-sizing: border-box; }
-    .group-page .create-join-group-area i {
-      margin: 0;
-      padding: 0;
-      font-size: 30px;
-      position: relative;
-      top: 7px;
-      margin-left: -6px; }
+      @media (min-width: 1024px) {
+        .group-page .create-join-group-area .create-group-box,
+        .group-page .create-join-group-area .join-group-box {
+          width: 100%;
+          max-width: 350px; } }
+      .group-page .create-join-group-area .create-group-box p,
+      .group-page .create-join-group-area .create-group-box i,
+      .group-page .create-join-group-area .join-group-box p,
+      .group-page .create-join-group-area .join-group-box i {
+        display: inline-block; }
+      .group-page .create-join-group-area .create-group-box p,
+      .group-page .create-join-group-area .join-group-box p {
+        border: 1px #fff solid;
+        padding: 6px 0 6px 6px;
+        min-width: 86%; }
+      .group-page .create-join-group-area .create-group-box i,
+      .group-page .create-join-group-area .join-group-box i {
+        margin: 0;
+        padding: 0;
+        font-size: 32px;
+        position: relative;
+        top: 7px;
+        margin-left: -6px; }
+        @media (min-width: 1024px) {
+          .group-page .create-join-group-area .create-group-box i,
+          .group-page .create-join-group-area .join-group-box i {
+            font-size: 36px; } }
   .group-page .group-select-area {
     color: #fff;
-    padding-top: 16px; }
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; }
+    @media (min-width: 1024px) {
+      .group-page .group-select-area {
+        padding-top: 70px; } }
+    .group-page .group-select-area a {
+      width: 100%;
+      display: inline-block; }
+      @media (min-width: 768px) {
+        .group-page .group-select-area a {
+          width: 50%; } }
   .group-page .create-group-form,
   .group-page .join-group-form {
     position: absolute;
@@ -921,29 +964,53 @@ footer {
       display: inline-block;
       width: 100%;
       margin-bottom: 5px; }
+    @media (min-width: 768px) {
+      .group-page .create-group-form,
+      .group-page .join-group-form {
+        top: 0;
+        min-height: 400px;
+        padding: 62px; }
+        .group-page .create-group-form label,
+        .group-page .create-group-form input,
+        .group-page .join-group-form label,
+        .group-page .join-group-form input {
+          margin-bottom: 16px; } }
 
 .group-box {
   background-color: #FFCE00;
   border-radius: 6px;
-  margin-bottom: 16px;
+  margin: 0 auto 16px;
   padding: 16px;
   font-family: 'Staatliches', cursive;
   max-width: 320px;
-  min-height: 113px;
+  min-height: 114px;
   box-sizing: border-box;
   color: #007849; }
+  @media (min-width: 768px) {
+    .group-box {
+      margin: 0 auto 28px;
+      min-height: 122px; } }
+  @media (min-width: 1024px) {
+    .group-box {
+      max-width: 400px;
+      min-height: 140px; } }
   .group-box .group-details-container {
     display: inline-block;
     text-align: left;
     margin-right: 10px;
     min-width: 60%;
-    max-width: 146px; }
+    max-width: 146px;
+    height: 100%; }
     .group-box .group-details-container h2 {
       margin-bottom: 5px;
       min-height: 33px; }
     .group-box .group-details-container p {
       color: #fff;
       font-size: 14px; }
+    .group-box .group-details-container .container {
+      position: relative;
+      bottom: 0;
+      text-align: left; }
   .group-box .members-details-container {
     width: 64px;
     height: 64px;
@@ -1690,7 +1757,7 @@ footer {
   background-image: url("../img/stadium.png");
   background-repeat: no-repeat;
   background-size: cover; }
-  @media (min-width: 1440px) {
+  @media (min-width: 1024px) {
     .site-container {
       height: 88vh;
       position: relative; } }
@@ -1840,6 +1907,9 @@ a:visited {
   min-height: 76vh;
   max-width: 1024px;
   margin: 0 auto; }
+  @media (min-width: 1024px) {
+    .page-container {
+      min-height: 88vh; } }
 
 .hidden,
 .start-hidden {
@@ -1879,5 +1949,18 @@ hr {
   margin: 15px;
   height: 1px;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0)); }
+
+::-webkit-scrollbar {
+  display: none; }
+
+input,
+label {
+  font-size: 1em; }
+
+input {
+  font-family: 'Montserrat', sans-serif; }
+
+label {
+  font-family: 'Staatliches', cursive; }
 
 /*# sourceMappingURL=styles.css.map */

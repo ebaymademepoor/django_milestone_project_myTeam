@@ -77,6 +77,10 @@ a:visited {
     min-height: 76vh;
     max-width: 1024px;
     margin: 0 auto;
+    
+    @include large-tablet {
+        min-height: 88vh;
+    }
 }
 
 .hidden,
@@ -130,4 +134,21 @@ hr {
     margin: 15px;
     height: 1px;
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+input,
+label {
+    font-size: 1em;
+}
+
+input {
+    font-family: 'Montserrat', sans-serif;
+}
+
+label {
+    font-family: 'Staatliches', cursive;
 }

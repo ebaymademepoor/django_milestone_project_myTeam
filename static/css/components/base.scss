@@ -9,7 +9,7 @@
 }
 
 nav {
-
+    font-family: 'Staatliches', cursive;
     height: 62px;
     background-color: $brand-sunflower-yellow;
     
@@ -54,20 +54,15 @@ nav {
 
         li {
             padding: 0 4px;
-            font-size: 11px;
+            font-size: 1em;
+            
+            @include large-mobile {
+                font-size: 1.2em;
+            }
             
             @include tablet {
-                font-size: 14px;
                 margin: 0 14px;
-            }
-            
-            @include large-tablet {
-                font-size: 16px;
-            }
-            
-            
-            a {
-                font-weight: 600;
+                font-size: 1.4em;
             }
         }
     }
@@ -177,7 +172,7 @@ footer {
         top: -50px;
         
         @include large-tablet {
-            height: 80px;
+            height: 60px;
             width: 210px;
             
             .logo-pic {

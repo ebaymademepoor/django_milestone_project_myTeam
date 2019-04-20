@@ -34,12 +34,12 @@
         <div class="container">
             <div class="create-group-box">
                 <p>Create a new group</p>
+                <i class="fas fa-plus-square show-create-new-group-form make-pointer hover-effect-yellow-i"></i>
             </div>
-            <i class="fas fa-plus-square show-create-new-group-form make-pointer hover-effect-yellow-i"></i>
             <div class="join-group-box">
                 <p>Join an existing group</p>
+                <i class="far fa-plus-square make-pointer show-join-group-form hover-effect-yellow-i"></i>
             </div>
-            <i class="far fa-plus-square make-pointer show-join-group-form hover-effect-yellow-i"></i>
         </div>
     </section>
     <section class="group-select-area">
@@ -51,17 +51,19 @@
                 <div class="container sm-click-shrink group-box inset-shadow hover-effect-gold">
                     <div class="container group-details-container">
                         <h2>{{ group.group_name }}</h2>
-                        <p>Creator - {{ group.creator }}</p>
-                        <p>Next match -
-                            {% if "2" in group.next_match.all|lower %}
-                                {% for entry in group.next_match %} 
-                                    {{ entry.date_of_match }}
-                                {% endfor %}
-                            {% else %}
-                            TBC
-                            {% endif %}
-                            
-                        </p>
+                        <div class="container">
+                            <p>Creator - {{ group.creator }}</p>
+                            <p>Next match -
+                                {% if "2" in group.next_match.all|lower %}
+                                    {% for entry in group.next_match %} 
+                                        {{ entry.date_of_match }}
+                                    {% endfor %}
+                                {% else %}
+                                TBC
+                                {% endif %}
+                                
+                            </p>
+                        </div> 
                     </div>
                     <div class="container members-details-container">
                         <div class="flex">

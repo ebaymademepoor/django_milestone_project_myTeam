@@ -50,7 +50,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     
-    @include laptop {
+    @include large-tablet {
         height: 88vh;
         position: relative;
     }

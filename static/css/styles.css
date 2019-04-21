@@ -1702,7 +1702,8 @@ footer {
 .checkout-page {
   padding: 30px;
   min-height: 88vh;
-  color: #262228; }
+  color: #262228;
+  background-color: #fff; }
   .checkout-page h2 {
     margin: 0 0 30px; }
   .checkout-page p {
@@ -1752,6 +1753,7 @@ footer {
     padding: 10px; }
 
 .info-pages-sections {
+  background-color: #fff;
   padding: 20px;
   font-size: .9em; }
   .info-pages-sections p {

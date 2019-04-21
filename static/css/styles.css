@@ -224,6 +224,13 @@ button,
   .add-a-match-btn i {
     font-size: 18px;
     margin-top: 0.2px; }
+  @media (min-width: 768px) {
+    .add-a-match-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 7px; }
+      .add-a-match-btn i {
+        font-size: 32px; } }
 
 .team-gen-link-btn,
 .edit-match-btn {
@@ -344,6 +351,9 @@ input:checked + .slider:before {
   background-color: #23e623;
   position: relative;
   top: 1px; }
+
+#id_image {
+  color: #fff; }
 
 .performance-btn-row button {
   border-radius: 50%;
@@ -482,7 +492,8 @@ footer {
       margin-right: 16px; }
       @media (min-width: 768px) {
         .messages-box .container p {
-          font-size: 16px; } }
+          font-size: 16px;
+          margin-right: 42px; } }
       @media (min-width: 1024px) {
         .messages-box .container p {
           font-size: 20px;
@@ -944,6 +955,10 @@ footer {
       @media (min-width: 768px) {
         .group-page .group-select-area a {
           width: 50%; } }
+    .group-page .group-select-area .container {
+      text-align: left; }
+    .group-page .group-select-area .flex .container {
+      text-align: center; }
   .group-page .create-group-form,
   .group-page .join-group-form {
     position: absolute;
@@ -1007,6 +1022,9 @@ footer {
     .group-box .group-details-container p {
       color: #fff;
       font-size: 14px; }
+      @media (min-width: 1024px) {
+        .group-box .group-details-container p {
+          font-size: 1.1em; } }
     .group-box .group-details-container .container {
       position: relative;
       bottom: 0;
@@ -1035,6 +1053,10 @@ footer {
   box-sizing: border-box;
   margin-bottom: 0;
   border-radius: 0; }
+  @media (min-width: 768px) {
+    .group-home header,
+    .group-home .group-box {
+      text-align: left; } }
   .group-home header h2,
   .group-home .group-box h2 {
     color: #fff; }
@@ -1044,6 +1066,10 @@ footer {
   font-size: 8px;
   color: #fff;
   position: relative; }
+  @media (min-width: 768px) {
+    .group-home .group-id {
+      font-size: 0.8em;
+      padding: 10px; } }
 .group-home .content {
   box-sizing: border-box; }
   .group-home .content .member-box,
@@ -1057,6 +1083,9 @@ footer {
     background-color: #007849;
     padding: 10px 20px;
     min-height: 55vh; }
+    @media (min-width: 768px) {
+      .group-home .content .member-box {
+        padding: 30px 54px; } }
     .group-home .content .member-box .header-container {
       display: flex;
       align-items: center;
@@ -1159,7 +1188,7 @@ footer {
     text-align: left;
     position: relative; }
     .group-home .content .matches-box .container p {
-      margin: 2px 0; }
+      margin: 2px auto; }
     .group-home .content .matches-box h3 {
       padding: 6px 0;
       text-align: left;
@@ -1173,10 +1202,6 @@ footer {
       padding: 20px; }
     .group-home .content .matches-box .matches-row {
       background-color: #262228;
-      justify-content: space-evenly;
-      display: flex;
-      align-items: center;
-      justify-content: start;
       overflow-x: scroll;
       overflow-y: hidden;
       white-space: nowrap; }
@@ -1184,8 +1209,10 @@ footer {
         display: none; }
     .group-home .content .matches-box .match-link:nth-of-type(even) {
       background-color: #826900;
-      width: 36%;
-      max-width: 120px; }
+      width: 30%; }
+      @media (min-width: 768px) {
+        .group-home .content .matches-box .match-link:nth-of-type(even) {
+          width: 22%; } }
     .group-home .content .matches-box .match-link {
       position: relative;
       left: 4.5%;
@@ -1194,9 +1221,7 @@ footer {
       display: inline-block;
       padding: 4px;
       font-size: 8px;
-      width: 30%;
-      min-width: 100px;
-      max-width: 100px;
+      width: 31%;
       height: 56px;
       -webkit-transform-origin: 100% 0;
       -ms-transform-origin: 100% 0;
@@ -1204,9 +1229,16 @@ footer {
       -webkit-transform: skew(-24deg);
       -ms-transform: skew(-24deg);
       transform: skew(-24deg); }
+      @media (min-width: 768px) {
+        .group-home .content .matches-box .match-link {
+          height: 100px;
+          font-size: 1em;
+          width: 23%; } }
       .group-home .content .matches-box .match-link .match-box {
         width: 100%;
         height: 100%; }
+        .group-home .content .matches-box .match-link .match-box .container {
+          width: 90%; }
         .group-home .content .matches-box .match-link .match-box p {
           -webkit-transform: skew(24deg);
           -ms-transform: skew(24deg);
@@ -1214,8 +1246,11 @@ footer {
           text-align: left;
           width: 66px;
           font-family: 'Staatliches', cursive;
-          font-size: 9px;
           letter-spacing: 0.2px; }
+          @media (min-width: 768px) {
+            .group-home .content .matches-box .match-link .match-box p {
+              width: 120px;
+              font-size: 1em; } }
         .group-home .content .matches-box .match-link .match-box span {
           float: right; }
 
@@ -1408,7 +1443,8 @@ footer {
 .team-gen-pg .team-gen-settings-pg {
   min-height: 85vh;
   box-sizing: border-box;
-  padding: 20px 0px 0px; }
+  padding: 20px 0px 0px;
+  background-color: #fff; }
   .team-gen-pg .team-gen-settings-pg h2 {
     padding-left: 20px;
     text-align: left; }

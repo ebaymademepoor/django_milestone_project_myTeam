@@ -603,7 +603,13 @@
             }
         }
         
+        .container {
+            text-align:left;
+        }
         
+        .flex .container {
+            text-align:center;
+        }
     }
 
     .create-group-form,
@@ -678,6 +684,10 @@
         p {
             color: $white;
             font-size: 14px;
+            
+            @include large-tablet {
+                font-size: 1.1em;
+            }
         }
         
         .container {
@@ -721,11 +731,15 @@
         box-sizing: border-box;
         margin-bottom: 0;
         border-radius: 0;
-
+        
+        @include tablet {
+            text-align: left;
+        }
+        
+        
         h2 {
             color: $white;
         }
-
     }
 
     .group-id {
@@ -734,6 +748,11 @@
         font-size: 8px;
         color: $white;
         position: relative;
+        
+        @include tablet {
+            font-size: 0.8em;
+            padding: 10px;
+        }
     }
 
     .content {
@@ -752,7 +771,11 @@
             background-color: $brand-irises-green;
             padding: 10px 20px;
             min-height: 55vh;
-
+            
+            @include tablet {
+                padding: 30px 54px;    
+            }
+            
             .header-container {
                 display: flex;
                 align-items: center;
@@ -912,7 +935,7 @@
             position: relative;
 
             .container p {
-                margin: 2px 0;
+                margin: 2px auto;
             }
 
             h3 {
@@ -934,10 +957,6 @@
 
             .matches-row {
                 background-color: $brand-evening-black;
-                justify-content: space-evenly;
-                display: flex;
-                align-items: center;
-                justify-content: start;
                 overflow-x: scroll;
                 overflow-y: hidden;
                 white-space: nowrap;
@@ -949,9 +968,12 @@
 
             .match-link:nth-of-type(even) {
                 background-color: $brand-evening-black-offset;
-                width: 36%;
-                max-width: 120px;
+                width: 30%;
                 @extend %matches-box-shadow;
+                
+                @include tablet {
+                    width: 22%;
+                }
             }
 
             .match-link {
@@ -962,9 +984,7 @@
                 display: inline-block;
                 padding: 4px;
                 font-size: 8px;
-                width: 30%;
-                min-width: 100px;
-                max-width: 100px;
+                width: 31%;
                 height: 56px;
 
                 -webkit-transform-origin: 100% 0;
@@ -973,13 +993,23 @@
                 -webkit-transform: skew(-24deg);
                 -ms-transform: skew(-24deg);
                 transform: skew(-24deg);
-
+                
+                @include tablet {
+                    height: 100px;
+                    font-size: 1em;
+                    width: 23%;
+                }
+                
                 .match-box {
 
                     width: 100%;
                     height: 100%;
                     @extend %centralise-inner-container;
-
+                    
+                    .container {
+                        width: 90%;
+                    }
+                    
                     p {
                         -webkit-transform: skew(24deg);
                         -ms-transform: skew(24deg);
@@ -987,8 +1017,12 @@
                         text-align: left;
                         width: 66px;
                         font-family: 'Staatliches', cursive;
-                        font-size: 9px;
                         letter-spacing: 0.2px;
+                        
+                        @include tablet {
+                            width: 120px;
+                            font-size: 1em;
+                        }
                     }
 
                     span {
@@ -1293,7 +1327,8 @@
     .team-gen-settings-pg {
         min-height: 85vh;
         box-sizing: border-box;
-        padding: 20px 0px 0px; 
+        padding: 20px 0px 0px;
+        background-color: $white;
         
         h2 {
             padding-left: 20px;

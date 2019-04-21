@@ -143,6 +143,7 @@ footer {
             
             @include tablet {
                 font-size: 16px;    
+                margin-right: 42px;
             }
             
             @include large-tablet {

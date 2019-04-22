@@ -152,3 +152,10 @@ input {
 label {
     font-family: 'Staatliches', cursive;
 }
+
+.wrap-rows-on-tablet {
+    @include tablet {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

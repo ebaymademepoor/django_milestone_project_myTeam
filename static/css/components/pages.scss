@@ -773,7 +773,8 @@
             min-height: 55vh;
             
             @include tablet {
-                padding: 30px 54px;    
+                padding: 30px 54px;
+                min-height: 66vh;
             }
             
             .header-container {
@@ -803,12 +804,20 @@
                 font-size: 8px;
                 vertical-align: middle;
                 margin: 0 5px;
+                
+                @include tablet {
+                    font-size: .8em;
+                }
             }
 
             .key-text {
                 font-size: 8px;
                 width: 100%;
                 margin-bottom: 8px;
+                
+                @include tablet {
+                    font-size: .8em;
+                }
             }
 
             .gk-key {
@@ -826,6 +835,10 @@
             .row {
                 box-sizing: border-box;
                 padding: 0px;
+                
+                @include tablet {
+                    width: 50%;
+                }
             }
 
             .member-container {
@@ -837,6 +850,14 @@
                     display: inline-block;
                     width: 24%;
                     min-width: 68px;
+                    
+                    @include tablet {
+                        min-width: 82px;
+                    }
+                    
+                    @include large-tablet {
+                        min-width: 90px;
+                    }
                 }
 
                 .rating:nth-of-type(4) {
@@ -848,11 +869,19 @@
                     width: 20px;
                     padding: 5px;
                     margin: 0 10px 0 0;
+                    
+                    @include large-tablet {
+                        font-size: 16px;
+                    }
                 }
 
                 .rating-date {
                     font-size: 10px;
                     padding: 5px;
+                    
+                    @include large-tablet {
+                        font-size: 16px;
+                    }
                 }
 
                 .shirt {
@@ -862,7 +891,17 @@
                     margin: 8px 0;
                     background-image: url('../img/transparent-shirt.png');
                     @extend %contain-picture;
-
+                    
+                    @include tablet {
+                        height: 56px;
+                        margin: 12px 0;
+                    }
+                    
+                    @include tablet {
+                        height: 72px;
+                        margin: 16px 0;
+                    }
+                    
                     .container {
                         height: 100%;
                         width: 100%;
@@ -974,6 +1013,10 @@
                 @include tablet {
                     width: 22%;
                 }
+                
+                @include laptop {
+                    width: 11%;
+                }
             }
 
             .match-link {
@@ -995,9 +1038,16 @@
                 transform: skew(-24deg);
                 
                 @include tablet {
-                    height: 100px;
+                    height: 90px;
                     font-size: 1em;
                     width: 23%;
+                }
+                
+                @include laptop {
+                    height: 74px;
+                    font-size: .9em;
+                    width: 11%;
+                    left: 3.5%;
                 }
                 
                 .match-box {
@@ -1022,6 +1072,11 @@
                         @include tablet {
                             width: 120px;
                             font-size: 1em;
+                        }
+                        
+                        @include laptop {
+                            width: 96px;
+                            font-size: .9em;
                         }
                     }
 

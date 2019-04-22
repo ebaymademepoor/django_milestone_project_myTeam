@@ -11,124 +11,134 @@
             <a class="group-rtn-btn link-btn click-shrink" href="{% url 'group-home' groupid %}">Back</a>
         </div>
         
-        {% if player.user_photo %}
-            <div class="user-photo-img" style="background-image: url({{ player.user_photo.url }});"></div>
-        {% else %}
-            <div class="player-shirt-container shirt">
-                <span class="container">
-                    {% if player.nickname %}
-                        <p id="curve-{{ user.pk }}" class="member-content username">{{ player.nickname|truncatechars:10 }}</p>
-                    {% else %}
-                        <p id="curve-{{ user.pk }}" class="member-content username">{{ player.username|truncatechars:10 }}</p>
-                    {% endif %}
-                </span>
-            </div> 
-        {% endif %}
+        <div class="photo-container">
+            {% if player.user_photo %}
+                <div class="user-photo-img" style="background-image: url({{ player.user_photo.url }});"></div>
+            {% else %}
+                <div class="player-shirt-container shirt">
+                    <span class="container">
+                        {% if player.nickname %}
+                            <p id="curve-{{ user.pk }}" class="member-content username">{{ player.nickname|truncatechars:10 }}</p>
+                        {% else %}
+                            <p id="curve-{{ user.pk }}" class="member-content username">{{ player.username|truncatechars:10 }}</p>
+                        {% endif %}
+                    </span>
+                </div> 
+            {% endif %}
+        </div>
         
-        <dl class="data-container">
-            <dt>First Name</dt><dd>{{ player.first_name }}</dd>
-            <dt>Surname</dt><dd>{{ player.surname }}</dd>
-            <dt>Username</dt><dd>{{ player.username }}</dd>
-            <dt>Nickname</dt><dd>{{ player.nickname }}</dd>
-            <dt>Age</dt><dd>{{ age }}</dd>
-            <dt>Registration Date</dt><dd>{{ player.registration_date }}</dd>
-        </dl>
-
-    </section>
-    
-    <section class="user-playing-positions-section">
-        <h4>User playing positions</h4>
-        <div class="key-box">
-            <div class="preferred-box"></div><label>  Preferred</label><br>
-            <div class="can-play-box"></div><label>  Can Play</label><br>
-            <div class="cant-play-box"></div><label>  Can't Play</label>
-        </div>
-        <div class="half-pitch">
-            <div class="row">
-                {% if player.att_pref == 0 %}
-                    <div id="att_pref" class="">
-                {% elif player.att_pref == 1 %}
-                    <div id="att_pref" class="can-play-box">
-                {% else %}
-                    <div id="att_pref" class="preferred-box">
-                {% endif %}
-                    <span>Attack</span>
-                </div>
-            </div>
-            <div class="row">
-                {% if player.mid_pref == 0 %}
-                    <div id="mid_pref" class="">
-                {% elif player.mid_pref == 1 %}
-                    <div id="mid_pref" class="can-play-box">
-                {% else %}
-                    <div id="mid_pref" class="preferred-box">
-                {% endif %}
-                    <span>Midfield</span>
-                </div>
-            </div>
-        </div>
-        <div class="half-pitch">
-            <div class="row">
-                {% if player.def_pref == 0 %}
-                    <div id="def_pref" class="">
-                {% elif player.def_pref == 1 %}
-                    <div id="def_pref" class="can-play-box">
-                {% else %}
-                    <div id="def_pref" class="preferred-box">
-                {% endif %}
-                    <span>Defense</span> 
-                </div>
-            </div>
-            <div class="row">
-                {% if player.gk_pref == 0 %}
-                    <div id="gk_pref" class="">
-                {% elif player.gk_pref == 1 %}
-                    <div id="gk_pref" class="can-play-box">
-                {% else %}
-                    <div id="gk_pref" class="preferred-box">
-                {% endif %}
-                    <span>Goalkeeper</span> 
-                </div>
-            </div>
+        <div class="data-holder">
+            <dl class="data-container">
+                <dt>First Name</dt><dd>{{ player.first_name }}</dd>
+                <dt>Surname</dt><dd>{{ player.surname }}</dd>
+                <dt>Username</dt><dd>{{ player.username }}</dd>
+                <dt>Nickname</dt><dd>{{ player.nickname }}</dd>
+                <dt>Age</dt><dd>{{ age }}</dd>
+                <dt>Registration Date</dt><dd>{{ player.registration_date }}</dd>
+            </dl>
         </div>
     </section>
     
-    
-    {% if not my_profile %}
-        <section class="user-attributes-section">
-            <h4>Rate your team mate (max 10)</h4>
-            <form id="rate-player-form" action="">
-                <div class="container">
-                    
-                    <div class="row">
-                        <label for="gk_score">Goalkeeping</label><input class="gk-rate pure-material-button-contained" name="gk_score" type="number" min="1" max="10" step="1" required value="{{ ratings.gk_score }}"> 
-                        <label for="passing_score">Passing</label><input class="pass-rate" name="passing_score" type="number" min="1" max="10" step="1" required value="{{ ratings.passing_score }}"> 
-                    </div>
-                    <div class="row">
-                        <label for="def_score">Defending</label><input class="def-rate" name="def_score" type="number" min="1" max="10" step="1" required value="{{ ratings.def_score }}"> 
-                        <label for="finishing_score">Finishing</label><input class="fin-rate" name="finishing_score" type="number" min="1" max="10" step="1" required value="{{ ratings.finishing_score }}"> 
-                    </div>
-                    <div class="row">
-                        <label for="movement_score">Movement</label><input class="move-rate" name="movement_score" type="number" min="1" max="10" step="1" required value="{{ ratings.movement_score }}"> 
-                        <label for="outfield_score">Outfield Score</label>
-                        <p>
-                            {% if ratings.outfield_score %}
-                                {{ ratings.outfield_score|floatformat:2 }}
-                            {% else %}
-                                n / a
-                            {% endif %}
-                        </p>  
+    {% if my_profile %}
+        <div class="tablet-row height-adjusted">
+    {% else %}
+        <div class="tablet-row">
+    {% endif %}
+        <section class="user-playing-positions-section">
+            <h4>User playing positions</h4>
+            <div class="key-box">
+                <div class="preferred-box"></div><label>  Preferred</label><br>
+                <div class="can-play-box"></div><label>  Can Play</label><br>
+                <div class="cant-play-box"></div><label>  Can't Play</label>
+            </div>
+            <div class="half-pitch">
+                <div class="row">
+                    {% if player.att_pref == 0 %}
+                        <div id="att_pref" class="">
+                    {% elif player.att_pref == 1 %}
+                        <div id="att_pref" class="can-play-box">
+                    {% else %}
+                        <div id="att_pref" class="preferred-box">
+                    {% endif %}
+                        <span>Attack</span>
                     </div>
                 </div>
-                <div class="container btn-container">
-                    <button class="update-player-attributes-btn click-shrink hover-effect-gold">Update</button> 
+                <div class="row">
+                    {% if player.mid_pref == 0 %}
+                        <div id="mid_pref" class="">
+                    {% elif player.mid_pref == 1 %}
+                        <div id="mid_pref" class="can-play-box">
+                    {% else %}
+                        <div id="mid_pref" class="preferred-box">
+                    {% endif %}
+                        <span>Midfield</span>
+                    </div>
                 </div>
-            </form>
-            <div class="container chart-container">
-                <canvas id="myChart" width="400" height="400"></canvas> 
+            </div>
+            <div class="half-pitch">
+                <div class="row">
+                    {% if player.def_pref == 0 %}
+                        <div id="def_pref" class="">
+                    {% elif player.def_pref == 1 %}
+                        <div id="def_pref" class="can-play-box">
+                    {% else %}
+                        <div id="def_pref" class="preferred-box">
+                    {% endif %}
+                        <span>Defense</span> 
+                    </div>
+                </div>
+                <div class="row">
+                    {% if player.gk_pref == 0 %}
+                        <div id="gk_pref" class="">
+                    {% elif player.gk_pref == 1 %}
+                        <div id="gk_pref" class="can-play-box">
+                    {% else %}
+                        <div id="gk_pref" class="preferred-box">
+                    {% endif %}
+                        <span>Goalkeeper</span> 
+                    </div>
+                </div>
             </div>
         </section>
-    {% endif %}
+    
+    
+        {% if not my_profile %}
+                <section class="user-attributes-section">
+                    <h4>Rate your team mate (max 10)</h4>
+                    <form id="rate-player-form" action="">
+                        <div class="container">
+                            
+                            <div class="row">
+                                <label for="gk_score">Goalkeeping</label><input class="gk-rate pure-material-button-contained" name="gk_score" type="number" min="1" max="10" step="1" required value="{{ ratings.gk_score }}"> 
+                                <label for="passing_score">Passing</label><input class="pass-rate" name="passing_score" type="number" min="1" max="10" step="1" required value="{{ ratings.passing_score }}"> 
+                            </div>
+                            <div class="row">
+                                <label for="def_score">Defending</label><input class="def-rate" name="def_score" type="number" min="1" max="10" step="1" required value="{{ ratings.def_score }}"> 
+                                <label for="finishing_score">Finishing</label><input class="fin-rate" name="finishing_score" type="number" min="1" max="10" step="1" required value="{{ ratings.finishing_score }}"> 
+                            </div>
+                            <div class="row">
+                                <label for="movement_score">Movement</label><input class="move-rate" name="movement_score" type="number" min="1" max="10" step="1" required value="{{ ratings.movement_score }}"> 
+                                <label for="outfield_score">Outfield Score</label>
+                                <p>
+                                    {% if ratings.outfield_score %}
+                                        {{ ratings.outfield_score|floatformat:2 }}
+                                    {% else %}
+                                        n / a
+                                    {% endif %}
+                                </p>  
+                            </div>
+                        </div>
+                        <div class="container btn-container">
+                            <button class="update-player-attributes-btn click-shrink hover-effect-gold">Update</button> 
+                        </div>
+                    </form>
+                    <div class="container chart-container">
+                        <canvas id="myChart" width="400" height="400"></canvas> 
+                    </div>
+                </section>
+            </div>
+        {% endif %}
+    
     
     <section class="user-form-section">
         {% if this_user.has_current_license %}
@@ -167,7 +177,9 @@
             </div>
         {% endif %}
     </section>
-    
+    {% if my_profile %}
+        </div>
+    {% endif %}
     
     
 </div>

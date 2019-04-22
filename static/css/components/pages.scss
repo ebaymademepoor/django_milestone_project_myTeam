@@ -190,7 +190,16 @@
     background-color: white;
     width: 100%;
     box-sizing: border-box;
-
+    
+    @include tablet {
+        top: 94px;
+    }
+    
+    @include large-tablet {
+        top: 102px;
+        height: 310px;
+    }
+    
     label,
     input {
         display: inline-block;
@@ -227,6 +236,10 @@
         margin: 3px 0;
         padding: 6px 0;
         font-size: 9px;
+        
+        @include large-tablet {
+            font-size: 0.8rem;
+        }
     }
 }
 
@@ -239,6 +252,11 @@
             max-width: 83px;
             font-family: 'Staatliches', cursive;
             vertical-align: inherit;
+            
+            @include tablet {
+                max-width: 100px;
+                font-size: 1em;
+            }
         }
 
     }
@@ -249,13 +267,18 @@
         color: $white;
         font-weight: 600;
         margin-left: 4px;
+        
+        @include large-tablet {
+            font-size: 1em;
+        }
     }
 }
 
 .user-info-section {
     color: $brand-irises-green;
     background-color: $white;
-
+    position: relative;
+    
     .header {
 
         h4 {
@@ -267,15 +290,36 @@
         margin: 0;
         max-width: 200px;
         font-size: 2.2em;
+        
+        @include tablet {
+            max-width: unset;
+        }
     }
 
     h1~p {
         display: inline-block;
         font-size: 6px;
     }
+    
+    .photo-container,
+    .data-holder {
+        @include large-tablet {
+            width: 44%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
 
     .user-photo-img {
         @extend %user-image-photo;
+        margin: 20px auto 0;
+        height: 148px;
+        width: 117px;
+        
+        @include large-tablet {
+            height: 274px;
+            width: 200px;
+        }
     }
 
     .data-container {
@@ -285,7 +329,7 @@
         flex-wrap: wrap;
         text-align: center;
         margin-top: 20px;
-
+        
         dt {
             width: 40%;
             background-color: $brand-irises-green;
@@ -360,7 +404,11 @@
         right: 32px;
         width: 18%;
         top: 32px;
-
+        
+        @include large-tablet {
+            right: 10px;    
+        }
+        
         .preferred-box,
         .can-play-box,
         .cant-play-box {
@@ -371,16 +419,28 @@
 
         label {
             font-size: 8px;
+            
+            @include large-tablet {
+                font-size: .8em;
+            }
         }
     }
-
+    
     .half-pitch {
         border: 1px solid $white;
         position: relative;
-
+        
+        @include large-tablet {
+            top: 50px;        
+        }
+        
         .row {
             height: 55px;
             @extend %centralise-inner-container;
+            
+            @include large-tablet {
+                height: 86px;
+            }
 
             div {
                 display: block;
@@ -393,6 +453,10 @@
                 border: 2px solid #fff;
                 background-color: #fd3636;
                 padding-top: 7px;
+                
+                @include large-tablet {
+                    line-height: 14px;
+                }
 
                 span {
                     text-align: center;
@@ -409,6 +473,10 @@
 
 .user-attributes-section {
     background-color: $white;
+    
+    @include large-tablet {
+        border-top: solid $form-input-grey 1px;
+    }
     
     h4 {
         color: $brand-starry-night-blue;
@@ -444,6 +512,12 @@
     }
 
     #rate-player-form {
+        
+        label,
+        input {
+            font-family:'Montserrat', sans-serif;
+        }
+        
         p {
             display: inline-block;
             font-size: 8px;
@@ -501,6 +575,14 @@
     dt:last-of-type {
         font-weight: 600;
         margin-top: 22px;
+    }
+}
+
+.user-playing-positions-section,
+.user-attributes-section {
+    @include large-tablet {
+        width: 50%;
+        display: inline-block;
     }
 }
 

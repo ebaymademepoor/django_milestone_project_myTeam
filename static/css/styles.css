@@ -88,9 +88,6 @@ table {
   background-repeat: no-repeat; }
 
 .user-info-section .user-photo-img {
-  margin: 20px auto 0;
-  height: 148px;
-  width: 117px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat; }
@@ -351,6 +348,10 @@ input:checked + .slider:before {
   background-color: #23e623;
   position: relative;
   top: 1px; }
+  @media (min-width: 1024px) {
+    .add-new-image-btn {
+      font-size: 1em;
+      width: 100px; } }
 
 #id_image {
   color: #fff; }
@@ -689,6 +690,13 @@ footer {
   background-color: white;
   width: 100%;
   box-sizing: border-box; }
+  @media (min-width: 768px) {
+    #update-form {
+      top: 94px; } }
+  @media (min-width: 1024px) {
+    #update-form {
+      top: 102px;
+      height: 310px; } }
   #update-form label,
   #update-form input {
     display: inline-block;
@@ -714,6 +722,10 @@ footer {
   margin: 3px 0;
   padding: 6px 0;
   font-size: 9px; }
+  @media (min-width: 1024px) {
+    .profile-page dt,
+    .profile-page dd {
+      font-size: 0.8rem; } }
 
 .image-form p {
   display: inline-block; }
@@ -721,25 +733,50 @@ footer {
     max-width: 83px;
     font-family: 'Staatliches', cursive;
     vertical-align: inherit; }
+    @media (min-width: 768px) {
+      .image-form p input {
+        max-width: 100px;
+        font-size: 1em; } }
 .image-form i {
   font-size: 10px;
   text-align: center;
   color: #fff;
   font-weight: 600;
   margin-left: 4px; }
+  @media (min-width: 1024px) {
+    .image-form i {
+      font-size: 1em; } }
 
 .user-info-section {
   color: #007849;
-  background-color: #fff; }
+  background-color: #fff;
+  position: relative; }
   .user-info-section .header h4 {
     margin-bottom: 0; }
   .user-info-section h1 {
     margin: 0;
     max-width: 200px;
     font-size: 2.2em; }
+    @media (min-width: 768px) {
+      .user-info-section h1 {
+        max-width: unset; } }
   .user-info-section h1 ~ p {
     display: inline-block;
     font-size: 6px; }
+  @media (min-width: 1024px) {
+    .user-info-section .photo-container,
+    .user-info-section .data-holder {
+      width: 44%;
+      display: inline-block;
+      vertical-align: middle; } }
+  .user-info-section .user-photo-img {
+    margin: 20px auto 0;
+    height: 148px;
+    width: 117px; }
+    @media (min-width: 1024px) {
+      .user-info-section .user-photo-img {
+        height: 274px;
+        width: 200px; } }
   .user-info-section .data-container {
     box-sizing: border-box;
     width: 100%;
@@ -786,6 +823,9 @@ footer {
     right: 32px;
     width: 18%;
     top: 32px; }
+    @media (min-width: 1024px) {
+      .user-playing-positions-section .key-box {
+        right: 10px; } }
     .user-playing-positions-section .key-box .preferred-box,
     .user-playing-positions-section .key-box .can-play-box,
     .user-playing-positions-section .key-box .cant-play-box {
@@ -794,11 +834,20 @@ footer {
       width: 10px; }
     .user-playing-positions-section .key-box label {
       font-size: 8px; }
+      @media (min-width: 1024px) {
+        .user-playing-positions-section .key-box label {
+          font-size: .8em; } }
   .user-playing-positions-section .half-pitch {
     border: 1px solid #fff;
     position: relative; }
+    @media (min-width: 1024px) {
+      .user-playing-positions-section .half-pitch {
+        top: 50px; } }
     .user-playing-positions-section .half-pitch .row {
       height: 55px; }
+      @media (min-width: 1024px) {
+        .user-playing-positions-section .half-pitch .row {
+          height: 86px; } }
       .user-playing-positions-section .half-pitch .row div {
         display: block;
         position: relative;
@@ -810,6 +859,9 @@ footer {
         border: 2px solid #fff;
         background-color: #fd3636;
         padding-top: 7px; }
+        @media (min-width: 1024px) {
+          .user-playing-positions-section .half-pitch .row div {
+            line-height: 14px; } }
         .user-playing-positions-section .half-pitch .row div span {
           text-align: center;
           margin-left: -100%;
@@ -820,6 +872,9 @@ footer {
 
 .user-attributes-section {
   background-color: #fff; }
+  @media (min-width: 1024px) {
+    .user-attributes-section {
+      border-top: solid #ececec 1px; } }
   .user-attributes-section h4 {
     color: #0375B4; }
   .user-attributes-section .container {
@@ -840,6 +895,9 @@ footer {
     width: 13%;
     background-color: #ececec;
     color: #000; }
+  .user-attributes-section #rate-player-form label,
+  .user-attributes-section #rate-player-form input {
+    font-family: 'Montserrat', sans-serif; }
   .user-attributes-section #rate-player-form p {
     display: inline-block;
     font-size: 8px;
@@ -879,6 +937,12 @@ footer {
   .user-form-section dt:last-of-type {
     font-weight: 600;
     margin-top: 22px; }
+
+@media (min-width: 1024px) {
+  .user-playing-positions-section,
+  .user-attributes-section {
+    width: 50%;
+    display: inline-block; } }
 
 .group-page {
   background-color: #007849; }
@@ -2047,5 +2111,16 @@ label {
   .wrap-rows-on-tablet {
     display: flex;
     flex-wrap: wrap; } }
+
+@media (min-width: 1024px) {
+  .tablet-row {
+    display: flex; } }
+
+@media (min-width: 1024px) {
+  .height-adjusted {
+    min-height: 60vh; } }
+.height-adjusted .key-box {
+  width: 20%;
+  right: 27px; }
 
 /*# sourceMappingURL=styles.css.map */

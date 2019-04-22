@@ -304,6 +304,11 @@ input:checked+.slider:before {
     background-color: $preference-green;
     position: relative;
     top: 1px;
+    
+    @include large-tablet {
+        font-size: 1em;
+        width: 100px;
+    }
 }
 
 #id_image {

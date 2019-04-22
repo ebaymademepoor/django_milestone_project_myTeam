@@ -159,3 +159,20 @@ label {
         flex-wrap: wrap;
     }
 }
+
+.tablet-row {
+    @include large-tablet {
+        display: flex;    
+    }
+}
+
+.height-adjusted {
+    @include large-tablet {
+        min-height: 60vh;
+    }
+    
+    .key-box {
+        width: 20%;
+        right: 27px;
+    }
+}

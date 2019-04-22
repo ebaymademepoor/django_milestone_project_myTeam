@@ -52,10 +52,10 @@ function createEditProfileDataForm() {
                 '"><div class="remove-parent-btn">x</div><label>' +
                 field + '</label><input type="' + type + '" name="' + field +
                 '" id="' + field +
-                '"><button type="submit" class="update-form-btn">Update</button></form>'
+                '"><button type="submit" class="update-form-btn hover-effect-gold click-shrink">Update</button></form>'
         }
 
-        $('.profile-page').after(updateForm);
+        $('.profile-page').append(updateForm);
     })
 }
 

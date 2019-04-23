@@ -59,7 +59,7 @@
                 <form class="match-form" method="POST" action="{% url 'add-edit-match' groupid matchid %}">
             {% endif %}
                     {% csrf_token %}
-                    <div class="row form-row">
+                    <div class="row form-row alt-grass">
                         <label for="date_of_match">Date: </label>
                         <input required type="date" name="date_of_match" 
                     {% if match.pk != 0 %}

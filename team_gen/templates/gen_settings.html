@@ -3,7 +3,7 @@
 {% block page_title %}Team generation settings {% endblock %}
 
 {% block content %}
-<div class="team-gen-pg">
+<div class="team-gen-pg page-container">
     <div class="overflow-container">
         <section class="team-gen-settings-pg">
             <div class="container member-container">
@@ -168,10 +168,14 @@
             
         </section>
         <section class="user-playing-positions-section start-off-screen">
-            <h4>Generated Teams</h4>
-            <button id="back-to-settings-btn" class="click-shrink hover-effect-gold">Settings</button>
-            <button id="regen-btn" class="click-shrink hover-effect-gold">Regen</button>
-            <button id="save-teams-btn" class="click-shrink hover-effect-gold">Save</button> 
+            <div class="header">
+                <h4>Generated Teams</h4>
+                <div class="btn-row">
+                    <button id="back-to-settings-btn" class="click-shrink hover-effect-gold">Settings</button>
+                    <button id="regen-btn" class="click-shrink hover-effect-gold">Regen</button>
+                    <button id="save-teams-btn" class="click-shrink hover-effect-gold">Save</button> 
+                </div> 
+            </div> 
             <div class="half-pitch">
                 <div class="pitch-row gk-row-team1"></div>
                 <div class="pitch-row def-row-team1"></div>

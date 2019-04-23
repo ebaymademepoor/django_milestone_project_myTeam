@@ -19,46 +19,48 @@
 {% endblock %}
 
 {% block content %}
-<div class="checkout-page">
-    {% if type == "D" %}
-        <h2>Donations</h2> 
-    {% else %}
-        <h2>Renew License</h2> 
-    {% endif %}
-    
-    {% if type == "D" %}
-        <p>Hi, thanks you again for using MYTEAM!</p> 
-        <p>We would love to develop the site further but we can only do that via your generous donations.</p> 
-        <p>If you are able to contribute to the upkeep and improvement of this site then please make a donation below.</p> 
-        <p>Much appreciated!</p>
-    {% else %}
-        <p>Hi, thanks you again for using MYTEAM!</p> 
-        <p>Time to renew your license and unlock all of the sites premium features.</p> 
-        <p>Simply enter the relevant details below to extend for 6 months.</p> 
-        <p>Much appreciated!</p> 
-    {% endif %}
-    
-    
-    <div class="payment-form-container">
-        <form role="form" method="post" id="payment-form" action="{% url 'checkout' type %}">
-            <div id="credit-card-errors">
-                <div class="alert-message block-message error" id="stripe-error-message"></div>
-            </div> 
-            <p>
-                {% if type == "D" %}
-                    <label for="donation_value">Amount £</label> 
-                    <input type="number" name="donation_value" step=".01" required>
-                {% else %}
-                    <label for="subscription_value">Amount £</label> 
-                    <input type="number" name="subscription_value" step=".01" value="1.99" readonly>
-                {% endif %}
-            </p> 
-            {{ form.as_p }}
-            {% csrf_token %}
-            <div class="row">
-                <button id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">-PAY <i class="fas fa-money-check-alt"></i> NOW-</button>
-            </div> 
-        </form>
+<div class="page-container">
+    <div class="checkout-page">
+        {% if type == "D" %}
+            <h2>Donations</h2> 
+        {% else %}
+            <h2>Renew License</h2> 
+        {% endif %}
+        
+        {% if type == "D" %}
+            <p>Hi, thanks you again for using MYTEAM!</p> 
+            <p>We would love to develop the site further but we can only do that via your generous donations.</p> 
+            <p>If you are able to contribute to the upkeep and improvement of this site then please make a donation below.</p> 
+            <p>Much appreciated!</p>
+        {% else %}
+            <p>Hi, thanks you again for using MYTEAM!</p> 
+            <p>Time to renew your license and unlock all of the sites premium features.</p> 
+            <p>Simply enter the relevant details below to extend for 6 months.</p> 
+            <p>Much appreciated!</p> 
+        {% endif %}
+        
+        
+        <div class="payment-form-container">
+            <form role="form" method="post" id="payment-form" action="{% url 'checkout' type %}">
+                <div id="credit-card-errors">
+                    <div class="alert-message block-message error" id="stripe-error-message"></div>
+                </div> 
+                <p>
+                    {% if type == "D" %}
+                        <label for="donation_value">Amount £</label> 
+                        <input type="number" name="donation_value" step=".01" required>
+                    {% else %}
+                        <label for="subscription_value">Amount £</label> 
+                        <input type="number" name="subscription_value" step=".01" value="1.99" readonly>
+                    {% endif %}
+                </p> 
+                {{ form.as_p }}
+                {% csrf_token %}
+                <div class="row">
+                    <button id="submit_payment_btn" class="hover-effect-gold click-shrink" name="commit" type="submit" value="Submit Payment">-PAY <i class="fas fa-money-check-alt"></i> NOW-</button>
+                </div> 
+            </form>
+        </div> 
     </div> 
 </div> 
 {% endblock %}

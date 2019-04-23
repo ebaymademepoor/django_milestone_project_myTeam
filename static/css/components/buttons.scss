@@ -234,6 +234,12 @@ button,
 
 }
 
+#back-to-settings-btn {
+    @include tablet {
+        display: none;
+    }
+}
+
 #save-teams-btn {
     background-color: $brand-sunflower-yellow;
     color: $brand-evening-black;
@@ -342,6 +348,11 @@ input:checked+.slider:before {
         height: 66px;
         width: 66px;
         margin: 10px;
+        
+        @include large-tablet {
+            height: 100px;
+            width: 100px;
+        }
     }
 
     .good {
@@ -359,6 +370,10 @@ input:checked+.slider:before {
 
 .skip {
     background-color: $brand-starry-night-blue;
+    
+    @include large-tablet {
+        margin-top: 40px;
+    }
 }
 
 .submit-perform-ratings {

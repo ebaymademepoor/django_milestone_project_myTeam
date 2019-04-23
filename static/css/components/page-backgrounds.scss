@@ -1,3 +1,10 @@
+.page-container {
+    position: relative;
+    height: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
 .index-page-bg-settings {
     @extend %centralise-inner-container;
     width: 100%;
@@ -59,4 +66,19 @@
 
 .green-bg {
     background-color: $brand-irises-green !important;
+}
+
+.team-gen-pg {
+    height: 100%;
+    background-image: url('../img/christmascup-green.jpg');
+    background-repeat: no-repeat;
+    background-position-y: 120%;
+    background-size: contain;
+}
+
+
+.tem-gen-height {
+    @include tablet {
+        height: 80vh !important;
+    }
 }

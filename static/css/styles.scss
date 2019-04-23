@@ -72,13 +72,6 @@ a:visited {
     text-align: center;
 }
 
-.page-container {
-    position: relative;
-    height: 100%;
-    max-width: 1024px;
-    margin: 0 auto;
-}
-
 .hidden,
 .start-hidden {
     display: none;
@@ -171,4 +164,8 @@ label {
         width: 20%;
         right: 27px;
     }
+}
+
+strong {
+    font-weight: 900;
 }

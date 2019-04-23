@@ -57,7 +57,7 @@ table {
   background-repeat: no-repeat;
   background-size: cover; }
 
-.password-reset-pages {
+.info-pages-sections .info-img, .password-reset-pages {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; }
@@ -70,7 +70,7 @@ table {
   -moz-box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43);
   box-shadow: inset -7px -7px 13px -6px rgba(0, 0, 0, 0.43); }
 
-.group-home .content .matches-box .match-link:nth-of-type(even) {
+.group-home .content .matches-box .match-link:nth-of-type(even), .checkout-page .payment-form-container form {
   -webkit-box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63);
   -moz-box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63);
   box-shadow: inset -5px -5px 38px -12px rgba(0, 0, 0, 0.63); }
@@ -293,6 +293,10 @@ button,
   height: 14px;
   background-color: #262228; }
 
+@media (min-width: 768px) {
+  #back-to-settings-btn {
+    display: none; } }
+
 #save-teams-btn {
   background-color: #FFCE00;
   color: #262228; }
@@ -377,6 +381,10 @@ input:checked + .slider:before {
   height: 66px;
   width: 66px;
   margin: 10px; }
+  @media (min-width: 1024px) {
+    .performance-btn-row button {
+      height: 100px;
+      width: 100px; } }
 .performance-btn-row .good {
   background-color: #23e623; }
 .performance-btn-row .average {
@@ -386,6 +394,9 @@ input:checked + .slider:before {
 
 .skip {
   background-color: #0375B4; }
+  @media (min-width: 1024px) {
+    .skip {
+      margin-top: 40px; } }
 
 .submit-perform-ratings {
   background-color: #262228;
@@ -625,7 +636,7 @@ footer {
 .sign-in-section,
 .sign-up-section {
   position: relative;
-  height: 45vh;
+  height: 46vh;
   box-sizing: border-box;
   text-align: center;
   color: #fff; }
@@ -1424,7 +1435,7 @@ footer {
     font-family: 'Staatliches', cursive;
     max-width: 300px;
     position: relative;
-    font-size: 10px;
+    font-size: 1.2em;
     padding: 28px;
     margin: 0 auto; }
     @media (min-width: 768px) {
@@ -1436,14 +1447,15 @@ footer {
         .matches-page .match-data form label {
           margin-right: 16px;
           font-size: 20px; } }
-    .matches-page .match-data form .form-row:nth-of-type(odd),
     .matches-page .match-data form p:nth-of-type(odd) {
+      background-color: #028853; }
+    .matches-page .match-data form .alt-grass {
       background-color: #028853; }
     .matches-page .match-data form .close-parent-btn {
       text-align: right;
       color: #fff;
       top: 10px;
-      right: 28px; }
+      right: 10px; }
     .matches-page .match-data form span {
       font-family: 'Staatliches', cursive;
       vertical-align: middle;
@@ -1648,8 +1660,12 @@ footer {
 .team-gen-pg .team-gen-settings-pg {
   min-height: 85vh;
   box-sizing: border-box;
-  padding: 20px 0px 0px;
   background-color: #fff; }
+  @media (min-width: 768px) {
+    .team-gen-pg .team-gen-settings-pg {
+      background-color: transparent; } }
+  .team-gen-pg .team-gen-settings-pg .member-container {
+    padding-top: 20px; }
   .team-gen-pg .team-gen-settings-pg h2 {
     padding-left: 20px;
     text-align: left; }
@@ -1662,14 +1678,43 @@ footer {
       font-size: 8px;
       width: 32px;
       margin: 0 3px; }
+      @media (min-width: 1024px) {
+        .team-gen-pg .team-gen-settings-pg .options-header p {
+          font-size: 11px; } }
     .team-gen-pg .team-gen-settings-pg .options-header p:first-of-type {
       text-align: center; }
+  @media (min-width: 768px) {
+    .team-gen-pg .team-gen-settings-pg .member-container {
+      width: 50%;
+      height: 650px;
+      padding-top: 20px;
+      background-color: #fff;
+      position: relative;
+      overflow: scroll; } }
+  @media (min-width: 1024px) {
+    .team-gen-pg .team-gen-settings-pg .member-container {
+      min-height: 802px; } }
+  @media (min-width: 1440px) {
+    .team-gen-pg .team-gen-settings-pg .member-container {
+      min-height: 722px; } }
+  @media (min-width: 1920px) {
+    .team-gen-pg .team-gen-settings-pg .member-container {
+      min-height: 802px; } }
   .team-gen-pg .team-gen-settings-pg .btn-row {
     background-color: #826900; }
+    @media (min-width: 768px) {
+      .team-gen-pg .team-gen-settings-pg .btn-row {
+        margin-top: 0; } }
   .team-gen-pg .team-gen-settings-pg input {
     width: 68px;
     border: unset;
     background-color: transparent; }
+    @media (min-width: 768px) {
+      .team-gen-pg .team-gen-settings-pg input {
+        width: 80px; } }
+    @media (min-width: 1024px) {
+      .team-gen-pg .team-gen-settings-pg input {
+        width: 90px; } }
   .team-gen-pg .team-gen-settings-pg h3,
   .team-gen-pg .team-gen-settings-pg p {
     display: inline-block;
@@ -1677,6 +1722,14 @@ footer {
   .team-gen-pg .team-gen-settings-pg h3,
   .team-gen-pg .team-gen-settings-pg .user-name-and-stats-container {
     width: 100px; }
+    @media (min-width: 768px) {
+      .team-gen-pg .team-gen-settings-pg h3,
+      .team-gen-pg .team-gen-settings-pg .user-name-and-stats-container {
+        width: 120px; } }
+    @media (min-width: 1024px) {
+      .team-gen-pg .team-gen-settings-pg h3,
+      .team-gen-pg .team-gen-settings-pg .user-name-and-stats-container {
+        width: 132px; } }
   .team-gen-pg .team-gen-settings-pg .row {
     display: flex;
     align-items: center;
@@ -1690,6 +1743,9 @@ footer {
     text-align: left;
     width: 100px;
     display: inline-block; }
+    @media (min-width: 768px) {
+      .team-gen-pg .team-gen-settings-pg .player-container {
+        width: 120px; } }
     .team-gen-pg .team-gen-settings-pg .player-container label {
       font-size: 8px; }
     .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container {
@@ -1702,6 +1758,9 @@ footer {
       .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container {
         display: inline-block;
         position: absolute; }
+        @media (min-width: 768px) {
+          .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container {
+            right: 0px; } }
         .team-gen-pg .team-gen-settings-pg .player-container .user-name-and-stats-container .attr-container input {
           color: #fff;
           padding: 5px;
@@ -1769,11 +1828,35 @@ footer {
   width: 100%;
   box-sizing: border-box;
   transition: all 1s;
-  height: 100%; }
-  .team-gen-pg .user-playing-positions-section h4 {
-    margin-bottom: 10px;
-    margin-right: 12px;
-    display: inline-block; }
+  padding-top: 18px;
+  min-height: 100%; }
+  @media (min-width: 768px) {
+    .team-gen-pg .user-playing-positions-section {
+      width: 50%;
+      min-height: 670px;
+      right: 0; } }
+  @media (min-width: 1024px) {
+    .team-gen-pg .user-playing-positions-section {
+      min-height: 822px; } }
+  @media (min-width: 1440px) {
+    .team-gen-pg .user-playing-positions-section {
+      min-height: 742px; } }
+  @media (min-width: 1920px) {
+    .team-gen-pg .user-playing-positions-section {
+      min-height: 822px; } }
+  .team-gen-pg .user-playing-positions-section .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px; }
+    .team-gen-pg .user-playing-positions-section .header h4 {
+      display: inline-block; }
+    .team-gen-pg .user-playing-positions-section .header .btn-row {
+      margin: 0;
+      background-color: transparent;
+      height: unset; }
+      .team-gen-pg .user-playing-positions-section .header .btn-row button {
+        margin: 0 4px; }
   .team-gen-pg .user-playing-positions-section .half-pitch .gk-row-team1 .team-1-player,
   .team-gen-pg .user-playing-positions-section .half-pitch .gk-row-team1 .team-2-player,
   .team-gen-pg .user-playing-positions-section .half-pitch .gk-row-team2 .team-1-player,
@@ -1784,6 +1867,9 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-evenly; }
+    @media (min-width: 768px) {
+      .team-gen-pg .user-playing-positions-section .pitch-row {
+        min-height: 60px; } }
     .team-gen-pg .user-playing-positions-section .pitch-row .team-1-player,
     .team-gen-pg .user-playing-positions-section .pitch-row .team-2-player {
       height: 40px;
@@ -1799,6 +1885,14 @@ footer {
         position: relative;
         top: 40px;
         text-shadow: -1px 1px 4px #000000; }
+        @media (min-width: 768px) {
+          .team-gen-pg .user-playing-positions-section .pitch-row .team-1-player p,
+          .team-gen-pg .user-playing-positions-section .pitch-row .team-2-player p {
+            font-size: 12px; } }
+        @media (min-width: 1024px) {
+          .team-gen-pg .user-playing-positions-section .pitch-row .team-1-player p,
+          .team-gen-pg .user-playing-positions-section .pitch-row .team-2-player p {
+            font-size: 14px; } }
     .team-gen-pg .user-playing-positions-section .pitch-row .team-1-player {
       background-image: url("../img/transparent-shirt.png"); }
     .team-gen-pg .user-playing-positions-section .pitch-row .team-2-player {
@@ -1875,6 +1969,9 @@ footer {
     background-color: #262228;
     padding: 3px 0;
     margin: 0 auto; }
+    @media (min-width: 1024px) {
+      .rate-performance-page .user-photo-img ~ p {
+        width: 200px; } }
   .rate-performance-page .player,
   .rate-performance-page .completed-box {
     background-color: #007849;
@@ -1886,6 +1983,10 @@ footer {
     left: 0;
     z-index: 5;
     box-sizing: border-box; }
+    @media (min-width: 1440px) {
+      .rate-performance-page .player,
+      .rate-performance-page .completed-box {
+        margin-top: 60px; } }
     .rate-performance-page .player .centralise,
     .rate-performance-page .completed-box .centralise {
       height: 100%; }
@@ -1894,6 +1995,18 @@ footer {
         box-sizing: border-box;
         width: 100%;
         height: 170px; }
+        @media (min-width: 1024px) {
+          .rate-performance-page .player .centralise .container .player-image-container,
+          .rate-performance-page .completed-box .centralise .container .player-image-container {
+            height: 300px; } }
+        @media (min-width: 1024px) {
+          .rate-performance-page .player .centralise .container .player-image-container .shirt,
+          .rate-performance-page .completed-box .centralise .container .player-image-container .shirt {
+            height: 170px; } }
+        @media (min-width: 1024px) {
+          .rate-performance-page .player .centralise .container .player-image-container .shirt div,
+          .rate-performance-page .completed-box .centralise .container .player-image-container .shirt div {
+            font-size: 26px; } }
         .rate-performance-page .player .centralise .container .player-image-container .user-photo-img,
         .rate-performance-page .completed-box .centralise .container .player-image-container .user-photo-img {
           margin-top: 0; }
@@ -1917,7 +2030,8 @@ footer {
   .checkout-page .payment-form-container {
     margin-top: 40px; }
     .checkout-page .payment-form-container form {
-      width: 70%;
+      width: 82%;
+      max-width: 300px;
       margin: 0 auto;
       text-align: center;
       padding: 10px 20px;
@@ -1939,6 +2053,9 @@ footer {
       border-radius: 4px;
       text-align: center;
       width: 85%; }
+    .checkout-page .payment-form-container .error {
+      color: #fd3636;
+      font-weight: 900; }
 
 .password-reset-pages {
   padding: 28px;
@@ -1957,15 +2074,35 @@ footer {
   .password-reset-pages .container {
     background-color: rgba(150, 150, 150, 0.1);
     padding: 10px; }
+  @media (min-width: 768px) {
+    .password-reset-pages input,
+    .password-reset-pages label,
+    .password-reset-pages p {
+      font-size: 12px; } }
 
-.info-pages-sections {
+.info-pages-sections .about-us-section {
   background-color: #fff;
-  padding: 20px;
-  font-size: .9em; }
-  .info-pages-sections p {
+  padding: 40px;
+  box-sizing: border-box;
+  font-size: .9em;
+  min-height: 47vh;
+  line-height: 16px; }
+  .info-pages-sections .about-us-section p {
     margin: 12px 0; }
-  .info-pages-sections p:first-of-type {
-    margin: 20px 0 12px; }
+  .info-pages-sections .about-us-section p:first-of-type {
+    margin: 40px 0 12px; }
+  .info-pages-sections .about-us-section p:last-of-type {
+    margin: 60px 0 12px; }
+.info-pages-sections .info-img {
+  background-image: url("../img/vslegends.jpg");
+  width: 100%;
+  min-height: 45vh; }
+
+.page-container {
+  position: relative;
+  height: 100%;
+  max-width: 1024px;
+  margin: 0 auto; }
 
 .index-page-bg-settings {
   width: 100%;
@@ -2009,6 +2146,17 @@ footer {
 
 .green-bg {
   background-color: #007849 !important; }
+
+.team-gen-pg {
+  height: 100%;
+  background-image: url("../img/christmascup-green.jpg");
+  background-repeat: no-repeat;
+  background-position-y: 120%;
+  background-size: contain; }
+
+@media (min-width: 768px) {
+  .tem-gen-height {
+    height: 80vh !important; } }
 
 .start-off-screen {
   right: -100%; }
@@ -2150,12 +2298,6 @@ a:visited {
 .container {
   text-align: center; }
 
-.page-container {
-  position: relative;
-  height: 100%;
-  max-width: 1024px;
-  margin: 0 auto; }
-
 .hidden,
 .start-hidden {
   display: none;
@@ -2223,5 +2365,8 @@ label {
 .height-adjusted .key-box {
   width: 20%;
   right: 27px; }
+
+strong {
+  font-weight: 900; }
 
 /*# sourceMappingURL=styles.css.map */

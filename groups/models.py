@@ -10,7 +10,7 @@ class Group(models.Model):
     users = models.ManyToManyField(UserProfileData, related_name="my_group")
     
     def next_match(self):
-        return self.linked_group.filter(date_of_match__gte=timezone.now())[0:1]
+        return self.linked_group.filter(date_of_match__gte=timezone.now()).order_by('date_of_match')[0:1]
     
     class Meta:
         ordering = ('date_created',)

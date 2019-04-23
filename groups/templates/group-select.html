@@ -54,7 +54,7 @@
                         <div class="container">
                             <p>Creator - {{ group.creator }}</p>
                             <p>Next match -
-                                {% if "2" in group.next_match.all|lower %}
+                                {% if group.next_match.all|lower != "<QuerySet []>"|lower %}
                                     {% for entry in group.next_match %} 
                                         {{ entry.date_of_match }}
                                     {% endfor %}

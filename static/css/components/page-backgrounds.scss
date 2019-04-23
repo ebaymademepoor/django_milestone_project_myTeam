@@ -49,9 +49,14 @@
     background-image: url('../img/stadium.png');
     background-repeat: no-repeat;
     background-size: cover;
-    
-    @include large-tablet {
-        height: 88vh;
-        position: relative;
-    }
+    height: 92vh;
+    position: relative;
+}
+
+.matches-page {
+    background-color: $white;
+}
+
+.green-bg {
+    background-color: $brand-irises-green !important;
 }

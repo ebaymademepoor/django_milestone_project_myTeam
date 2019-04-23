@@ -241,6 +241,10 @@ button,
   padding: 0;
   align-items: normal;
   box-sizing: border-box; }
+  @media (min-width: 768px) {
+    .team-gen-link-btn,
+    .edit-match-btn {
+      font-size: 14px; } }
 
 .rate-performance-link-btn,
 .edit-match-btn {
@@ -250,13 +254,25 @@ button,
   border: unset;
   line-height: 40px;
   font-size: 10px; }
+  @media (min-width: 768px) {
+    .rate-performance-link-btn,
+    .edit-match-btn {
+      font-size: 14px; } }
 
 #email-availability-reminder-btn {
   margin: 0; }
+  @media (min-width: 768px) {
+    #email-availability-reminder-btn {
+      font-size: 14px; } }
 
 .rate-performance-link-btn {
   background-color: #fd3636;
   margin-bottom: 0; }
+
+@media (min-width: 768px) {
+  .create-edit-match-btn {
+    margin-top: 20px;
+    font-size: 1em; } }
 
 #pick-teams-btn,
 #view-saved-teams-btn {
@@ -498,7 +514,7 @@ footer {
       @media (min-width: 1024px) {
         .messages-box .container p {
           font-size: 20px;
-          margin: 6px; } }
+          margin: 6px 40px 6px 6px; } }
 
 .loading-screen {
   width: 100vw;
@@ -919,7 +935,8 @@ footer {
       text-align: center; }
   .user-form-section .expiry-container {
     color: #fff; }
-    .user-form-section .expiry-container p {
+    .user-form-section .expiry-container p,
+    .user-form-section .expiry-container a {
       margin-top: 20px; }
   .user-form-section h4 {
     color: #fff; }
@@ -1370,157 +1387,239 @@ footer {
   width: 9%;
   text-align: center; }
 
-.matches-page {
+.matches-page .header {
+  padding: 28px 28px 0;
+  color: #fff; }
+  @media (min-width: 768px) {
+    .matches-page .header {
+      padding: 56px 56px 0; } }
+.matches-page .header:first-of-type,
+.matches-page .match-data {
   background-color: #007849; }
-  .matches-page .header {
-    padding: 28px 28px 0;
-    color: #fff; }
-  .matches-page .match-data {
-    color: #fff; }
-    .matches-page .match-data .overview-container {
-      text-align: left;
-      font-size: 10px;
-      padding-top: 18px; }
-      .matches-page .match-data .overview-container span {
-        margin-left: 6px;
-        font-weight: 500; }
-      .matches-page .match-data .overview-container p {
-        display: inline-block;
-        margin: 2px 8px 2px 0;
-        font-weight: 600; }
-      .matches-page .match-data .overview-container .ratings-message {
-        padding: 10px 28px; }
-      .matches-page .match-data .overview-container .row {
-        padding: 2px 28px;
-        box-sizing: border-box; }
-    .matches-page .match-data form {
-      max-width: 300px;
-      position: relative;
-      font-size: 10px;
-      padding: 28px; }
-      .matches-page .match-data form .close-parent-btn {
-        text-align: right;
-        color: #fff;
-        top: 10px;
-        right: 28px; }
-      .matches-page .match-data form textarea {
-        width: 100%;
-        height: 60px;
-        box-sizing: border-box;
-        margin-top: 10px;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 10px; }
-      .matches-page .match-data form input,
-      .matches-page .match-data form select {
-        font-size: 10px; }
-      .matches-page .match-data form select {
-        float: right;
-        font-family: 'Montserrat', sans-serif;
-        color: #262228;
-        background-color: #FFCE00;
-        font-weight: 600; }
-      .matches-page .match-data form .row,
-      .matches-page .match-data form p {
-        justify-content: space-between;
-        margin: 10px 0; }
-      .matches-page .match-data form option:first-of-type {
-        background-color: #23e623; }
-      .matches-page .match-data form option {
-        background-color: #fd3636; }
-  .matches-page .player-availability {
-    background-color: #fff;
-    color: #007849;
-    min-height: 58vh;
-    position: relative; }
-    .matches-page .player-availability .member-container:nth-of-type(odd) {
-      background-color: rgba(150, 150, 150, 0.1); }
-    .matches-page .player-availability .member-container .row {
-      width: 90%; }
-    .matches-page .player-availability .header {
-      padding: 28px 28px 0;
-      color: #007849; }
-    .matches-page .player-availability .ratings-header {
-      width: 88px;
-      text-align: center;
-      position: absolute;
-      right: 20px;
-      top: 27px;
-      font-size: 8px; }
-    .matches-page .player-availability h3 {
-      margin-bottom: 20px; }
-    .matches-page .player-availability i {
-      font-size: 22px; }
-    .matches-page .player-availability .fa-check-circle {
-      color: #23e623; }
-    .matches-page .player-availability .fa-times-circle {
-      color: #fd3636; }
-    .matches-page .player-availability .fa-question-circle {
-      color: #262228; }
-    .matches-page .player-availability .fa-thumbs-down {
-      color: #fd3636; }
-  .matches-page .member-container {
-    text-align: center;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    height: 38px; }
-    .matches-page .member-container .member-content {
-      color: #262228;
-      font-family: 'Great Vibes', cursive;
-      font-weight: 900;
-      font-size: 16px;
-      padding-top: 1px; }
-    .matches-page .member-container .row {
-      display: flex;
-      justify-content: space-around;
-      align-items: center; }
-      .matches-page .member-container .row .column {
-        width: 30%; }
-    .matches-page .member-container .availability-container {
-      width: 86%;
-      margin: 0 auto; }
-      .matches-page .member-container .availability-container p {
-        font-size: 10px; }
-      .matches-page .member-container .availability-container .i-have-confirmed,
-      .matches-page .member-container .availability-container .i-am-unavailable,
-      .matches-page .member-container .availability-container .i-am-unconfirmed,
-      .matches-page .member-container .availability-container .confirmed,
-      .matches-page .member-container .availability-container .unavailable,
-      .matches-page .member-container .availability-container .unconfirmed {
-        padding: 4px;
-        border-radius: 4px;
-        font-weight: 600; }
-      .matches-page .member-container .availability-container .i-have-confirmed,
-      .matches-page .member-container .availability-container .confirmed {
-        background-color: #23e623; }
-      .matches-page .member-container .availability-container .i-am-unavailable,
-      .matches-page .member-container .availability-container .unavailable {
-        background-color: #fd3636;
-        color: #fff; }
-      .matches-page .member-container .availability-container .i-am-unconfirmed,
-      .matches-page .member-container .availability-container .unconfirmed {
-        background-color: #dadada;
-        color: #262228; }
-      .matches-page .member-container .availability-container .i-have-confirmed,
-      .matches-page .member-container .availability-container .i-am-unavailable,
-      .matches-page .member-container .availability-container .i-am-unconfirmed {
-        cursor: pointer;
-        transition: all 1s ease; }
-  .matches-page .team-generation {
-    background-color: #262228;
-    display: flex;
-    height: 40px;
-    justify-content: space-evenly; }
-    .matches-page .team-generation a,
-    .matches-page .team-generation button {
-      background-color: unset;
+.matches-page .match-data {
+  color: #fff; }
+  .matches-page .match-data .overview-container {
+    text-align: left;
+    font-size: 10px;
+    padding-top: 18px; }
+    .matches-page .match-data .overview-container span {
+      margin-left: 6px;
+      font-weight: 500; }
+    .matches-page .match-data .overview-container p {
       display: inline-block;
-      margin: 0;
-      border: unset;
-      width: 50%;
-      height: 100%;
+      margin: 2px 8px 2px 0;
+      font-weight: 600; }
+      @media (min-width: 768px) {
+        .matches-page .match-data .overview-container p {
+          font-size: 1.2em; } }
+    .matches-page .match-data .overview-container .ratings-message {
+      padding: 10px 28px; }
+    .matches-page .match-data .overview-container .row {
+      padding: 2px 28px;
+      box-sizing: border-box; }
+      @media (min-width: 768px) {
+        .matches-page .match-data .overview-container .row {
+          padding: 6px 56px; } }
+  .matches-page .match-data form {
+    font-family: 'Staatliches', cursive;
+    max-width: 300px;
+    position: relative;
+    font-size: 10px;
+    padding: 28px;
+    margin: 0 auto; }
+    @media (min-width: 768px) {
+      .matches-page .match-data form {
+        font-size: 1.2em;
+        padding: 28px 56px;
+        max-width: 60%;
+        margin: 50px auto 0; }
+        .matches-page .match-data form label {
+          margin-right: 16px;
+          font-size: 20px; } }
+    .matches-page .match-data form .form-row:nth-of-type(odd),
+    .matches-page .match-data form p:nth-of-type(odd) {
+      background-color: #028853; }
+    .matches-page .match-data form .close-parent-btn {
+      text-align: right;
+      color: #fff;
+      top: 10px;
+      right: 28px; }
+    .matches-page .match-data form span {
+      font-family: 'Staatliches', cursive;
+      vertical-align: middle;
+      margin-left: 6px; }
+      @media (min-width: 768px) {
+        .matches-page .match-data form span {
+          font-size: 20px; } }
+    .matches-page .match-data form textarea {
+      width: 100%;
+      height: 60px;
+      box-sizing: border-box;
+      margin-top: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px; }
+    .matches-page .match-data form label {
+      vertical-align: middle; }
+    .matches-page .match-data form input,
+    .matches-page .match-data form select,
+    .matches-page .match-data form textarea {
       font-size: 10px;
-      line-height: 40px; }
+      vertical-align: middle; }
+      @media (min-width: 768px) {
+        .matches-page .match-data form input,
+        .matches-page .match-data form select,
+        .matches-page .match-data form textarea {
+          font-size: 15px; } }
+    .matches-page .match-data form select {
+      float: right;
+      font-family: 'Montserrat', sans-serif;
+      color: #262228;
+      background-color: #FFCE00;
+      font-weight: 600; }
+    .matches-page .match-data form .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+    .matches-page .match-data form .row,
+    .matches-page .match-data form p {
+      padding: 12px 8px;
+      box-sizing: border-box; }
+    .matches-page .match-data form .row input {
+      position: relative;
+      right: 8px; }
+    .matches-page .match-data form .repeat-row {
+      justify-content: unset;
+      background-color: transparent !important; }
+      .matches-page .match-data form .repeat-row input {
+        right: unset; }
+    .matches-page .match-data form option:first-of-type {
+      background-color: #23e623; }
+    .matches-page .match-data form option {
+      background-color: #fd3636; }
+.matches-page .player-availability {
+  background-color: #fff;
+  color: #007849;
+  min-height: 60vh;
+  position: relative; }
+  .matches-page .player-availability .member-container:nth-of-type(odd) {
+    background-color: rgba(150, 150, 150, 0.1); }
+  .matches-page .player-availability .member-container .row {
+    width: 90%; }
+  .matches-page .player-availability .header {
+    padding: 28px 28px 0;
+    color: #007849;
+    background-color: #fff; }
+    @media (min-width: 768px) {
+      .matches-page .player-availability .header {
+        padding: 28px 56px 0; } }
+  .matches-page .player-availability .ratings-header {
+    width: 88px;
+    text-align: center;
+    position: absolute;
+    right: 8%;
+    top: 27px;
+    font-size: 8px; }
+    @media (min-width: 768px) {
+      .matches-page .player-availability .ratings-header {
+        right: 14%;
+        font-size: 0.8em; } }
+    @media (min-width: 1024px) {
+      .matches-page .player-availability .ratings-header {
+        right: 16%; } }
+  .matches-page .player-availability h3 {
+    margin-bottom: 20px; }
+  .matches-page .player-availability i {
+    font-size: 22px; }
+  .matches-page .player-availability .fa-check-circle {
+    color: #23e623; }
+  .matches-page .player-availability .fa-times-circle {
+    color: #fd3636; }
+  .matches-page .player-availability .fa-question-circle {
+    color: #262228; }
+  .matches-page .player-availability .fa-thumbs-down {
+    color: #fd3636; }
+.matches-page .member-container {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  height: 38px; }
+  @media (min-width: 768px) {
+    .matches-page .member-container {
+      height: 48px; } }
+  .matches-page .member-container .member-content {
+    color: #262228;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 900;
+    font-size: 16px;
+    padding-top: 1px; }
+    @media (min-width: 768px) {
+      .matches-page .member-container .member-content {
+        font-size: 1.4em; } }
+  .matches-page .member-container .row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+    .matches-page .member-container .row .column {
+      width: 30%; }
+  .matches-page .member-container .availability-container {
+    width: 86%;
+    margin: 0 auto; }
+    .matches-page .member-container .availability-container p {
+      font-size: 10px; }
+    .matches-page .member-container .availability-container .i-have-confirmed,
+    .matches-page .member-container .availability-container .i-am-unavailable,
+    .matches-page .member-container .availability-container .i-am-unconfirmed,
+    .matches-page .member-container .availability-container .confirmed,
+    .matches-page .member-container .availability-container .unavailable,
+    .matches-page .member-container .availability-container .unconfirmed {
+      padding: 4px;
+      border-radius: 4px;
+      font-weight: 600; }
+    .matches-page .member-container .availability-container .i-have-confirmed,
+    .matches-page .member-container .availability-container .confirmed {
+      background-color: #23e623; }
+    .matches-page .member-container .availability-container .i-am-unavailable,
+    .matches-page .member-container .availability-container .unavailable {
+      background-color: #fd3636;
+      color: #fff; }
+    .matches-page .member-container .availability-container .i-am-unconfirmed,
+    .matches-page .member-container .availability-container .unconfirmed {
+      background-color: #dadada;
+      color: #262228; }
+    .matches-page .member-container .availability-container .i-have-confirmed,
+    .matches-page .member-container .availability-container .i-am-unavailable,
+    .matches-page .member-container .availability-container .i-am-unconfirmed {
+      cursor: pointer;
+      transition: all 1s ease;
+      max-width: 150px;
+      margin: 0 auto; }
+.matches-page .team-generation {
+  background-color: #262228;
+  display: flex;
+  height: 40px;
+  justify-content: space-evenly;
+  position: relative; }
+  .matches-page .team-generation a,
+  .matches-page .team-generation button {
+    background-color: unset;
+    display: inline-block;
+    margin: 0;
+    border: unset;
+    width: 50%;
+    height: 100%;
+    font-size: 10px;
+    line-height: 40px; }
+    @media (min-width: 768px) {
+      .matches-page .team-generation a,
+      .matches-page .team-generation button {
+        font-size: 14px; } }
+  .matches-page .team-generation .ani-holder {
+    display: none;
+    position: absolute;
+    color: #fff;
+    top: 35px;
+    left: 40%; }
 
 .shirt {
   display: inline-block;
@@ -1569,7 +1668,8 @@ footer {
     background-color: #826900; }
   .team-gen-pg .team-gen-settings-pg input {
     width: 68px;
-    border: unset; }
+    border: unset;
+    background-color: transparent; }
   .team-gen-pg .team-gen-settings-pg h3,
   .team-gen-pg .team-gen-settings-pg p {
     display: inline-block;
@@ -1900,11 +2000,15 @@ footer {
 .site-container {
   background-image: url("../img/stadium.png");
   background-repeat: no-repeat;
-  background-size: cover; }
-  @media (min-width: 1024px) {
-    .site-container {
-      height: 88vh;
-      position: relative; } }
+  background-size: cover;
+  height: 92vh;
+  position: relative; }
+
+.matches-page {
+  background-color: #fff; }
+
+.green-bg {
+  background-color: #007849 !important; }
 
 .start-off-screen {
   right: -100%; }
@@ -2048,12 +2152,9 @@ a:visited {
 
 .page-container {
   position: relative;
-  min-height: 76vh;
+  height: 100%;
   max-width: 1024px;
   margin: 0 auto; }
-  @media (min-width: 1024px) {
-    .page-container {
-      min-height: 88vh; } }
 
 .hidden,
 .start-hidden {

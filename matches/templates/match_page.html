@@ -3,7 +3,11 @@
 {% block page_title %}Match{% endblock %}
 
 {% block content %}
-<div class="page-container matches-page">
+{% if match_data %}
+    <div class="page-container matches-page">
+{% else %}
+    <div class="page-container matches-page green-bg">
+{% endif %}
     <section class="header">
          <h2>Match Details</h2> 
          <a class="group-rtn-btn link-btn click-shrink hover-effect-gold" href="{% url 'group-home' groupid %}">Back</a>
@@ -55,16 +59,16 @@
                 <form class="match-form" method="POST" action="{% url 'add-edit-match' groupid matchid %}">
             {% endif %}
                     {% csrf_token %}
-                    <div class="row">
-                    <label for="date_of_match">Date: </label>
-                    <input required type="date" name="date_of_match" 
+                    <div class="row form-row">
+                        <label for="date_of_match">Date: </label>
+                        <input required type="date" name="date_of_match" 
                     {% if match.pk != 0 %}
                         value={{ match_data.date_of_match|date:'Y-m-d' }}
                     {% endif %}/>
                     </div>
-                    <div class="row">
-                    <label for="time_of_match">Time: </label>
-                    <input required type="time" name="time_of_match"
+                    <div class="row form-row">
+                        <label for="time_of_match">Time: </label>
+                        <input required type="time" name="time_of_match"
                     {% if match.pk != 0 %}
                         value={{ match_data.time_of_match|time:"H:i" }}
                     {% endif %}/>
@@ -72,10 +76,16 @@
                     {{ match_form.as_p }}
                     {{ form.non_field_errors }}
                     {% if not match_data %}
-                        <label for="repeat">Please repeat for:</label>
-                        <input type="number" name="repeat" value="1" min="1" max="10" step="1"/> weeks
+                        <div class="row repeat-row">
+                            <label for="repeat">Please repeat for:</label>
+                            <input type="number" name="repeat" value="1" min="1" max="10" step="1"/><span> weeks</span>
+                        </div>     
                     {% endif %}
-                    <button class="create-edit-match-btn click-shrink hover-effect-gold" type="submit">Submit</button>
+                    {% if match_data %}
+                        <button class="create-edit-match-btn click-shrink hover-effect-gold" type="submit">Update</button>
+                    {% else %}
+                        <button class="create-edit-match-btn click-shrink hover-effect-gold" type="submit">Create</button>
+                    {% endif %}
                 </form>
         {% endif %} 
     </section>
@@ -84,6 +94,11 @@
         {% if not match_data.match_completed %}
         <section class="team-generation">
             <button id="email-availability-reminder-btn" class="click-shrink hover-effect-yellow">Email Reminders</button>
+            <div class="ani-holder">
+                <div class="container bounce-ball">
+                        <i class="fas fa-futbol rotate-ball"></i></i>        
+                </div>
+            </div>
             <a class="click-shrink link-btn team-gen-link-btn hover-effect-yellow" href="{% url 'team-gen-settings' matchid %}">Generate Teams</a> 
         </section>
     {% endif %}

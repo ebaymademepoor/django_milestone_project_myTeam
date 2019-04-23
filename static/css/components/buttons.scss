@@ -171,6 +171,10 @@ button,
     padding: 0;
     align-items: normal;
     box-sizing: border-box;
+    
+    @include tablet {
+        font-size: 14px;        
+    }
 }
 
 .rate-performance-link-btn,
@@ -181,15 +185,30 @@ button,
     border: unset;
     line-height: 40px;
     font-size: 10px;
+    
+    @include tablet {
+        font-size: 14px;        
+    }
 }
 
 #email-availability-reminder-btn  {
     margin: 0;
+    
+    @include tablet {
+        font-size: 14px;        
+    }
 }
 
 .rate-performance-link-btn {
     background-color: $error-red;
     margin-bottom: 0;
+}
+
+.create-edit-match-btn {
+    @include tablet {
+        margin-top: 20px;
+        font-size: 1em;
+    }
 }
 
 // Team Generation Buttons -----------------------------------------------------

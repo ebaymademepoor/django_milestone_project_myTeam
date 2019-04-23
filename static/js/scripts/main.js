@@ -811,7 +811,7 @@ function postToDatabase(url, data, route) {
                     displayMessage("Hmmm, we're not sure that worked, please try later...");
                 }
             } else if (url === "../../email_availability_reminder/") {
-                
+                $(".ani-holder").fadeOut(500);
                 console.log(json["result"])
                 console.log(json["emails-sent"])
                 
@@ -1258,6 +1258,7 @@ $(document).ready(function() {
     $("#email-availability-reminder-btn").click(function() {
         if(preventClickForReminder === false){
             preventClickForReminder = true;
+            $(".ani-holder").fadeIn(500);
             let matchid = $('#match-id').text();
             preparePostData("email-availability-reminder", matchid)    ;
         }

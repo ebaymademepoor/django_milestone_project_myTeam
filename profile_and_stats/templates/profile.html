@@ -136,7 +136,7 @@
             <div class="container">
                 <h3>All time performance rating</h3>
                 <h5>- Out of 5.00 -</h5>
-                {% if all_time_rating != None %}
+                {% if performance_ratings %}
                     <p>{{ all_time_rating.all_time_rating|floatformat:2  }}</p>
                 {% else %}
                     <p>N/A</p> 

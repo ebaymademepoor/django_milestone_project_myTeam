@@ -12,6 +12,8 @@ function scrollTo(classOrId){
     $('html, body').animate({
         scrollTop: ($(classOrId).offset().top)
     }, 500);
+    
+    $(".site-container").scrollTop(0);
 }
 
 function displayMessage(message) {
@@ -342,21 +344,31 @@ function checkTeamScores(teamData){
 
     teamData[0].forEach(function(player) {
         
-        if (parseInt(player["team"]) === 1) {
-            teamsSummary[0]["Players"] += 1;
-            
-            if(player["force-position"] === "GK"){
-                teamsSummary[0]["Score"] += parseFloat(player["avg_gk"]);    
-            } else {
-                teamsSummary[0]["Score"] += parseFloat(player["avg_out"]);
-            }
-        } else if (parseInt(player["team"]) === 2) {
-            teamsSummary[1]["Players"] += 1;
-            
-            if(player["force-position"] === "GK"){
-                teamsSummary[1]["Score"] += parseFloat(player["avg_gk"]);    
-            } else {
-                teamsSummary[1]["Score"] += parseFloat(player["avg_out"]);
+        if(player["avg_gk"]){
+            if (parseInt(player["team"]) === 1) {
+                teamsSummary[0]["Players"] += 1;
+                
+                if(player["force-position"] === "GK"){
+                    teamsSummary[0]["Score"] += parseFloat(player["avg_gk"]);    
+                } else {
+                    teamsSummary[0]["Score"] += parseFloat(player["avg_out"]);
+                }
+            } else if (parseInt(player["team"]) === 2) {
+                teamsSummary[1]["Players"] += 1;
+                
+                if(player["force-position"] === "GK"){
+                    teamsSummary[1]["Score"] += parseFloat(player["avg_gk"]);    
+                } else {
+                    teamsSummary[1]["Score"] += parseFloat(player["avg_out"]);
+                }
+            }        
+        } else {
+            if (parseInt(player["team"]) === 1) {
+                teamsSummary[0]["Players"] += 1;
+                teamsSummary[0]["Score"] += 5;    
+            } else if (parseInt(player["team"]) === 2) {
+                teamsSummary[1]["Players"] += 1;
+                teamsSummary[1]["Score"] += 5;    
             }
         }
     }); 
@@ -911,7 +923,7 @@ function activateButton() {
                 break;
             case "pick-teams-btn":
                 runTeamGenerationPromises();
-                scrollTo(".nav-content-container");
+                scrollTo("nav");
                 break;
             case "regen-btn":
                 runTeamGenerationPromises();
@@ -928,7 +940,7 @@ function activateButton() {
                     teamsArray.push(teams);
                     let stats = checkTeamScores(teamsArray);
                     addStatstoPitch(stats);
-                    scrollTo(".nav-content-container");
+                    scrollTo("nav");
                     $(".user-playing-positions-section").removeClass("start-off-screen");
                     $(".user-playing-positions-section").addClass('slide-in-from-right');
                 });

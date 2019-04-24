@@ -145,22 +145,17 @@
             <div class="container">
                 <h3>All time performance rating</h3>
                 <h5>- Out of 5.00 -</h5> 
-                {% if all_time_rating.all_time_rating %}
-                <p>{{ all_time_rating.all_time_rating|floatformat:2  }}</p>
+                {% if performance_ratings %}
+                    <p>{{ all_time_rating.all_time_rating|floatformat:2  }}</p>
             </div>
             <h4>User form (last 5 games)</h4>
             <div class="container">
                 <dl>
-                    {% if performance_ratings %}
-                        {% for rating in performance_ratings.all %}
-                            <dt>Match on - {{ rating.performance_matchID__date_of_match }}</dt><dd>RATED: {{ rating.avg_rating|floatformat:2 }} out of 5</dd>
-                        {% endfor %}
+                    {% for rating in performance_ratings.all %}
+                        <dt>Match on - {{ rating.performance_matchID__date_of_match }}</dt><dd>RATED: {{ rating.avg_rating|floatformat:2 }} out of 5</dd>
+                    {% endfor %}
                             
-                        <dt>OVERALL FORM</dt><dd>RATED: {{ overall_form_rating.score|floatformat:2 }} out of 5</dd>
-                        
-                    {% else %}
-                        <dt>This players performance has never been rated!</dt>
-                    {% endif %}
+                    <dt>OVERALL FORM</dt><dd>RATED: {{ overall_form_rating.score|floatformat:2 }} out of 5</dd>
                 </dl>
             </div>    
             {% else %}

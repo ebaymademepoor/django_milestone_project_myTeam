@@ -494,6 +494,8 @@
 
     .row {
         width: 100%;
+        display: flex;
+        align-items: center;
     }
 
 
@@ -509,6 +511,7 @@
         width: 13%;
         background-color: $form-input-grey;
         color: $black;
+        min-height: 10px;
     }
 
     #rate-player-form {
@@ -576,6 +579,7 @@
     dt:last-of-type {
         font-weight: 600;
         margin-top: 22px;
+        width: 100%;
     }
 }
 
@@ -672,6 +676,7 @@
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+        background-color: $brand-irises-green;
         
         @include large-tablet {
             padding-top: 70px;
@@ -1000,7 +1005,7 @@
                 }
 
                 .not-rated {
-                    font-size: 8px;
+                    font-size: 0.8em;
                 }
 
                 .data-container {

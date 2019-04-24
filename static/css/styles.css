@@ -911,7 +911,9 @@ footer {
   .user-attributes-section .attr-container {
     margin-bottom: 0px; }
   .user-attributes-section .row {
-    width: 100%; }
+    width: 100%;
+    display: flex;
+    align-items: center; }
   .user-attributes-section dt,
   .user-attributes-section label {
     width: 36%;
@@ -921,7 +923,8 @@ footer {
   .user-attributes-section input {
     width: 13%;
     background-color: #ececec;
-    color: #000; }
+    color: #000;
+    min-height: 10px; }
   .user-attributes-section #rate-player-form label,
   .user-attributes-section #rate-player-form input {
     font-family: 'Montserrat', sans-serif; }
@@ -964,7 +967,8 @@ footer {
   .user-form-section dd:last-of-type,
   .user-form-section dt:last-of-type {
     font-weight: 600;
-    margin-top: 22px; }
+    margin-top: 22px;
+    width: 100%; }
 
 @media (min-width: 1024px) {
   .user-playing-positions-section,
@@ -1036,7 +1040,8 @@ footer {
     padding-top: 16px;
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    background-color: #007849; }
     @media (min-width: 1024px) {
       .group-page .group-select-area {
         padding-top: 70px; } }
@@ -1273,7 +1278,7 @@ footer {
             width: 100%;
             padding: 0; }
       .group-home .content .member-box .member-container .not-rated {
-        font-size: 8px; }
+        font-size: 0.8em; }
       .group-home .content .member-box .member-container .data-container {
         margin-left: 30px;
         vertical-align: middle; }
@@ -2102,7 +2107,8 @@ footer {
   position: relative;
   height: 100%;
   max-width: 1024px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  box-sizing: border-box; }
 
 .index-page-bg-settings {
   width: 100%;

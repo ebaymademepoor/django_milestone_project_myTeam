@@ -183,9 +183,9 @@
 
 #update-form {
     position: absolute;
-    height: 200px;
+    height: 238px;
     z-index: 5;
-    top: 136px;
+    top: 250px;
     padding: 30px;
     background-color: white;
     width: 100%;
@@ -193,6 +193,7 @@
     
     @include tablet {
         top: 94px;
+        height: 206px;
     }
     
     @include large-tablet {
@@ -1582,7 +1583,7 @@
 
 .team-gen-pg {
     .team-gen-settings-pg {
-        min-height: 85vh;
+        min-height: 80vh;
         box-sizing: border-box;
         background-color: $white;
         

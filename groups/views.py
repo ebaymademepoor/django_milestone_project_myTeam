@@ -136,7 +136,7 @@ def join_group(request):
                     # Welcome the user and display their new group page...
                     
                     messages.success(request, "Welcome to {0} {1}!!!  Feel free to have a browse!".format(this_group.group_name, this_user.username))
-                    return render(request, 'group-home.html', {"group_data": this_group })
+                    return redirect('group-home', this_group.id)
                 
             else:
                 
@@ -145,7 +145,7 @@ def join_group(request):
                 messages.error(request, "The password you entered for the group is incorrect. Please try again or contact the groups administrator.")
             return redirect(reverse('group-select'))
             
-        except Group.DoesNotExist:
+        except:
             messages.error(request, "Hmm, we can't find that group.  Is that the correct ID?!")
             return redirect(reverse('group-select'))
         

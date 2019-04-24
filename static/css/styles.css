@@ -292,6 +292,12 @@ button,
   width: 48px;
   height: 14px;
   background-color: #262228; }
+  @media (min-width: 768px) {
+    #regen-btn,
+    #back-to-settings-btn,
+    #save-teams-btn {
+      font-size: 14px;
+      height: 20px; } }
 
 @media (min-width: 768px) {
   #back-to-settings-btn {
@@ -710,16 +716,17 @@ footer {
 
 #update-form {
   position: absolute;
-  height: 200px;
+  height: 238px;
   z-index: 5;
-  top: 136px;
+  top: 250px;
   padding: 30px;
   background-color: white;
   width: 100%;
   box-sizing: border-box; }
   @media (min-width: 768px) {
     #update-form {
-      top: 94px; } }
+      top: 94px;
+      height: 206px; } }
   @media (min-width: 1024px) {
     #update-form {
       top: 102px;
@@ -1663,7 +1670,7 @@ footer {
   overflow: hidden; }
 
 .team-gen-pg .team-gen-settings-pg {
-  min-height: 85vh;
+  min-height: 80vh;
   box-sizing: border-box;
   background-color: #fff; }
   @media (min-width: 768px) {
@@ -2365,9 +2372,9 @@ label {
   .tablet-row {
     display: flex; } }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .height-adjusted {
-    min-height: 60vh; } }
+    min-height: 65vh; } }
 .height-adjusted .key-box {
   width: 20%;
   right: 27px; }

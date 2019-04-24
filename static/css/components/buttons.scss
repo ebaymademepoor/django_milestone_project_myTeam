@@ -231,7 +231,11 @@ button,
     width: 48px;
     height: 14px;
     background-color: $brand-evening-black;
-
+    
+    @include tablet {
+        font-size: 14px;
+        height: 20px;
+    }
 }
 
 #back-to-settings-btn {

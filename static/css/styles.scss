@@ -156,8 +156,8 @@ label {
 }
 
 .height-adjusted {
-    @include large-tablet {
-        min-height: 60vh;
+    @include tablet {
+        min-height: 65vh;
     }
     
     .key-box {

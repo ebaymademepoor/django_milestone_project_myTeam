@@ -18,9 +18,9 @@
     </form>
     
     {% if reg_error == "yes" %}
-    <form class="join-group-form" method="POST" action="{% url 'join-group' %}" autocomplete="off">
+        <form class="join-group-form" method="POST" action="{% url 'join-group' %}" autocomplete="off">
     {% else %}
-    <form class="join-group-form start-hidden" method="POST" action="{% url 'join-group' %}" autocomplete="off">
+        <form class="join-group-form start-hidden" method="POST" action="{% url 'join-group' %}" autocomplete="off">
     {% endif %}
         <div class="close-parent-btn">x</div>
         {% csrf_token %}

@@ -945,6 +945,15 @@ function activateButton() {
                     $(".user-playing-positions-section").addClass('slide-in-from-right');
                 });
                 break;
+            case "show-password":
+                if($(this).text() === "Show Password"){
+                    $(this).text("Hide Password");
+                    $('#group-pwd').show("fast");
+                } else {
+                    $('#group-pwd').hide("fast");
+                    $(this).text("Show Password");
+                }
+                break;
             default:
                 
         }

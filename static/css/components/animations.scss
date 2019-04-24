@@ -121,11 +121,15 @@
 }
 
 .hover-effect-amber:hover {
-    background-color: $hover-amber;
+    background-color: $hover-amber !important;
 }
 
 .hover-effect-green:hover {
-    background-color: $hover-green;
+    background-color: $hover-green !important;
+}
+
+.hover-effect-brand-green:hover {
+    background-color: $brand-irises-green !important;
 }
 
 .hover-effect-blue:hover {

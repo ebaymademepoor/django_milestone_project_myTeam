@@ -3,8 +3,14 @@
 let preventClick = false;
 let preventClickForReminder = false;
 var ctx = $("#myChart");
-let currentGeneratedTeam
-let currentSavedTeams
+let currentGeneratedTeam;
+let currentSavedTeams;
+
+// Function to initialise Jasmine testing to ensure it is running okay ---------
+
+function onePlusOne(){
+    return 2;
+}
 
 // A message function to the user ----------------------------------------------
 
@@ -249,7 +255,7 @@ function collectTeamSettingsData(type, formName) {
 
             userData.push(thisUsersData);
         }
-
+        
         resolve(userData);
     });
 
@@ -330,7 +336,7 @@ function separatePlayersByAllocatedUnallocated(teamData){
                     playerstoBeAllocated.push(player);
                 }
             });
-
+            
             return [playersInATeam, playerstoBeAllocated];
 }
 
@@ -372,17 +378,19 @@ function checkTeamScores(teamData){
             }
         }
     }); 
-        
-    teamsSummary[0]["avg-score"] = 
-        teamsSummary[0]["Score"] / teamsSummary[0]["Players"];
     
-    teamsSummary[1]["avg-score"] = 
-        teamsSummary[1]["Score"] / teamsSummary[1]["Players"];
+    for(i = 0; i < teamsSummary.length; i++){
+        if(teamsSummary[i]["Players"] === 0){
+            teamsSummary[i]["avg-score"] = 0;
+        } else {
+            teamsSummary[i]["avg-score"] = teamsSummary[i]["Score"] / teamsSummary[i]["Players"];        
+        }
+    }
     
     return [teamData, teamsSummary];
 }
 
-function allocateRemainingTeams(teamData){
+function allocateGoalkeepers(teamData){
 
     let playersToBeAllocated = teamData[0][1];
     let playersAllocated = teamData[0][0];
@@ -447,6 +455,8 @@ function allocateRemainingTeams(teamData){
     team2Data["avg-score"] = 
         team2Data["Score"] / team2Data["Players"];
     
+    
+    
     let allPlayers = $.merge(playersAllocated, playersSortedByAvgScore);
     
     let finalTeamSelectionData = [allPlayers, [team1Data, team2Data]];
@@ -461,11 +471,19 @@ function assignForcedPositions(teamsData) {
             thisPlayer["picked-position"] = thisPlayer["force-position"].toLowerCase();
         }
     })
+    
+    console.log(stringify(teamsData))
 
     return teamsData;
 }
 
 function setupTeams(teamData){
+    
+    /* Starts to organise current teamData to help with further team set up.  
+    Creates a list of already assigned players, unassigned players, and how
+    many players are in each team and what playing position they've been allocated
+    to */
+        
         let assignedPlayers = [[],[]];
         
         let unassignedPlayers = [[],[]];
@@ -489,6 +507,11 @@ function setupTeams(teamData){
                 positionsOfPlayers[index][playerPosition] += 1;
             }
         })    
+        
+        console.log(stringify(assignedPlayers))
+        console.log(stringify(unassignedPlayers))
+        console.log(stringify(positionsOfPlayers))
+        
         
         return {"assignedPlayers" : assignedPlayers, "unassignedPlayers" : unassignedPlayers, "positionsOfPlayers" : positionsOfPlayers};
 }
@@ -676,7 +699,7 @@ function runTeamGenerationPromises(){
         }).then((result) => {        
                         
             // Result = Teams are passed through along with summary of teams picked so far    
-            return allocateRemainingTeams(result);
+            return allocateGoalkeepers(result);
         }).then((result) => {
                         
             // Result = Players are passed through with team numbers an the second array entry holds team player and avg stats

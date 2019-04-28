@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from accounts.views import index
+from accounts.views import index, jasmine
 from accounts import urls as accounts_urls
 from profile_and_stats import urls as profile_urls
 from groups import urls as group_urls
@@ -35,4 +35,5 @@ urlpatterns = [
     url(r'^team/', include(team_urls)),
     url(r'^checkout/', include(subscription_urls)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
+    url(r'^jasmine/$', jasmine, name="jasmine"),
 ]

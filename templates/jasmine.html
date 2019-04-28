@@ -1,0 +1,25 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jasmine Testing</title>
+    
+    <!-- Load Jasmine Framework -->
+    <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.1.0/jasmine.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.1.0/jasmine-html.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.1.0/boot.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.1.0/jasmine.css" type="text/css" />
+    
+    <!-- Load scripts -->
+    <script type="text/javascript" src="{% static 'js/scripts/main.js' %}"></script>
+    
+    <!-- Load tests -->
+    <script type="text/javascript" src="{% static 'js/scripts/mainSpec.js' %}"></script>
+    
+</head>
+</html>

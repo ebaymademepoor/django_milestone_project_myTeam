@@ -42,9 +42,6 @@ class UserRegistrationForm(UserCreationForm):
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
-        
-        if not password1 or not password2:
-            raise forms.ValidationError("Please enter your password in both fields")
             
         if password1 != password2:
             raise forms.ValidationError("Both passwords do not match")

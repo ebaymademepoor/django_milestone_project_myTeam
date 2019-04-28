@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
 from profile_and_stats.forms import CreateProfileForm
 from django.core.mail import send_mail
+from django.contrib.auth.decorators import user_passes_test
 
 def index(request):
     """
@@ -135,3 +136,12 @@ def contact_us(request):
     """
         
     return render(request, 'contact_us.html')
+
+@user_passes_test(lambda u: u.is_superuser)    
+def jasmine(request):
+    
+    """
+    Runs js testing suite
+    """
+        
+    return render(request, 'jasmine.html')

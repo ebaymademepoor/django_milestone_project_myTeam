@@ -15,4 +15,18 @@ class TestAccountItemForm(TestCase):
         
         self.assertFalse(formDuplicate.is_valid())
         self.assertEqual(formDuplicate.errors['username'], [u'A user with that username already exists.'])
+    
+    def test_validation_error_for_blank_email(self):
+        form = UserRegistrationForm({'email':'', 'username': 'johnboy32', 'password1':'mypassword123', 'password2': 'mypassword123'})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(form.errors['email'], [u'Please provide your email address'])
         
+    def test_validation_error_for_a_blank_password(self):
+        form = UserRegistrationForm({'email':'jim@bob.com', 'username': 'johnboy32', 'password1':'', 'password2': 'mypassword123'})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(form.errors['password1'], [u'This field is required.'])
+        
+    def test_validation_error_for_non_matching_passwords(self):
+        form = UserRegistrationForm({'email':'jim@bob.com', 'username': 'johnboy32', 'password1' : 'newpassword', 'password2': 'mypassword123'})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(form.errors['password2'], [u'Both passwords do not match'])

@@ -17,15 +17,17 @@ class Group(models.Model):
     
     def __str__(self):
         return self.group_name
+ 
+# May use the below at a later date to manage group admin rights... 
         
-class GroupMember(models.Model):
-    group_id = models.DecimalField(max_digits=1, decimal_places=0, null=False, blank=False)
-    user_id = models.ManyToManyField(Group)
-    profiles = models.ManyToManyField(UserProfileData)
-    admin = models.BooleanField()
+# class GroupMember(models.Model):
+#     group_id = models.DecimalField(max_digits=1, decimal_places=0, null=False, blank=False)
+#     user_id = models.ManyToManyField(Group)
+#     profiles = models.ManyToManyField(UserProfileData)
+#     admin = models.BooleanField()
     
-    class Meta:
-        ordering = ('group_id',)    
+#     class Meta:
+#         ordering = ('group_id',)    
         
-    def __str__(self):
-        return self.group_id
+#     def __str__(self):
+#         return self.group_id

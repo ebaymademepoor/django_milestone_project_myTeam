@@ -1,22 +1,16 @@
-# Django myTeam Milestone Project
-
-An app to help organise weekly football matches
 
 [![Build Status](https://travis-ci.org/ebaymademepoor/django_milestone_project_myTeam.svg?branch=master)](https://travis-ci.org/ebaymademepoor/django_milestone_project_myTeam)
 
+Collect static - version numbers
 
 
 
-https://realpython.com/django-and-ajax-form-submissions/ = django ajax
-
-Circletype for player names
-
-Chart.js for radar chart
 
 NOTE - Newly created super user must create a profile in django admin after being added via terminal or profile page will not display, a profile per user is required
 
-Raised button - https://codepen.io/finnhvman/pen/MQyJxV
+Bugs - photo orientation / compression
 
+commercial opportunity
 
 # FULL STACK FRAMEWORKS WITH DJANGO PROJECT NAME: MY TEAM
 ## NAME:  GIANCARLO FIORLETTA
@@ -41,155 +35,346 @@ stats ensuring even matches.
 
 The main aims of the project are as follows...
 
-1)  To allow the user to add recipes and ingredients to the site
-1)  To allow the user to review recipes based on their experience
-2)  To allow the user to climb the leaderboard if they receive good reviews
-3)  To allow users to view recipes and filter them based on their requirements
+1)  To allow the user to register and create their own user profile
+2)  To allow the user to create or join a group for their fellow team members
+3)  To allow the user to create matches allowing them and their peers to confirm availability
+4)  To allow users to generate teams which are determined by how each user is rated
+5)  To allow a user to rate each of their peers performance and see their form / stats
 
-The website should also be responsive so that it works across all devices and media sizes.  It should be intuitive and easy for the user to use.
+The website should also be responsive so that it works across all devices and media sizes.  
+It should be intuitive and easy for the user to use.
 
 ### USER STORIES:
 
-To understand why people might choose to use this site and therefore provide direction on its creation, I created a number of user stories as follows...
+To understand why people might choose to use this site and therefore provide direction 
+on its creation, I created a number of user stories as follows...
 
-Story 1:  As a foodie, I want to view many different recipes and try some that I like.
+Story 1:  As a regular football player, I want to easily organise our matches with friends
 
-Story 2: As a cook, I want to share my recipes with other people.
+Story 2: As a footballer, I'd like to know what my fellow peers think of my skills and performance
+to help guide me where I need to improve
 
-Story 3:  As a cook, I want to get feedback on my recipes from other people.
+Story 3:  As a regular football player, I want to remove the hassle of having to pick 
+even teams for each game and want to reduce the time lost at the start of each match
+selecting teams
 
-Story 4:  As a student, I need inspiration on what easy / nice meals to eat!
+Story 4:  As a regular footballer who often players with new players, I'd like to 
+know more about my team mates before playing so I know what they look like and 
+what to call them
 
-The website should fit the stories of these potential users perfectly as it will contain all of the features that they desire
-as part of the vanilla offering.  As well as being able to see recipes other users have added, there will be an opportunity for 
-feedback and recognition via a reviews feature which will also help the user to filter the recipes and find the ones people like best
-so that they can prioritise their cooking.
+Although a big undertaking, the website will provide a complete solution for these
+users and is inspired by real life issues myself and my fellow group members
+experience on a weekly basis when organising our football matches.
 
 ### WIREFRAMES:
 
-I have chosen the name of Flame and Sizzle for the website as I feel it links beautifully to images of delicious food.  
+The wirefames (found in the wireframes_and_design_notes folder) provide a good early 
+indication of how I wanted the site to look and feel.  The final site has stayed very 
+close to this orioginal design but has been modified to try and make it more user 
+friendly.
 
-The principle of adding recipes and ingredients to the website could mean that the usability of the site could become quite complicated, so it's important in the design phase that the operation of adding 
-and editing recipes is kept as user friendly as possible.
+After consideration of names, approach and colour schemes I decided to use a green,
+yellow, blue and black scheme (the green would work well for the football pitches)
+and I selected the name myTeam after consultation with a number of people in
+my football group.
 
-My website will be divided into 12 pages.  The home page which will feature a welcome message and links to the main features of the site which are recipes, ingredients and the head chefs league table.  
-There will be a sign up and login page as standard as well as a profile page for registered users.  An add and edit page will be incorporated for both recipes and ingredients, however recipes will have an addition view
-page so that users get a clean view of each individual recipe and add reviews.
+The concept of what the site wants to achieve is sound but could become complicated 
+for a user to get used to, therefore at times I broke away from the original 
+wireframe to try and make the operation of the site as user friendly as possible,
+keeping the UX in mind at all times.
 
-I have created some basic wireframes to show how these pages will be laid out in general.  Each page will have specially selected pictures of food to compliment the theme of the site. 
-
-**Please see the Wireframes folder for the designs.**
+My website will is divided into 6 apps, accounts, groups, matches, profile_and_stats,
+subscriptions and team_gen.
 
 ## FEATURES
 
 ### EXISTING FEATURES:
 
-#### PAGE 1 - HOME PAGE (index.html):
+#### PAGE 1 - HOME PAGE (index.html - located in root templates folder):
 
-The home page has a welcome header followed by an introduction for the recipes, ingredients and leaderboard features of the site.  I have also added a quote which I liked around cooking to help inspire users and
-wet their appetite!
+The site could be viewed as quite complex in principle so the home page has been 
+kept very simple.  If logged out the nav bar which is fixed to the top of the screen 
+simply shows the myTeam logo and a link to the get started registration / login 
+page.  If logged in the user has links to their profile and the groups select page,
+as well as having the option to log out.
 
-At the bottom of the page there is a summary of the number of the recipes and their cusine types so that users can get a feel for what they might expect to find.
+This is followed by three sections, all of which have been styled based on the sites
+brand colors, which includes the images which have been monotoned to each section
+colour using https://manytools.org/image/colorize-filter/
 
-The nav-bar is fixed to the top of the screen to give the user easy access no matter where they are in the page, on mobile this changes to a standard drop down list so that the users view is never unintentionally obscured.
-At the bottom of the page is a footer that just contains some example information linked to the website for demonstration purposes.
+Each section contains a brief description of the features of the site followed
+by a responsive get started link button.
 
-#### PAGES 2,3,4, - USER PAGES (log_in.html, signup.html & profile.html):
+There is also a user video that gives any new user a glance of what the site can do
+before registering.
 
-The user pages are an important feature of this website, allowing the user to register and thereby giving them the opportunity for their name to be shown on the leaderboard if they receive good recipe scores.  The login page has 
-a nice animation that brings in the sign up form into view in two halves and the log in page has a fun gif that repeats.  Upon hover of the pages buttons, the background pictures zoom in to give some exciting visual feedback to the
-user.
+A footer resides at the bottom of the page containing links to the about us, get
+in touch, and donate pages.
 
-When signing up or signing in, the Python script completes a number of checks to ensure that the same user can't sign up twice, to make sure passwords match and to redirect the user in each situation.  
+### PAGES 2 & 3 - ABOUT US & GET STARTED PAGES (located in root templates folder)
 
-The profile page allows the user to update their details and add an image that will show up on any recipes that get added whenever viewed by another user.
+The about us and get started pages are just here to give the user a little bit of 
+additional information about the site and a contact email address should they 
+wish to get in touch.
 
-#### PAGE 5 - RECIPES PAGE (recipes.html):
+#### PAGE 4 - GET STARTED (get_started.html - located in root templates folder):
 
-The recipes page begins with a nice sized and stylish background picture to welcome the user.  The user is then greeted with the option to add a recipe, but will be asked to sign up if they are not already a user before they can add.  This
-option will stick to the top of the screen to allow for easy access being the most important feature of the site.  After all, if users don't add recipes then the site will lose any appeal!  
+The get started page has been split into a top and bottom half to represent a 
+football pitch of sorts.  Each half contains a form, one for existing users to
+log in and one for new users to sign up.  The sign in form also contains a 
+link for any users that have forgotten their passwords which will take them
+through the standard django reset passwords method.
 
-The next part of this page is the filter menu which will also stick under the add recipes box.  This gives the user a number of options to help them browse the site...
+Upon registering, each new user will get an email confirming their chosen username 
+and welcoming them to the site.
 
-1)  They can choose to view 3, 6 or 9 recipes at any one time in case they want to fine tune what they see.  
-2)  They can filter by a specific cuisine type, or even by any recipes that they have personally added.
-3)  They can sort the filtered recipes by ones that have been added most recently, by alphabetical order and by user ratings.
+Upon registering / sign in, the user will be taken to their profile page.
 
-This gives the user plenty of choice to find what they're looking for and to be able to access their own creations quickly and easily.
+#### PAGES 5, 6 - PROFILE PAGES (profile.html, player-profile.html - located in profile_and_stats/templates):
 
-Any recipes added to the site will display in a 'recipe card' style box underneath the filter options.  Upon hover, each recipes description will change colour and the pointer will change to a hand to signify that it is clickable.
-Any ratings provided will be averaged and display in the description too.  If a recipe belongs to the user that is logged in, 2 additional boxes will appear to allow the user to edit or delete their recipe.  If the user chooses to delete,
-a dropdown box will appear above the recipe card asking the user to confirm to avoid any mishaps!
+The profile pages use much the same design with a few subtle differences.
 
-Below the displayed recipes are buttons for previous and next which will allow the user to move through the pages.
+Profile.html is designed for a player to see their own profile and make amendments
+to it for personalisation.
 
-#### PAGE 6 - ADD A RECIPE (add_recipe.html):
+The first section contains all of the players details.  They may choose a photo
+to use so that other group members can see what they look like, or alternatively
+a shirt image will be displayed with their username on the back, or nickname
+if one has been entered.  Their details are then displayed and these can be updated 
+by clicking the appropriate heading.  The updateable headings have an inner shadow
+to make them look a little raised like a button.  
 
-To make the site as user friendly as possible, a recipe is added in two stages.  This page is stage 1 in the process where the user will enter some basic details to create the record in the database.  They simply enter a recipe name and
-select a cuisine type from the list.  They have the option to add an image address (as in this project there is no facility to upload images) and there is a button containing a question mark which will provide some instructions in a 
-floating box when hovered.  If the user is unable to add an image address and leaves the input box blank, a default picture will be applied.
+Their registration date and license expiry date are shown at the bottom of the list.  
+Each user will get a full lisence for 30 days upon registration.  Once this expires 
+they will no longer be able to view their or any of their peers form section unless 
+they renew their license.  This is the only feature currently affected by the license
+so a user can still use the site perfectly well even without a license.
 
-The user can then either select to cancel via the 'go back' button, or click the 'submit' button which will create the recipe in the database.
+Next is the user playing positions section.  The user can click each of the attack, 
+midfield, defense and goalkeeper positions on the pitch to select their playing
+preferences between preferred, can play and can't play.  This will then be stored 
+in the database and taken into consideration when teams are selected via team 
+generation.
 
-#### PAGE 7 - EDIT A RECIPE (edit_recipe.html):
+The user attributes section will show the user how their attributes have been 
+rated on average by their peers in the areas of goalkeeping, passing, defending, finishing 
+and movement, the latter four of which aggregate to their overall outfield score.
+The section also show how many users have voted them and displays a chart.js 
+radar graph underneath which gives them a visual representation of their skills.
 
-This page allows the user to edit the original details they supplied as part of add a recipe (section 1 - recipe info), but it also allows them to add an instruction or ingredient to the recipe one at a time.
+Finally their form section.  If the users license is in date, their average all time
+performance rating which is made up of every rating their peers have ever given for 
+their performance, followed by how they've been rated on average for the last 5 matches 
+that they've played in.  These 5 sets of average scores make up their overall form rating.
 
-The page is used in two instances, firstly whenever a new recipe is created the user will be taken to this page to add additional details.  However the same page is also loaded if the user clicks edit on the recipes list page.
+If the license has expired, the user will get a message to advise accordingly and
+a button to take them to the license renewal page.
 
-The page loads with a picture and title of the recipe taken from the record in the database collection.  If there is no picture then a default picture is applied.
+Player-profile.html is accessed via the group home page and contains most of the 
+above with a few differences.  
 
-Section 1 - recipe info, contains the same details as the add a recipe page.
+As the page is another users profile, the date of birth is converted to age for
+information security.  The user playing positions are read only and cannot be 
+changed. The attributes section for the player now has a number of input boxes
+allowing you to rate the players attributes on your own personal opinion or 
+displays how you've rated them previously.  This can be updated at any point.
 
-Section 2 - recipe instructions, contains any existing instructions that are found in the recipe.  Each is loaded with a red minus icon next to the instruction which can be used to delete that particular instruction.  Under the existing
-instructions is an add instructions box, allowing the user to enter a step number and instruction to the above list via the green plus icon.
+Other than that both pages are very similar!
 
-Section 3 - recipe ingredients, here there is a box containing any existing ingredients that have been added to the recipe along with their quantity and any picture associated to the item (or a default picture if omitted).  Again, this 
-can each be removed individually via the red minus icon.  Underneath is a select box which pulls through any ingredient listed on the site.  Once an ingredient is selected, the user can add a quantity and then push the details to the 
-list via the green plus icon.
 
-Below the dropdown list is a button which will take the user to a page where they can add an ingredient to the site if it is not already in the list.  Once added, the user will be brought back to the edit recipe page to continue building
-their recipe.
+#### PAGE 7 - GROUP SELECT (group-select.html - located in groups/templates):
 
-#### PAGE 8 - VIEW A RECIPE (view_recipe.html):
+Groups can be created by a user or a user can join an exisiting group.
+The group links to both users and matches and is the hub of the entire site,
+using information from all other apps.
 
-This page contains immutable details of the recipe for anyone to view.  The top of the page contains a picture and title for the recipe, followed by a box that contains the user who posted the recipe, the category for the type of cuisine and
-the current user rating.
+Initially the user can click the create a group button and start a brand new group,
+or join an exisitng one as long as they have the group id and password.  Either 
+option will bring up the appropriate form to complete.
 
-Next follows the instructions and ingredients (a please wait message displays while these load).  The user then has a button to go back to the recipes page.
+For any groups that the user is a member of, these will appear on the page displaying
+how many members are in the group, the groups name and creator, and when the 
+next scheduled match is if one has been created.
 
-If the user is logged in and not viewing one of their own recipes, providing they have not already supplied a review of the same recipe, they will see a reviews box which allows them to make a short comment on the recipe and give it a score out 
-of 5.  Other reviews are then posted below with the most recent comments nearest the top of the list.
+Clicking on a group will take the user to that groups home page.
 
-#### PAGE 9 - INGREDIENTS PAGE (ingredients.html):
+#### PAGE 8 - GROUP HOME (group-select.html - located in groups/templates):
 
-This page displays all of the ingredients that have been added to the site an has a similar layout to the recipes list page.  
+The group home page allows the user to undertake several actions in relation to their
+group.
 
-There is a large picture at the top of the page and a sticky box that asks the user to add any ingredients they wish to see in their recipes if they are not already on the list.
+The top section displays some basic details about the group similar to the group 
+select page.  The following row displays the group ID number and an option to 
+display the groups password, these details can be passed on to other users to allow
+friends to join the group.  
 
-Any existing ingredient is then displayed with a picture, a title and where or not it is marked as allergen free.  There is also an edit icon which changes colour when hovered.
+Next is the matches section which shows any matches that have been organised.  Upto
+8 matches will be displayed in this row.  The first will be the match arranged for no
+more than 7 days previous and then the proceeding 7 matches from that date.  So even
+if a team has a game each day, they will still be able to access the next upcoming 
+game to confirm their availability (groups cannot have more than 1 match organised
+per day).  The row can be dragged on a mobile device to reveal future matches.
 
-#### PAGES 10 & 11 - ADD AN INGREDIENT / EDIT AN INGREDIENT (add_ingredient.html / edit_ingredient.html)
+Each of the matches show some basic information about the game and its 
+status.  In order to create a match, the user can click on the responsive
+plus button to be taken to the create match page.
 
-Any user can add an ingredient to help the community build their recipes.  Here, they simply add a name of the ingredient, an image address (again optional) and they can tick to advise if the ingredient contains allergens.
+Below the matches section is the group members section.  Each member is represented 
+by a shirt.  The logged in user will see their shirt in the head of this section,
+clicking on the shirt will take them to a version of their profile.
 
-Edit ingredient is exactly the same page, however the user cannot edit the ingredient name as this could potentially lead to issues with other users recipes if the name suddenly changes from one ingredient to another!  Instead, only allergen
-information and the ingredient image can be amended.
+Any other member in the group appears below with a shirt of their own.  If the logged 
+in user has already rated a players attributes, a summary of those ratings will
+be displayed next to each player, as well as then last time they were rated so 
+that a user can keep those ratings up to date if required.  If the logged in
+user has not rated a player, a message will appear asking them to complete a rating.
 
-#### PAGE 12 - HEAD CHEF LEADERBOARD (head_chefs.html)
+#### PAGE 9 - MATCH PAGE (match_page.html - located in matches/templates)
 
-This is a simple page that looks for the 10 users with the best average review score across all uploaded recipes.  A table displays the top 10, highlighting the top 3 users.
+There are several versions of the matches page that will display dependant on the 
+circumstances of the match.
+
+1) No match data - If a player clicks to create a match on the group home page, this page
+will detect that no exisitng data is available and that this is a new match booking.
+Therefore a form will be provided where the user can populate all of the relevant details 
+to create the match.  Once created the user is redirected to group home where the 
+match will now appear in the matches row.
+
+2)  Available match data (prematch) - If a player clicks on an existing match on the group home
+page and the date and time of the match have not passed, this page will load with 
+the details of this match in the first section.
+
+Underneath an edit match button is displayed, on click a section will open the same
+as if the match was to be created but prepopulated with the current data.  The user
+can update these details as they see fit and submit for the match to be updated.
+
+There are two buttons also available.  The first email reminders button will send
+an email to all of the players within the group that are yet to confirm their availability
+for the match.  The email has a link that, providing the user is logged in on their device,
+will take them straight to the match page in question. An email can only be sent twice per 
+match so that the rest of the users aren't bombared with request emails.
+
+The generate teams button will take the player to the team generation page.
+
+The final section entitled player availability, lists each group member and their 
+current availability for that game.  The logged in user appears at the top of the list.
+If they have not yet confirmed their availability, their button will be grey and
+titled with 'available?'', upon clicking this but it will change to 'available' and
+then 'unavailable' respectively.
+
+Each of the other group members are listed below with an icon that reflects their 
+current availability dependant on their input.
+
+2)  Available match data (postmatch) - Once the date and time of the match has past,
+the edit match, email reminders and team generation buttons will be removed and 
+as long as the match wasn't listed as cancelled, they will be replaced with a rate 
+performances button which will take the user to the rate performance page.
+
+There will also be an additional column in the player availability section, which 
+will contain a thumbs up for any user that has submitted ratings, and a thumbs 
+down for those that are yet to record their performance ratings.
+
+#### PAGE 10 - TEAM GENERATION PAGE (gen_settings.html - located in team_gen/templates)
+
+On this page, the user is greeted with another list of each group member.  Each members 
+row contains a summary of that player, including their player preferences, average 
+rated attributed in goal and outfield, and their availability as it currently stands.
+
+Next to these are a series of inputs labelled, force include, force exclude, 
+force team and force position.  These are all options that can be selected that will
+overwrite the existing availability and player position preferences when generating teams.
+
+If any player is marked as unavailable or with availability unknown, clicking
+the force include button on that user will ensure that they are still selected within
+a team.  This is useful because if a player can't get online to confirm their 
+availability, the user generating teams can include them in the team selection 
+anyway.
+
+Likewise, if a player has confirmed their availability the team generator will automatically
+select them, so if a player wants to discount them they can click the force exclude 
+option.  Thsi could be useful if there are too many players available for example.
+
+The final two options allow a user to select what team or position they would like to 
+allocate a player to if they have specific preferences.  So if one player can only ever play
+in one position, or is there are two players you always want to seperate it can be
+done here.
+
+Clicking the pick teams button underneath the list will slide in a football pitch 
+with teams listed to take into account any settings the user has forced.  A team score
+will also be displayed to show how the teams compared based on attribute ratings for 
+each member.  
+
+The settings button takes the player back to the settings to be
+amended if necessary.  The regen button allows the teams to be reselected as many
+times a user wishes until they are happy with the balance of the teams.
+
+Finally, there is a save button which will add the teams to the database.  Once a team
+is saved, a button will appear next to the pick teams button to recover the saved teams.
+Those teams are then used for the performance rating page after the match.
+
+#### PAGE 11 - RATE PERFORMANCE PAGE (rate_performance.html - located in matches/templates)
+
+Once the data and time of any given match has past, providing the game wasn't cancelled
+and generated teams had been saved, and providing the user hasn't already saved their ratings
+for the match, the rate performances page will appear via the associated match page.  
+
+Here each of the player that saved saved in the teams (excluding the current user),
+will appear on the screen with the option to choose where the player performed
+good, average or poor.
+
+Once a selection has been made for each player, if the user submits their ratings they
+will be saved to the database, and an average of everybody's ratings for each 
+player will appear in the form section of the profile pages.
+
+#### PAGE 12 & 13 - SUBSCRIPTION & DONATE PAGES (checkout.html - located in subscriptions/templates)
+
+The donate & subscription pages use stripe to accept credit card payments from the 
+user should they wish to donate to the enhancement of the website or extend their
+full license.
+
+Any donations create a record in the database via the subscripions app so it is 
+clear which user donated, when the donation was made and the value.  The same occurs 
+when a user subscribes but their license date also gets updated so that they can 
+view form data once more.
+
+The donation page can be accessed via the footer, where as the link to the subscription 
+page only appears when a users license has expired within the player form section
+of the profile pages.
+
+#### Misc
+
+1) Each page has a loading screen that covers the template for a few seconds while 
+loading built into base.html.  This just helps for the images to load fully before 
+the users see the content.  It is not foolproof and there are other ways this could 
+be implemented, but the setTimeout function that removes the screen is the last 
+piece of code that runs when loading the page so would hopefully have a fairly 
+high success rate in most cases.
+
+2) A message box has also been built into base.html which hides off screen to the
+right of the template.  This will appear if any messages are pushed via the backend 
+and if called via javascript as and when required.  These are used to provide 
+feedback to the user when necessary.
+
+3) Password pages - These are held in the root templates/registartion folder and
+follow the standard method for reseting passwords using the django framework.
 
 ### FUTURE FEATURES:
 
-#### Email updates
-One new feature could be the addition of email updates to inform users when new recipes have been added to attract them back to the site.  
+#### Admin users
+Currently any member of a group can email reminders, generate and save teams,
+view the current password for each group etc.  I plan to introduce admin users 
+(initially the group creator), who can allocated other admin users who are 
+more in control of some of the features.
 
-#### Enhanced recipe details
-In this version of the site the is no allergen information on each individual recipe.  An enhancement could be to build this in so that they user can see the information by recipe rather than by ingredient.
+#### More email updates
+There needs to be a balance of emailed updates but I'm considering the possibility
+of emailing saved teams and possibly created matches too.
 
-#### Recipes of the month
-A page containing the best rated recipes uploaded in the previous month might be a good feature, helping a user keep track of any recent and well received recipes they have yet to try.
+#### Additional team generation options
+I still need to build form into team generation and plan to use form to increase 
+or decrease a players attribute values by 10% dependent on whether their form is
+good, average or poor.  I also intend to introduce other options like a formation to
+choose for each team and a maximum players per team option to name but a few. 
 
 ## TECHNOLOGIES USED:
 
@@ -197,113 +382,175 @@ A page containing the best rated recipes uploaded in the previous month might be
 
 LINK - https://jquery.com/
 
-REASON - Jquery has been used as it provides some very useful methods when working with javascript and these have often been utilised in my javascript code.
+REASON - Jquery has been used as it provides some very useful methods when working 
+with javascript and these have often been utilised in my javascript code.
 
 #### 2: NAME - Google Fonts
 
 LINK - https://fonts.google.com/
 
-REASON - Used to style the two types of fonts incorporated into the style of the site.
+REASON - Used to style the three types of fonts incorporated into the style of the site.
 
 #### 3: NAME - Font Awesome
 
 LINK - https://fontawesome.com/
 
-REASON - Font awesome has been used to incorporate its icons onto the site as it has multiple options to ensure that the icon used is relevant to the content it is being used for, in this case they are mainly used
-in the nav-bar against each navigation option.
+REASON - Font awesome has been used to incorporate its icons onto the site as it 
+has multiple options to ensure that the icon used is relevant to the content 
+it is being used for, in this case they are mainly used in the nav-bar against 
+each navigation option.
 
 #### 4: NAME - SASS
 
 LINK - https://sass-lang.com/
 
-REASON - Sass has really helped me to organise my css code and has some really useful features such as the way it handles media queries which makes this part of styling much less painful.  It also helps the site to load 
-faster through the use of placeholders which are only used when called upon.
+REASON - Sass has really helped me to organise my css code and has some really 
+useful features such as the way it handles media queries which makes this part 
+of styling much less painful.  It also helps the site to load faster through the 
+use of placeholders which are only used when called upon.
 
-#### 4: NAME - FLASK
+#### 5: NAME - chart.js
 
-LINK - http://flask.pocoo.org/
+LINK - https://www.chartjs.org/docs/latest/
 
-REASON - Flask is a microframework that has many useful tools and has been used primarily to create the routing for this website.  Tools such as sessions have also been essential, making it possible for multiple users
-to use the website at once by storing key variables client side.  
+REASON - Chart js is used on the site to create a radar chart which is a visual
+representation of a players attribute ratings.  I found chart js very easy to 
+use and it does exactly what I wanted to achieve when designing the website.
 
-#### 5: NAME - JINJA2
+#### 6: NAME - Circletype js
 
-LINK - http://jinja.pocoo.org/
+Link https://circletype.labwire.ca/
 
-REASON - Jinja2 is a full featured template engine for Python.  It has enabled data to be passed from Python to the html templates and also allows logic to be used inside of the template to assist in DRY coding.
+REASON - Circle type is a js library that can cureve words contained with the
+template.  I used this to curve the names on the back of the shirts that represent 
+each user to give the shirts a more authentic look.
 
-#### 6: NAME - MONGODB / PYMONGO & MLABS
+#### 7: NAME - Stripe
 
-REASON - I chose to use a mongodb database because I liked the modern syntax used to perform CRUD functionality.  PYMONGO is a program that helps Python speak to the mongo database and mlabs is a great platform that allows 
-you to set up, view and amend your data via the browser.
+Link - https://stripe.com/gb/
+
+Stripe allows me to take credit card payments through my website though behind
+the scenes javascript code.  This is necessary on my site to ensure users can
+renew their licences or make donations.
+
+#### 8: NAME - Django 
+
+Link - https://www.djangoproject.com/
+
+Django is the framework I have used to create my site.  By using a combination
+of views, urls, forms and models, the site is very easy to work on and has 
+many built in features as standard that makes the whole process of building the 
+site better and faster.
 
 ## WEBSITE WORKINGS:
 
-### APP.PY
+### Django
 
-The workings of the website have been broken down various sections in the app.py file and each of the more complex functions have been annotated to help other developers understand how they work.  However, 
-here is a quick breakdown of each of the sections and their purpose:
+My site has been broken down into 6 main apps, these are ACCOUNTS, GROUPS,
+MATCHES, PROFILE_AND_STATS, SUBSCRIPTIONS and TEAM_GEN.  Each plays a specific role 
+for the site and have been described within the features section.
 
-1) USER MANAGEMENT FUNCTIONS
+I use a number of one to one, one to many and many to many relationships between 
+the models located within each of the apps to ensure that data is linked and 
+behaves in the way I have designed it to.  
 
-Any user, registered or unregistered can use this website but only registered users can add or review a recipe.  These functions are all based around user management.  Throughout these functions, user data is 
-written to the mlabs database via the respective view and some of this data is passed client side into the session['user'] variable for the site to identify when a user is active.  
+The views for these pages often receive post requests with data that is then manipulated
+in some way to ensure the intended data is correctly saved to the database.  However
+some views recieve data via a javascript ajax POST function to ensure that the 
+user gets the best possible experience when using the site and to ensure that
+unnecessary page refreshes are kept to a miunimum and do not interupt their experience.
 
-There is a function to add a new user using the created 'user' class, a function to update a users details and a function to validate a users password and behave accordingly dependant on the outcome.
-
-2) DATABASE HELPER FUNCTIONS
-
-There are a few functions that follow that help manage data that is going into and coming out of the database.  
-
-The recipe already exists function will ensure that an author cannot enter a recipe with the same name twice to avoid any recipe duplication or issues with what data is pulled on each occasion.  The review is present function checks
-to see if a user has already added a review so that they cannot add multiple reviews to one recipe.  The website recipe data function will pull a summary of the recipes that currently sit in the database.
-
-3) VIEWs
-
-The views within the final section are written to perform the CRUD functions that exist within the site and use the standard Mongodb CRUD operations code to update the database in various ways.  Some aggregation is used to 
-ensure that the data being requested is narrowed down to the exact data required when performing these operations.
-
-In addition to the CRUD operations, the recipes view contains code that allows the recipes page to be filtered by the user.  This works by taking a number of parameters and arguments from the user and storing them in the user session 
-if they are provided to then filter which recipes the user sees.
+Their is often quite a lot of data passed into the templates which can sometimes
+require a moderate amount of template logic to ensure the right data is shown and 
+in the intended fashion.  Some of this might have been better served in the 
+backend and this is something for me to consider going forward.
 
 ### MAIN.JS
 
-The javascript file also provides a number of functions that have been built in to give the user the best possible experience when adding and editing recipes in particular.  By using ajax within the js code, I have been able to both call and
-pass data in real time to the mongo database via ajax promises so that the user does not have to constantly refresh the page when building or editing their recipe.  Here is a quick rundown of some of the more complex functions:
+There are many simplistic helper functions held within the main js file but there 
+are also a few more substantial ones that require futher explanation.  Here is 
+a quick run down of the more complex inner workings...
 
-1) loadData()
+1) TEAM GENERATION - runTeamGenerationPromises()
 
-There are three main collections within the database when it comes to the recipes, these are the recipes themselves, the ingredients and the recipe reviews.  Load data fetches this information via the promise so that is available to manipulate
-on the page.  If there are any issues in retrieving the data the user is alerted via a message box and asked to try again later.
+When invoked, this function activates a series of functions managed via promises
+to ensure that a) the code that creates the generated teams is compartmentalised
+and easier to follow, and b) to ensure that the data is successfully updated from
+one stage to the next to ensure the intended end result.
 
-2) createThisRecipeData()
+To summarise the process here, the first function is a promise that takes all 
+of the data necessary to create teams from the template which had been loaded in
+from the database when calling the page, including any parameters the user has
+set by clicking the option buttons or choosing specific team and playing positions.
 
-This function takes the data received from loadData and processes it to ensure that the users sees the correct recipe information on the page.  This works on view_recipe.html and edit_recipe.html so that the user can update the recipe, 
-the ingredients or the reviews in real time without having to refresh the page.  HTML is added to the page based on the information within the database and additional icon buttons are added if the user is editing the recipe.  These icons link to
-other helper functions in the form of ajax calls which update the database in real time based on the information passed through the function.  This all helps create a fluid user experience and removes any frustration associated to having to 
-wait while a page refreshes!
+This data is then past function to function via the promises sequence and updated
+to produce a final list of players with allocated playing positions and team numbers
+in the most even way possible (with an element of random behavour that allows the 
+teams to be regenerated with a different result, even though the same criteria
+maybe reused). Finally, the created teams are then appended to the relevant places 
+on template within the pitch to show the user the resulting teams.
+
+The overall process works really well but could be improved upon to take into 
+account more factors such as fairer uneven teams.
+
+2)  AJAX FUNCTIONS - preparePostData(type, data) & postToDatabase(url, data, route)
+
+There are a number if instances where I wanted the user to be able to make a choice
+that saved information to the database without them being interputed by having to reload 
+the page (such as playing position preferences and match availability).  Therefore 
+I created these two functions to enable me to do this in the best way possible.
+
+preparePostData() gets data ready and in the correct format with the required 
+accompanying information to make sure it is posted to the database correctly. Once 
+it has been used to successfully manage the data and the route information, it is then
+passed to the postToDatabase() function for processing.  The relevant django view 
+will then handle the data and once information is passed back from the backend,
+this fuction will handle feedback to the user or the required subsequent actions 
+accordingly, dependant on the type of request and the outcome of it.
+
+This all helps keep the code tidy and working together with the sole reason
+of providing the user with the best and smoothest experience when using the site.
+
+CSRF tokens are also required for django to process the data received from the ajax
+POST, the prepareCSRFToken() function handles this and was taken from the following
+article in order to achieve the required result...
+
+https://realpython.com/django-and-ajax-form-submissions/
 
 ## WEBSITE TESTING:
 
 #### UX
 
-The website has been designed to meet the needs of the users described in the user stories section.  Here is a brief run down of how each has been met - 
+Story 1:  As a regular football player, I want to easily organise our matches with friends
 
-Story 1:  As a foodie, I want to view many different recipes and try some that I like.
+REFLECTION - After create a group and getting other people to join it, it's really
+easy to create matches with relevant details, send email reminders with links
+and get fellow users to confirm their availability, so this is a definate pass!
 
-REFLECTION - There are a few test recipes on the site that might reflect what a user would add.  Providing the website took off and built a small following, I would be very confident that this purpose would be fulfilled.
+Story 2: As a footballer, I'd like to know what my fellow peers think of my skills
+and performance to help guide me where I need to improve
 
-Story 2: As a cook, I want to share my recipes with other people.
+REFLECTION - Both attributes and performance can be rated for each player and 
+viewed via the profile screens, this use will be very happy I'm sure!
 
-REFLECTION - The process of adding and updating recipes has been streamlined to make it very easy for a user to share their dishes.  I have no doubt that this user is well looked after!
+Story 3:  As a regular football player, I want to remove the hassle of having to pick 
+even teams for each game and want to reduce the time lost at the start of each match
+selecting teams
 
-Story 3:  As a cook, I want to get feedback on my recipes from other people.
+REFLECTION - THe team generation feature has this need covered and provides
+pleanty of options for the user to tweek their team selections as desired.
 
-REFLECTION - The reviews feature is simple yet effective and carries across a number of pages where the scores can be seen in plain sight.  Mission accomplished.
+Story 4:  As a regular footballer who often players with new players, I'd like to 
+know more about my team mates before playing so I know what they look like and 
+what to call them
 
-Story 4:  As a student, I need inspiration on what easy / nice meals to eat!
+REFLECTION - Provide users update their details, it's really easy to click on a 
+team mates profile and view more information about them before the match, even
+if you didn't know them before the game.
 
-REFLECTION - I'm sure my site would be of particular interest to students.  Hopefully the database of recipes will continue to build and give our users many more choices!
+The site has been used by my group for a number of weeks now and I've received 
+some good feedback.  I'm very confident that all of the above users will be 
+accounted for.
 
 #### STYLING / FUNCTIONALITY
 
@@ -602,30 +849,15 @@ when the site is run, the app knows that it must be the live version of the site
 ## CREDITS:
 
 Content - 
-1)  The sites home page features a quote from Austrian Chef, Wolfgang Puck.  This is credited on the site as part of the quote.
+
+All content on the site is original material I created.
 
 Media - 
 
-All static pictures used have been taken from https://unsplash.com/ - a license free media sharing website:
-
-1) File Name - grilled-salmon-cubes-with-vegitables.jpg  Source - https://www.foodiesfeed.com/free-food-photo/grilled-salmon-cubes-with-vegetables/download/
-2) File Name - poached-eggs-beans-and-bacon.jpg  Source - https://www.foodiesfeed.com/free-food-photo/eating-high-protein-brunch-with-poached-eggs-beans-and-bacon-2/download/
-3) File Name - brooke-lark-158019-unsplash.jpg Source - https://unsplash.com/search/photos/food
-4) File Name - rustic-vegan-756636-unsplash.jpg Source - https://unsplash.com/search/photos/food
-5) File Name - elli-o-65548-unsplash.jpg Source - https://unsplash.com/photos/-YHSwy6uqvk
-6) File Name - ali-yahya-270126-unsplash.jpg Source - https://unsplash.com/search/photos/chef
-7) File Name - simple-322427-unsplash.jpg Source - https://unsplash.com/search/photos/chef
-8) File Name - shane-rounce-405329-unsplash.jpg Source - https://unsplash.com/search/photos/food
-9) File Name - bobby-rodriguezz-1052701-unsplash.jpg Source - https://unsplash.com/search/photos/food
-10) File Name - valeriy-evtushenko-1077286-unsplash.jpg Source - https://unsplash.com/search/photos/food-ingredients
-11) File Name - fancycrave-458022-unsplash.jpg Source - https://unsplash.com/search/photos/food-ingredients
-12) File Name - adils-photography-419432-unsplash.jpg Source - https://unsplash.com/search/photos/ingredients-recipe
-13) File Name - angela-pham-472148-unsplash.jpg Source - https://unsplash.com/search/photos/food-meat
-14) File Name - benjamin-faust-19712-unsplash.jpg Source -  https://unsplash.com/search/photos/food-meat-black-and-white
-15) File Name - nick-karvounis-624439-unsplash - Photo by Nick Karvounis on Unsplash
-16) File Name - static/images/rawpixel-600789-wall.jpg Source - https://unsplash.com/photos/VGSnjOVNj4w
-
-These pictures were then compressed using optimizilla - https://imagecompressor.com/
+All photos are ones I have taken with friends at matches we have played in with
+the exception of stadium.png which was taken by myself at a professional football 
+match I attended.  The favicon image and shirt images were ones I created via 
+ms paint.
 
 ## AREAS FOR IMPROVEMENT:
 

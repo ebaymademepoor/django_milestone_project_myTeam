@@ -155,18 +155,17 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-if development == False:
-    
-    """
-    I use this if I want to use local static files and not have to keep using 
-    collectstatic to see changes to my styling.  It also ensures that jamine 
-    tests run without having to get around AWS 403 permission errors.ArithmeticError
-    
-    However, the above line must be commented out to collect static periodically
-    to send to AWS storage.
-    """
-    
-    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+"""
+I use this if I want to use local static files and not have to keep using 
+collectstatic to see changes to my styling.  It also ensures that jamine 
+tests run without having to get around AWS 403 permission errors.ArithmeticError
+
+However, the above line must be commented out to collect static periodically
+to send to AWS storage.
+"""
+
+# if development == False:    
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
 STATICFILES_LOCATION = 'static'
 STATIC_URL = '/static/'

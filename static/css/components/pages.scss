@@ -88,6 +88,37 @@
     }
 }
 
+.video-section {
+    background-color: $brand-irises-green;
+    color: $white;
+    padding: 20px 0;
+    
+    h2 {
+        text-align: center;
+        padding: 20px 0;
+    } 
+    
+    .video-container {
+        height: 280px;
+        width: 210px;
+        margin: 0 auto;
+        
+        @include tablet {
+            height: 340px;
+            width: 255px;
+        }
+        
+        @include laptop {
+            height: 500px;
+            width: 375px;
+        }
+    }
+    
+    a {
+        margin-top: 20px;
+    }
+}
+
 // get_started.html ------------------------------------------------------------
 .sign-in-section,
 .sign-up-section {

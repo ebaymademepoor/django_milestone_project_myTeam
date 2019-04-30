@@ -639,6 +639,28 @@ footer {
       padding: 20px 20px;
       font-size: 0.8em; } }
 
+.video-section {
+  background-color: #007849;
+  color: #fff;
+  padding: 20px 0; }
+  .video-section h2 {
+    text-align: center;
+    padding: 20px 0; }
+  .video-section .video-container {
+    height: 280px;
+    width: 210px;
+    margin: 0 auto; }
+    @media (min-width: 768px) {
+      .video-section .video-container {
+        height: 340px;
+        width: 255px; } }
+    @media (min-width: 1440px) {
+      .video-section .video-container {
+        height: 500px;
+        width: 375px; } }
+  .video-section a {
+    margin-top: 20px; }
+
 .sign-in-section,
 .sign-up-section {
   position: relative;

@@ -5,6 +5,9 @@
 {% block content %}
 
 <div class="page-container group-home">
+    
+    <!--Heade section contains details of the group-->
+    
     <section class="header">
         <div class="container group-box">
             <div class="container group-details-container">
@@ -35,12 +38,15 @@
             <button id="show-password" class="click-shrink hover-effect-brand-green">Show Password</button> 
         </div>
     </section>
+    
     <section class="content">
         <div class="matches-box">
             <div class="row">
                 <h3>Recent / Upcoming Matches</h3>
                 <a href="{% url 'matches' group_data.pk 0 %}" class="link-btn add-a-match-btn click-shrink hover-effect-gold"><i class="fas fa-plus-square"></i></a> 
             </div> 
+            
+            <!--If matches have already been created they will show here-->
             
             {% if matches %}
                 <div class="row matches-row">
@@ -75,7 +81,9 @@
             <div class="stick-to-top">
                 <div class="header-container">
                     <h2>Group members</h2>
-                
+                    
+                    <!--The logged in users link will show next to the header-->
+                    
                     <div class="container member-container">
                         <div class="user-container">
                             <a class="shirt click-shrink grow" href="{% url 'player-profile' this_user.pk group_data.pk %}">
@@ -99,6 +107,9 @@
                     <div class="last-rated-key key"></div><label>Date last rated</label>
                 </div>
             </div>
+            
+            <!--Any other members will show in this section-->
+            
             <div class="wrap-rows-on-tablet">
                 {% for user in group_data.users.all %}
                     {% if this_user != user %}
@@ -114,6 +125,8 @@
                                     </span>
                                 </a>
                             </div>
+                        
+                        <!--If players have been rated those details will be shown here-->
                         
                         {% if user|lower in players_i_have_rated.all|lower %}
                             {% for rating in players_i_have_rated.all %}

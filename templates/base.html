@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Staatliches|Great+Vibes" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/fontawesome-free-5.7.2-web/css/all.min.css' %}" type="text/css" />
     <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=2.18" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=2.20" type="text/css" />
     
     <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/circletype/dist/circletype.min.js' %}"></script>
@@ -20,6 +20,9 @@
     
 </head>
 <body>
+    
+    <!--Nav bar for the site-->
+    
     <nav>
         <div class="nav-content-container">
             <div class="logo click-shrink">
@@ -37,6 +40,8 @@
         </div>
     </nav>
     
+    <!--This loading screen covers the page while the page loads-->
+    
     <div class="loading-screen">
         <div class="container">
             <div class="logo click-shrink">
@@ -50,6 +55,7 @@
         
     </div> 
     
+    <!--Messages box will appear as and when messages are required-->
 
     <div class="messages-box start-off-screen">
         <button class="close-parent-btn"><i class="far fa-window-close"></i></button> 
@@ -60,10 +66,14 @@
     
     <h1>{% block page_heading %}{% endblock %}</h1> 
     
+    <!--Everything between the nav and footer will be held within the site container-->
+    
     <div class="site-container">
         {% block content %}
         {% endblock %}
     </div>
+    
+    <!--Footer for the site-->
     
     <footer class="flex-center-content">
         <div class="footer-content-container">
@@ -81,6 +91,6 @@
         </div>    
     </footer>
     
-    <script type="text/javascript" src="{% static 'js/scripts/main.js' %}?v=2.18"></script>
+    <script type="text/javascript" src="{% static 'js/scripts/main.js' %}?v=2.20"></script>
 </body>
 </html>

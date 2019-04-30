@@ -4,6 +4,9 @@
 
 {% block content %}
 <div class="page-container rate-performance-page">
+    
+    <!--This container will display while waiting for js ajax responce-->
+    
     <div class="please-wait start-off-screen">
         <div class="container">
             <p>Please Wait</p>
@@ -16,6 +19,7 @@
          <h2>Rate Players</h2> 
     </section>
     
+    <!--A summary of the match being reviewed-->
     
     <section class="match-data">
         {% if match_data %}
@@ -32,6 +36,9 @@
         {% endif %}
         
     </section>
+    
+    <!--Each player in the saved teams will display for review-->
+    
     <section class="user-info-section players-to-rate">
         {% if players_to_rate.length <= 1 %}
             <p>{{ players_to_rate }}</p> 

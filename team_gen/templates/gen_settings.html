@@ -26,6 +26,8 @@
                     </div>
                 </div>
                 
+                <!--Every group member will be displayed here-->
+                
                 {% for user in group_data.users.all %}
                     <form class="row player-data-row">
                         <div class="inner-container">
@@ -122,6 +124,8 @@
                                 </div>
                             {% endif %}
                             
+                            <!--All selectable team options are displayed next to each user-->
+                            
                             <div class="gen-options-box">
                                 <label class="switch">
                                     <input type="checkbox" name="force-pick" value="true">
@@ -167,6 +171,9 @@
             </div>
             
         </section>
+        
+        <!--When pick teams is clicked, the pitch with the calculated teams will display-->
+        
         <section class="user-playing-positions-section start-off-screen">
             <div class="header">
                 <h4>Generated Teams</h4>

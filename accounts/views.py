@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import user_passes_test
 
 def index(request):
     """
-    Returns the index.html files
+    Returns the index.html page
     """
     return render(request, 'index.html')
 
@@ -141,7 +141,7 @@ def contact_us(request):
 def jasmine(request):
     
     """
-    Runs js testing suite
+    Runs js testing suite (superuser access only)
     """
         
     return render(request, 'jasmine.html')

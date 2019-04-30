@@ -13,6 +13,8 @@
          <a class="group-rtn-btn link-btn click-shrink hover-effect-gold" href="{% url 'group-home' groupid %}">Back</a>
     </section>
     
+    <!--If match data is present, it will display here in a summary-->
+    
     <section class="match-data">
         {% if match_data %}
             <div class="container overview-container">
@@ -51,6 +53,8 @@
             
         {% endif %}
         
+        <!--If a match hasnt taken place yet, the user will receive the following options...-->
+        
         {% if not match_data.match_completed %}
             {% if match_data %}
                  <form class="start-hidden match-form" method="POST" action="{% url 'add-edit-match' groupid matchid %}">
@@ -58,6 +62,9 @@
             {% else %}
                 <form class="match-form" method="POST" action="{% url 'add-edit-match' groupid matchid %}">
             {% endif %}
+            
+                    <!--If there is no match data the user will see a blank form to create a match-->
+            
                     {% csrf_token %}
                     <div class="row form-row alt-grass">
                         <label for="date_of_match">Date: </label>
@@ -89,6 +96,8 @@
                 </form>
         {% endif %} 
     </section>
+    
+    <!--A user can send an email to ask other users for their availability here-->
     
     {% if match_data %}
         {% if not match_data.match_completed %}
@@ -151,11 +160,7 @@
             </div>
         </div>
         
-        
         <!--Has any user logged their availability yet?  If so....-->
-        
-        
-        
         
         {% if avail_data|lower != "<QuerySet []>"|lower %}
         

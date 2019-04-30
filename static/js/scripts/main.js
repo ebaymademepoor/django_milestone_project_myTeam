@@ -84,7 +84,7 @@ function collectFormData(type, formName) {
     // Collects any form data ready to be POSTED via ajax
 
     var formData = $(type + formName).serializeArray(); // The serialized new data entered into the form
-    var error
+    var error = false
     // Check is any values are blank or not filled in
 
     for (i = 0; i < formData.length; i++) {
@@ -471,8 +471,6 @@ function assignForcedPositions(teamsData) {
             thisPlayer["picked-position"] = thisPlayer["force-position"].toLowerCase();
         }
     })
-    
-    console.log(stringify(teamsData))
 
     return teamsData;
 }
@@ -507,11 +505,6 @@ function setupTeams(teamData){
                 positionsOfPlayers[index][playerPosition] += 1;
             }
         })    
-        
-        console.log(stringify(assignedPlayers))
-        console.log(stringify(unassignedPlayers))
-        console.log(stringify(positionsOfPlayers))
-        
         
         return {"assignedPlayers" : assignedPlayers, "unassignedPlayers" : unassignedPlayers, "positionsOfPlayers" : positionsOfPlayers};
 }
@@ -847,8 +840,6 @@ function postToDatabase(url, data, route) {
                 }
             } else if (url === "../../email_availability_reminder/") {
                 $(".ani-holder").fadeOut(500);
-                console.log(json["result"])
-                console.log(json["emails-sent"])
                 
                 if (json["result"] == 'Update successful!') {
                     if(json["emails-sent"] === "One"){
@@ -885,7 +876,6 @@ function postToDatabase(url, data, route) {
                 if (json["result"] == 'Update successful!') {
                     if(url !== "../update_position_pref/"){
                         displayMessage("GOAL!  Details updated...");    
-                        console.log(json["result"]);
                     }
                 } else {
                     displayMessage("Hmmm, we're not sure that worked, please try later...");

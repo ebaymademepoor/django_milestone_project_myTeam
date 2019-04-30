@@ -98,7 +98,7 @@ before registering.
 A footer resides at the bottom of the page containing links to the about us, get
 in touch, and donate pages.
 
-### PAGES 2 & 3 - ABOUT US & GET STARTED PAGES (located in root templates folder)
+#### PAGES 2 & 3 - ABOUT US & GET STARTED PAGES (located in root templates folder)
 
 The about us and get started pages are just here to give the user a little bit of 
 additional information about the site and a contact email address should they 
@@ -548,33 +548,61 @@ accounted for.
 Each element on the site has been manually tested to ensure it functions as intended as follows:
 
 **Test 1** - On home page, logo is clicked - reloads home page - SUCCESS
+
 **Test 2** - On home page, clicked get started, redirected accordingly - SUCCESS
+
 **Test 3** - On home page, clicked get started btn, redirected accordingly - SUCCESS
+
 **Test 4** - On footer, clicked about us btn, redirected accordingly - SUCCESS
+
 **Test 5** - On footer, clicked get in touch btn, redirected accordingly - SUCCESS
+
 **Test 6** - On footer, clicked get donate btn while logged in, redirected accordingly - SUCCESS
+
 **Test 7** - On get started page, clicked sign in, form appeared and could log in - SUCCESS
+
 **Test 8** - On get started page, clicked sign in and forgot password text, redirected accordingly - SUCCESS
+
 **Test 9** - On get started page, clicked sign up, form appeared and could register - SUCCESS
+
 **Test 10** - On profile page, clicked choose from btn, selected photo and update btn, picture displays instead of shirt - SUCCESS
+
 **Test 11** - On profile page, clicked each data btn to update personal details, details updated and confirmation message displays - SUCCESS
+
 **Test 12** - On profile page, clicked each playing position, details updated and confirmation message displays - SUCCESS
+
 **Test 13** - On profile page, when a players license is out of date, I can click a renew btn to redirect to checkout page and pay for an extension - SUCCESS
+
 **Test 14** - On group-select page, clicked create new group btn, form displays and creates group - SUCCESS
+
 **Test 15** - On group-select page, clicked join group btn, form displays and player joins group - SUCCESS
+
 **Test 16** - On group-select page, any groups joined display in groups section with relevant details - SUCCESS
+
 **Test 17** - On group-home page, clicking show password button displays then hides the password - SUCCESS
+
 **Test 18** - On group-home page, clicking plus btn in matches section takes you to create a match page - SUCCESS
+
 **Test 19** - On group-home page, clicking on a created match takes you to match page - SUCCESS
+
 **Test 20** - On group-home page, clicking on another users shirt takes you to their profile page - SUCCESS
+
 **Test 21** - On player profile page, I can update that users attributes and see their form - SUCCESS
+
 **Test 22** - On matches page, I can click to update my availability between available and unavailable - SUCCESS
+
 **Test 23** - On matches page, I can click email reminders btn to send an email - SUCCESS
+
 **Test 24** - On matches page, I can click edit match which reveals the existing match details that I can update - SUCCESS
+
 **Test 25** - On matches page, I can click generate teams btn to be redirected to team gen page - SUCCESS
+
 **Test 26** - On team gen page, I can generate a team by selecting relevant parameters and clicking pick teams btn - SUCCESS
+
 **Test 27** - On team gen page, I can generate save a team by clicking the save btn and view it using the saved teams btn - SUCCESS
+
 **Test 28** - On matches page, when a game is completed and a team was saved, I can click the rate players btn to be redirected accordingly - SUCCESS
+
 **Test 29** - On rate players page, I can rate each player and submit my ratings which save - SUCCESS
 
 These tests have also been performed in different orders to ensure the result 
@@ -883,7 +911,7 @@ STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 However, if you wish to refresh your development site without having to collectstatic,
 the settings should be as follows...
 
-# if development == False:    
+if development == False:    
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     
 Collecting static with these settings will result in a folder being created in the 

@@ -1,20 +1,7 @@
-
 [![Build Status](https://travis-ci.org/ebaymademepoor/django_milestone_project_myTeam.svg?branch=master)](https://travis-ci.org/ebaymademepoor/django_milestone_project_myTeam)
-
-Collect static - version numbers
-
-
-
-
-NOTE - Newly created super user must create a profile in django admin after being added via terminal or profile page will not display, a profile per user is required
-
-Bugs - photo orientation / compression
-
-commercial opportunity
 
 # FULL STACK FRAMEWORKS WITH DJANGO PROJECT NAME: MY TEAM
 ## NAME:  GIANCARLO FIORLETTA
-
 
 ## INTRODUCTION:
 
@@ -68,9 +55,9 @@ experience on a weekly basis when organising our football matches.
 
 ### WIREFRAMES:
 
-The wirefames (found in the wireframes_and_design_notes folder) provide a good early 
+The wireframes (found in the wireframes_and_design_notes folder) provide a good early 
 indication of how I wanted the site to look and feel.  The final site has stayed very 
-close to this orioginal design but has been modified to try and make it more user 
+close to this original design but has been modified to try and make it more user 
 friendly.
 
 After consideration of names, approach and colour schemes I decided to use a green,
@@ -99,7 +86,7 @@ page.  If logged in the user has links to their profile and the groups select pa
 as well as having the option to log out.
 
 This is followed by three sections, all of which have been styled based on the sites
-brand colors, which includes the images which have been monotoned to each section
+brand colours, which includes the images which have been monotoned to each section
 colour using https://manytools.org/image/colorize-filter/
 
 Each section contains a brief description of the features of the site followed
@@ -145,13 +132,13 @@ by clicking the appropriate heading.  The updateable headings have an inner shad
 to make them look a little raised like a button.  
 
 Their registration date and license expiry date are shown at the bottom of the list.  
-Each user will get a full lisence for 30 days upon registration.  Once this expires 
+Each user will get a full license for 30 days upon registration.  Once this expires 
 they will no longer be able to view their or any of their peers form section unless 
 they renew their license.  This is the only feature currently affected by the license
 so a user can still use the site perfectly well even without a license.
 
 Next is the user playing positions section.  The user can click each of the attack, 
-midfield, defense and goalkeeper positions on the pitch to select their playing
+midfield, defence and goalkeeper positions on the pitch to select their playing
 preferences between preferred, can play and can't play.  This will then be stored 
 in the database and taken into consideration when teams are selected via team 
 generation.
@@ -159,7 +146,7 @@ generation.
 The user attributes section will show the user how their attributes have been 
 rated on average by their peers in the areas of goalkeeping, passing, defending, finishing 
 and movement, the latter four of which aggregate to their overall outfield score.
-The section also show how many users have voted them and displays a chart.js 
+The section also shows how many users have voted them and displays a chart.js 
 radar graph underneath which gives them a visual representation of their skills.
 
 Finally their form section.  If the users license is in date, their average all time
@@ -184,12 +171,12 @@ Other than that both pages are very similar!
 
 #### PAGE 7 - GROUP SELECT (group-select.html - located in groups/templates):
 
-Groups can be created by a user or a user can join an exisiting group.
+Groups can be created by a user or a user can join an existing group.
 The group links to both users and matches and is the hub of the entire site,
 using information from all other apps.
 
 Initially the user can click the create a group button and start a brand new group,
-or join an exisitng one as long as they have the group id and password.  Either 
+or join an existng one as long as they have the group id and password.  Either 
 option will bring up the appropriate form to complete.
 
 For any groups that the user is a member of, these will appear on the page displaying
@@ -208,7 +195,7 @@ select page.  The following row displays the group ID number and an option to
 display the groups password, these details can be passed on to other users to allow
 friends to join the group.  
 
-Next is the matches section which shows any matches that have been organised.  Upto
+Next is the matches section which shows any matches that have been organised.  Up to
 8 matches will be displayed in this row.  The first will be the match arranged for no
 more than 7 days previous and then the proceeding 7 matches from that date.  So even
 if a team has a game each day, they will still be able to access the next upcoming 
@@ -235,12 +222,12 @@ There are several versions of the matches page that will display dependant on th
 circumstances of the match.
 
 1) No match data - If a player clicks to create a match on the group home page, this page
-will detect that no exisitng data is available and that this is a new match booking.
+will detect that no existng data is available and that this is a new match booking.
 Therefore a form will be provided where the user can populate all of the relevant details 
 to create the match.  Once created the user is redirected to group home where the 
 match will now appear in the matches row.
 
-2)  Available match data (prematch) - If a player clicks on an existing match on the group home
+2)  Available match data (pre-match) - If a player clicks on an existing match on the group home
 page and the date and time of the match have not passed, this page will load with 
 the details of this match in the first section.
 
@@ -252,7 +239,7 @@ There are two buttons also available.  The first email reminders button will sen
 an email to all of the players within the group that are yet to confirm their availability
 for the match.  The email has a link that, providing the user is logged in on their device,
 will take them straight to the match page in question. An email can only be sent twice per 
-match so that the rest of the users aren't bombared with request emails.
+match so that the rest of the users aren't bombarded with request emails.
 
 The generate teams button will take the player to the team generation page.
 
@@ -265,7 +252,7 @@ then 'unavailable' respectively.
 Each of the other group members are listed below with an icon that reflects their 
 current availability dependant on their input.
 
-2)  Available match data (postmatch) - Once the date and time of the match has past,
+2)  Available match data (post-match) - Once the date and time of the match has past,
 the edit match, email reminders and team generation buttons will be removed and 
 as long as the match wasn't listed as cancelled, they will be replaced with a rate 
 performances button which will take the user to the rate performance page.
@@ -292,11 +279,11 @@ anyway.
 
 Likewise, if a player has confirmed their availability the team generator will automatically
 select them, so if a player wants to discount them they can click the force exclude 
-option.  Thsi could be useful if there are too many players available for example.
+option.  This could be useful if there are too many players available for example.
 
 The final two options allow a user to select what team or position they would like to 
 allocate a player to if they have specific preferences.  So if one player can only ever play
-in one position, or is there are two players you always want to seperate it can be
+in one position, or if there are two players you always want to separate, it can be
 done here.
 
 Clicking the pick teams button underneath the list will slide in a football pitch 
@@ -318,7 +305,7 @@ Once the data and time of any given match has past, providing the game wasn't ca
 and generated teams had been saved, and providing the user hasn't already saved their ratings
 for the match, the rate performances page will appear via the associated match page.  
 
-Here each of the player that saved saved in the teams (excluding the current user),
+Here each of the players that are saved in the teams (excluding the current user),
 will appear on the screen with the option to choose where the player performed
 good, average or poor.
 
@@ -332,12 +319,12 @@ The donate & subscription pages use stripe to accept credit card payments from t
 user should they wish to donate to the enhancement of the website or extend their
 full license.
 
-Any donations create a record in the database via the subscripions app so it is 
+Any donations create a record in the database via the subscriptions app so it is 
 clear which user donated, when the donation was made and the value.  The same occurs 
 when a user subscribes but their license date also gets updated so that they can 
 view form data once more.
 
-The donation page can be accessed via the footer, where as the link to the subscription 
+The donation page can be accessed via the footer, where as the link to the subscriptions
 page only appears when a users license has expired within the player form section
 of the profile pages.
 
@@ -345,7 +332,7 @@ of the profile pages.
 
 1) Each page has a loading screen that covers the template for a few seconds while 
 loading built into base.html.  This just helps for the images to load fully before 
-the users see the content.  It is not foolproof and there are other ways this could 
+the users see the content.  It is not fool proof and there are other ways this could 
 be implemented, but the setTimeout function that removes the screen is the last 
 piece of code that runs when loading the page so would hopefully have a fairly 
 high success rate in most cases.
@@ -355,16 +342,16 @@ right of the template.  This will appear if any messages are pushed via the back
 and if called via javascript as and when required.  These are used to provide 
 feedback to the user when necessary.
 
-3) Password pages - These are held in the root templates/registartion folder and
-follow the standard method for reseting passwords using the django framework.
+3) Password pages - These are held in the root templates/registration folder and
+follow the standard method for resetting passwords using the django framework.
 
 ### FUTURE FEATURES:
 
 #### Admin users
 Currently any member of a group can email reminders, generate and save teams,
 view the current password for each group etc.  I plan to introduce admin users 
-(initially the group creator), who can allocated other admin users who are 
-more in control of some of the features.
+(initially the group creator), who can allocate other admin users.  These users 
+would then be more in control of some of the features for their groups.
 
 #### More email updates
 There needs to be a balance of emailed updates but I'm considering the possibility
@@ -421,7 +408,7 @@ use and it does exactly what I wanted to achieve when designing the website.
 
 Link https://circletype.labwire.ca/
 
-REASON - Circle type is a js library that can cureve words contained with the
+REASON - Circle type is a js library that can curve words contained within the
 template.  I used this to curve the names on the back of the shirts that represent 
 each user to give the shirts a more authentic look.
 
@@ -442,6 +429,10 @@ of views, urls, forms and models, the site is very easy to work on and has
 many built in features as standard that makes the whole process of building the 
 site better and faster.
 
+#### 9: NAME - Amazon Web Services 
+
+I am using an AWS S3 bucket to store all static and user generated media files.
+
 ## WEBSITE WORKINGS:
 
 ### Django
@@ -456,11 +447,11 @@ behaves in the way I have designed it to.
 
 The views for these pages often receive post requests with data that is then manipulated
 in some way to ensure the intended data is correctly saved to the database.  However
-some views recieve data via a javascript ajax POST function to ensure that the 
+some views receive data via a javascript ajax POST function to ensure that the 
 user gets the best possible experience when using the site and to ensure that
-unnecessary page refreshes are kept to a miunimum and do not interupt their experience.
+unnecessary page refreshes are kept to a minimum and do not interrupt their experience.
 
-Their is often quite a lot of data passed into the templates which can sometimes
+There is often quite a lot of data passed into the templates which can sometimes
 require a moderate amount of template logic to ensure the right data is shown and 
 in the intended fashion.  Some of this might have been better served in the 
 backend and this is something for me to consider going forward.
@@ -468,7 +459,7 @@ backend and this is something for me to consider going forward.
 ### MAIN.JS
 
 There are many simplistic helper functions held within the main js file but there 
-are also a few more substantial ones that require futher explanation.  Here is 
+are also a few more substantial ones that require further explanation.  Here is 
 a quick run down of the more complex inner workings...
 
 1) TEAM GENERATION - runTeamGenerationPromises()
@@ -485,7 +476,7 @@ set by clicking the option buttons or choosing specific team and playing positio
 
 This data is then past function to function via the promises sequence and updated
 to produce a final list of players with allocated playing positions and team numbers
-in the most even way possible (with an element of random behavour that allows the 
+in the most even way possible (with an element of random behaviour that allows the 
 teams to be regenerated with a different result, even though the same criteria
 maybe reused). Finally, the created teams are then appended to the relevant places 
 on template within the pitch to show the user the resulting teams.
@@ -496,7 +487,7 @@ account more factors such as fairer uneven teams.
 2)  AJAX FUNCTIONS - preparePostData(type, data) & postToDatabase(url, data, route)
 
 There are a number if instances where I wanted the user to be able to make a choice
-that saved information to the database without them being interputed by having to reload 
+that saved information to the database without them being interrputed by having to reload 
 the page (such as playing position preferences and match availability).  Therefore 
 I created these two functions to enable me to do this in the best way possible.
 
@@ -505,7 +496,7 @@ accompanying information to make sure it is posted to the database correctly. On
 it has been used to successfully manage the data and the route information, it is then
 passed to the postToDatabase() function for processing.  The relevant django view 
 will then handle the data and once information is passed back from the backend,
-this fuction will handle feedback to the user or the required subsequent actions 
+this function will handle feedback to the user or the required subsequent actions 
 accordingly, dependant on the type of request and the outcome of it.
 
 This all helps keep the code tidy and working together with the sole reason
@@ -525,7 +516,7 @@ Story 1:  As a regular football player, I want to easily organise our matches wi
 
 REFLECTION - After create a group and getting other people to join it, it's really
 easy to create matches with relevant details, send email reminders with links
-and get fellow users to confirm their availability, so this is a definate pass!
+and get fellow users to confirm their availability, so this is a definite pass!
 
 Story 2: As a footballer, I'd like to know what my fellow peers think of my skills
 and performance to help guide me where I need to improve
@@ -537,8 +528,8 @@ Story 3:  As a regular football player, I want to remove the hassle of having to
 even teams for each game and want to reduce the time lost at the start of each match
 selecting teams
 
-REFLECTION - THe team generation feature has this need covered and provides
-pleanty of options for the user to tweek their team selections as desired.
+REFLECTION - The team generation feature has this need covered and provides
+plenty of options for the user to tweak their team selections as desired.
 
 Story 4:  As a regular footballer who often players with new players, I'd like to 
 know more about my team mates before playing so I know what they look like and 
@@ -557,100 +548,47 @@ accounted for.
 Each element on the site has been manually tested to ensure it functions as intended as follows:
 
 **Test 1** - On home page, logo is clicked - reloads home page - SUCCESS
+**Test 2** - On home page, clicked get started, redirected accordingly - SUCCESS
+**Test 3** - On home page, clicked get started btn, redirected accordingly - SUCCESS
+**Test 4** - On footer, clicked about us btn, redirected accordingly - SUCCESS
+**Test 5** - On footer, clicked get in touch btn, redirected accordingly - SUCCESS
+**Test 6** - On footer, clicked get donate btn while logged in, redirected accordingly - SUCCESS
+**Test 7** - On get started page, clicked sign in, form appeared and could log in - SUCCESS
+**Test 8** - On get started page, clicked sign in and forgot password text, redirected accordingly - SUCCESS
+**Test 9** - On get started page, clicked sign up, form appeared and could register - SUCCESS
+**Test 10** - On profile page, clicked choose from btn, selected photo and update btn, picture displays instead of shirt - SUCCESS
+**Test 11** - On profile page, clicked each data btn to update personal details, details updated and confirmation message displays - SUCCESS
+**Test 12** - On profile page, clicked each playing position, details updated and confirmation message displays - SUCCESS
+**Test 13** - On profile page, when a players license is out of date, I can click a renew btn to redirect to checkout page and pay for an extension - SUCCESS
+**Test 14** - On group-select page, clicked create new group btn, form displays and creates group - SUCCESS
+**Test 15** - On group-select page, clicked join group btn, form displays and player joins group - SUCCESS
+**Test 16** - On group-select page, any groups joined display in groups section with relevant details - SUCCESS
+**Test 17** - On group-home page, clicking show password button displays then hides the password - SUCCESS
+**Test 18** - On group-home page, clicking plus btn in matches section takes you to create a match page - SUCCESS
+**Test 19** - On group-home page, clicking on a created match takes you to match page - SUCCESS
+**Test 20** - On group-home page, clicking on another users shirt takes you to their profile page - SUCCESS
+**Test 21** - On player profile page, I can update that users attributes and see their form - SUCCESS
+**Test 22** - On matches page, I can click to update my availability between available and unavailable - SUCCESS
+**Test 23** - On matches page, I can click email reminders btn to send an email - SUCCESS
+**Test 24** - On matches page, I can click edit match which reveals the existing match details that I can update - SUCCESS
+**Test 25** - On matches page, I can click generate teams btn to be redirected to team gen page - SUCCESS
+**Test 26** - On team gen page, I can generate a team by selecting relevant parameters and clicking pick teams btn - SUCCESS
+**Test 27** - On team gen page, I can generate save a team by clicking the save btn and view it using the saved teams btn - SUCCESS
+**Test 28** - On matches page, when a game is completed and a team was saved, I can click the rate players btn to be redirected accordingly - SUCCESS
+**Test 29** - On rate players page, I can rate each player and submit my ratings which save - SUCCESS
 
-**Test 2** - On home page, welcome message fades in - SUCCESS
-
-**Test 3** - On home page, all nav icons increase in size when hovered - SUCCESS
-
-**Test 4** - On home page, sign up button turns red when hovered and loads sign up page - SUCCESS
-
-**Test 5** - On home page, try a recipe now text underlines when hovered and loads recipes page - SUCCESS
-
-**Test 6** - On home page, see ingredients list now text underlines when hovered and loads ingredients page - SUCCESS
-
-**Test 7** - On home page, leaderboard icon zooms in background picture when hovered and head chefs page - SUCCESS
-
-**Test 8** - On home page, food wall displays expected site recipe stats - SUCCESS
-
-**Test 9** - On sign up page, sign up form files in half from the left and half from the right - SUCCESS
-
-**Test 10** - On sign up page, submit button turns red and background image is zoomed when hovered - SUCCESS
-
-**Test 11** - On sign up page, on attempt to sign in as existing user, error message is displayed to user - SUCCESS
-
-**Test 12** - On sign up page, on attempt to sign in as a new user, user is redirected to home page with a welcome message - SUCCESS
-
-**Test 13** - On home page, user clicks the logout nav icon and is signed out and redirected to the home page with appropriate message - SUCCESS
-
-**Test 14** - On log in page, submit button turns red and background image is zoomed when hovered - SUCCESS
-
-**Test 15** - On log in page, user is able to log in with correct username and password and is redirected to recipes page with welcome back message - SUCCESS
-
-**Test 16** - On log in page, user is presented with appropriate message when trying to log in with an incorrect password - SUCCESS
-
-**Test 17** - On profile page, user personalised photo instructions appear when ? icon is hovered - SUCCESS
-
-**Test 18** - On profile page, go back button turns red on hover and takes the user back to the recipes page on click - SUCCESS
-
-**Test 19** - On profile page, submit button turns red on hover and updates any amended user details within the database on click with an appropriate message - SUCCESS
-
-**Test 20** - On recipes page, add recipe button turns red on hover and tells unregistered user they are unable to add a recipe - SUCCESS
-
-**Test 21** - On recipes page, add recipe button turns red on hover and takes registered user to add a recipe step 1 page - SUCCESS
-
-**Test 22** - On recipes page, the user is able to use filters to manage the category they would like to view  - SUCCESS
-
-**Test 23** - On recipes page, the user is able to use sort to manage the order of the recipes filtered  - SUCCESS
-
-**Test 24** - On recipes page, the user is able to select how many reviews to view at once via the view x recipes buttons  - SUCCESS
-
-**Test 25** - On recipes page, a hovered recipes background colour changes and the user is taken to view recipe page when clicked  - SUCCESS
-
-**Test 26** - On recipes page, while logged in, any recipes I have added have a delete and edit but that turn red on hover  - SUCCESS
-
-**Test 27** - On recipes page, while logged in, when deleting my recipe a confirm box appears and disappears if cancel is pressed - SUCCESS
-
-**Test 28** - On recipes page, while logged in, when deleting my recipe a confirm box appears and the recipe is deleted if confirm is pressed - SUCCESS
-
-**Test 28** - On recipes page, while logged in, the edit button turns red on hover and takes me to edit page for that specific recipe on click - SUCCESS
-
-**Test 29** - On view recipe page, a please wait box shows while recipe data is received, and the recipe data is loaded in upon receipt - SUCCESS
-
-**Test 30** - On view recipe page, I can add a review if I am logged in and I have not already reviewed a recipe - SUCCESS
-
-**Test 31** - On add recipe page, I can add a new recipe to the database when completing cuisine type and recipe name - SUCCESS
-
-**Test 32** - On edit recipe page, update recipe button turns red and updates recipe name, photo image address and cuisine type on click - SUCCESS
-
-**Test 33** - On edit recipe page, on click of minus icon, I can remove a step from the instructions list and the list refreshes- SUCCESS
-
-**Test 34** - On edit recipe page, on click of plus icon, I can add a step to the instructions list and the list refreshes- SUCCESS
-
-**Test 35** - On edit recipe page, on click of plus icon, I get a message to include an instruction step number if it has been omitted from the form- SUCCESS
-
-**Test 36** - On edit recipe page, on click of plus icon, I can add an ingredient and quantity to the ingredients list and the list refreshes- SUCCESS
-
-**Test 37** - On edit recipe page, on click of plus icon, I get a message to include an ingredient quantity if it has been omitted from the form- SUCCESS
-
-**Test 38** - On edit recipe page, add ingredient button turns red and takes me to add an ingredient page when clicked, clicking cancel on the loaded page takes me back to the recipe - SUCCESS
-
-**Test 39** - On ingredients page, add ingredient button turns red and takes me to add an ingredient page when clicked, clicking cancel on the loaded page takes me back to the ingredients page - SUCCESS
-
-**Test 40** - On ingredients page, each ingredients edit icon turns red on hover and takes me to edit ingredient page on click - SUCCESS
-
-**Test 41** - On add ingredient page, an ingredient is saved to the database when relevant details are added - SUCCESS
-
-**Test 42** - On edit ingredient page, the name of the ingredient cannot be amended but the image address and allergens switch are functional and update the database accordingly on submit - SUCCESS
-
-**Test 43** - On head chefs page, a list of the top rated users is displayed in order with the number of recipes submitted and the average scores- SUCCESS
-
-These tests have also been performed in different orders to ensure the result and the way the game is displayed is always as intended and no errors have been found.
+These tests have also been performed in different orders to ensure the result 
+and the way the game is displayed is always as intended and no errors have been 
+found.  My football group has also tested the entire app over a number of weeks
+and any issues identified have been addressed.
 
 #### DEVICES
 
-Using Google Chromes toggle device toolbar, I have extensively viewed the page on each of the following devices to ensure that the website looks as it was intended at each media size.  I have also 
-tested the website on some live devices via the published heroku link.  The following table signifies which tests have been carried out on each device and the status of each based on 
-how the site looks visually:
+Using Google Chromes toggle device toolbar, I have extensively viewed the page 
+on each of the following devices to ensure that the website looks as it was intended 
+at each media size.  I have also tested the website on some live devices via the 
+published heroku link.  The following table signifies which tests have been carried 
+out on each device and the status of each based on how the site looks visually:
 
 |DEVICE NAME         |VIRTUAL/DEVICE TESTED           |PAGE VISITED             |STATUS
 |--------------------|--------------------------------|-------------------------|-------------------
@@ -667,84 +605,110 @@ how the site looks visually:
 |iPad Pro            |Virtual(chrome)                 |index.html               |Renders as intended
 |Laptop (15.4 inch)  |Actual device                   |index.html               |Renders as intended
 |Desktop (24 inch)   |Actual device                   |index.html               |Renders as intended
-|iPhone 5            |Virtual(chrome)                 |add_ingredient.html      |Renders as intended
-|iPhone 6/7/8        |Virtual(chrome)                 |add_ingredient.html      |Renders as intended
-|iPhone 6/7/8 Plus   |Virtual(chrome)                 |add_ingredient.html      |Renders as intended
-|iPhone X            |Virtual(chrome)                 |add_ingredient.html      |Renders as intended
-|Galaxy S5           |Virtual(chrome)                 |add_ingredient.html      |Renders as intended
-|Galaxy S9           |Actual device                   |add_ingredient.html      |Renders as intended
-|Pixel 2             |Virtual(chrome)                 |add_ingredient.html      |Renders as intended
-|Pixel 2 XL          |Virtual(chrome)                 |add_ingredient.html      |Renders as intended
-|iPhone X            |Virtual(chrome)                 |add_ingredient.html      |Renders as intended
-|iPad                |Actual device                   |add_ingredient.html      |Renders as intended
-|iPad Pro            |Virtual(chrome)                 |add_ingredient.html      |Renders as intended
-|Laptop (15.4 inch)  |Actual device                   |add_ingredient.html      |Renders as intended
-|Desktop (24 inch)   |Actual device                   |add_ingredient.html      |Renders as intended
-|iPhone 5            |Virtual(chrome)                 |add_recipe.html          |Renders as intended
-|iPhone 6/7/8        |Virtual(chrome)                 |add_recipe.html          |Renders as intended
-|iPhone 6/7/8 Plus   |Virtual(chrome)                 |add_recipe.html          |Renders as intended
-|iPhone X            |Virtual(chrome)                 |add_recipe.html          |Renders as intended
-|Galaxy S5           |Virtual(chrome)                 |add_recipe.html          |Renders as intended
-|Galaxy S9           |Actual device                   |add_recipe.html          |Renders as intended
-|Pixel 2             |Virtual(chrome)                 |add_recipe.html          |Renders as intended
-|Pixel 2 XL          |Virtual(chrome)                 |add_recipe.html          |Renders as intended
-|iPhone X            |Virtual(chrome)                 |add_recipe.html          |Renders as intended
-|iPad                |Actual device                   |add_recipe.html          |Renders as intended
-|iPad Pro            |Virtual(chrome)                 |add_recipe.html          |Renders as intended
-|Laptop (15.4 inch)  |Actual device                   |add_recipe.html          |Renders as intended
-|Desktop (24 inch)   |Actual device                   |add_recipe.html          |Renders as intended
-|iPhone 5            |Virtual(chrome)                 |edit_ingredient.html     |Renders as intended
-|iPhone 6/7/8        |Virtual(chrome)                 |edit_ingredient.html     |Renders as intended
-|iPhone 6/7/8 Plus   |Virtual(chrome)                 |edit_ingredient.html     |Renders as intended
-|iPhone X            |Virtual(chrome)                 |edit_ingredient.html     |Renders as intended
-|Galaxy S5           |Virtual(chrome)                 |edit_ingredient.html     |Renders as intended
-|Galaxy S9           |Actual device                   |edit_ingredient.html     |Renders as intended
-|Pixel 2             |Virtual(chrome)                 |edit_ingredient.html     |Renders as intended
-|Pixel 2 XL          |Virtual(chrome)                 |edit_ingredient.html     |Renders as intended
-|iPhone X            |Virtual(chrome)                 |edit_ingredient.html     |Renders as intended
-|iPad                |Actual device                   |edit_ingredient.html     |Renders as intended
-|iPad Pro            |Virtual(chrome)                 |edit_ingredient.html     |Renders as intended
-|Laptop (15.4 inch)  |Actual device                   |edit_ingredient.html     |Renders as intended
-|Desktop (24 inch)   |Actual device                   |edit_ingredient.html     |Renders as intended
-|iPhone 5            |Virtual(chrome)                 |head_chefs.html          |Renders as intended
-|iPhone 6/7/8        |Virtual(chrome)                 |head_chefs.html          |Renders as intended
-|iPhone 6/7/8 Plus   |Virtual(chrome)                 |head_chefs.html          |Renders as intended
-|iPhone X            |Virtual(chrome)                 |head_chefs.html          |Renders as intended
-|Galaxy S5           |Virtual(chrome)                 |head_chefs.html          |Renders as intended
-|Galaxy S9           |Actual device                   |head_chefs.html          |Renders as intended
-|Pixel 2             |Virtual(chrome)                 |head_chefs.html          |Renders as intended
-|Pixel 2 XL          |Virtual(chrome)                 |head_chefs.html          |Renders as intended
-|iPhone X            |Virtual(chrome)                 |head_chefs.html          |Renders as intended
-|iPad                |Actual device                   |head_chefs.html          |Renders as intended
-|iPad Pro            |Virtual(chrome)                 |head_chefs.html          |Renders as intended
-|Laptop (15.4 inch)  |Actual device                   |head_chefs.html          |Renders as intended
-|Desktop (24 inch)   |Actual device                   |head_chefs.html          |Renders as intended
-|iPhone 5            |Virtual(chrome)                 |ingredients.html         |Renders as intended
-|iPhone 6/7/8        |Virtual(chrome)                 |ingredients.html         |Renders as intended
-|iPhone 6/7/8 Plus   |Virtual(chrome)                 |ingredients.html         |Renders as intended
-|iPhone X            |Virtual(chrome)                 |ingredients.html         |Renders as intended
-|Galaxy S5           |Virtual(chrome)                 |ingredients.html         |Renders as intended
-|Galaxy S9           |Actual device                   |ingredients.html         |Renders as intended
-|Pixel 2             |Virtual(chrome)                 |ingredients.html         |Renders as intended
-|Pixel 2 XL          |Virtual(chrome)                 |ingredients.html         |Renders as intended
-|iPhone X            |Virtual(chrome)                 |ingredients.html         |Renders as intended
-|iPad                |Actual device                   |ingredients.html         |Renders as intended
-|iPad Pro            |Virtual(chrome)                 |ingredients.html         |Renders as intended
-|Laptop (15.4 inch)  |Actual device                   |ingredients.html         |Renders as intended
-|Desktop (24 inch)   |Actual device                   |ingredients.html         |Renders as intended
-|iPhone 5            |Virtual(chrome)                 |log_in.html              |Renders as intended
-|iPhone 6/7/8        |Virtual(chrome)                 |log_in.html              |Renders as intended
-|iPhone 6/7/8 Plus   |Virtual(chrome)                 |log_in.html              |Renders as intended
-|iPhone X            |Virtual(chrome)                 |log_in.html              |Renders as intended
-|Galaxy S5           |Virtual(chrome)                 |log_in.html              |Renders as intended
-|Galaxy S9           |Actual device                   |log_in.html              |Renders as intended
-|Pixel 2             |Virtual(chrome)                 |log_in.html              |Renders as intended
-|Pixel 2 XL          |Virtual(chrome)                 |log_in.html              |Renders as intended
-|iPhone X            |Virtual(chrome)                 |log_in.html              |Renders as intended
-|iPad                |Actual device                   |log_in.html              |Renders as intended
-|iPad Pro            |Virtual(chrome)                 |log_in.html              |Renders as intended
-|Laptop (15.4 inch)  |Actual device                   |log_in.html              |Renders as intended
-|Desktop (24 inch)   |Actual device                   |log_in.html              |Renders as intended
+|iPhone 5            |Virtual(chrome)                 |about_us.html            |Renders as intended
+|iPhone 6/7/8        |Virtual(chrome)                 |about_us.html            |Renders as intended
+|iPhone 6/7/8 Plus   |Virtual(chrome)                 |about_us.html            |Renders as intended
+|iPhone X            |Virtual(chrome)                 |about_us.html            |Renders as intended
+|Galaxy S5           |Virtual(chrome)                 |about_us.html            |Renders as intended
+|Galaxy S9           |Actual device                   |about_us.html            |Renders as intended
+|Pixel 2             |Virtual(chrome)                 |about_us.html            |Renders as intended
+|Pixel 2 XL          |Virtual(chrome)                 |about_us.html            |Renders as intended
+|iPhone X            |Virtual(chrome)                 |about_us.html            |Renders as intended
+|iPad                |Actual device                   |about_us.html            |Renders as intended
+|iPad Pro            |Virtual(chrome)                 |about_us.html            |Renders as intended
+|Laptop (15.4 inch)  |Actual device                   |about_us.html            |Renders as intended
+|Desktop (24 inch)   |Actual device                   |about_us.html            |Renders as intended
+|iPhone 5            |Virtual(chrome)                 |contact_us.html          |Renders as intended
+|iPhone 6/7/8        |Virtual(chrome)                 |contact_us.html          |Renders as intended
+|iPhone 6/7/8 Plus   |Virtual(chrome)                 |contact_us.html          |Renders as intended
+|iPhone X            |Virtual(chrome)                 |contact_us.html          |Renders as intended
+|Galaxy S5           |Virtual(chrome)                 |contact_us.html          |Renders as intended
+|Galaxy S9           |Actual device                   |contact_us.html          |Renders as intended
+|Pixel 2             |Virtual(chrome)                 |contact_us.html          |Renders as intended
+|Pixel 2 XL          |Virtual(chrome)                 |contact_us.html          |Renders as intended
+|iPhone X            |Virtual(chrome)                 |contact_us.html          |Renders as intended
+|iPad                |Actual device                   |contact_us.html          |Renders as intended
+|iPad Pro            |Virtual(chrome)                 |contact_us.html          |Renders as intended
+|Laptop (15.4 inch)  |Actual device                   |contact_us.html          |Renders as intended
+|Desktop (24 inch)   |Actual device                   |contact_us.html          |Renders as intended
+|iPhone 5            |Virtual(chrome)                 |get_started.html         |Renders as intended
+|iPhone 6/7/8        |Virtual(chrome)                 |get_started.html         |Renders as intended
+|iPhone 6/7/8 Plus   |Virtual(chrome)                 |get_started.html         |Renders as intended
+|iPhone X            |Virtual(chrome)                 |get_started.html         |Renders as intended
+|Galaxy S5           |Virtual(chrome)                 |get_started.html         |Renders as intended
+|Galaxy S9           |Actual device                   |get_started.html         |Renders as intended
+|Pixel 2             |Virtual(chrome)                 |get_started.html         |Renders as intended
+|Pixel 2 XL          |Virtual(chrome)                 |get_started.html         |Renders as intended
+|iPhone X            |Virtual(chrome)                 |get_started.html         |Renders as intended
+|iPad                |Actual device                   |get_started.html         |Renders as intended
+|iPad Pro            |Virtual(chrome)                 |get_started.html         |Renders as intended
+|Laptop (15.4 inch)  |Actual device                   |get_started.html         |Renders as intended
+|Desktop (24 inch)   |Actual device                   |get_started.html         |Renders as intended
+|iPhone 5            |Virtual(chrome)                 |group-select.html        |Renders as intended
+|iPhone 6/7/8        |Virtual(chrome)                 |group-select.html        |Renders as intended
+|iPhone 6/7/8 Plus   |Virtual(chrome)                 |group-select.html        |Renders as intended
+|iPhone X            |Virtual(chrome)                 |group-select.html        |Renders as intended
+|Galaxy S5           |Virtual(chrome)                 |group-select.html        |Renders as intended
+|Galaxy S9           |Actual device                   |group-select.html        |Renders as intended
+|Pixel 2             |Virtual(chrome)                 |group-select.html        |Renders as intended
+|Pixel 2 XL          |Virtual(chrome)                 |group-select.html        |Renders as intended
+|iPhone X            |Virtual(chrome)                 |group-select.html        |Renders as intended
+|iPad                |Actual device                   |group-select.html        |Renders as intended
+|iPad Pro            |Virtual(chrome)                 |group-select.html        |Renders as intended
+|Laptop (15.4 inch)  |Actual device                   |group-select.html        |Renders as intended
+|Desktop (24 inch)   |Actual device                   |group-select.html        |Renders as intended
+|iPhone 5            |Virtual(chrome)                 |group-home.html          |Renders as intended
+|iPhone 6/7/8        |Virtual(chrome)                 |group-home.html          |Renders as intended
+|iPhone 6/7/8 Plus   |Virtual(chrome)                 |group-home.html          |Renders as intended
+|iPhone X            |Virtual(chrome)                 |group-home.html          |Renders as intended
+|Galaxy S5           |Virtual(chrome)                 |group-home.html          |Renders as intended
+|Galaxy S9           |Actual device                   |group-home.html          |Renders as intended
+|Pixel 2             |Virtual(chrome)                 |group-home.html          |Renders as intended
+|Pixel 2 XL          |Virtual(chrome)                 |group-home.html          |Renders as intended
+|iPhone X            |Virtual(chrome)                 |group-home.html          |Renders as intended
+|iPad                |Actual device                   |group-home.html          |Renders as intended
+|iPad Pro            |Virtual(chrome)                 |group-home.html          |Renders as intended
+|Laptop (15.4 inch)  |Actual device                   |group-home.html          |Renders as intended
+|Desktop (24 inch)   |Actual device                   |group-home.html          |Renders as intended
+|iPhone 5            |Virtual(chrome)                 |match_page.html          |Renders as intended
+|iPhone 6/7/8        |Virtual(chrome)                 |match_page.html          |Renders as intended
+|iPhone 6/7/8 Plus   |Virtual(chrome)                 |match_page.html          |Renders as intended
+|iPhone X            |Virtual(chrome)                 |match_page.html          |Renders as intended
+|Galaxy S5           |Virtual(chrome)                 |match_page.html          |Renders as intended
+|Galaxy S9           |Actual device                   |match_page.html          |Renders as intended
+|Pixel 2             |Virtual(chrome)                 |match_page.html          |Renders as intended
+|Pixel 2 XL          |Virtual(chrome)                 |match_page.html          |Renders as intended
+|iPhone X            |Virtual(chrome)                 |match_page.html          |Renders as intended
+|iPad                |Actual device                   |match_page.html          |Renders as intended
+|iPad Pro            |Virtual(chrome)                 |match_page.html          |Renders as intended
+|Laptop (15.4 inch)  |Actual device                   |match_page.html          |Renders as intended
+|Desktop (24 inch)   |Actual device                   |match_page.html          |Renders as intended
+|iPhone 5            |Virtual(chrome)                 |rate_performance.html    |Renders as intended
+|iPhone 6/7/8        |Virtual(chrome)                 |rate_performance.html    |Renders as intended
+|iPhone 6/7/8 Plus   |Virtual(chrome)                 |rate_performance.html    |Renders as intended
+|iPhone X            |Virtual(chrome)                 |rate_performance.html    |Renders as intended
+|Galaxy S5           |Virtual(chrome)                 |rate_performance.html    |Renders as intended
+|Galaxy S9           |Actual device                   |rate_performance.html    |Renders as intended
+|Pixel 2             |Virtual(chrome)                 |rate_performance.html    |Renders as intended
+|Pixel 2 XL          |Virtual(chrome)                 |rate_performance.html    |Renders as intended
+|iPhone X            |Virtual(chrome)                 |rate_performance.html    |Renders as intended
+|iPad                |Actual device                   |rate_performance.html    |Renders as intended
+|iPad Pro            |Virtual(chrome)                 |rate_performance.html    |Renders as intended
+|Laptop (15.4 inch)  |Actual device                   |rate_performance.html    |Renders as intended
+|Desktop (24 inch)   |Actual device                   |rate_performance.html    |Renders as intended
+|iPhone 5            |Virtual(chrome)                 |player-profile.html      |Renders as intended
+|iPhone 6/7/8        |Virtual(chrome)                 |player-profile.html      |Renders as intended
+|iPhone 6/7/8 Plus   |Virtual(chrome)                 |player-profile.html      |Renders as intended
+|iPhone X            |Virtual(chrome)                 |player-profile.html      |Renders as intended
+|Galaxy S5           |Virtual(chrome)                 |player-profile.html      |Renders as intended
+|Galaxy S9           |Actual device                   |player-profile.html      |Renders as intended
+|Pixel 2             |Virtual(chrome)                 |player-profile.html      |Renders as intended
+|Pixel 2 XL          |Virtual(chrome)                 |player-profile.html      |Renders as intended
+|iPhone X            |Virtual(chrome)                 |player-profile.html      |Renders as intended
+|iPad                |Actual device                   |player-profile.html      |Renders as intended
+|iPad Pro            |Virtual(chrome)                 |player-profile.html      |Renders as intended
+|Laptop (15.4 inch)  |Actual device                   |player-profile.html      |Renders as intended
+|Desktop (24 inch)   |Actual device                   |player-profile.html      |Renders as intended
 |iPhone 5            |Virtual(chrome)                 |profile.html             |Renders as intended
 |iPhone 6/7/8        |Virtual(chrome)                 |profile.html             |Renders as intended
 |iPhone 6/7/8 Plus   |Virtual(chrome)                 |profile.html             |Renders as intended
@@ -758,93 +722,174 @@ how the site looks visually:
 |iPad Pro            |Virtual(chrome)                 |profile.html             |Renders as intended
 |Laptop (15.4 inch)  |Actual device                   |profile.html             |Renders as intended
 |Desktop (24 inch)   |Actual device                   |profile.html             |Renders as intended
-|iPhone 5            |Virtual(chrome)                 |recipes.html             |Renders as intended
-|iPhone 6/7/8        |Virtual(chrome)                 |recipes.html             |Renders as intended
-|iPhone 6/7/8 Plus   |Virtual(chrome)                 |recipes.html             |Renders as intended
-|iPhone X            |Virtual(chrome)                 |recipes.html             |Renders as intended
-|Galaxy S5           |Virtual(chrome)                 |recipes.html             |Renders as intended
-|Galaxy S9           |Actual device                   |recipes.html             |Renders as intended
-|Pixel 2             |Virtual(chrome)                 |recipes.html             |Renders as intended
-|Pixel 2 XL          |Virtual(chrome)                 |recipes.html             |Renders as intended
-|iPhone X            |Virtual(chrome)                 |recipes.html             |Renders as intended
-|iPad                |Actual device                   |recipes.html             |Renders as intended
-|iPad Pro            |Virtual(chrome)                 |recipes.html             |Renders as intended
-|Laptop (15.4 inch)  |Actual device                   |recipes.html             |Renders as intended
-|Desktop (24 inch)   |Actual device                   |recipes.html             |Renders as intended
-|iPhone 5            |Virtual(chrome)                 |signup.html              |Renders as intended
-|iPhone 6/7/8        |Virtual(chrome)                 |signup.html              |Renders as intended
-|iPhone 6/7/8 Plus   |Virtual(chrome)                 |signup.html              |Renders as intended
-|iPhone X            |Virtual(chrome)                 |signup.html              |Renders as intended
-|Galaxy S5           |Virtual(chrome)                 |signup.html              |Renders as intended
-|Galaxy S9           |Actual device                   |signup.html              |Renders as intended
-|Pixel 2             |Virtual(chrome)                 |signup.html              |Renders as intended
-|Pixel 2 XL          |Virtual(chrome)                 |signup.html              |Renders as intended
-|iPhone X            |Virtual(chrome)                 |signup.html              |Renders as intended
-|iPad                |Actual device                   |signup.html              |Renders as intended
-|iPad Pro            |Virtual(chrome)                 |signup.html              |Renders as intended
-|Laptop (15.4 inch)  |Actual device                   |signup.html              |Renders as intended
-|Desktop (24 inch)   |Actual device                   |signup.html              |Renders as intended
-|iPhone 5            |Virtual(chrome)                 |view_recipe.html         |Renders as intended
-|iPhone 6/7/8        |Virtual(chrome)                 |view_recipe.html         |Renders as intended
-|iPhone 6/7/8 Plus   |Virtual(chrome)                 |view_recipe.html         |Renders as intended
-|iPhone X            |Virtual(chrome)                 |view_recipe.html         |Renders as intended
-|Galaxy S5           |Virtual(chrome)                 |view_recipe.html         |Renders as intended
-|Galaxy S9           |Actual device                   |view_recipe.html         |Renders as intended
-|Pixel 2             |Virtual(chrome)                 |view_recipe.html         |Renders as intended
-|Pixel 2 XL          |Virtual(chrome)                 |view_recipe.html         |Renders as intended
-|iPhone X            |Virtual(chrome)                 |view_recipe.html         |Renders as intended
-|iPad                |Actual device                   |view_recipe.html         |Renders as intended
-|iPad Pro            |Virtual(chrome)                 |view_recipe.html         |Renders as intended
-|Laptop (15.4 inch)  |Actual device                   |view_recipe.html         |Renders as intended
-|Desktop (24 inch)   |Actual device                   |view_recipe.html         |Renders as intended
+|iPhone 5            |Virtual(chrome)                 |gen_settings.html        |Renders as intended
+|iPhone 6/7/8        |Virtual(chrome)                 |gen_settings.html        |Renders as intended
+|iPhone 6/7/8 Plus   |Virtual(chrome)                 |gen_settings.html        |Renders as intended
+|iPhone X            |Virtual(chrome)                 |gen_settings.html        |Renders as intended
+|Galaxy S5           |Virtual(chrome)                 |gen_settings.html        |Renders as intended
+|Galaxy S9           |Actual device                   |gen_settings.html        |Renders as intended
+|Pixel 2             |Virtual(chrome)                 |gen_settings.html        |Renders as intended
+|Pixel 2 XL          |Virtual(chrome)                 |gen_settings.html        |Renders as intended
+|iPhone X            |Virtual(chrome)                 |gen_settings.html        |Renders as intended
+|iPad                |Actual device                   |gen_settings.html        |Renders as intended
+|iPad Pro            |Virtual(chrome)                 |gen_settings.html        |Renders as intended
+|Laptop (15.4 inch)  |Actual device                   |gen_settings.html        |Renders as intended
+|Desktop (24 inch)   |Actual device                   |gen_settings.html        |Renders as intended
+|iPhone 5            |Virtual(chrome)                 |checkout.html            |Renders as intended
+|iPhone 6/7/8        |Virtual(chrome)                 |checkout.html            |Renders as intended
+|iPhone 6/7/8 Plus   |Virtual(chrome)                 |checkout.html            |Renders as intended
+|iPhone X            |Virtual(chrome)                 |checkout.html            |Renders as intended
+|Galaxy S5           |Virtual(chrome)                 |checkout.html            |Renders as intended
+|Galaxy S9           |Actual device                   |checkout.html            |Renders as intended
+|Pixel 2             |Virtual(chrome)                 |checkout.html            |Renders as intended
+|Pixel 2 XL          |Virtual(chrome)                 |checkout.html            |Renders as intended
+|iPhone X            |Virtual(chrome)                 |checkout.html            |Renders as intended
+|iPad                |Actual device                   |checkout.html            |Renders as intended
+|iPad Pro            |Virtual(chrome)                 |checkout.html            |Renders as intended
+|Laptop (15.4 inch)  |Actual device                   |checkout.html            |Renders as intended
+|Desktop (24 inch)   |Actual device                   |checkout.html            |Renders as intended
 
-The wide range of devices tested showed no visual concerns and should prove a good platform to ensure that it displays well on all devices.
+The wide range of devices tested showed no visual concerns and should prove a 
+good platform to ensure that it displays well on all devices.
 
 ### AUTOMATED TESTING:
 
-I have found automated testing difficult in this project but have set up some sample test to check on the output of specific return functions.  A lot of the code within this project is CRUD and database related, making it difficult to 
-apply the types of tests that have been taught up to this point.  However there are a few functions that I have tested, one in app.py and one via jasmine.
+I have used a number of jasmine tests to check some of my more complex javascript
+code is working and the django testing suite along with coverage to ensure my
+django forms, views and models are working as expected.  Here is a brief run 
+down of these...
 
-1)  App.py test:
+1)  Django tests:
 
-In the function tests section of app.py, I have tested the website recipe data function to ensure that the stats that are being return are what I would expect to see from the database.  Therefore I have set up a test_are_equal test from
-byotests.py and used a dummy mini database to make sure I got the results I was expecting.
+It took me some time to fully understand the tests I could complete using the django 
+testing suite and spent much time testing both the accounts and groups apps.
+
+I have managed to get both of these apps close to 100% tested but I had to do a lot
+of research to get these to work, mainly due to the @login_decorator or logged in
+status that the testing suite interprets while the tests are being run.  
+
+I firmly believe that all of the group tests show that I have successfully 
+understood the tests and overcome any issues I was having with some of the accounts
+test that were throwing errors.  Due to lack of time I have been unable to go back
+and fix these or create the same tests for the other apps, however I intend to do this
+at a later date and have comprehensively tested the app in practice to ensure
+the functions are behaving correctly.
 
 2)  mainSpec.js test:
 
-My automated javascript test uses jasmine to ensure I get the average score I'm expecting for a recipe using the calRecipeScore function.  I have created another dummy database like the one that would be fed through from mlabs to ensure that 
-the correct average score matches the one returned by the function checking the scores in the database.
+I have written 8 jasmine tests to try and ensure my team generation functions are 
+behaving correctly.  Although these are again not conclusive as they only check a 
+percentage of the functions being used here, it demonstrates my ability to undertake
+these tests and each function has been practically tested extensively.  I plan
+to also complete these tests at a later date to ensure that when I come to make 
+changes to the logic, I have a testing suite I can fall back on to ensure they are
+producing the expected results.
 
 #### BUGS
 
-There were two bugs I experienced when creating this site:
+1)  One of the biggest bugs I encountered on this project was to do with user photos
+that could be saved and displayed via the profile.html page.
 
-1)  One of the features of this site is the ability to add your own user or recipe photos using an image url from the web.  If a user enters the correct url, their image will display or alternatively if they leave it blank, a default 
-image will appear.  However, if the user enters a broken link, then a broken link image will appear which doesn't look too perfect on the site.  Having looked into this on different forums, it appears that there isn't an easy solution to this
-and a fix will need to be reviewed at a later date.
+When using an existing photo on a mobile device or when taking a new photo, the 
+orientation of the photo would almost always be incorrect, displaying upside 
+down or on it's side.  After doing a lot of research I discovered this was a known 
+issue and there were a few suggested fixes, however none of these were being 
+implemented in the way I wanted the fix to be implemented.
 
-2)  Less of a bug but worth mentioning is the fact that when using a mongo database you cannot use the BSON ID to link collections and instead you have to have matching foreign keys built into each collection to link on instead.  This caused a few
-issues for me when I was at the later stages of my project and prevented me from doing some of the joining that I would have liked (for example, if the recipes could indicate they had allergens that would be a plus).  However, due to 
-the time it would take to rework a lot of my code I decided that any affected features should be built in at a later date.
+Therefore in helpers.py, I created a helper function that is a combination
+of fixes and actually killed two birds in one stone.  This is because, as users 
+would be uploading their own images, I also needed a way to make sure the images 
+were compressed to ensure they didn't take a long time to load and so that they 
+didn't take up all of my AWS bucket storage space!
+
+My function, optimise_image(photo, new_quality_value_max_100), is invoked on the 
+uploaded file via the profile_and_stats view and can do a number of useful things 
+before saving the users image.  Firstly, it will ensure that the correct 
+orientation of the photo is implemented, and secondly, you can add an argument
+to compress the photo to a percentage of its original size before it's saved.  I 
+found that a compressing the image to 30% of its original size worked well,
+this tends to maintain a quality suitable for web viewing and nicely reduces
+the size and time the image takes to load.  
+
+The function can also resize the image but I have disabled this option as I don't 
+need it in this instance.
+
+Caution - I have had a report that uploading a photo on a Mac appeared to cause
+issues and will need further investigation.  However photos have and continue to
+be uploaded successfully via windows pc, ipads and mobile phones.
 
 
 ## DEPLOYMENT:
 
-My code has simply been deployed via heroku pages at the following link - https://flame-and-sizzle.herokuapp.com/
+My code has simply been deployed via heroku pages at the following link - https://my-team-utility.herokuapp.com/
 
 In order to do this I created a new app on the heroku site and linked to the app via the cloud9 terminal.  
 
-I created a Procfile and requirements.txt file which I then pushed to heroku with the main files.  These tell heroku that this is a web application and what tools in needs to load for the app to run correctly.
-
-On Heroku I have set the config vars to 0.0.0.0 for the IP address and 5000 for the PORT to enable the site to work.
-
-Heroku will also need config vars for the database name (MONGO_DBNAME) and database uri (MONGO_URI) in order to access and save data.
+I created a Procfile and requirements.txt file which I then pushed to heroku with the main files.  
+These tell heroku that this is a web application and what tools in needs to load for the app to run correctly.
 
 All commits have been made to the same master git branch.  
 
-There is also some code at the beginning of app.py that changes the debug mode back to false when running from heroku if a local env.py file cannot be found. Env.py is a file that has been added to .gitignore, so if it isn't there 
-when the site is run, the app knows that it must be the live version of the site.
+A number of config vars are required as follows...
 
+HOSTNAME - The web address of the site - django uses this as a security measure 
+to ensure the page is authorised to be accessed
+
+DATABASE_URL - This is the address of the production postgres database, mine is 
+a heroku addon postgres database
+
+AWS_ACCESS_KEY_ID & AWS_SECRET_ACCESS_KEY - As my static and media files are set up to 
+be held in an S3 bucket, both of these are required.
+
+DISABLE_COLLECTSTATIC - This should be set to 1 to prevent any static and media files
+being uploaded to heroku on each git push as they are hosted on AWS
+
+EMAIL_ADDRESS & EMAIL_PASSWORD - As emails are sent via the site, a gmail address
+and password is required with less secure apps access
+
+SECRET_KEY - This is the key that django uses to verify the site
+
+STRIPE_PUBLISHABLE_KEY & STRIPE_SECRET_KEY - These are required by stripe for a
+user to make payments via checkout.html
+
+Other notes:
+
+1) Newly created super users must create a profile in django admin after 
+being added via terminal or profile page will not display, a profile per user is 
+required...
+
+Upon creating a user, the site will create a profile for that user via the 
+UserProfileData model within the profile_and_stats app.  However, when initially 
+creating a superuser for django, a profile will not be created.  Therefore, in order
+for the site to work for a superuser, they must manually add a profile via the django 
+admin page and link it to their account using the many to many field.  If this
+is not completed, the superuser will not be able to access their profile page 
+as the record will not be found.
+
+2)  I have added version numbers to the css and js tags within base.html.  These
+must be updated before every commit to ensure users get the most up to date 
+styling and js logic files on their next visit.
+
+In addition, I have added notes to a setting in settings.py to enable a developer
+to refresh there css and js files without having to collect static on every occasion
+to see any changes.  
+
+If a developer wants to push their static and media files to AWS, they must run the
+collectstatic command in the terminal with the following setting...
+
+<!--# if development == False:    -->
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+However, if you wish to refresh your development site without having to collectstatic,
+the settings should be as follows...
+
+# if development == False:    
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    
+Collecting static with these settings will result in a folder being created in the 
+root directory containing all of those files.  Should this happen, the stray folder 
+can be deleted without consequence.
+    
 
 ## CREDITS:
 
@@ -861,14 +906,21 @@ ms paint.
 
 ## AREAS FOR IMPROVEMENT:
 
-I have spent a lot of time and learned a huge amount while putting together this site.  In order to complete the course within the timescales I decided to draw a line under what I had already produced but I know there are
-areas that could have been improved upon.  Here are a few areas that I know could be improved:
+I have spent a lot of time and learned a huge amount while putting together this site.  
+In order to complete the course within the timescales I decided to draw a line under what 
+I had already produced but I know there are areas that could have been improved upon.  
+Here are a few areas that I know could be improved:
 
-1) Testing - As indicated above, the automated testing for this site is somewhat limited but that is partly down to my lack of knowledge on how to test CRUD operations.  It is also down to my inexperience in writing some of 
-the functions for the site, not too many functions actually return anything which feels pretty essential when thinking about automated tests.  This is something I will have to consider going into my final project.
+1) Testing - As indicated above, the automated testing for this site is incomplete.
+However, I do feel I have have demonstrated a lot of knowledge in these areas and 
+feel very confident in automated testing, particularly using the django testing 
+framework and the coverage tools.
 
-2) DRY coding - I know there are some areas of my code that could have been much dryer in hindsight.  In particular, the code that creates the filters and sort methods within the recipes view in apps.py could have been compacted a lot.  Also,
-createThisRecipeData within main.js repeats and the same result could have been achieved in a more consolidated way.  If I had more time then these would have been two areas that I would have refactored to get the same result but with 
-better code.
+2) Styling - A lot of work has gone into the features of this site but it still 
+doesn't look as professional as I would like it too.  I could spend another 3 months 
+on the styling of this project alone and probably will post project!
 
-Thank you for reviewing my website!  I hope you liked it as much as I did creating it!  :)
+
+
+Thank you for reviewing my website!  I hope you liked it as much as I did creating 
+it!  :)

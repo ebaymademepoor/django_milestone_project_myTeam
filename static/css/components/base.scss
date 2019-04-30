@@ -91,7 +91,7 @@ footer {
     
     .container {
         display: inline-block;
-        width: 30%;
+        width: 33.3%;
         box-sizing: border-box;
         padding: 20px;
     }
@@ -101,6 +101,7 @@ footer {
         max-width: 1024px;
         display: flex;
         justify-content: space-evenly;
+        align-items: center;
     }
 }
 

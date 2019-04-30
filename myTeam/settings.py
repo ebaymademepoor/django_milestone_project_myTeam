@@ -164,8 +164,8 @@ However, the above line must be commented out to collect static periodically
 to send to AWS storage.
 """
 
-# if development == False:    
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+if development == False:    
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
 STATICFILES_LOCATION = 'static'
 STATIC_URL = '/static/'

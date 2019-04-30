@@ -84,19 +84,19 @@ function collectFormData(type, formName) {
     // Collects any form data ready to be POSTED via ajax
 
     var formData = $(type + formName).serializeArray(); // The serialized new data entered into the form
-
+    var error
     // Check is any values are blank or not filled in
 
     for (i = 0; i < formData.length; i++) {
         if (formData[i].value == "" || formData[i].value == null) {
             displayMessage("Please complete the " + formData[i].name + " box before updating...")
-            var error = true
+            error = true
         }
     }
 
     // If rating a player, ensure values are between 1 and 10
 
-    if (formName == "rate-player-form") {
+    if (formName == "rate-player-form" && error == false) {
         for (i = 0; i < formData.length; i++) {
             if (formData[i].value < 1 || formData[i].value > 10) {
                 displayMessage("Your ratings must be between 1 & 10, please adjust accordingly...")

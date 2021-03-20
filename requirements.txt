@@ -10,7 +10,7 @@ django-storages==1.7.1
 docutils==0.14
 gunicorn==19.9.0
 idna==2.8
-Jinja2==2.10
+Jinja2==2.11.3
 jmespath==0.9.4
 jsonfield==2.0.2
 MarkupSafe==1.1.1
